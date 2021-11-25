@@ -1,0 +1,19 @@
+{
+  "name": "vaadin-valo-npm",
+  "version": "8.14.3",
+  "description": "Fork of Vaadin 8 Valo theme to be used via NPM.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamplesnik/vaadin-valo-npm.git"
+  },
+  "author": "Vaadin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adamplesnik/vaadin-valo-npm/issues"
+  },
+  "homepage": "https://github.com/adamplesnik/vaadin-valo-npm#readme"
+}
