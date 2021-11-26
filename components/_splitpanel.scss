@@ -1,8 +1,8 @@
 /**
  *
  *
- * @param {string} $primary-stylename (v-splitpanel) - 
- * @param {bool} $include-additional-styles - 
+ * @param {string} $primary-stylename (v-splitpanel) -
+ * @param {bool} $include-additional-styles -
  *
  * @group splitpanel
  */
@@ -14,14 +14,14 @@
   .#{$primary-stylename}-vertical {
     @include valo-splitpanel-style($primary-stylename: $primary-stylename, $orientation: vertical);
   }
-  
+
   @if $include-additional-styles {
     .#{$primary-stylename}-horizontal.large {
-      @include valo-splitpanel-style($splitter-size: round($v-unit-size/3), $splitter-handle-visible: true, $orientation: horizontal);
+      @include valo-splitpanel-style($splitter-size: round(math.div($v-unit-size, 3)), $splitter-handle-visible: true, $orientation: horizontal);
     }
-    
+
     .#{$primary-stylename}-vertical.large {
-      @include valo-splitpanel-style($splitter-size: round($v-unit-size/3), $splitter-handle-visible: true, $orientation: vertical);
+      @include valo-splitpanel-style($splitter-size: round(math.div($v-unit-size, 3)), $splitter-handle-visible: true, $orientation: vertical);
     }
   }
 }
@@ -32,7 +32,7 @@
 /**
  *
  *
- * @param {string} $primary-stylename (v-splitpanel) - 
+ * @param {string} $primary-stylename (v-splitpanel) -
  *
  * @group splitpanel
  */
@@ -117,19 +117,19 @@
 /**
  *
  *
- * @param {string} $primary-stylename (v-splitpanel) - 
- * @param {size} $splitter-size (max(1px, first-number($v-border)) - 
- * @param {list} $splitter-active-size (round($v-unit-size/3)) - 
- * @param {bool} $splitter-handle-visible (false) - 
- * @param {list} $splitter-shadow (none) - 
- * @param {list} $orientation (vertical horizontal) - 
+ * @param {string} $primary-stylename (v-splitpanel) -
+ * @param {size} $splitter-size (max(1px, first-number($v-border)) -
+ * @param {list} $splitter-active-size (round(math.div($v-unit-size, 3))) -
+ * @param {bool} $splitter-handle-visible (false) -
+ * @param {list} $splitter-shadow (none) -
+ * @param {list} $orientation (vertical horizontal) -
  *
  * @group splitpanel
  */
 @mixin valo-splitpanel-style(
     $primary-stylename : v-splitpanel,
     $splitter-size: max(1px, first-number($v-border)),
-    $splitter-active-size: round($v-unit-size/3),
+    $splitter-active-size: round(math.div($v-unit-size, 3)),
     $splitter-handle-visible: false,
     $splitter-shadow: none,
     $orientation: vertical horizontal
@@ -200,8 +200,8 @@
 /**
  *
  *
- * @param {bool} $horizontal (false) - 
- * @param {bool} $include-common (true) - 
+ * @param {bool} $horizontal (false) -
+ * @param {bool} $include-common (true) -
  *
  * @group splitpanel
  */

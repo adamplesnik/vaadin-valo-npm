@@ -102,7 +102,7 @@ $v-panel-background-color: scale-color(lighten($v-app-background-color, 5%), $sa
  */
 @mixin valo-panel-caption-style ( $background-color : $v-background-color,  $bevel  : $v-bevel, $gradient : valo-gradient-style($v-gradient) valo-gradient-opacity($v-gradient)/4, $border   : $v-panel-border ) {
   box-sizing: border-box;
-  padding: 0 round($v-unit-size/3);
+  padding: 0 round(math.div($v-unit-size, 3));
   line-height: $v-unit-size - first-number($v-border);
   $bg: $background-color;
 
@@ -178,7 +178,7 @@ $v-panel-background-color: scale-color(lighten($v-app-background-color, 5%), $sa
     @include box-shadow(none);
     color: inherit;
     padding: 0;
-    margin: 0 round($v-unit-size/3);
+    margin: 0 round(math.div($v-unit-size, 3));
     border-bottom: none;
   }
 }
@@ -234,18 +234,18 @@ $v-panel-background-color: scale-color(lighten($v-app-background-color, 5%), $sa
  */
 @mixin valo-panel-adjust-content-margins {
   > .v-margin-top {
-    padding-top: round($v-unit-size/3);
+    padding-top: round(math.div($v-unit-size, 3));
   }
 
   > .v-margin-right {
-    padding-right: round($v-unit-size/3);
+    padding-right: round(math.div($v-unit-size, 3));
   }
 
   > .v-margin-bottom {
-    padding-bottom: round($v-unit-size/3);
+    padding-bottom: round(math.div($v-unit-size, 3));
   }
 
   > .v-margin-left {
-    padding-left: round($v-unit-size/3);
+    padding-left: round(math.div($v-unit-size, 3));
   }
 }

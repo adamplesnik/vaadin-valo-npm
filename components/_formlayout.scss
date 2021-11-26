@@ -179,7 +179,7 @@
   > table > tbody > tr > [class*="captioncell"] {
     color: valo-font-color($v-background-color, .5);
     text-align: right;
-    padding-left: ceil($v-unit-size/3);
+    padding-left: ceil(math.div($v-unit-size, 3));
     line-height: $row-height;
   }
 

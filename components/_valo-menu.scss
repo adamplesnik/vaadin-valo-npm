@@ -7,7 +7,7 @@ $valo-menu-background-color: scale-color($v-app-background-color, $lightness: if
 /**
  *
  *
- * @param {string} $bg ($valo-menu-background-color) - 
+ * @param {string} $bg ($valo-menu-background-color) -
  *
  * @group valo-menu
  */
@@ -262,7 +262,7 @@ $valo-menu-background-color: scale-color($v-app-background-color, $lightness: if
 /**
  *
  *
- * @param {string} $bg ($valo-menu-background-color) - 
+ * @param {string} $bg ($valo-menu-background-color) -
  *
  * @group valo-menu
  */
@@ -290,7 +290,7 @@ $valo-menu-background-color: scale-color($v-app-background-color, $lightness: if
   $font-color: valo-font-color($v-selection-color, 1);
   color: $font-color;
   text-shadow: valo-text-shadow($font-color: $font-color, $background-color: $v-selection-color);
-  padding: round($v-unit-size/3) round($v-unit-size/2);
+  padding: round(math.div($v-unit-size, 3)) round($v-unit-size/2);
   font-size: round($v-font-size * 0.9);
   border-bottom: valo-border($color: $v-selection-color);
   @include box-shadow(valo-bevel-and-shadow($shadow: $v-shadow));
@@ -301,7 +301,7 @@ $valo-menu-background-color: scale-color($v-app-background-color, $lightness: if
 /**
  *
  *
- * @param {color} $bg ($valo-menu-background-color) - 
+ * @param {color} $bg ($valo-menu-background-color) -
  *
  * @group valo-menu
  */
@@ -320,7 +320,7 @@ $valo-menu-background-color: scale-color($v-app-background-color, $lightness: if
 /**
  *
  *
- * @param {color} $bg ($valo-menu-background-color) - 
+ * @param {color} $bg ($valo-menu-background-color) -
  *
  * @group valo-menu
  */
@@ -404,9 +404,9 @@ $valo-menu-background-color: scale-color($v-app-background-color, $lightness: if
 /**
  *
  *
- * @param {string} $states (inactive active) - 
- * @param {color} $background-color (null) - 
- * @param {color} $active-color ($v-selection-color) - 
+ * @param {string} $states (inactive active) -
+ * @param {color} $background-color (null) -
+ * @param {color} $active-color ($v-selection-color) -
  *
  * @group valo-menu
  */
@@ -433,7 +433,7 @@ $valo-menu-background-color: scale-color($v-app-background-color, $lightness: if
 /**
  *
  *
- * @param {color} $bg (darken($valo-menu-background-color, 4%)) - 
+ * @param {color} $bg (darken($valo-menu-background-color, 4%)) -
  *
  * @group valo-menu
  */
@@ -485,7 +485,7 @@ $valo-menu-background-color: scale-color($v-app-background-color, $lightness: if
     display: block;
     font-size: round($v-font-size * 1.6);
     line-height: 1;
-    padding: round($v-unit-size/3);
+    padding: round(math.div($v-unit-size, 3));
     text-align: center;
     border-top: valo-border($color: $bg, $strength: 0.2, $border: first-number($v-border) solid v-tone);
 

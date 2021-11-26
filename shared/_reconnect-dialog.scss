@@ -6,7 +6,7 @@
     max-width: 100%;
     border-radius: 0;
     @include box-shadow(0 0 20px 0 rgba(0,0,0,0.25));
-    padding: round($v-unit-size/3) round($v-unit-size/2.5);
+    padding: round(math.div($v-unit-size, 3)) round(math.div($v-unit-size, 2.5));
 
     background-color: #444;
     background-color: rgba(#444, .9);

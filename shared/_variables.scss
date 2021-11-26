@@ -85,9 +85,9 @@ $v-border-radius: 4px !default;
  * Color gradient style for components that have a gradient. The gradient style may use
  * the following keywords: v-linear and v-linear-reverse. The opacity must be given
  * as percentage between 0% and 100%.
- * 
+ *
  * #### Gradient styles
- * 
+ *
  *  - __v-linear__ - The start of the gradient is a lighter shade of the base color and the end is a darker shade of the base color. A basic linear gradient.
  *  - __v-linear-reverse__ - Same as v-linear, but the color stops are reversed (darker at the start and lighter at the end)
  *
@@ -410,7 +410,7 @@ $v-layout-margin-left: round($v-unit-size) !default;
  * @group layout
  * @type size
  */
-$v-layout-spacing-vertical: round($v-unit-size/3) !default;
+$v-layout-spacing-vertical: round(math.div($v-unit-size, 3)) !default;
 
 /**
  * Amount of horizontal space when spacing is enabled for a layout with setSpacing().
@@ -419,7 +419,7 @@ $v-layout-spacing-vertical: round($v-unit-size/3) !default;
  * @group layout
  * @type size
  */
-$v-layout-spacing-horizontal: round($v-unit-size/3) !default;
+$v-layout-spacing-horizontal: round(math.div($v-unit-size, 3)) !default;
 
 /**
  * Tiny font size.

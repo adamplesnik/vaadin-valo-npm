@@ -8,8 +8,8 @@ $v-notification-title-color: $v-focus-color !default;
 /**
  *
  *
- * @param {string} $primary-stylename (v-Notification) - 
- * @param {bool} $include-additional-styles - 
+ * @param {string} $primary-stylename (v-Notification) -
+ * @param {bool} $include-additional-styles -
  *
  * @group notification
  */
@@ -110,7 +110,7 @@ $v-notification-title-color: $v-focus-color !default;
   .v-icon + .#{$primary-stylename}-caption {
     margin-left: round($v-font-size);
   }
-  
+
   .#{$primary-stylename}-system {
     @include valo-notification-bar-style($primary-stylename);
     @include valo-notification-system-style($primary-stylename);
@@ -244,7 +244,7 @@ $v-notification-title-color: $v-focus-color !default;
     position: absolute;
     top: 50%;
     margin-top: round($v-unit-size/-3);
-    right: round($v-unit-size/3);
+    right: round(math.div($v-unit-size, 3));
     width: round($v-unit-size/1.5);
     height: round($v-unit-size/1.5);
     line-height: round($v-unit-size/1.5) - 1px;
@@ -311,7 +311,7 @@ $v-notification-title-color: $v-focus-color !default;
   margin: 0 !important;
   border-radius: 0;
   @include box-shadow(0 0 20px 0 rgba(0,0,0,0.25));
-  padding: round($v-unit-size/3) round($v-unit-size/2.5);
+  padding: round(math.div($v-unit-size, 3)) round(math.div($v-unit-size, 2.5));
 
   .#{$primary-style}-description, .#{$primary-style}-details {
     max-width: 50em;
@@ -436,7 +436,7 @@ $v-notification-title-color: $v-focus-color !default;
  * @group notification
  */
 @mixin valo-notification-small-style ($primary-style) {
-  padding: round($v-unit-size/3.3) round($v-unit-size/2.8);
+  padding: round(math.div($v-unit-size, 3).3) round($v-unit-size/2.8);
 
   .#{$primary-style}-caption {
     font-size: $v-font-size;

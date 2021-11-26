@@ -27,7 +27,7 @@ $v-table-border-radius: 0 !default;
  *
  * @group table
  */
-$v-table-cell-padding-horizontal: round($v-unit-size/3) !default;
+$v-table-cell-padding-horizontal: round(math.div($v-unit-size, 3)) !default;
 
 /**
  *
