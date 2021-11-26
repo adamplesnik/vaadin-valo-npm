@@ -1,9 +1,3 @@
-// Not included automatically, only if $v-font-family specifies them
-@import "open-sans/open-sans";
-@import "source-sans-pro/source-sans-pro";
-@import "roboto/roboto";
-@import "lato/lato";
-@import "lora/lora";
 @import "vaadin-icons/vaadin-icons.scss";
 
 /// Include VaadinIcons. They are included in Valo
@@ -11,12 +5,6 @@
 /// https://vaadin.com/icons
 
 $v-icons: true !default;
-
-/// Set the value of this variable to `false` if you want to exclude the Font Awesome icons.
-/// Only included to ease migration, and will not be updated in the future.
-/// We encourage you to use the FontAwesomeLabel add-on from the Directory instead:
-/// https://vaadin.com/directory/#!addon/fontawesomelabel
-$v-font-awesome: true !default;
 
 $font-icons-pathPrefix: null;
 
@@ -30,10 +18,6 @@ $font-icons-pathPrefix: null;
   // Vaadin Icons
   @if $v-icons {
       @include vaadin-icons;
-  }
-  // FontAwesome
-  @if $v-font-awesome {
-    @include v-font(FontAwesome, "#{$font-icons-pathPrefix}../valo/fonts/fontawesome-webfont/fontawesome-webfont");
   }
 }
 

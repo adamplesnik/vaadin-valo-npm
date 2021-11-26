@@ -10,8 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/adamplesnik/vaadin-valo-npm.git"
   },
-  "author": "Vaadin",
-  "license": "ISC",
+  "author": "Adam Plesník, original Valo by Vaadin",
+  "license": "Apache License 2.0",
   "bugs": {
     "url": "https://github.com/adamplesnik/vaadin-valo-npm/issues"
   },
