@@ -33,13 +33,13 @@ $v-table-cell-padding-horizontal: round(math.div($v-unit-size, 3)) !default;
  *
  * @group table
  */
-$v-table-resizer-width: round($v-unit-size/4.5) !default;
+$v-table-resizer-width: round(math.div($v-unit-size, 4.5)) !default;
 
 /**
  *
  * @group table
  */
-$v-table-sort-indicator-width: round($v-unit-size/2) !default;
+$v-table-sort-indicator-width: round(math.div($v-unit-size, 2)) !default;
 
 /**
  *
@@ -402,9 +402,9 @@ $v-table-background-color: null !default;
     z-index: 2;
     top: 0;
     right: 0;
-    width: round($v-unit-size/2);
-    height: round($v-unit-size/2);
-    line-height: round($v-unit-size/2);
+    width: round(math.div($v-unit-size, 2));
+    height: round(math.div($v-unit-size, 2));
+    line-height: round(math.div($v-unit-size, 2));
     padding: 0;
     border-top-width: 0;
     border-right-width: 0;
@@ -444,7 +444,7 @@ $v-table-background-color: null !default;
     &:before {
       @include valo-table-column-visible-icon-style;
       font-size: 0.9em;
-      margin-right: round($v-unit-size/6);
+      margin-right: round(math.div($v-unit-size, 6));
     }
     div {
       display: inline;
@@ -490,7 +490,7 @@ $v-table-background-color: null !default;
     width: 100%;
     height: $v-unit-size;
     line-height: $v-unit-size;
-    margin: round($v-unit-size/-2) 0 0 !important;
+    margin: round(math.div($v-unit-size, -2)) 0 0 !important;
     text-align: center;
   }
 

@@ -1,7 +1,7 @@
 /**
  *
  *
- * @param {string} $primary-stylename (v-select) - 
+ * @param {string} $primary-stylename (v-select) -
  *
  * @group nativeselect
  */
@@ -15,11 +15,11 @@
 
     + .v-textfield {
       width: auto !important;
-      margin-top: round($v-unit-size/4);
+      margin-top: round(math.div($v-unit-size, 4));
 
       + .v-nativebutton {
-        margin-top: round($v-unit-size/4);
-        margin-left: round($v-unit-size/4);
+        margin-top: round(math.div($v-unit-size, 4));
+        margin-left: round(math.div($v-unit-size, 4));
       }
     }
   }

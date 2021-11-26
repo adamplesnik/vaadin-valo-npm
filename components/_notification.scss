@@ -183,7 +183,7 @@ $v-notification-title-color: $v-focus-color !default;
       }
 
       &.tray:after {
-        top: round($v-unit-size/2.3);
+        top: round(math.div($v-unit-size, 2.3));
         margin-top: 0;
       }
     }
@@ -234,7 +234,7 @@ $v-notification-title-color: $v-focus-color !default;
  * @group notification
  */
 @mixin valo-notification-closable-style {
-  padding-right: $v-unit-size + round($v-unit-size/1.7);
+  padding-right: $v-unit-size + round(math.div($v-unit-size, 1.7));
   overflow: hidden !important; // Override GWT PopupPanel
   cursor: pointer;
 
@@ -243,11 +243,11 @@ $v-notification-title-color: $v-focus-color !default;
     font-size: 1.5em;
     position: absolute;
     top: 50%;
-    margin-top: round($v-unit-size/-3);
+    margin-top: round(math.div($v-unit-size, -3));
     right: round(math.div($v-unit-size, 3));
-    width: round($v-unit-size/1.5);
-    height: round($v-unit-size/1.5);
-    line-height: round($v-unit-size/1.5) - 1px;
+    width: round(math.div($v-unit-size, 1.5));
+    height: round(math.div($v-unit-size, 1.5));
+    line-height: round(math.div($v-unit-size, 1.5)) - 1px;
     cursor: pointer;
     $color: if(is-dark-color($v-overlay-background-color), #fff, #000);
     color: $color;
@@ -286,7 +286,7 @@ $v-notification-title-color: $v-focus-color !default;
 @mixin valo-notification-style ($primary-style) {
   background: $v-overlay-background-color;
   @include box-shadow(0px 5px 15px 0px rgba(0,0,0,0.15));
-  padding: round($v-unit-size/2) round($v-unit-size/1.7);
+  padding: round(math.div($v-unit-size, 2)) round(math.div($v-unit-size, 1.7));
 
   .#{$primary-style}-caption {
     color: $v-notification-title-color;
@@ -435,8 +435,9 @@ $v-notification-title-color: $v-focus-color !default;
  *
  * @group notification
  */
+
 @mixin valo-notification-small-style ($primary-style) {
-  padding: round(math.div($v-unit-size, 3).3) round($v-unit-size/2.8);
+  padding: round(math.round($v-unit-size, 3.3)) round(math.div($v-unit-size, 2.8));
 
   .#{$primary-style}-caption {
     font-size: $v-font-size;

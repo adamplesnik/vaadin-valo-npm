@@ -96,7 +96,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
       @include valo-animate-in-fade(300ms);
     }
 
-    $spinner-size: round($v-unit-size/2);
+    $spinner-size: round(math.div($v-unit-size, 2));
     $spinner-size: $spinner-size + $spinner-size % 2;
 
     .#{$primary-stylename}-deco {
@@ -105,7 +105,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
       position: absolute;
       z-index: 1;
       bottom: 50%;
-      margin-bottom: round($v-unit-size/-2) - $spinner-size/2;
+      margin-bottom: round(math.div($v-unit-size, -2)) - $spinner-size/2;
       left: 50%;
       margin-left: $spinner-size/-2;
     }
@@ -203,8 +203,8 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
   }
 
   .v-caption {
-    margin-left: round($v-unit-size/2);
-    padding: 0 round($v-unit-size/10);
+    margin-left: round(math.div($v-unit-size, 2));
+    padding: 0 round(math.div($v-unit-size, 10));
     box-sizing: border-box;
     cursor: pointer;
     text-align: center;
@@ -227,7 +227,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
     }
 
     .v-icon + .v-captiontext {
-      margin-left: round($v-unit-size/4);
+      margin-left: round(math.div($v-unit-size, 4));
     }
 
     &:hover {
@@ -247,7 +247,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
   }
 
   &:not([aria-hidden="true"]) ~ td .v-caption {
-    margin-left: round($v-unit-size/2);
+    margin-left: round(math.div($v-unit-size, 2));
   }
 
   &:focus {
@@ -264,11 +264,11 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
   }
 
   .v-caption-closable {
-    padding-right: round($v-unit-size/10) + round($v-font-size * 1.1);
+    padding-right: round(math.div($v-unit-size, 10)) + round($v-font-size * 1.1);
   }
 
   &.icons-on-top .v-caption-closable {
-    padding-right: round($v-unit-size/10);
+    padding-right: round(math.div($v-unit-size, 10));
   }
 
   .#{$primary-stylename}-caption-close {
@@ -308,7 +308,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
   top: 0;
   right: 0;
   bottom: 0;
-  padding-left: round($v-unit-size/2);
+  padding-left: round(math.div($v-unit-size, 2));
   @include linear-gradient(to left, $v-background-color 70%, rgba($v-background-color, 0) 100%, $fallback: transparent);
   pointer-events: none;
 
@@ -331,7 +331,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
     color: inherit;
     height: 100%;
     margin: 0;
-    padding: 0 round($v-unit-size/4);
+    padding: 0 round(math.div($v-unit-size, 4));
     outline: none;
     cursor: pointer;
     pointer-events: auto;
@@ -354,14 +354,14 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
   }
 
   [class*="Next"] {
-    padding-left: round($v-unit-size/8);
+    padding-left: round(math.div($v-unit-size, 8));
     &:before {
       @include valo-tabsheet-scroller-next-icon-style;
     }
   }
 
   [class*="Prev"] {
-    padding-right: round($v-unit-size/8);
+    padding-right: round(math.div($v-unit-size, 8));
     &:before {
       @include valo-tabsheet-scroller-prev-icon-style;
     }
@@ -403,11 +403,11 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
  * @param {string} $primary-stylename (v-tabsheet) - The primary style name for the selectors
  * @param {bool} $frame-inactive-tabs (true) - Should inactive tabs be framed as well (the active tab is always framed with this style)
  * @param {bool} $outer-frame (true) - Should the frame contain the whole tabsheet (i.e. tabbar and tab content). If false, works like a "borderless" style.
- * @param {size} $tab-spacing ($v-unit-size/10) - The spacing between tabs
+ * @param {size} $tab-spacing (math.div($v-unit-size, 10)) - The spacing between tabs
  *
  * @group tabsheet
  */
-@mixin valo-tabsheet-framed-style ($primary-stylename: v-tabsheet, $frame-inactive-tabs: true, $outer-frame: true, $tab-spacing: round($v-unit-size/10)) {
+@mixin valo-tabsheet-framed-style ($primary-stylename: v-tabsheet, $frame-inactive-tabs: true, $outer-frame: true, $tab-spacing: round(math.div($v-unit-size, 10))) {
   > .#{$primary-stylename}-tabcontainer {
     .v-caption {
       margin-left: $tab-spacing or first-number($v-border) * -1;
@@ -486,13 +486,13 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
       }
 
       background: $v-background-color;
-      padding-top: round($v-unit-size/6);
+      padding-top: round(math.div($v-unit-size, 6));
     }
   }
 
   &.icons-on-top {
     > .#{$primary-stylename}-tabcontainer .#{$primary-stylename}-tabitem-selected .v-caption {
-      padding-bottom: round($v-unit-size/6) + first-number($v-border);
+      padding-bottom: round(math.div($v-unit-size, 6)) + first-number($v-border);
     }
   }
 }
@@ -558,8 +558,8 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
 @mixin valo-tabsheet-icons-on-top-style ($primary-stylename: v-tabsheet) {
   > .#{$primary-stylename}-tabcontainer {
     .v-caption {
-      padding-top: round($v-unit-size/6);
-      padding-bottom: round($v-unit-size/6);
+      padding-top: round(math.div($v-unit-size, 6));
+      padding-bottom: round(math.div($v-unit-size, 6));
       line-height: 1.2;
     }
 
@@ -612,6 +612,6 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
  */
 @mixin valo-tabsheet-padded-tabbar-style ($primary-stylename: v-tabsheet) {
   > .#{$primary-stylename}-tabcontainer .#{$primary-stylename}-tabs {
-    padding: 0 round($v-unit-size/4);
+    padding: 0 round(math.div($v-unit-size, 4));
   }
 }

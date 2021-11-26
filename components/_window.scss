@@ -162,7 +162,7 @@ $v-window-modality-curtain-background-color: #222 !default;
     top: 0;
     right: 0;
     box-sizing: border-box;
-    width: $v-unit-size - round($v-unit-size/9);
+    width: $v-unit-size - round(math.div($v-unit-size, 9));
     height: $v-unit-size - 1px;
     background-color: $v-window-background-color;
     line-height: $v-unit-size - 3px;
@@ -192,10 +192,10 @@ $v-window-modality-curtain-background-color: #222 !default;
   .#{$primary-stylename}-closebox:focus::after {
     content: "";
     position: absolute;
-    top: round($v-unit-size/6);
-    right: round($v-unit-size/6);
-    bottom: round($v-unit-size/6);
-    left: round($v-unit-size/18);
+    top: round(math.div($v-unit-size, 6));
+    right: round(math.div($v-unit-size, 6));
+    bottom: round(math.div($v-unit-size, 6));
+    left: round(math.div($v-unit-size, 18));
     border-radius: $v-window-border-radius;
 
     @include valo-focus-style;
@@ -205,17 +205,17 @@ $v-window-modality-curtain-background-color: #222 !default;
   .#{$primary-stylename}-restorebox:focus::after {
     content: "";
     position: absolute;
-    top: round($v-unit-size/6);
-    right: round($v-unit-size/18);
-    bottom: round($v-unit-size/6);
-    left: round($v-unit-size/6);
+    top: round(math.div($v-unit-size, 6));
+    right: round(math.div($v-unit-size, 18));
+    bottom: round(math.div($v-unit-size, 6));
+    left: round(math.div($v-unit-size, 6));
     border-radius: $v-window-border-radius;
 
     @include valo-focus-style;
   }
 
   .#{$primary-stylename}-closebox {
-    padding-right: round($v-unit-size/9);
+    padding-right: round(math.div($v-unit-size, 9));
     @include valo-window-close-icon-style;
 
     @if $v-window-border-radius > 0 {
@@ -225,8 +225,8 @@ $v-window-modality-curtain-background-color: #222 !default;
 
   .#{$primary-stylename}-maximizebox,
   .#{$primary-stylename}-restorebox {
-    right: $v-unit-size - round($v-unit-size/9);
-    padding-left: round($v-unit-size/9);
+    right: $v-unit-size - round(math.div($v-unit-size, 9));
+    padding-left: round(math.div($v-unit-size, 9));
 
     @if $v-window-border-radius > 0 {
       border-radius: 0 0 0 $v-window-border-radius;
@@ -249,7 +249,7 @@ $v-window-modality-curtain-background-color: #222 !default;
       border-bottom-left-radius: $v-window-border-radius;
 
       &:focus::after {
-        left: round($v-unit-size/6);
+        left: round(math.div($v-unit-size, 6));
       }
     }
   }
@@ -317,8 +317,8 @@ $v-window-modality-curtain-background-color: #222 !default;
     z-index: 1000;
     right: 0;
     bottom: 0;
-    width: round($v-unit-size/2);
-    height: round($v-unit-size/2);
+    width: round(math.div($v-unit-size, 2));
+    height: round(math.div($v-unit-size, 2));
     cursor: nwse-resize;
   }
 
@@ -348,7 +348,7 @@ $v-window-modality-curtain-background-color: #222 !default;
 
   .#{$primary-stylename}-top-toolbar {
     &.v-layout {
-      padding: round($v-unit-size/5) round(math.div($v-unit-size, 3));
+      padding: round(math.div($v-unit-size, 5)) round(math.div($v-unit-size, 3));
       position: relative;
       z-index: 2;
       border-top: valo-border($strength: 0.5);
@@ -357,19 +357,19 @@ $v-window-modality-curtain-background-color: #222 !default;
     }
 
     &.v-menubar {
-      margin: round(math.div($v-unit-size, 3)) round(math.div($v-unit-size, 3)) round($v-unit-size/6);
+      margin: round(math.div($v-unit-size, 3)) round(math.div($v-unit-size, 3)) round(math.div($v-unit-size, 6));
     }
 
     &.v-menubar-borderless {
-      padding-left: round($v-unit-size/6);
-      padding-right: round($v-unit-size/6);
-      margin: round($v-unit-size/6) - first-number($v-border) 0;
+      padding-left: round(math.div($v-unit-size, 6));
+      padding-right: round(math.div($v-unit-size, 6));
+      margin: round(math.div($v-unit-size, 6)) - first-number($v-border) 0;
     }
   }
 
   .#{$primary-stylename}-bottom-toolbar.v-layout {
-    padding: round($v-unit-size/5) round(math.div($v-unit-size, 3));
-    @include linear-gradient(to bottom, darken($v-background-color, valo-gradient-opacity($v-gradient)/2) 0, $v-background-color round($v-unit-size/10), $fallback: $v-background-color);
+    padding: round(math.div($v-unit-size, 5)) round(math.div($v-unit-size, 3));
+    @include linear-gradient(to bottom, darken($v-background-color, valo-gradient-opacity($v-gradient)/2) 0, $v-background-color round(math.div($v-unit-size, 10)), $fallback: $v-background-color);
     border-top: valo-border($strength: 0.5);
     border-radius: 0 0 $v-border-radius $v-border-radius;
   }
@@ -378,7 +378,7 @@ $v-window-modality-curtain-background-color: #222 !default;
     .#{$primary-stylename}-top-toolbar {
       &.v-layout {
         box-sizing: content-box;
-        margin: round($v-unit-size/-3) round($v-unit-size/-3) 0;
+        margin: round(math.div($v-unit-size, -3)) round(math.div($v-unit-size, -3)) 0;
       }
 
       &.v-menubar {
@@ -386,7 +386,7 @@ $v-window-modality-curtain-background-color: #222 !default;
       }
 
       &.v-menubar-borderless {
-        margin: round($v-unit-size/6) - round(math.div($v-unit-size, 3)) round($v-unit-size/6) - round(math.div($v-unit-size, 3)) 0;
+        margin: round(math.div($v-unit-size, 6)) - round(math.div($v-unit-size, 3)) round(math.div($v-unit-size, 6)) - round(math.div($v-unit-size, 3)) 0;
         padding: 0;
       }
     }
@@ -396,7 +396,7 @@ $v-window-modality-curtain-background-color: #222 !default;
     .#{$primary-stylename}-bottom-toolbar {
       &.v-layout {
         box-sizing: content-box;
-        margin: 0 round($v-unit-size/-3) round($v-unit-size/-3);
+        margin: 0 round(math.div($v-unit-size, -3)) round(math.div($v-unit-size, -3));
       }
     }
   }

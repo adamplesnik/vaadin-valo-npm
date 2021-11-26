@@ -60,7 +60,7 @@ $v-loading-indicator-color: $v-focus-color !default;
  *
  * @type size
  */
-$v-loading-indicator-bar-height: ceil($v-unit-size/10) !default;
+$v-loading-indicator-bar-height: ceil(math.div($v-unit-size, 10)) !default;
 
 /**
  * The height of the main loading indicator bar when the request to the server
@@ -68,7 +68,7 @@ $v-loading-indicator-bar-height: ceil($v-unit-size/10) !default;
  *
  * @type size
  */
-$v-loading-indicator-bar-height--wait: ceil($v-unit-size/6) !default;
+$v-loading-indicator-bar-height--wait: ceil(math.div($v-unit-size, 6)) !default;
 
 
 

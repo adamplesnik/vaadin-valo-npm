@@ -22,7 +22,7 @@
   }
 
   .#{$primary-stylename}-error-indicator {
-    width: round($v-unit-size/2);
+    width: round(math.div($v-unit-size, 2));
   }
 
   .#{$primary-stylename}-captioncell {
@@ -237,7 +237,7 @@
   }
 
   .v-richtextarea {
-    margin: round($v-unit-size/8) 0;
+    margin: round(math.div($v-unit-size, 8)) 0;
   }
 
   .v-filterselect-button,
@@ -255,6 +255,6 @@
   }
 
   .v-checkbox {
-    margin-left: ceil($v-unit-size/6);
+    margin-left: ceil(math.div($v-unit-size, 6));
   }
 }

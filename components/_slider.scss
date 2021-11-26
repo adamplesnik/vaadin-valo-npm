@@ -2,7 +2,7 @@
  *
  * @group slider
  */
-$v-slider-track-size: round($v-unit-size/8) !default;
+$v-slider-track-size: round(math.div($v-unit-size, 8)) !default;
 
 /**
  *
@@ -14,13 +14,13 @@ $v-slider-track-border-radius: null !default;
  *
  * @group slider
  */
-$v-slider-handle-width: round($v-unit-size/1.8) !default;
+$v-slider-handle-width: round(math.div($v-unit-size, 1.8)) !default;
 
 /**
  *
  * @group slider
  */
-$v-slider-handle-height: round($v-unit-size/1.8) !default;
+$v-slider-handle-height: round(math.div($v-unit-size, 1.8)) !default;
 
 /**
  *

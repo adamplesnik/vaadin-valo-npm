@@ -432,7 +432,7 @@
     display: block;
   }
 
-  margin-top: ceil($v-unit-size/8) !important;
+  margin-top: ceil(math.div($v-unit-size, 8)) !important;
 
   table, tbody, tr, td {
     display: block;
@@ -467,7 +467,7 @@
     bottom: -(ceil($v-unit-size*0.6));
     font-size: ceil($v-font-size*0.73);
     line-height: ceil($v-unit-size*0.6);
-    padding: 0 ceil($v-unit-size/7);
+    padding: 0 ceil(math.div($v-unit-size, 7));
     cursor: default;
     pointer-events: none;
 
@@ -488,9 +488,9 @@
     @include opacity(.2);
     cursor: pointer;
     @include transition( all 200ms );
-    width: ceil($v-unit-size/1.5);
-    height: ceil($v-unit-size/1.5);
-    line-height: ceil($v-unit-size/1.5);
+    width: ceil(math.div($v-unit-size, 1.5));
+    height: ceil(math.div($v-unit-size, 1.5));
+    line-height: ceil(math.div($v-unit-size, 1.5));
     text-align: center;
     font-family: ThemeIcons;
     @include transform( scale(.8) );

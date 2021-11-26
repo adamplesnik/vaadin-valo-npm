@@ -1,21 +1,21 @@
 /**
- * A list of colors for custom event colors. Can be an empty list of you don't 
+ * A list of colors for custom event colors. Can be an empty list of you don't
  * need any custom event colors.
- * 
+ *
  * @example javascript
  * // Java code
  * // 'event' is an instance of EditableCalendarEvent
  * event.setStyleName("color1"); // 1st color in the list
  * event.setStyleName("color2"); // 2nd color in the list
  * // etc.
- * 
+ *
  * @group calendar
  */
 $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
 
 
 /**
- * Outputs the global selectors and properties for the Calendar component - styles which are 
+ * Outputs the global selectors and properties for the Calendar component - styles which are
  * considered mandatory for the component to work properly.
  *
  * @param {string} $primary-stylename (v-calendar) - the primary style name for the selectors
@@ -137,7 +137,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
   .#{$primary-stylename}-header-day {
     font-weight: $v-font-weight + 100;
     text-align: center;
-    padding: round($v-unit-size/5) 0;
+    padding: round(math.div($v-unit-size, 5)) 0;
   }
 
   // Prev/next week buttons
@@ -218,12 +218,12 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
   .#{$primary-stylename}-spacer,
   .#{$primary-stylename}-bottom-spacer-empty {
     height: round($v-font-size * 1.2);
-    margin-bottom: round($v-unit-size/12);
+    margin-bottom: round(math.div($v-unit-size, 12));
   }
 
   .#{$primary-stylename}-bottom-spacer {
     font-size: 0.8em;
-    padding: 0 round($v-unit-size/8);
+    padding: 0 round(math.div($v-unit-size, 8));
     cursor: pointer;
 
     &:hover {
@@ -232,10 +232,10 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
   }
 
   .#{$primary-stylename}-day-number {
-    line-height: round($v-unit-size/1.5);
+    line-height: round(math.div($v-unit-size, 1.5));
     font-size: $v-font-size;
     text-align: right;
-    margin: 0 round($v-unit-size/8);
+    margin: 0 round(math.div($v-unit-size, 8));
     white-space: nowrap;
     border-top: 1px solid darken($v-background-color, 3%);
     cursor: pointer;
@@ -252,9 +252,9 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
       font-weight: $v-font-weight + 100;
       color: $v-focus-color;
       border-top: 2px solid $v-focus-color;
-      line-height: round($v-unit-size/1.5) - 1px;
+      line-height: round(math.div($v-unit-size, 1.5)) - 1px;
       margin: 0;
-      padding: 0 round($v-unit-size/8);
+      padding: 0 round(math.div($v-unit-size, 8));
     }
   }
 
@@ -286,12 +286,12 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
 
   .#{$primary-stylename}-weekly-longevents {
     margin-left: $_times-column-width; // Seems to be a fixed number
-    border-bottom: round($v-unit-size/12) solid darken($v-background-color, 10%);
+    border-bottom: round(math.div($v-unit-size, 12)) solid darken($v-background-color, 10%);
 
     .#{$primary-stylename}-event-all-day {
       height: round($v-font-size * 0.85 * 1.6);
       line-height: 1.6;
-      margin-bottom: round($v-unit-size/12);
+      margin-bottom: round(math.div($v-unit-size, 12));
     }
   }
 
@@ -312,7 +312,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
 
   .#{$primary-stylename}-time {
     text-align: right;
-    padding-right: round($v-unit-size/4);
+    padding-right: round(math.div($v-unit-size, 4));
     margin-top: round($v-font-size*0.8/-2);
     padding-bottom: round($v-font-size*0.8/2);
   }
@@ -344,7 +344,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
 
   .#{$primary-stylename} .v-datecellslot,
   .#{$primary-stylename} .v-datecellslot-even {
-    margin-right: round($v-unit-size/8);
+    margin-right: round(math.div($v-unit-size, 8));
   }
 
   .#{$primary-stylename}-current-time {
@@ -407,9 +407,9 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
   }
 
   .#{$primary-stylename}-event-month {
-    padding: 0 round($v-unit-size/8);
+    padding: 0 round(math.div($v-unit-size, 8));
     box-sizing: border-box;
-    margin-bottom: round($v-unit-size/12);
+    margin-bottom: round(math.div($v-unit-size, 12));
     white-space: nowrap;
     text-overflow: ellipsis;
     height: round($v-font-size * 1.2);
@@ -429,7 +429,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
   }
 
   .#{$primary-stylename}-event-all-day {
-    padding: 0 round($v-unit-size/8);
+    padding: 0 round(math.div($v-unit-size, 8));
     box-sizing: border-box;
     height: round($v-font-size * 1.2);
     line-height: round($v-font-size * 1.2);
@@ -457,23 +457,23 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
     .#{$primary-stylename}-event-start {
       border-top-left-radius: $v-border-radius;
       border-bottom-left-radius: $v-border-radius;
-      margin-left: round($v-unit-size/8);
+      margin-left: round(math.div($v-unit-size, 8));
     }
     .#{$primary-stylename}-event-end {
       border-top-right-radius: $v-border-radius;
       border-bottom-right-radius: $v-border-radius;
-      margin-right: round($v-unit-size/8);
+      margin-right: round(math.div($v-unit-size, 8));
     }
   }
 
   .#{$primary-stylename}-event-caption {
     font-weight: $v-font-weight + 200;
     line-height: 1.2;
-    padding: round($v-unit-size/8) 0;
+    padding: round(math.div($v-unit-size, 8)) 0;
     position: absolute;
     overflow: hidden;
-    right: round($v-unit-size/4);
-    left: round($v-unit-size/8);
+    right: round(math.div($v-unit-size, 4));
+    left: round(math.div($v-unit-size, 8));
     bottom: 0;
     top: 0;
 
@@ -500,7 +500,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
     border-radius: $v-border-radius + 1px;
     border: 1px solid $v-app-background-color;
     padding-top: 3px;
-    margin-right: round($v-unit-size/8);
+    margin-right: round(math.div($v-unit-size, 8));
   }
 
 
@@ -549,7 +549,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
 
 /**
  * Outputs the styles for the previous button.
- * 
+ *
  * @group calendar
  */
 @mixin valo-calendar-prev-style {
@@ -561,7 +561,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
 
 /**
  * Outputs the styles for the next button.
- * 
+ *
  * @group calendar
  */
 @mixin valo-calendar-next-style {

@@ -271,7 +271,7 @@
   // TODO: hacked to replicate photoshop
   @if $foreground == 0 {
     $foreground: 255;
-  } @elseif $tmp < 0 {
+  } @else if $tmp < 0 {
     $foreground: 0;
   } @else {
     $foreground: $tmp;
@@ -371,7 +371,7 @@
 
   $bm-hsv: nth($foreground-hsv, 1), nth($foreground-hsv, 2), nth($background-hsv, 3);
   $bm-color: hsv-to-color($bm-hsv);
-  
+
   @return blend-normal(rgba(red($bm-color), green($bm-color), blue($bm-color), opacity($foreground)), $background);
 }
 
@@ -421,7 +421,7 @@
 
   $bm-hsv: nth($background-hsv, 1), nth($background-hsv, 2), nth($foreground-hsv, 3);
   $bm-color: hsv-to-color($bm-hsv);
-  
+
   @return blend-normal(rgba(red($bm-color), green($bm-color), blue($bm-color), opacity($foreground)), $background);
 }
 
@@ -434,7 +434,7 @@
 
   $bm-hsv: nth($background-hsv, 1), nth($foreground-hsv, 2), nth($background-hsv, 3);
   $bm-color: hsv-to-color($bm-hsv);
-  
+
   @return blend-normal(rgba(red($bm-color), green($bm-color), blue($bm-color), opacity($foreground)), $background);
 }
 

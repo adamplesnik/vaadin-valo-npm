@@ -44,7 +44,7 @@ $v-overlay-animate-out: valo-animate-out-fade 120ms !default;
  * @type size
  * @group overlay
  */
-$v-overlay-padding: round($v-unit-size/9) !default;
+$v-overlay-padding: round(math.div($v-unit-size, 9)) !default;
 
 /**
  * The padding on the top and bottom edges of overlay elements.
@@ -118,7 +118,7 @@ $v-selection-item-border-radius: $v-border-radius - 1px !default;
  * @type size (px)
  * @group overlay
  */
-$v-selection-item-height: ceil($v-unit-size/1.4) !default;
+$v-selection-item-height: ceil(math.div($v-unit-size, 1.4)) !default;
 
 /**
  * The horizontal padding for individual selection overlay list items.
@@ -126,7 +126,7 @@ $v-selection-item-height: ceil($v-unit-size/1.4) !default;
  * @type size
  * @group overlay
  */
-$v-selection-item-padding-horizontal: ceil($v-unit-size/4) !default;
+$v-selection-item-padding-horizontal: ceil(math.div($v-unit-size, 4)) !default;
 
 /**
  * The font weight for individual selection overlay list items.

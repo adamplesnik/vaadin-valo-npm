@@ -7,7 +7,7 @@ $valo-richtextarea-use-valo-icons: true !default;
 /**
  *
  *
- * @param {string} $primary-stylename (v-richtextarea) - 
+ * @param {string} $primary-stylename (v-richtextarea) -
  *
  * @group richtextarea
  */
@@ -88,10 +88,10 @@ $valo-richtextarea-use-valo-icons: true !default;
 
   .#{$primary-stylename} .gwt-RichTextToolbar-bottom {
     font-size: round($v-font-size * 0.8);
-    padding: 0 round($v-unit-size/4) round($v-unit-size/4) 0;
+    padding: 0 round(math.div($v-unit-size, 4)) round(math.div($v-unit-size, 4)) 0;
 
     select {
-      margin: round($v-unit-size/4) 0 0 round($v-unit-size/4);
+      margin: round(math.div($v-unit-size, 4)) 0 0 round(math.div($v-unit-size, 4));
     }
   }
 
@@ -102,7 +102,7 @@ $valo-richtextarea-use-valo-icons: true !default;
   }
 
   .#{$primary-stylename}-readonly {
-    padding: ceil($v-unit-size/9) ceil($v-unit-size/6);
+    padding: ceil(math.div($v-unit-size, 9)) ceil(math.div($v-unit-size, 6));
     background: transparent;
   }
 

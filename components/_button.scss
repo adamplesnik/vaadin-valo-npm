@@ -16,7 +16,7 @@
   @if $include-additional-styles {
     .#{$primary-stylename}-primary {
       @include valo-button-style($background-color: $v-selection-color);
-      $padding-width: round($v-unit-size/2);
+      $padding-width: round(math.div($v-unit-size, 2));
       padding: 0 $padding-width;
       font-weight: bold;
       $min-width: round($v-unit-size * 2.2);
@@ -413,7 +413,7 @@
 
   .v-icon {
     float: right;
-    $padding-width: ceil($v-unit-size/2.4);
+    $padding-width: ceil(math.div($v-unit-size, 2.4));
     margin-left: $padding-width + ceil($padding-width/-5);
 
     + span:not(:empty) {
@@ -430,8 +430,8 @@
  */
 @mixin valo-button-icon-align-top-style {
   height: auto;
-  padding-top: ceil($v-unit-size/9);
-  padding-bottom: ceil($v-unit-size/9);
+  padding-top: ceil(math.div($v-unit-size, 9));
+  padding-bottom: ceil(math.div($v-unit-size, 9));
 
   [class*="wrap"] {
     display: inline-block;
@@ -443,7 +443,7 @@
     margin-right: auto;
 
     + span:not(:empty) {
-      margin-top: ceil($v-unit-size/6);
+      margin-top: ceil(math.div($v-unit-size, 6));
       margin-left: 0;
     }
   }

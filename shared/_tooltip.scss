@@ -36,7 +36,7 @@ $v-tooltip-box-shadow: 0 2px 12px rgba(#000, .2) !default;
  * @type size
  * @group tooltip
  */
-$v-tooltip-padding-vertical: round($v-unit-size/8) !default;
+$v-tooltip-padding-vertical: round(math.div($v-unit-size, 8)) !default;
 
 /**
  * The horizontal padding for tooltips.
@@ -44,7 +44,7 @@ $v-tooltip-padding-vertical: round($v-unit-size/8) !default;
  * @type size
  * @group tooltip
  */
-$v-tooltip-padding-horizontal: round($v-unit-size/4) !default;
+$v-tooltip-padding-horizontal: round(math.div($v-unit-size, 4)) !default;
 
 /**
  * The backgound color for error tooltips.

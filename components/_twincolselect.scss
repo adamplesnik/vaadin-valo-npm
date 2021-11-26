@@ -1,7 +1,7 @@
 /**
  *
  *
- * @param {string} $primary-stylename (v-select-twincol) - 
+ * @param {string} $primary-stylename (v-select-twincol) -
  *
  * @group twin-column-select
  */
@@ -17,11 +17,11 @@
     .v-textfield,
     .v-nativebutton {
      width: auto !important;
-     margin-top: round($v-unit-size/4);
+     margin-top: round(math.div($v-unit-size, 4));
     }
 
     .v-nativebutton {
-      margin-left: round($v-unit-size/4);
+      margin-left: round(math.div($v-unit-size, 4));
     }
   }
 
@@ -40,8 +40,8 @@
     .v-button {
       @include valo-widget-style;
       position: absolute;
-      left: round($v-unit-size/4);
-      right: round($v-unit-size/4);
+      left: round(math.div($v-unit-size, 4));
+      right: round(math.div($v-unit-size, 4));
       top: $v-unit-size - first-number($v-border);
       padding: 0;
       text-align: center;

@@ -1,6 +1,6 @@
 {
   "name": "vaadin-valo-npm",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Fork of Vaadin 8 Valo theme to be used via NPM.",
   "main": "index.js",
   "scripts": {
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/adamplesnik/vaadin-valo-npm/issues"
   },
-  "homepage": "https://github.com/adamplesnik/vaadin-valo-npm#readme"
+  "homepage": "https://github.com/adamplesnik/vaadin-valo-npm#readme",
+  "dependencies": {
+    "sass": "^1.43.5"
+  }
 }

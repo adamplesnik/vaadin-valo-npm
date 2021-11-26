@@ -192,7 +192,7 @@
     @include valo-button-active-style;
   }
 
-  $margin-width: ceil($v-unit-size/2.4/5);
+  $margin-width: ceil(math.div($v-unit-size, 0.48));
   .v-icon {
     margin: 0 $margin-width 0 #{-$margin-width};
     cursor: inherit;
@@ -222,7 +222,7 @@
 @mixin valo-menubar-popup-style ($primary-stylename: v-menubar) {
   @include valo-selection-overlay-style;
 
-  margin: ceil($v-unit-size/8) 0 0 1px !important;
+  margin: ceil(math.div($v-unit-size, 8)) 0 0 1px !important;
 
   .#{$primary-stylename}-submenu {
     outline: none;

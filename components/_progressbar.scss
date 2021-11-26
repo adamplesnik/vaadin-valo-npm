@@ -8,7 +8,7 @@ $v-progressbar-border-radius: $v-border-radius !default;
 /**
  *
  *
- * @param {string} $primary-stylename (v-progressbar) - 
+ * @param {string} $primary-stylename (v-progressbar) -
  *
  * @group progressbar
  */
@@ -38,7 +38,7 @@ $v-progressbar-border-radius: $v-border-radius !default;
         content: "";
         display: inline-block;
         @include valo-progressbar-indicator-style;
-        width: round($v-unit-size/4);
+        width: round(math.div($v-unit-size, 4));
         vertical-align: top;
       }
     }
@@ -46,7 +46,7 @@ $v-progressbar-border-radius: $v-border-radius !default;
 
   .#{$primary-stylename}-indeterminate {
     @include valo-spinner;
-    
+
     .#{$primary-stylename}-wrapper {
       display: none;
     }
@@ -58,13 +58,13 @@ $v-progressbar-border-radius: $v-border-radius !default;
 /**
  *
  *
- * @param {color} $background-color ($v-background-color) - 
+ * @param {color} $background-color ($v-background-color) -
  *
  * @group progressbar
  */
 @mixin valo-progressbar-track-style ($background-color: $v-background-color) {
   border-radius: $v-progressbar-border-radius;
-  height: round($v-unit-size/4);
+  height: round(math.div($v-unit-size, 4));
   $bg-lightness: if(color-luminance($background-color) < 10, min($v-bevel-depth/2, 10%), min($v-bevel-depth/-2, -10%));
   @include valo-gradient($color: scale-color($background-color, $lightness: $bg-lightness, $saturation: $v-bevel-depth/-2), $direction: to top);
   box-sizing: border-box;
@@ -74,8 +74,8 @@ $v-progressbar-border-radius: $v-border-radius !default;
 /**
  *
  *
- * @param {color} $background-color ($v-selection-color) - 
- * @param {string} $border ($v-border) - 
+ * @param {color} $background-color ($v-selection-color) -
+ * @param {string} $border ($v-border) -
  *
  * @group progressbar
  */

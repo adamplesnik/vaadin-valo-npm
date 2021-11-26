@@ -165,7 +165,7 @@
   .#{$primary-stylename}-calendarpanel {
     position: relative;
     background: $v-overlay-background-color;
-    padding: round($v-unit-size/6);
+    padding: round(math.div($v-unit-size, 6));
   }
 }
 
@@ -340,9 +340,9 @@
 @mixin valo-datefield-popup-style {
   @include valo-overlay-style;
 
-  margin-top: ceil($v-unit-size/8) !important;
-  margin-bottom: ceil($v-unit-size/8) !important;
-  margin-right: ceil($v-unit-size/8) !important;
+  margin-top: ceil(math.div($v-unit-size, 8)) !important;
+  margin-bottom: ceil(math.div($v-unit-size, 8)) !important;
+  margin-right: ceil(math.div($v-unit-size, 8)) !important;
   cursor: default;
   width: auto;
 
@@ -353,7 +353,7 @@
   }
 
   td {
-    padding: round($v-unit-size/20);
+    padding: round(math.div($v-unit-size, 20));
   }
 
   @include valo-datefield-calendarpanel-style;
@@ -510,7 +510,7 @@
   .#{$primary-stylename}-weeknumbers .v-first:before {
     content: "";
     position: absolute;
-    top: round($v-unit-size * 0.7) + round($v-unit-size/10)*2 + $v-overlay-padding-vertical;
+    top: round($v-unit-size * 0.7) + round(math.div($v-unit-size, 10))*2 + $v-overlay-padding-vertical;
     bottom: 0;
     left: 0;
     width: round($v-unit-size * 0.7) + $v-overlay-padding-horizontal*2;

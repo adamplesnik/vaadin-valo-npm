@@ -2,7 +2,7 @@
  *
  * @group tree
  */
-$v-tree-row-height: round($v-unit-size/1.3) !default;
+$v-tree-row-height: round(math.div($v-unit-size, 1.3)) !default;
 
 /**
  *
@@ -181,7 +181,7 @@ $v-tree-expand-animation-enabled: false !default;
   }
 
   .#{$primary-stylename}-node-children {
-    padding-left: round($v-unit-size/2);
+    padding-left: round(math.div($v-unit-size, 2));
 
   }
 
