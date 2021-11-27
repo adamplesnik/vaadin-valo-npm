@@ -18,5 +18,8 @@
   "homepage": "https://github.com/adamplesnik/vaadin-valo-npm#readme",
   "dependencies": {
     "sass": "^1.43.5"
+  },
+  "devDependencies": {
+    "prettier": "^2.5.0"
   }
 }
