@@ -216,22 +216,10 @@ $valo-shared-pathPrefix: null;
  * @requires {mixin} valo-app-style
  */
 @mixin valo-common {
-  //@if & != null {
-  //  &,
-  //  &.v-app-loading {
-  //    @include valo-app-style;
-  //  }
-  //} @else {
-  &.v-app,
-  &.v-app-loading {
+  .v-app,
+  .v-app-loading {
     @include valo-app-style;
   }
-  //}
-
-  //&.v-overlay-container {
-  //  position: absolute;
-  //  top: 0;
-  //}
 
   .v-app-loading {
     width: 100%;

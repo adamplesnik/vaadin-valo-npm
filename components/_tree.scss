@@ -16,7 +16,6 @@ $v-tree-animations-enabled: true !default;
  */
 $v-tree-expand-animation-enabled: false !default;
 
-
 @if $v-tree-expand-animation-enabled {
   @include keyframes(valo-tree-node-open) {
     0% {
@@ -37,7 +36,6 @@ $v-tree-expand-animation-enabled: false !default;
   }
 }
 
-
 /**
  *
  *
@@ -45,8 +43,7 @@ $v-tree-expand-animation-enabled: false !default;
  *
  * @group tree
  */
-@mixin valo-tree ($primary-stylename: v-tree) {
-
+@mixin valo-tree($primary-stylename: v-tree) {
   .#{$primary-stylename} {
     position: relative;
     white-space: nowrap;
@@ -58,7 +55,7 @@ $v-tree-expand-animation-enabled: false !default;
 
   .#{$primary-stylename}-node {
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       display: inline-block;
       z-index: 3;
@@ -69,7 +66,6 @@ $v-tree-expand-animation-enabled: false !default;
       // 'red' just happens to be the shortest color name.
       background: red;
       opacity: 0;
-
     }
   }
 
@@ -91,9 +87,9 @@ $v-tree-expand-animation-enabled: false !default;
       &:before {
         @include valo-tree-collapsed-icon-style;
         display: inline-block;
-        width: .5em;
+        width: 0.5em;
         text-align: center;
-        margin: 0 .6em 0 .8em;
+        margin: 0 0.6em 0 0.8em;
 
         @if $v-tree-animations-enabled {
           @include transition(all 100ms);
@@ -121,7 +117,7 @@ $v-tree-expand-animation-enabled: false !default;
     }
 
     &:after {
-      content: "";
+      content: '';
       display: block;
       vertical-align: top;
       position: absolute;
@@ -136,9 +132,7 @@ $v-tree-expand-animation-enabled: false !default;
       @if $v-tree-animations-enabled {
         @include transition(opacity 120ms);
       }
-
     }
-
   }
 
   .#{$primary-stylename}-node-expanded > .#{$primary-stylename}-node-caption > div:before {
@@ -161,10 +155,7 @@ $v-tree-expand-animation-enabled: false !default;
       opacity: 1;
       border: 1px solid $v-focus-color;
     }
-
   }
-
-
 
   .#{$primary-stylename}-node-selected {
     $font-color: valo-font-color($v-selection-color, 0.9);
@@ -175,18 +166,15 @@ $v-tree-expand-animation-enabled: false !default;
       opacity: 1;
       @include valo-gradient($v-selection-color);
       border: none;
-
     }
-
   }
 
   .#{$primary-stylename}-node-children {
     padding-left: round(math.div($v-unit-size, 2));
-
   }
 
   @if $v-tree-expand-animation-enabled {
-    .#{$primary-stylename}-node-children[style*="display: none"] {
+    .#{$primary-stylename}-node-children[style*='display: none'] {
       @include animation(valo-tree-node-close 400ms ease-out forwards);
       display: block !important;
     }
@@ -196,14 +184,13 @@ $v-tree-expand-animation-enabled: false !default;
     }
   }
 
-
-
   // Drag'n'drop styles
 
   .#{$primary-stylename}-node-drag-top:before,
   .#{$primary-stylename}-node-drag-bottom:after,
-  .#{$primary-stylename}-node-drag-bottom.#{$primary-stylename}-node-dragfolder.#{$primary-stylename}-node-expanded > .#{$primary-stylename}-node-children:before {
-    content: "\2022";
+  .#{$primary-stylename}-node-drag-bottom.#{$primary-stylename}-node-dragfolder.#{$primary-stylename}-node-expanded
+    > .#{$primary-stylename}-node-children:before {
+    content: '\2022';
     display: block;
     position: absolute;
     height: 2px;
@@ -226,16 +213,13 @@ $v-tree-expand-animation-enabled: false !default;
     @include box-shadow(0 0 0 2px $v-focus-color);
     position: relative;
     border-radius: $v-border-radius;
-
   }
 
-  .v-ff & .#{$primary-stylename}-node-drag-top:before,
-  .v-ff & .#{$primary-stylename}-node-drag-bottom:after {
+  .v-ff .#{$primary-stylename}-node-drag-top:before,
+  .v-ff .#{$primary-stylename}-node-drag-bottom:after {
     line-height: 1px;
   }
-
 }
-
 
 /**
  *
@@ -244,7 +228,7 @@ $v-tree-expand-animation-enabled: false !default;
  * @group tree
  */
 @mixin valo-tree-collapsed-icon-style {
-  content: "\f0da";
+  content: '\f0da';
   font-family: ThemeIcons;
 }
 
@@ -255,9 +239,9 @@ $v-tree-expand-animation-enabled: false !default;
  *
  * @group tree
  */
-@mixin valo-tree-expanded-icon-style ($force: false) {
+@mixin valo-tree-expanded-icon-style($force: false) {
   @if $v-tree-animations-enabled == false or $force {
-    content: "\f0d7";
+    content: '\f0d7';
     font-family: ThemeIcons;
   }
 }
