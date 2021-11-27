@@ -1,10 +1,18 @@
-@import "table";
+@import 'table';
 
 $v-grid-row-background-color: valo-table-background-color() !default;
-$v-grid-row-stripe-background-color: scale-color($v-grid-row-background-color, $lightness: if(color-luminance($v-grid-row-background-color) < 10, 4%, -4%)) !default;
+$v-grid-row-stripe-background-color: scale-color(
+  $v-grid-row-background-color,
+  $lightness: if(color-luminance($v-grid-row-background-color) < 10, 4%, -4%)
+) !default;
 
 $v-grid-border-color-source: $v-grid-row-background-color !default;
-$v-grid-border: flatten-list(valo-border($color: $v-grid-border-color-source, $strength: 0.8)) !default;
+$v-grid-border: flatten-list(
+  valo-border(
+    $color: $v-grid-border-color-source,
+    $strength: 0.8,
+  )
+) !default;
 $v-grid-cell-focused-border: max(2px, first-number($v-border)) solid $v-selection-color !default;
 
 $v-grid-row-height: $v-table-row-height !default;
@@ -19,8 +27,14 @@ $v-grid-animations-enabled: $v-animations-enabled !default;
 
 $v-grid-details-marker-width: first-number($v-grid-border) * 2 !default;
 $v-grid-details-marker-color: $v-selection-color !default;
-$v-grid-details-border-top: valo-border($color: $v-grid-border-color-source, $strength: 0.3) !default;
-$v-grid-details-border-top-stripe: valo-border($color: $v-grid-row-stripe-background-color, $strength: 0.3) !default;
+$v-grid-details-border-top: valo-border(
+  $color: $v-grid-border-color-source,
+  $strength: 0.3,
+) !default;
+$v-grid-details-border-top-stripe: valo-border(
+  $color: $v-grid-row-stripe-background-color,
+  $strength: 0.3,
+) !default;
 
 $v-grid-border-size: 1px !default;
 $v-grid-border: $v-grid-border-size solid #ddd !default;
@@ -63,10 +77,9 @@ $v-grid-details-border-top-stripe: $v-grid-cell-horizontal-border !default;
 $v-grid-details-border-bottom: 1px solid darken($v-grid-row-stripe-background-color, 10%) !default;
 $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-color, 10%) !default;
 
-@import "_escalator";
+@import '_escalator';
 
 @mixin base-grid($primaryStyleName: v-grid) {
-
   @include base-escalator($primaryStyleName: $primaryStyleName, $background-color: $v-grid-row-background-color);
 
   .#{$primaryStyleName} {
@@ -104,7 +117,6 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
         border: $v-grid-border;
         margin-top: -10px;
         opacity: 0.9;
-        filter: alpha(opacity=90); // IE8
         z-index: 30000;
       }
 
@@ -148,12 +160,8 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
         cursor: default;
       }
 
-      &::-moz-focus-inner {
-        border: 0;
-      }
-
       &:after {
-        content: "\f0c9";
+        content: '\f0c9';
         display: block;
         font-family: ThemeIcons, sans-serif;
         font-size: $v-grid-header-font-size;
@@ -169,7 +177,7 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
         width: 100%;
 
         &:after {
-          content: "\f0c9";
+          content: '\f0c9';
           font-size: $v-grid-header-font-size;
           line-height: 1;
         }
@@ -212,9 +220,9 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
     }
 
     &.frozen {
-      @include box-shadow(1px 0 2px rgba(0,0,0,.1));
+      @include box-shadow(1px 0 2px rgba(0, 0, 0, 0.1));
       border-right: $v-grid-cell-vertical-border;
-      position:relative;
+      position: relative;
       z-index: 11;
 
       @if $v-grid-cell-vertical-border and $v-grid-cell-vertical-border != none {
@@ -227,8 +235,8 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
 
     // Style for ComponentRenderer wrap
     div.component-wrap {
-        width: 100%;
-      }
+      width: 100%;
+    }
   }
 
   // Rows
@@ -244,7 +252,7 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
   }
 
   .#{$primaryStyleName}-editor-cells.frozen > div {
-    @include box-shadow(1px 0 2px rgba(0,0,0,.1));
+    @include box-shadow(1px 0 2px rgba(0, 0, 0, 0.1));
     border-right: $v-grid-cell-vertical-border;
     border-left: none;
   }
@@ -285,7 +293,7 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
 
       &:after {
         font-family: ThemeIcons, sans-serif;
-        content: "\f0de" " " attr(sort-order);
+        content: '\f0de'' ' attr(sort-order);
         position: absolute;
         right: $v-grid-cell-padding-horizontal;
         font-size: round($v-grid-header-font-size * 0.85);
@@ -293,7 +301,7 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
     }
 
     .sort-desc:after {
-      content: "\f0dd" " " attr(sort-order);
+      content: '\f0dd'' ' attr(sort-order);
     }
   }
 
@@ -306,11 +314,6 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
     cursor: col-resize;
     z-index: 10;
 
-    // TODO should refactor into a mixin
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
   }
 
@@ -323,10 +326,6 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
     background: #fff;
     box-shadow: 0px 0px 5px #000;
 
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
   }
 
@@ -393,7 +392,7 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
     position: relative;
 
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       right: 0;
@@ -424,9 +423,8 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
     right: 0;
     border: $v-grid-border;
     box-sizing: border-box;
-    -moz-box-sizing: border-box;
     margin-top: nth($v-grid-border, 1) * -1;
-    @include box-shadow(0 0 9px rgba(0,0,0,.2));
+    @include box-shadow(0 0 9px rgba(0, 0, 0, 0.2));
 
     // Unbuffered footer needs to be 100% width to display correctly
     &.unbuffered {
@@ -463,18 +461,18 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
         padding-left: 0;
       }
 
-      input[type="text"],
-      input[type="text"].v-filterselect-input,
-      input[type="password"] {
+      input[type='text'],
+      input[type='text'].v-filterselect-input,
+      input[type='password'] {
         padding-left: $v-grid-cell-padding-horizontal;
       }
 
-      input[type="text"]:not(.v-filterselect-input),
-      input[type="password"] {
+      input[type='text']:not(.v-filterselect-input),
+      input[type='password'] {
         padding-right: $v-grid-cell-padding-horizontal / 2;
       }
 
-      :not(.v-assistive-device-only-label).v-widget > input[type="checkbox"] {
+      :not(.v-assistive-device-only-label).v-widget > input[type='checkbox'] {
         margin-left: $v-grid-cell-padding-horizontal;
       }
 
@@ -503,7 +501,7 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
       display: block;
       height: 0;
       width: 0;
-      content: "";
+      content: '';
       border-top: 5px solid red;
       border-right: 5px solid transparent;
     }
@@ -613,8 +611,7 @@ $v-grid-drag-indicator-color: $v-focus-color;
  *
  * @group grid
  */
-@mixin valo-grid ($primary-stylename: v-grid) {
-
+@mixin valo-grid($primary-stylename: v-grid) {
   @include base-grid($primary-stylename);
 
   .#{$primary-stylename} {
@@ -628,21 +625,27 @@ $v-grid-drag-indicator-color: $v-focus-color;
 
   .#{$primary-stylename}-header .#{$primary-stylename}-cell {
     @include valo-gradient($v-grid-header-background-color);
-    text-shadow: valo-text-shadow($font-color: valo-font-color($v-grid-header-background-color), $background-color: $v-grid-header-background-color);
+    text-shadow: valo-text-shadow(
+      $font-color: valo-font-color($v-grid-header-background-color),
+      $background-color: $v-grid-header-background-color
+    );
   }
 
   .#{$primary-stylename}-header .#{$primary-stylename}-cell.dragged {
     @include opacity(0.5, false);
-    @include transition (opacity .3s ease-in-out);
-   }
+    @include transition(opacity 0.3s ease-in-out);
+  }
 
-   .#{$primary-stylename}-header .#{$primary-stylename}-cell.dragged-column-header {
+  .#{$primary-stylename}-header .#{$primary-stylename}-cell.dragged-column-header {
     margin-top: round($v-grid-row-height/-2);
-   }
+  }
 
   .#{$primary-stylename}-footer .#{$primary-stylename}-cell {
     @include valo-gradient($v-grid-footer-background-color);
-    text-shadow: valo-text-shadow($font-color: valo-font-color($v-grid-footer-background-color), $background-color: $v-grid-footer-background-color);
+    text-shadow: valo-text-shadow(
+      $font-color: valo-font-color($v-grid-footer-background-color),
+      $background-color: $v-grid-footer-background-color
+    );
   }
 
   .#{$primary-stylename}-header-deco {
@@ -697,7 +700,7 @@ $v-grid-drag-indicator-color: $v-focus-color;
   .#{$primary-stylename}-editor-cells > div {
     // Vertical centering for widgets
     &:before {
-      content: "";
+      content: '';
       display: inline-block;
       height: 100%;
       vertical-align: middle;
@@ -735,8 +738,8 @@ $v-grid-drag-indicator-color: $v-focus-color;
       }
     }
 
-    input[type="text"].v-datefield-textfield {
-    	padding-left: $v-unit-size * 1.2;
+    input[type='text'].v-datefield-textfield {
+      padding-left: $v-unit-size * 1.2;
     }
 
     .v-textfield-focus,
@@ -753,8 +756,8 @@ $v-grid-drag-indicator-color: $v-focus-color;
     .v-checkbox.v-widget {
       margin: 0 round($v-grid-cell-padding-horizontal / 2) 0 $v-grid-cell-padding-horizontal;
 
-	  > input[type="checkbox"] {
-      	margin-left: 0;
+      > input[type='checkbox'] {
+        margin-left: 0;
       }
 
       > label {
@@ -787,7 +790,6 @@ $v-grid-drag-indicator-color: $v-focus-color;
   // Sidebar
   .#{$primary-stylename}-sidebar.v-contextmenu {
     &.open {
-
       .#{$primary-stylename}-sidebar-content {
         margin: 0 0 2px;
         padding: 4px 4px 2px;
@@ -810,7 +812,7 @@ $v-grid-drag-indicator-color: $v-focus-color;
     &::-webkit-scrollbar-thumb {
       border-radius: 10px;
       border: 4px solid transparent;
-      background: if(is-dark-color($v-grid-header-background-color), rgba(255,255,255,.3), rgba(0,0,0,.3));
+      background: if(is-dark-color($v-grid-header-background-color), rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.3));
       -webkit-background-clip: content-box;
       background-clip: content-box;
     }
@@ -838,13 +840,15 @@ $v-grid-drag-indicator-color: $v-focus-color;
   }
 
   // Drag and drop
-  .#{$primary-stylename}-row-drag-top, .#{$primary-stylename}-row-drag-bottom, .#{$primary-stylename}-row-drag-bottom {
+  .#{$primary-stylename}-row-drag-top,
+  .#{$primary-stylename}-row-drag-bottom,
+  .#{$primary-stylename}-row-drag-bottom {
     z-index: 100; // based on what else z-indexes are in grid/escalator
   }
 
   .#{$primary-stylename}-row-drag-top:before,
   .#{$primary-stylename}-row-drag-bottom:after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     height: 2px;
@@ -867,7 +871,7 @@ $v-grid-drag-indicator-color: $v-focus-color;
   }
 
   .#{$primary-stylename}-row-drag-center:after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -891,7 +895,7 @@ $v-grid-drag-indicator-color: $v-focus-color;
   // Show drop hint when the grid is empty or,
   // if the DropMode.ON_TOP is used and dragging below last row
   .#{$primary-stylename}-body-drag-top:after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     right: 0;

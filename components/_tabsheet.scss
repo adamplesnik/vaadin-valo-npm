@@ -346,11 +346,6 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
       @include opacity(.7);
       color: $v-selection-color;
     }
-
-    &::-moz-focus-inner {
-      padding: 0;
-      border: 0
-    }
   }
 
   [class*="Next"] {

@@ -1,14 +1,13 @@
 /**
  * Outputs the styles and selectors for the DragAndDropWrapper component.
- * 
+ *
  * @param {string} $primary-stylename (v-ddwrapper) - the primary style name for the selectors
- * 
+ *
  * @group drag-n-drop
  */
 @mixin valo-dragwrapper ($primary-stylename: v-ddwrapper) {
 
   [draggable=true] {
-    -khtml-user-drag: element;
     -webkit-user-drag: element;
   }
 
@@ -112,7 +111,7 @@
 
 /**
  * Outputs the styles for a drop target when the drag is on top of it.
- * 
+ *
  * @group drag-n-drop
  */
 @mixin valo-ddwrapper-box-hint-style {

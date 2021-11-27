@@ -1,34 +1,29 @@
-@use "sass:math";
+@use 'sass:math';
 
 // Import global variables
-@import "shared/variables";
-
+@import 'shared/variables';
 
 // Import all utility mixins and functions
-@import "util/bourbon/bourbon";
-@import "util/lists";
-@import "util/css3";
-@import "util/color";
-@import "util/anim";
-@import "util/gradient";
-@import "util/bevel-and-shadow";
-@import "util/util";
-
+@import 'util/bourbon/bourbon';
+@import 'util/lists';
+@import 'util/css3';
+@import 'util/color';
+@import 'util/anim';
+@import 'util/gradient';
+@import 'util/bevel-and-shadow';
+@import 'util/util';
 
 // Import custom font mixins
-@import "fonts/fonts";
+@import 'fonts/fonts';
 
 // Import global mixins
-@import "shared/global";
-
+@import 'shared/global';
 
 // Import component specific mixins
-@import "components/all";
-
+@import 'components/all';
 
 // Include global styles directly, without a theme name prefix (this is done only once)
 @include valo-global;
-
 
 /**
  * The main Valo theme mixin, which outputs all the selectors and properties to produce

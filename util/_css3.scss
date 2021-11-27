@@ -6,20 +6,13 @@
  *
  * @group util
  */
-@mixin opacity ($value, $important: false) {
+@mixin opacity($value, $important: false) {
   $importantValue: null;
   @if $important {
-    $importantValue: unquote("!important");
+    $importantValue: unquote('!important');
   }
 
   opacity: $value $importantValue;
-
-  @if $value < 1 {
-    $valueperc: $value*100;
-    filter: alpha(opacity=#{$valueperc}) #{$importantValue};
-  } @else {
-    filter: none #{$importantValue};
-  }
 }
 
 /**
@@ -30,6 +23,6 @@
  *
  * @group util
  */
-@mixin box-shadow ($shadows...) {
+@mixin box-shadow($shadows...) {
   @include prefixer(box-shadow, $shadows, webkit spec);
 }

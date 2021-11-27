@@ -4,7 +4,11 @@
  * @type color
  * @group overlay
  */
-$v-overlay-background-color: if(is-dark-color($v-background-color), darken($v-background-color, 3%), lighten($v-background-color, 2%)) !default;
+$v-overlay-background-color: if(
+  is-dark-color($v-background-color),
+  darken($v-background-color, 3%),
+  lighten($v-background-color, 2%)
+) !default;
 
 /**
  * The corner radius for overlay elements.
@@ -68,7 +72,8 @@ $v-overlay-padding-horizontal: $v-overlay-padding !default;
  * @type list
  * @group overlay
  */
-$v-overlay-shadow: 0 4px 10px 0 (v-shade 2), 0 3px 5px 0 v-shade, 0 0 0 $v-overlay-border-width (v-shade (2.5 - color-luminance($v-background-color)/255 + $v-bevel-depth/100%)) !default;
+$v-overlay-shadow: 0 4px 10px 0 (v-shade 2), 0 3px 5px 0 v-shade,
+  0 0 0 $v-overlay-border-width (v-shade (2.5 - color-luminance($v-background-color) / 255 + $v-bevel-depth/100%)) !default;
 
 /**
  * The background color for selection overlays, i.e. overlays which present a
@@ -154,42 +159,36 @@ $v-selection-item-selection-color: $v-selection-color !default;
  * @param {list} $animate-in ($v-overlay-animate-in) - the animation used when the overlay is made visible
  * @param {list} $animate-out ($v-overlay-animate-out) - the animation used when the overlay is removed
  */
-@mixin valo-overlay-style (
-    $background-color: $v-overlay-background-color,
-    $shadow: $v-overlay-shadow,
-    $animate-in: $v-overlay-animate-in,
-    $animate-out: $v-overlay-animate-out
-  ) {
+@mixin valo-overlay-style(
+  $background-color: $v-overlay-background-color,
+  $shadow: $v-overlay-shadow,
+  $animate-in: $v-overlay-animate-in,
+  $animate-out: $v-overlay-animate-out
+) {
   padding: $v-overlay-padding-vertical $v-overlay-padding-horizontal;
   border-radius: $v-overlay-border-radius;
 
   background-color: $background-color;
   color: valo-font-color($background-color);
 
-  @include box-shadow( valo-bevel-and-shadow($bevel: null, $shadow: $shadow));
+  @include box-shadow(valo-bevel-and-shadow($bevel: null, $shadow: $shadow));
 
   @if $v-animations-enabled {
     @if $animate-in {
-      &[class*="animate-in"] {
+      &[class*='animate-in'] {
         @include animation($animate-in);
       }
     }
     @if $animate-out {
-      &[class*="animate-out"] {
+      &[class*='animate-out'] {
         @include animation($animate-out);
       }
     }
   }
 
   -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -ms-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-
-
-
-
 
 /**
  * Outputs styles for selection overlay elements.
@@ -200,12 +199,18 @@ $v-selection-item-selection-color: $v-selection-color !default;
  * @param {list} $animate-in ($v-overlay-animate-in) - the animation used when the selection overlay is made visible
  * @param {list} $animate-out ($v-overlay-animate-out) - the animation used when the selection overlay is removed
  */
-@mixin valo-selection-overlay-style ($background-color: $v-selection-overlay-background-color, $animate-in: $v-overlay-animate-in, $animate-out: $v-overlay-animate-out) {
-  @include valo-overlay-style($background-color: $background-color, $animate-in: $animate-in, $animate-out: $animate-out);
+@mixin valo-selection-overlay-style(
+  $background-color: $v-selection-overlay-background-color,
+  $animate-in: $v-overlay-animate-in,
+  $animate-out: $v-overlay-animate-out
+) {
+  @include valo-overlay-style(
+    $background-color: $background-color,
+    $animate-in: $animate-in,
+    $animate-out: $animate-out
+  );
   padding: $v-selection-overlay-padding-vertical $v-selection-overlay-padding-horizontal;
 }
-
-
 
 /**
  * Outputs the styles for selection item elements (i.e. individual items in context menus and drop down menus).
@@ -215,7 +220,7 @@ $v-selection-item-selection-color: $v-selection-color !default;
 @mixin valo-selection-item-style {
   cursor: pointer;
   line-height: $v-selection-item-height;
-  padding: 0 $v-selection-item-padding-horizontal*2 0 $v-selection-item-padding-horizontal;
+  padding: 0 $v-selection-item-padding-horizontal * 2 0 $v-selection-item-padding-horizontal;
   @if $v-selection-item-border-radius > 0 {
     border-radius: $v-selection-item-border-radius;
   }
@@ -224,7 +229,7 @@ $v-selection-item-selection-color: $v-selection-color !default;
 
   position: relative;
   &:active:before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     right: 0;
@@ -232,7 +237,7 @@ $v-selection-item-selection-color: $v-selection-color !default;
     left: 0;
     $sat: if(saturation($v-selection-item-selection-color) > 0, 50%, 0%);
     background: scale-color($v-selection-item-selection-color, $lightness: -30%, $saturation: $sat);
-    @include opacity(.15);
+    @include opacity(0.15);
     pointer-events: none;
     border-radius: inherit;
   }
@@ -243,8 +248,6 @@ $v-selection-item-selection-color: $v-selection-color !default;
     min-width: 1em;
   }
 }
-
-
 
 /**
  * Outputs the styles for selected selection item elements.
@@ -257,12 +260,6 @@ $v-selection-item-selection-color: $v-selection-color !default;
   color: $font-color;
   text-shadow: valo-text-shadow($font-color: $font-color, $background-color: $v-selection-item-selection-color);
 }
-
-
-
-
-
-
 
 /**
  * Outputs the selectors and styles for generic dragging ghost elements.
@@ -277,8 +274,6 @@ $v-selection-item-selection-color: $v-selection-color !default;
 
 @mixin valo-draggable {
   .v-draggable {
-    -moz-user-select: none !important;
-    -ms-user-select: none !important;
     -webkit-user-select: none !important;
     user-select: none !important;
   }
@@ -291,13 +286,13 @@ $v-selection-item-selection-color: $v-selection-color !default;
  *
  * @param {color} $background-color ($v-app-background-color) - the background color for the ghost element
  */
-@mixin valo-drag-element-style ($background-color: $v-app-background-color) {
+@mixin valo-drag-element-style($background-color: $v-app-background-color) {
   background: $background-color;
   color: valo-font-color($background-color);
-  @include box-shadow(0 2px 10px rgba(#000, .2));
+  @include box-shadow(0 2px 10px rgba(#000, 0.2));
   border-radius: $v-border-radius;
   overflow: hidden;
-  @include opacity(.5);
+  @include opacity(0.5);
 
   // This has the unfortunate side-effect of selecting an the table row where the drag is dropped
   //pointer-events: none;
