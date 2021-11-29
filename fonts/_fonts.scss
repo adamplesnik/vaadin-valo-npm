@@ -1,4 +1,4 @@
-@import "vaadin-icons/vaadin-icons.scss";
+@import 'vaadin-icons/vaadin-icons.scss';
 
 /// Include VaadinIcons. They are included in Valo
 /// since Vaadin Framework version 8.0 (#7979)
@@ -9,15 +9,15 @@ $v-icons: true !default;
 $font-icons-pathPrefix: null;
 
 @if $v-relative-paths == true {
-  $font-icons-pathPrefix: "../../../";
+  $font-icons-pathPrefix: '../../../';
 }
 
 @mixin valo-fonts {
   // Valo Icons
-  @include v-font(ThemeIcons, "#{$font-icons-pathPrefix}../valo/fonts/themeicons-webfont/themeicons-webfont");
+  @include v-font(ThemeIcons, '#{$font-icons-pathPrefix}../valo/fonts/themeicons-webfont/themeicons-webfont');
   // Vaadin Icons
   @if $v-icons {
-      @include vaadin-icons;
+    @include vaadin-icons;
   }
 }
 
@@ -25,22 +25,14 @@ $font-icons-pathPrefix: null;
   @include font-face($font-family, $file-name);
 
   .#{$font-family} {
-      font-family: #{$font-family};
-      font-style: normal;
-      font-weight: normal;
-      -webkit-font-smoothing: antialiased;
-      display: inline-block;
-      text-align: center;
+    font-family: #{$font-family};
+    font-style: normal;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    text-align: center;
   }
 }
-
-
-@mixin font($font-family, $file-name) {
-  @warn "The 'font' mixin is DEPRECATED. You should use the corresponding 'v-font' mixin instead.";
-  @include v-font($font-family, $file-name);
-}
-
-
 
 // Include directly to avoid trapping inside a parent selector
 // TODO move inside the theme main mixin once we can use Sass 3.3 (@at-root)
