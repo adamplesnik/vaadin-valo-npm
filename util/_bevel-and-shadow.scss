@@ -10,6 +10,8 @@
  *
  * @return {list} The input $border value with any color keyword replaced with the corresponding actual color
  */
+@use "sass:math";
+
 @function valo-border($border: $v-border, $color: $v-background-color, $context: null, $strength: 1) {
   @if type-of($border) != list {
     @return $border;
@@ -30,8 +32,8 @@
       $adjust-type: first-string($part);
       $adjust-amount: first-number($part);
 
-      $tint: blend-screen(rgba(#fff, $v-bevel-depth/100%*$adjust-amount*$strength), $color);
-      $shade: blend-linearburn(rgba(#000, $v-bevel-depth/100%*$adjust-amount*$strength), $color);
+      $tint: blend-screen(rgba(#fff, math.div($v-bevel-depth, 100%) * $adjust-amount * $strength), $color);
+      $shade: blend-linearburn(rgba(#000, math.div($v-bevel-depth, 100%) * $adjust-amount * $strength), $color);
 
       @if $adjust-type == v-tone {
         @if is-dark-color($color) {
@@ -53,7 +55,6 @@
   @return $ret;
 }
 
-
 /**
  * Similar to the valo-border function, but adjusts the top and bottom border colors to suit an element with a gradient background-color.
  *
@@ -65,7 +66,13 @@
  * @param {number} $strength (1) - adjustment for the border contrast
  * @param {list} $gradient ($v-gradient) - Valo specific gradient value. See the documentation for $v-gradient.
  */
-@mixin valo-border-with-gradient($border: $v-border, $color: $v-background-color, $context: null, $strength: 1, $gradient: $v-gradient) {
+@mixin valo-border-with-gradient(
+  $border: $v-border,
+  $color: $v-background-color,
+  $context: null,
+  $strength: 1,
+  $gradient: $v-gradient
+) {
   border: valo-border($border, $color, $context, $strength);
 
   // Adjust border colors for gradient
@@ -77,7 +84,6 @@
     border-bottom-color: first-color(valo-border($border, $bottom, $context, $strength));
   }
 }
-
 
 /**
  * Computes a CSS box-shadow value according to the specified style parameters.
@@ -94,13 +100,26 @@
  *
  * @return {list} CSS box-shadow value, combined from $bevel and $shadow with all occurences of v-tint, v-shade and v-tone color keywords replaced with the corresponding actual color
  */
-@function valo-bevel-and-shadow ($bevel: null, $bevel-depth: $v-bevel-depth, $shadow: null, $shadow-opacity: $v-shadow-opacity, $background-color: $v-background-color, $gradient: null, $include-focus: false) {
+@function valo-bevel-and-shadow(
+  $bevel: null,
+  $bevel-depth: $v-bevel-depth,
+  $shadow: null,
+  $shadow-opacity: $v-shadow-opacity,
+  $background-color: $v-background-color,
+  $gradient: null,
+  $include-focus: false
+) {
   $box-shadow: null;
 
   @if $bevel {
     @if list-of-lists($bevel) {
       @each $b in $bevel {
-        $this: valo-bevel-and-shadow($bevel: $b, $shadow: null, $background-color: $background-color, $gradient: $gradient);
+        $this: valo-bevel-and-shadow(
+          $bevel: $b,
+          $shadow: null,
+          $background-color: $background-color,
+          $gradient: $gradient,
+        );
         @if $this {
           @if length($box-shadow) > 0 {
             $box-shadow: $box-shadow, $this;
@@ -124,7 +143,12 @@
   @if $shadow {
     @if list-of-lists($shadow) {
       @each $s in $shadow {
-        $this: valo-bevel-and-shadow($bevel: null, $shadow: $s, $background-color: null, $gradient: null);
+        $this: valo-bevel-and-shadow(
+          $bevel: null,
+          $shadow: $s,
+          $background-color: null,
+          $gradient: null,
+        );
         @if $this {
           @if length($box-shadow) > 0 {
             $box-shadow: $box-shadow, $this;
@@ -151,7 +175,6 @@
 
   @return $box-shadow;
 }
-
 
 /**
  * Replaces color keywords in the given list.
@@ -184,8 +207,21 @@
         $bottom-color: first(last($color-stops));
       }
 
-      $tint: blend-lighten(adjust-color($top-color, $lightness: $v-bevel-depth/4*$adjust-amount, $saturation: -$v-bevel-depth/2), scale-color($top-color, $lightness: $v-bevel-depth/4*$adjust-amount));
-      $shade: blend-darken(rgba(scale-color($bottom-color, $lightness: max(-30%, -$v-bevel-depth/3*$adjust-amount), $saturation: -$v-bevel-depth/2), $v-bevel-depth/100%), $bottom-color);
+      $tint: blend-lighten(
+        adjust-color($top-color, $lightness: $v-bevel-depth*0.25 * $adjust-amount, $saturation: -$v-bevel-depth*0.5),
+        scale-color($top-color, $lightness: $v-bevel-depth*0.25 * $adjust-amount)
+      );
+      $shade: blend-darken(
+        rgba(
+          scale-color(
+            $bottom-color,
+            $lightness: max(-30%, math.div(-$v-bevel-depth, 3) * $adjust-amount),
+            $saturation: -$v-bevel-depth*0.5
+          ),
+          math.div($v-bevel-depth, 100%)
+        ),
+        $bottom-color
+      );
 
       $new-color: null;
       @if $adjust-type == v-tone {
@@ -201,7 +237,6 @@
       }
 
       $ret: join($ret, $new-color);
-
     } @else {
       $ret: join($ret, $part);
     }
@@ -209,7 +244,6 @@
 
   @return $ret;
 }
-
 
 /**
  * Replace color keywords in the given box-shadow parameter.
@@ -220,7 +254,7 @@
  *
  * @return {list} the input $shadow parameter with all occurences of v-tint and v-shade color keywords replaced with the corresponding actual color
  */
-@function valo-replace-shadow ($shadow) {
+@function valo-replace-shadow($shadow) {
   $ret: ();
   @each $part in $shadow {
     @if $part == v-tint or $part == v-shade {
@@ -230,8 +264,8 @@
       $adjust-type: first-string($part);
       $adjust-amount: first-number($part);
 
-      $tint: rgba(#fff, min(1, $v-shadow-opacity/100% * $adjust-amount));
-      $shade: rgba(#000, min(1, $v-shadow-opacity/100% * $adjust-amount));
+      $tint: rgba(#fff, min(1, math.div($v-shadow-opacity, 100%) * $adjust-amount));
+      $shade: rgba(#000, min(1, math.div($v-shadow-opacity, 100%) * $adjust-amount));
 
       $color: null;
       @if $adjust-type == v-tint {
@@ -241,14 +275,12 @@
       }
 
       $ret: join($ret, $color);
-
     } @else {
       $ret: join($ret, $part);
     }
   }
   @return $ret;
 }
-
 
 /**
  * Return a CSS text-shadow property value according to the specified style parameters.
@@ -260,13 +292,18 @@
  * @param {size} $offset (-1px) - the size of the text shadow vertical offset
  * @param {number (pct)} $opacity ($v-shadow-opacity) - the percentage amount of shadow which is applied
  */
-@function valo-text-shadow($font-color: $v-font-color, $background-color: $v-background-color, $offset: -1px, $opacity: $v-shadow-opacity) {
+@function valo-text-shadow(
+  $font-color: $v-font-color,
+  $background-color: $v-background-color,
+  $offset: -1px,
+  $opacity: $v-shadow-opacity
+) {
   $color: null;
   @if color-luminance($font-color) < color-luminance($background-color) {
-    $color: rgba(#fff, $opacity / 100%);
+    $color: rgba(#fff, math.div($opacity, 100%));
     $offset: $offset * -1;
   } @else {
-    $color: rgba(#000, $opacity / 100%);
+    $color: rgba(#000, math.div($opacity, 100%));
   }
 
   @return 0 $offset 0 $color;

@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import 'table';
 
 $v-grid-row-background-color: valo-table-background-color() !default;
@@ -469,7 +471,7 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
 
       input[type='text']:not(.v-filterselect-input),
       input[type='password'] {
-        padding-right: $v-grid-cell-padding-horizontal / 2;
+        padding-right: $v-grid-cell-padding-horizontal * 0.5;
       }
 
       :not(.v-assistive-device-only-label).v-widget > input[type='checkbox'] {
@@ -637,7 +639,7 @@ $v-grid-drag-indicator-color: $v-focus-color;
   }
 
   .#{$primary-stylename}-header .#{$primary-stylename}-cell.dragged-column-header {
-    margin-top: round($v-grid-row-height/-2);
+    margin-top: round(math.div($v-grid-row-height, -2));
   }
 
   .#{$primary-stylename}-footer .#{$primary-stylename}-cell {
@@ -680,7 +682,7 @@ $v-grid-drag-indicator-color: $v-focus-color;
 
   .#{$primary-stylename}-editor-footer {
     font-size: $v-font-size--small;
-    padding: 0 round($v-layout-spacing-horizontal / 2);
+    padding: 0 round($v-layout-spacing-horizontal * 0.5);
     background: $v-app-background-color;
     @if $v-grid-animations-enabled {
       @include animation(valo-grid-editor-footer-animate-in 200ms 120ms backwards);
@@ -711,8 +713,8 @@ $v-grid-drag-indicator-color: $v-focus-color;
     }
 
     .error::before {
-      border-top: round($v-unit-size / 4) solid $v-error-indicator-color;
-      border-right: round($v-unit-size / 4) solid transparent;
+      border-top: round($v-unit-size * 0.25) solid $v-error-indicator-color;
+      border-right: round($v-unit-size * 0.25) solid transparent;
     }
 
     .error,
@@ -749,12 +751,12 @@ $v-grid-drag-indicator-color: $v-focus-color;
     }
 
     .v-select {
-      padding-left: round($v-grid-cell-padding-horizontal / 2);
-      padding-right: round($v-grid-cell-padding-horizontal / 2);
+      padding-left: round($v-grid-cell-padding-horizontal * 0.5);
+      padding-right: round($v-grid-cell-padding-horizontal * 0.5);
     }
 
     .v-checkbox.v-widget {
-      margin: 0 round($v-grid-cell-padding-horizontal / 2) 0 $v-grid-cell-padding-horizontal;
+      margin: 0 round($v-grid-cell-padding-horizontal * 0.5) 0 $v-grid-cell-padding-horizontal;
 
       > input[type='checkbox'] {
         margin-left: 0;
@@ -778,7 +780,7 @@ $v-grid-drag-indicator-color: $v-focus-color;
     text-decoration: none;
     border: none;
     background: transparent;
-    padding: round($v-layout-spacing-vertical / 2) round($v-layout-spacing-horizontal / 2);
+    padding: round($v-layout-spacing-vertical * 0.5) round($v-layout-spacing-horizontal * 0.5);
     margin: 0;
     outline: none;
   }

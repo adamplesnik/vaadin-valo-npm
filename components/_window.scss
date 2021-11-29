@@ -1,6 +1,8 @@
 /**
  * @group window
  */
+@use "sass:math";
+
 $v-window-background-color: $v-panel-background-color !default;
 
 /**
@@ -88,7 +90,7 @@ $v-window-modality-curtain-background-color: #222 !default;
     bottom: 0;
     left: 0;
     @include radial-gradient(circle at 50% 50%, $v-window-modality-curtain-background-color, darken($v-window-modality-curtain-background-color, valo-gradient-opacity()), $fallback: $v-window-modality-curtain-background-color);
-    @include opacity(max(0.2, 0.8 - valo-gradient-opacity()/100%));
+    @include opacity(max(0.2, 0.8 - math.div(valo-gradient-opacity(), 100%)));
     @if $v-animations-enabled {
         @include valo-animate-in-fade($duration: 400ms, $delay: 100ms);
         .v-op12 & {
@@ -342,7 +344,7 @@ $v-window-modality-curtain-background-color: #222 !default;
     }
 
     .v-spacing {
-      width: round($v-layout-spacing-horizontal/2);
+      width: round($v-layout-spacing-horizontal*0.5);
     }
   }
 
@@ -369,7 +371,7 @@ $v-window-modality-curtain-background-color: #222 !default;
 
   .#{$primary-stylename}-bottom-toolbar.v-layout {
     padding: round(math.div($v-unit-size, 5)) round(math.div($v-unit-size, 3));
-    @include linear-gradient(to bottom, darken($v-background-color, valo-gradient-opacity($v-gradient)/2) 0, $v-background-color round(math.div($v-unit-size, 10)), $fallback: $v-background-color);
+    @include linear-gradient(to bottom, darken($v-background-color, valo-gradient-opacity($v-gradient)*0.5) 0, $v-background-color round(math.div($v-unit-size, 10)), $fallback: $v-background-color);
     border-top: valo-border($strength: 0.5);
     border-radius: 0 0 $v-border-radius $v-border-radius;
   }

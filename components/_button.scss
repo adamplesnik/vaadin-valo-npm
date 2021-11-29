@@ -6,6 +6,8 @@
  *
  * @group button
  */
+@use "sass:math";
+
 @mixin valo-button ($primary-stylename: v-button, $include-additional-styles: contains($v-included-additional-styles, button)) {
   .#{$primary-stylename} {
     @include valo-button-static-style;
@@ -212,7 +214,7 @@
       @if type-of($padding) == number or type-of($padding) == list {
         padding: $padding;
       } @else {
-        padding: 0 round($unit-size/2.4) + round($border-radius/3);
+        padding: 0 round(math.div($unit-size, 2.4)) + round(math.div($border-radius, 3));
       }
     }
 
@@ -414,7 +416,7 @@
   .v-icon {
     float: right;
     $padding-width: ceil(math.div($v-unit-size, 2.4));
-    margin-left: $padding-width + ceil($padding-width/-5);
+    margin-left: $padding-width + ceil(math.div($padding-width, -5));
 
     + span:not(:empty) {
       margin-left: 0;

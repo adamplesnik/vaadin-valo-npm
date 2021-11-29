@@ -6,6 +6,8 @@
  *
  * @group combobox
  */
+@use "sass:math";
+
 @mixin valo-combobox ($primary-stylename: v-filterselect, $include-additional-styles: contains($v-included-additional-styles, combobox)) {
 
   .#{$primary-stylename} {
@@ -207,10 +209,10 @@
   }
 
   img.v-icon {
-    $padding-width: ceil($unit-size/6);
+    $padding-width: ceil(math.div($unit-size, 6));
     max-height: $unit-size;
     @if $border-radius {
-      $padding-width: $padding-width + ceil($border-radius/3);
+      $padding-width: $padding-width + ceil(math.div($border-radius, 3));
     }
     margin-left: $padding-width;
   }
@@ -221,9 +223,9 @@
     line-height: 1;
     padding-top: .12em;
 
-    $padding-width: ceil($unit-size/6);
+    $padding-width: ceil(math.div($unit-size, 6));
     @if $border-radius {
-      $padding-width: $padding-width + ceil($border-radius/3);
+      $padding-width: $padding-width + ceil(math.div($border-radius, 3));
     }
     margin-left: $padding-width;
   }

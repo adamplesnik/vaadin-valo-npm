@@ -551,7 +551,7 @@
   background: $v-background-color;
 
   @if $v-border-radius > 0 {
-    border-radius: ceil($v-border-radius/2);
+    border-radius: ceil($v-border-radius*0.5);
   }
   @if $v-animations-enabled {
     @include transition(color 200ms);

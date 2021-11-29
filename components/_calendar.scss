@@ -11,6 +11,8 @@
  *
  * @group calendar
  */
+@use "sass:math";
+
 $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
 
 
@@ -313,8 +315,8 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
   .#{$primary-stylename}-time {
     text-align: right;
     padding-right: round(math.div($v-unit-size, 4));
-    margin-top: round($v-font-size*0.8/-2);
-    padding-bottom: round($v-font-size*0.8/2);
+    margin-top: round(math.div($v-font-size*0.8, -2));
+    padding-bottom: round($v-font-size*0.8*0.5);
   }
 
   .#{$primary-stylename}-day-times,

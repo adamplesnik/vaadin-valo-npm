@@ -100,7 +100,7 @@ $v-panel-background-color: scale-color(lighten($v-app-background-color, 5%), $sa
  *
  * @group panel
  */
-@mixin valo-panel-caption-style ( $background-color : $v-background-color,  $bevel  : $v-bevel, $gradient : valo-gradient-style($v-gradient) valo-gradient-opacity($v-gradient)/4, $border   : $v-panel-border ) {
+@mixin valo-panel-caption-style ( $background-color : $v-background-color,  $bevel  : $v-bevel, $gradient : valo-gradient-style($v-gradient) valo-gradient-opacity($v-gradient)*0.25, $border   : $v-panel-border ) {
   box-sizing: border-box;
   padding: 0 round(math.div($v-unit-size, 3));
   line-height: $v-unit-size - first-number($v-border);

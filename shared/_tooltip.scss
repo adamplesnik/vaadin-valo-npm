@@ -1,10 +1,19 @@
+@use 'sass:math';
+
 /**
- * The backgound color for tooltips.
+ * The background color for tooltips.
  *
  * @type color
  * @group tooltip
  */
-$v-tooltip-background-color: rgba(if(is-dark-color($v-background-color), scale-color($v-background-color, $lightness: 80%), scale-color($v-background-color, $lightness: -80%)), .9) !default;
+$v-tooltip-background-color: rgba(
+  if(
+    is-dark-color($v-background-color),
+    scale-color($v-background-color, $lightness: 80%),
+    scale-color($v-background-color, $lightness: -80%)
+  ),
+  0.9
+) !default;
 
 /**
  * The font color for tooltips.
@@ -28,7 +37,7 @@ $v-tooltip-font-size: max(12px, round($v-font-size * 0.86)) !default;
  * @type list
  * @group tooltip
  */
-$v-tooltip-box-shadow: 0 2px 12px rgba(#000, .2) !default;
+$v-tooltip-box-shadow: 0 2px 12px rgba(#000, 0.2) !default;
 
 /**
  * The vertical padding for tooltips.
@@ -110,7 +119,6 @@ $v-tooltip-error-message-level-system-font-color: $v-error-indicator-level-syste
  */
 $v-tooltip-border-radius: $v-border-radius - 1px !default;
 
-
 /**
  * Outputs the selectors and styles for tooltip elements.
  *
@@ -120,7 +128,7 @@ $v-tooltip-border-radius: $v-border-radius - 1px !default;
   .v-tooltip {
     @include valo-tooltip-style;
 
-    div[style*="width"] {
+    div[style*='width'] {
       width: auto !important;
     }
 
@@ -169,7 +177,7 @@ $v-tooltip-border-radius: $v-border-radius - 1px !default;
       }
     }
 
-    .v-errormessage[aria-hidden="true"] + .v-tooltip-text {
+    .v-errormessage[aria-hidden='true'] + .v-tooltip-text {
       margin-top: 0;
     }
 

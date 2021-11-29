@@ -40,7 +40,7 @@ $valo-richtextarea-use-valo-icons: true !default;
 
   .#{$primary-stylename} .gwt-ToggleButton-down,
   .#{$primary-stylename} .gwt-ToggleButton-down-hovering {
-    $grad: valo-gradient-style($v-gradient) valo-gradient-opacity($v-gradient)/4;
+    $grad: valo-gradient-style($v-gradient) valo-gradient-opacity($v-gradient)*0.25;
     //box-shadow: none;
     @include valo-gradient($color: darken($v-background-color, 10%), $gradient: $grad, $direction: to top);
   }

@@ -2,6 +2,8 @@
  *
  * @group table
  */
+@use "sass:math";
+
 $v-table-border-width: first-number($v-border) !default;
 
 /**
@@ -196,7 +198,7 @@ $v-table-background-color: null !default;
   }
 
   .#{$primary-stylename}-footer-container {
-    $vertical-padding: round(($v-table-row-height - $v-table-header-font-size)/2);
+    $vertical-padding: round(($v-table-row-height - $v-table-header-font-size)*0.5);
     padding: $vertical-padding - $v-table-border-width $v-table-cell-padding-horizontal $vertical-padding;
     float: right;
   }
@@ -207,7 +209,7 @@ $v-table-background-color: null !default;
 
   .#{$primary-stylename}-caption-container,
   .#{$primary-stylename}-header-drag {
-    $vertical-padding: round(($v-table-row-height - $v-table-header-font-size)/2);
+    $vertical-padding: round(($v-table-row-height - $v-table-header-font-size)*0.5);
     padding: $vertical-padding $v-table-cell-padding-horizontal $vertical-padding - $v-table-border-width;
     border-left: $v-table-border-width solid $border-color;
   }
@@ -222,7 +224,7 @@ $v-table-background-color: null !default;
     cursor: e-resize;
     cursor: col-resize;
     position: relative;
-    right: round($v-table-resizer-width / -2);
+    right: round(math.div($v-table-resizer-width, -2));
     z-index: 1;
     margin-left: -$v-table-resizer-width;
   }
@@ -253,7 +255,7 @@ $v-table-background-color: null !default;
 
     > .v-widget {
       // Leave some breathing room around the table cell and the widget
-      margin: round($v-table-cell-padding-horizontal / 4) round($v-table-cell-padding-horizontal / -2);
+      margin: round($v-table-cell-padding-horizontal * 0.25) round(math.div($v-table-cell-padding-horizontal, -2));
 
       &.v-label,
       &.v-checkbox,
@@ -376,7 +378,7 @@ $v-table-background-color: null !default;
   .#{$primary-stylename}-header-drag {
     position: absolute;
     @include opacity(0.9);
-    margin-top: round($v-table-row-height/-2);
+    margin-top: round(math.div($v-table-row-height, -2));
     z-index: 30000;
     line-height: 1;
   }
@@ -567,7 +569,7 @@ $v-table-background-color: null !default;
 
     .#{$primary-stylename}-compact,
     .#{$primary-stylename}-small {
-      @include valo-table-spacing-style($row-height: $v-unit-size--small, $cell-padding-horizontal: round($v-table-cell-padding-horizontal / 2));
+      @include valo-table-spacing-style($row-height: $v-unit-size--small, $cell-padding-horizontal: round($v-table-cell-padding-horizontal * 0.5));
     }
 
     .#{$primary-stylename}-small {
@@ -737,7 +739,7 @@ $v-table-background-color: null !default;
     $cell-padding-horizontal: $v-table-cell-padding-horizontal
   ) {
 
-  $vertical-padding: round(($row-height - $header-font-size)/2);
+  $vertical-padding: round(($row-height - $header-font-size)*0.5);
 
   .#{$primary-stylename}-header-wrap,
   .#{$primary-stylename}-footer-wrap,
@@ -774,7 +776,7 @@ $v-table-background-color: null !default;
     padding-right: $cell-padding-horizontal;
 
     > .v-widget {
-      margin: round($cell-padding-horizontal / 4) round($cell-padding-horizontal / -2);
+      margin: round($cell-padding-horizontal * 0.25) round(math.div($cell-padding-horizontal, -2));
 
       &.v-label,
       &.v-checkbox,
@@ -795,7 +797,7 @@ $v-table-background-color: null !default;
   }
 
   .#{$primary-stylename}-header-drag {
-    margin-top: round($row-height/-2);
+    margin-top: round(math.div($row-height, -2));
   }
 
   &.v-treetable {

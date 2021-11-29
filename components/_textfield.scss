@@ -2,6 +2,8 @@
  * The background color for text fields.
  * @group textfield
  */
+@use "sass:math";
+
 $v-textfield-background-color: if(is-dark-color($v-app-background-color), darken($v-app-background-color, 4%), lighten($v-app-background-color, 8%)) !default;
 
 /**
@@ -188,11 +190,11 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
     @if type-of($padding) == number or type-of($padding) == list {
       padding: $padding;
     } @else {
-      $padding-width: ceil($unit-size/6);
+      $padding-width: ceil(math.div($unit-size, 6));
       @if $border-radius {
-        $padding-width: $padding-width + ceil($border-radius/3);
+        $padding-width: $padding-width + ceil(math.div($border-radius, 3));
       }
-      $padding-height: round($unit-size/9);
+      $padding-height: round(math.div($unit-size, 9));
       padding: $padding-height $padding-width;
     }
 
@@ -445,8 +447,8 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
 
     // Image icons
     img.v-icon {
-      left: round(($unit-size - $image-icon-size)/2);
-      bottom: round(($unit-size - $image-icon-size)/2);
+      left: round(($unit-size - $image-icon-size)*0.5);
+      bottom: round(($unit-size - $image-icon-size)*0.5);
     }
   }
 

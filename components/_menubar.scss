@@ -6,6 +6,8 @@
  *
  * @group menubar
  */
+@use "sass:math";
+
 @mixin valo-menubar ($primary-stylename: v-menubar, $include-additional-styles: contains($v-included-additional-styles, menubar)) {
 
   .#{$primary-stylename} {
@@ -107,7 +109,7 @@
     line-height: $unit-size - first-number($v-border) * 2;
 
     > .#{$primary-stylename}-menuitem {
-      padding: 0 round($unit-size/2.6);
+      padding: 0 round(math.div($unit-size, 2.6));
 
       &[class*="-icon-only"] {
         width: $unit-size;
@@ -231,7 +233,7 @@
   .#{$primary-stylename}-menuitem {
     display: block;
     @include valo-selection-item-style;
-    padding-left: $v-selection-item-height + round($v-selection-item-padding-horizontal/2); // Make room for checkable icon
+    padding-left: $v-selection-item-height + round($v-selection-item-padding-horizontal*0.5); // Make room for checkable icon
     padding-right: $v-unit-size;
     position: relative;
   }
@@ -310,7 +312,7 @@
  * @group menubar
  */
 @mixin valo-menubar-menuitem-checked-style ($background-color: if(color-luminance($v-background-color) < 10, scale-color($v-background-color, $lightness: 10%, $saturation: -5%), scale-color($v-background-color, $lightness: -5%, $saturation: -5%))) {
-  $grad: valo-gradient-style($v-gradient) valo-gradient-opacity($v-gradient)/4;
+  $grad: valo-gradient-style($v-gradient) valo-gradient-opacity($v-gradient)*0.25;
   @include box-shadow(none);
   @include valo-gradient($color: $background-color, $gradient: $grad, $direction: to top);
   color: valo-font-color($background-color, 0.9);

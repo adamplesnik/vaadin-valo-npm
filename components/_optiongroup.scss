@@ -6,6 +6,8 @@
  *
  * @group optiongroup
  */
+@use "sass:math";
+
 @mixin valo-optiongroup ($primary-stylename: v-select-optiongroup, $include-additional-styles: contains($v-included-additional-styles, optiongroup)) {
 
   .v-radiobutton {
@@ -50,8 +52,8 @@
 
   :root & > input {
     &:checked ~ label:after {
-      $size: ceil($unit-size/6);
-      $offset: round($unit-size/6);
+      $size: ceil(math.div($unit-size, 6));
+      $offset: round(math.div($unit-size, 6));
       width: $size;
       height: $size;
       top: $offset;
@@ -91,14 +93,14 @@
   .v-radiobutton,
   .v-checkbox {
     display: block;
-    margin: round($unit-size/4) $font-size 0 0;
+    margin: round($unit-size*0.25) $font-size 0 0;
 
     &:first-child {
-      margin-top: round($unit-size/6);
+      margin-top: round(math.div($unit-size, 6));
     }
 
     &:last-child {
-      margin-bottom: round($unit-size/6);
+      margin-bottom: round(math.div($unit-size, 6));
     }
   }
 

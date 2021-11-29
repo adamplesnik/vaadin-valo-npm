@@ -2,6 +2,8 @@
  *
  * @group tree
  */
+@use "sass:math";
+
 $v-tree-row-height: round(math.div($v-unit-size, 1.3)) !default;
 
 /**
@@ -199,7 +201,7 @@ $v-tree-expand-animation-enabled: false !default;
     font-size: $v-font-size * 2;
     line-height: 2px;
     color: $v-focus-color;
-    text-indent: round($v-font-size/-4);
+    text-indent: round(math.div($v-font-size, -4));
     text-shadow: 0 0 1px $v-background-color, 0 0 1px $v-background-color;
     opacity: 1;
     visibility: visible;

@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 /**
  * The background color for overlay elements.
  *
@@ -73,7 +75,8 @@ $v-overlay-padding-horizontal: $v-overlay-padding !default;
  * @group overlay
  */
 $v-overlay-shadow: 0 4px 10px 0 (v-shade 2), 0 3px 5px 0 v-shade,
-  0 0 0 $v-overlay-border-width (v-shade (2.5 - color-luminance($v-background-color) / 255 + $v-bevel-depth/100%)) !default;
+  0 0 0 $v-overlay-border-width
+    (v-shade (2.5 - math.div(color-luminance($v-background-color), 255) + math.div($v-bevel-depth, 100%))) !default;
 
 /**
  * The background color for selection overlays, i.e. overlays which present a
@@ -244,7 +247,7 @@ $v-selection-item-selection-color: $v-selection-color !default;
 
   .v-icon {
     max-height: $v-selection-item-height;
-    margin-right: round($v-selection-item-padding-horizontal/2);
+    margin-right: round($v-selection-item-padding-horizontal * 0.5);
     min-width: 1em;
   }
 }

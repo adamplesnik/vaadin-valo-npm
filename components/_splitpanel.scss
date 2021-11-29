@@ -6,6 +6,8 @@
  *
  * @group splitpanel
  */
+@use "sass:math";
+
 @mixin valo-splitpanel($primary-stylename : v-splitpanel, $include-additional-styles: contains($v-included-additional-styles, splitpanel)) {
   .#{$primary-stylename}-horizontal {
     @include valo-splitpanel-style($primary-stylename: $primary-stylename, $orientation: horizontal);
@@ -135,7 +137,7 @@
     $orientation: vertical horizontal
   ) {
 
-  $offset: round(($splitter-active-size - $splitter-size)/-2);
+  $offset: round(math.div($splitter-active-size - $splitter-size, -2));
 
   @if contains($orientation, horizontal) {
     > div > .#{$primary-stylename}-hsplitter {

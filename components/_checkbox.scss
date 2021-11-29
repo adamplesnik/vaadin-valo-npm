@@ -6,6 +6,8 @@
  *
  * @group checkbox
  */
+@use "sass:math";
+
 @mixin valo-checkbox ($primary-stylename: v-checkbox, $include-additional-styles: contains($v-included-additional-styles, checkbox)) {
 
   .#{$primary-stylename} {
@@ -51,7 +53,7 @@
 @mixin valo-checkbox-style ($background-color: $v-background-color, $unit-size: $v-unit-size, $selection-color: $v-selection-color) {
 
   // So that we can use the same 'unit-size' for all component sizes
-  $size: $unit-size/2;
+  $size: $unit-size*0.5;
 
   position: relative;
   line-height: round($size);
@@ -93,13 +95,13 @@
       position: absolute;
       top: 0;
       left: 0;
-      border-radius: min(round($size/3), $v-border-radius);
-      font-size: round($v-font-size * 0.8 * ($size*2/$v-unit-size));
+      border-radius: min(round(math.div($size, 3)), $v-border-radius);
+      font-size: round($v-font-size * 0.8 * math.div($size*2, $v-unit-size));
       text-align: center;
     }
 
     & ~ label:before {
-      @include valo-button-style($background-color: $background-color, $unit-size: $size, $border-radius: min(round($size/3), $v-border-radius), $states: normal);
+      @include valo-button-style($background-color: $background-color, $unit-size: $size, $border-radius: min(round(math.div($size, 3)), $v-border-radius), $states: normal);
       padding: 0;
       height: round($size);
     }
@@ -123,7 +125,7 @@
 
   & > .v-icon,
   & > label .v-icon  {
-    margin: 0 round($size/3) 0 round($size/6);
+    margin: 0 round(math.div($size, 3)) 0 round(math.div($size, 6));
     min-width: 1em;
     cursor: pointer;
   }

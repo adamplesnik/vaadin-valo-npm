@@ -2,6 +2,8 @@
  * @group valo-menu
  */
 
+@use "sass:math";
+
 $valo-menu-background-color: scale-color($v-app-background-color, $lightness: if(color-luminance($v-app-background-color) < 10, 15%, -70%)) !default;
 
 /**
@@ -21,7 +23,7 @@ $valo-menu-background-color: scale-color($v-app-background-color, $lightness: if
     display: none;
     position: fixed;
     z-index: 200;
-    $offset: floor(($v-unit-size - $v-unit-size * 0.8) / 2);
+    $offset: floor(($v-unit-size - $v-unit-size * 0.8) * 0.5);
     top: $offset;
     left: $offset;
     min-width: 0;
@@ -100,7 +102,7 @@ $valo-menu-background-color: scale-color($v-app-background-color, $lightness: if
       img.v-icon {
         width: round($v-unit-size * 1.5);
         height: round($v-unit-size * 1.5);
-        border-radius: ceil($v-unit-size * 1.5 / 2 + first-number($v-border));
+        border-radius: ceil($v-unit-size * 1.5 * 0.5 + first-number($v-border));
         box-shadow: valo-bevel-and-shadow($bevel: null, $shadow: $v-shadow);
         display: block;
         margin: 0 auto .3em;
@@ -215,10 +217,10 @@ $valo-menu-background-color: scale-color($v-app-background-color, $lightness: if
 
         img.v-icon {
           display: inline-block;
-          margin: 0 round($v-unit-size / 6) 0 0;
-          width: round($v-unit-size / 2);
-          height: round($v-unit-size / 2);
-          border-radius: ceil($v-unit-size / 4);
+          margin: 0 round(math.div($v-unit-size, 6)) 0 0;
+          width: round($v-unit-size * 0.5);
+          height: round($v-unit-size * 0.5);
+          border-radius: ceil($v-unit-size * 0.25);
           border: none;
         }
       }
@@ -232,7 +234,7 @@ $valo-menu-background-color: scale-color($v-app-background-color, $lightness: if
         height: auto;
         max-width: 100%;
         overflow: auto;
-        padding: round($v-unit-size / 2) 0;
+        padding: round($v-unit-size * 0.5) 0;
         @include transform(translatex(-100%));
         @include transition(all 300ms);
       }
@@ -250,7 +252,7 @@ $valo-menu-background-color: scale-color($v-app-background-color, $lightness: if
 
       .valo-menu .v-menubar-user-menu .v-menubar-menuitem-caption {
         display: inline-block;
-        width: round($v-unit-size / 2);
+        width: round($v-unit-size * 0.5);
         overflow: hidden;
       }
     }
@@ -268,7 +270,7 @@ $valo-menu-background-color: scale-color($v-app-background-color, $lightness: if
  */
 @mixin valo-menu-style ($bg: $valo-menu-background-color) {
   height: 100%;
-  @include linear-gradient(to left, (darken($bg, valo-gradient-opacity() / 2) 0%, $bg round(math.div($v-unit-size, 4))), $fallback: $bg);
+  @include linear-gradient(to left, (darken($bg, valo-gradient-opacity() * 0.5) 0%, $bg round(math.div($v-unit-size, 4))), $fallback: $bg);
   color: valo-font-color($bg, 0.5);
   font-size: round($v-font-size * 0.9);
   line-height: round($v-unit-size * 0.8);
@@ -416,9 +418,9 @@ $valo-menu-background-color: scale-color($v-app-background-color, $lightness: if
     @include transition(background-color 300ms);
     line-height: 1;
     padding: round(math.div($v-unit-size, 9)) round(math.div($v-unit-size, 6));
-    min-width: round($v-font-size/1.5);
+    min-width: round(math.div($v-font-size, 1.5));
     text-align: center;
-    top: (round($v-unit-size * 0.8) - round($v-font-size * 0.9) - round(math.div($v-unit-size, 9)) * 2) / 2;
+    top: (round($v-unit-size * 0.8) - round($v-font-size * 0.9) - round(math.div($v-unit-size, 9)) * 2) * 0.5;
     border-radius: $v-border-radius;
   }
 

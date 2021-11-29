@@ -1,3 +1,6 @@
+@use 'sass:list';
+@use 'sass:math';
+
 @import 'loading-indicator';
 @import 'contextmenu';
 @import 'overlay';
@@ -195,7 +198,7 @@ $valo-shared-pathPrefix: null;
  * cursor styles.
  */
 @mixin valo-app-style {
-  font: $v-font-weight #{$v-font-size}/#{$v-line-height} $v-font-family;
+  font: $v-font-weight list.slash($v-font-size, $v-line-height) $v-font-family;
   color: $v-font-color;
   background-color: $v-app-background-color;
   cursor: default;
@@ -237,8 +240,8 @@ $valo-shared-pathPrefix: null;
       width: 28px;
       height: 28px;
       padding: round(math.div($v-unit-size, 4));
-      margin-top: round($_size/-2);
-      margin-left: round($_size/-2);
+      margin-top: round(math.div($_size, -2));
+      margin-left: round(math.div($_size, -2));
       background: #fff url(#{$valo-shared-pathPrefix}img/spinner.gif) no-repeat 50%;
       border-radius: $v-border-radius;
     }
@@ -349,7 +352,7 @@ $valo-shared-pathPrefix: null;
   font-weight: $v-caption-font-weight;
   padding-bottom: 0.3em;
   @if $v-border-radius > 0 {
-    padding-left: round($v-border-radius/4);
+    padding-left: round(math.div($v-border-radius, 4));
   }
 }
 
