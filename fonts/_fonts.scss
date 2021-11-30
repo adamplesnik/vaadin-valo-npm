@@ -34,6 +34,4 @@ $font-icons-pathPrefix: null;
   }
 }
 
-// Include directly to avoid trapping inside a parent selector
-// TODO move inside the theme main mixin once we can use Sass 3.3 (@at-root)
 @include valo-fonts;
