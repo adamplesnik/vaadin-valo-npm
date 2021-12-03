@@ -27,15 +27,15 @@ $font-icons-pathPrefix: null;
     font-weight: normal;
     font-style: normal;
     src: url('#{$file-name}.woff') format('woff');
+  }
 
-    .#{$font-family} {
-      font-family: #{$font-family};
-      font-style: normal;
-      font-weight: normal;
-      -webkit-font-smoothing: antialiased;
-      display: inline-block;
-      text-align: center;
-    }
+  .#{$font-family} {
+    font-family: #{$font-family};
+    font-style: normal;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    text-align: center;
   }
 }
 
