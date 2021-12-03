@@ -5,7 +5,6 @@
  * @group orderedlayout
  */
 @mixin valo-orderedlayout-global {
-
   div.v-layout.v-horizontal.v-widget {
     white-space: nowrap;
   }
@@ -43,11 +42,11 @@
   .v-horizontal > .v-expand > .v-slot {
     height: 100%;
   }
-  
-  /* Workaround for IE8+IE9 bug where clicking inside an input area which is inside a div with negative margin causes cursor position to jump to wrong position. See #11152 */ 
-  .v-horizontal > .v-expand > .v-slot { 
-     position: relative; 
-  } 
+
+  /* Workaround for IE8+IE9 bug where clicking inside an input area which is inside a div with negative margin causes cursor position to jump to wrong position. See #11152 */
+  .v-horizontal > .v-expand > .v-slot {
+    position: relative;
+  }
 
   .v-vertical > .v-spacing,
   .v-vertical > .v-expand > .v-spacing {
@@ -65,7 +64,7 @@
   .v-align-bottom:before,
   .v-expand > .v-align-middle:before,
   .v-expand > .v-align-bottom:before {
-    content: "";
+    content: '';
     display: inline-block;
     height: 100%;
     vertical-align: middle;
@@ -75,11 +74,6 @@
   .v-align-middle,
   .v-align-bottom {
     white-space: nowrap;
-  }
-
-  .v-align-middle > .v-widget,
-  .v-align-bottom > .v-widget {
-    display: inline-block;
   }
 
   .v-align-middle,
@@ -126,7 +120,7 @@
   }
 
   .v-caption-on-left > .v-caption {
-    padding-right: .5em;
+    padding-right: 0.5em;
   }
 
   .v-caption-on-right > .v-caption {
@@ -146,20 +140,19 @@
   .v-has-caption.v-has-height > .v-widget {
     height: 100% !important;
   }
-
 }
-
-
 
 /**
  *
  *
- * @param {bool} $include-additional-styles - 
+ * @param {bool} $include-additional-styles -
  *
  * @group orderedlayout
  */
-@mixin valo-orderedlayout ($include-additional-styles: contains($v-included-additional-styles, orderedlayout) or contains($v-included-additional-styles, verticallayout) or contains($v-included-additional-styles, horizontallayout)) {
-
+@mixin valo-orderedlayout(
+  $include-additional-styles: contains($v-included-additional-styles, orderedlayout) or
+    contains($v-included-additional-styles, verticallayout) or contains($v-included-additional-styles, horizontallayout)
+) {
   .v-margin-top {
     padding-top: $v-layout-margin-top;
   }
@@ -198,9 +191,7 @@
       @include valo-horizontallayout-wrapping-style;
     }
   }
-
 }
-
 
 /**
  *
@@ -209,14 +200,14 @@
  * @group orderedlayout
  */
 @mixin valo-horizontallayout-wrapping-style {
-    white-space: normal !important;
+  white-space: normal !important;
 
-    & > .v-spacing + .v-slot,
-    & > .v-slot:first-child {
-      margin-bottom: $v-layout-spacing-vertical;
-    }
+  & > .v-spacing + .v-slot,
+  & > .v-slot:first-child {
+    margin-bottom: $v-layout-spacing-vertical;
+  }
 
-    & > .v-slot:first-child:last-child {
-      margin-bottom: 0;
-    }
+  & > .v-slot:first-child:last-child {
+    margin-bottom: 0;
+  }
 }

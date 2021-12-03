@@ -1,6 +1,6 @@
 {
   "name": "vaadin-valo-npm",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Fork and modification of Vaadin 8 Valo theme to be used via NPM.",
   "main": "index.js",
   "scripts": {
