@@ -11,10 +11,9 @@
  *
  * @group calendar
  */
-@use "sass:math";
+@use 'sass:math';
 
 $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
-
 
 /**
  * Outputs the global selectors and properties for the Calendar component - styles which are
@@ -24,7 +23,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
  *
  * @group calendar
  */
-@mixin valo-calendar-global ($primary-stylename: v-calendar) {
+@mixin valo-calendar-global($primary-stylename: v-calendar) {
   .#{$primary-stylename}-month-day-scrollable {
     overflow-y: scroll;
   }
@@ -61,7 +60,6 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
     cursor: row-resize;
     bottom: 0;
   }
-
 
   // What a truckload of magic numbers!
   // TODO Try to find out what these actually do, and how to make them dissappear
@@ -125,7 +123,6 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
   }
 }
 
-
 /**
  * Outputs the selectors and properties for the Calendar component.
  *
@@ -133,9 +130,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
  *
  * @group calendar
  */
-@mixin valo-calendar ($primary-stylename: v-calendar) {
-
-
+@mixin valo-calendar($primary-stylename: v-calendar) {
   .#{$primary-stylename}-header-day {
     font-weight: $v-font-weight + 100;
     text-align: center;
@@ -145,7 +140,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
   // Prev/next week buttons
   .#{$primary-stylename}-header-week .#{$primary-stylename}-back,
   .#{$primary-stylename}-header-week .#{$primary-stylename}-next {
-    @include appearance(none);
+    appearance: none;
     background: transparent;
     border: none;
     padding: 0;
@@ -153,7 +148,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
     cursor: pointer;
     outline: none;
     color: inherit;
-    @include opacity(.5);
+    @include opacity(0.5);
 
     &:focus {
       outline: none;
@@ -164,7 +159,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
     }
 
     &:active {
-      @include opacity(.5);
+      @include opacity(0.5);
     }
   }
 
@@ -175,13 +170,6 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
   .#{$primary-stylename}-header-week .#{$primary-stylename}-next {
     @include valo-calendar-next-style;
   }
-
-
-
-
-
-
-
 
   // Month grid
 
@@ -199,7 +187,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
     width: 20px; // Same as VCalendar.MONTHLY_WEEKTOOLBARWIDTH
     text-align: center;
     font-size: 0.8em;
-    @include opacity(.5);
+    @include opacity(0.5);
 
     &:hover {
       @include opacity(1);
@@ -248,7 +236,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
   }
 
   .#{$primary-stylename}-month-day-today {
-    background: blend-normal(rgba($v-focus-color, .05), $v-background-color);
+    background: blend-normal(rgba($v-focus-color, 0.05), $v-background-color);
 
     .#{$primary-stylename}-day-number {
       font-weight: $v-font-weight + 100;
@@ -261,26 +249,16 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
   }
 
   .#{$primary-stylename}-month-day-selected {
-    background-color: blend-normal(rgba($v-selection-color, .1), $v-background-color);
+    background-color: blend-normal(rgba($v-selection-color, 0.1), $v-background-color);
   }
 
   .#{$primary-stylename}-month-day-dragemphasis {
-      background-color: #a8a8a8;
+    background-color: #a8a8a8;
   }
 
   .#{$primary-stylename}-month-day-scrollable {
     overflow-y: scroll;
   }
-
-
-
-
-
-
-
-
-
-
 
   // Week/day view
 
@@ -315,8 +293,8 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
   .#{$primary-stylename}-time {
     text-align: right;
     padding-right: round(math.div($v-unit-size, 4));
-    margin-top: round(math.div($v-font-size*0.8, -2));
-    padding-bottom: round($v-font-size*0.8*0.5);
+    margin-top: round(math.div($v-font-size * 0.8, -2));
+    padding-bottom: round($v-font-size * 0.8 * 0.5);
   }
 
   .#{$primary-stylename}-day-times,
@@ -329,7 +307,12 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
     }
   }
 
-  $valo-calendar-time-divider-color: first-color(valo-border($color: $v-app-background-color, $strength: 0.5));
+  $valo-calendar-time-divider-color: first-color(
+    valo-border(
+      $color: $v-app-background-color,
+      $strength: 0.5,
+    )
+  );
 
   .#{$primary-stylename} .v-datecellslot,
   .#{$primary-stylename} .v-datecellslot-even {
@@ -353,10 +336,10 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
     background: $v-focus-color;
     line-height: 1px;
     pointer-events: none;
-    @include opacity(.5);
+    @include opacity(0.5);
 
     &:before {
-      content: "\2022";
+      content: '\2022';
       color: $v-focus-color;
       font-size: 22px;
       margin-left: -0.07em;
@@ -367,14 +350,14 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
     position: relative;
 
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       right: 0;
       bottom: -1px;
       left: 0;
       background: $v-selection-color;
-      @include opacity(.5);
+      @include opacity(0.5);
       @if $v-border-radius > 0 {
         border-radius: $v-border-radius $v-border-radius 0 0;
       }
@@ -390,9 +373,6 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
       }
     }
   }
-
-
-
 
   // Event styles
 
@@ -421,12 +401,12 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
       float: right;
       font-size: 0.9em;
       line-height: round($v-font-size * 1.2);
-      @include opacity(.5);
+      @include opacity(0.5);
     }
 
     &:before {
-      content: "\25cf";
-      margin-right: .2em;
+      content: '\25cf';
+      margin-right: 0.2em;
     }
   }
 
@@ -440,7 +420,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
     white-space: nowrap;
 
     &:before {
-      content: "";
+      content: '';
     }
   }
 
@@ -489,12 +469,11 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
     overflow: visible;
 
     // Event is being dragged
-    &[style*=" left:"] .#{$primary-stylename}-event-content {
+    &[style*=' left:'] .#{$primary-stylename}-event-content {
     }
   }
 
   .#{$primary-stylename}-week-wrapper .#{$primary-stylename}-event-caption {
-
   }
 
   .#{$primary-stylename}-week-wrapper .#{$primary-stylename}-event-content {
@@ -505,17 +484,11 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
     margin-right: round(math.div($v-unit-size, 8));
   }
 
-
-
-
-
-
-
   // Custom event colors
 
   @for $i from 1 through length($v-calendar-event-colors) {
     $color: nth($v-calendar-event-colors, $i);
-    $bg: blend-normal(rgba($color, .2), $v-background-color);
+    $bg: blend-normal(rgba($color, 0.2), $v-background-color);
 
     // First color is considered the default color (and stylename 'color1' will equal to that)
     $stylename: if($i == 1, '', '[class*="color#{$i}"]');
@@ -526,7 +499,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
 
     .#{$primary-stylename}-event-all-day#{$stylename} {
       background-color: $bg;
-      background-color: rgba($bg, .8);
+      background-color: rgba($bg, 0.8);
       color: $color;
     }
 
@@ -535,19 +508,15 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
 
       .#{$primary-stylename}-event-content {
         background-color: $bg;
-        background-color: rgba($bg, .8);
+        background-color: rgba($bg, 0.8);
       }
     }
   }
 
-
-
   .#{$primary-stylename}.v-disabled * {
     cursor: default;
   }
-
 }
-
 
 /**
  * Outputs the styles for the previous button.
@@ -559,7 +528,6 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
     @include valo-tabsheet-scroller-prev-icon-style;
   }
 }
-
 
 /**
  * Outputs the styles for the next button.

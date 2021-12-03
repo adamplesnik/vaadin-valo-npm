@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 /**
  * Outputs the selectors and properties for the DateField component.
  *
@@ -6,8 +8,10 @@
  *
  * @group datefield
  */
-@mixin valo-datefield ($primary-stylename: v-datefield, $include-additional-styles: contains($v-included-additional-styles, datefield)) {
-
+@mixin valo-datefield(
+  $primary-stylename: v-datefield,
+  $include-additional-styles: contains($v-included-additional-styles, datefield)
+) {
   .#{$primary-stylename} {
     position: relative;
     width: $v-default-field-width;
@@ -103,7 +107,6 @@
 
   @include valo-datefield-calendarpanel-style;
 
-
   @if $include-additional-styles {
     .#{$primary-stylename}-borderless {
       .#{$primary-stylename}-textfield {
@@ -112,7 +115,7 @@
       .#{$primary-stylename}-button {
         border: none;
         color: inherit;
-        @include opacity(.5);
+        @include opacity(0.5);
       }
     }
 
@@ -125,13 +128,27 @@
     }
 
     .#{$primary-stylename}-tiny {
-      @include valo-datefield-style($unit-size: $v-unit-size--tiny, $bevel: null, $shadow: null, $border: null, $background-color: null, $states: normal);
+      @include valo-datefield-style(
+        $unit-size: $v-unit-size--tiny,
+        $bevel: null,
+        $shadow: null,
+        $border: null,
+        $background-color: null,
+        $states: normal
+      );
       font-size: $v-font-size--tiny;
     }
 
     .#{$primary-stylename}-compact,
     .#{$primary-stylename}-small {
-      @include valo-datefield-style($unit-size: $v-unit-size--small, $bevel: null, $shadow: null, $border: null, $background-color: null, $states: normal);
+      @include valo-datefield-style(
+        $unit-size: $v-unit-size--small,
+        $bevel: null,
+        $shadow: null,
+        $border: null,
+        $background-color: null,
+        $states: normal
+      );
     }
 
     .#{$primary-stylename}-small {
@@ -139,18 +156,30 @@
     }
 
     .#{$primary-stylename}-large {
-      @include valo-datefield-style($unit-size: $v-unit-size--large, $bevel: null, $shadow: null, $border: null, $background-color: null, $states: normal);
+      @include valo-datefield-style(
+        $unit-size: $v-unit-size--large,
+        $bevel: null,
+        $shadow: null,
+        $border: null,
+        $background-color: null,
+        $states: normal
+      );
       font-size: $v-font-size--large;
     }
 
     .#{$primary-stylename}-huge {
-      @include valo-datefield-style($unit-size: $v-unit-size--huge, $bevel: null, $shadow: null, $border: null, $background-color: null, $states: normal);
+      @include valo-datefield-style(
+        $unit-size: $v-unit-size--huge,
+        $bevel: null,
+        $shadow: null,
+        $border: null,
+        $background-color: null,
+        $states: normal
+      );
       font-size: $v-font-size--huge;
     }
   }
-
 }
-
 
 /**
  * Outputs the selectors and properties for the InlineDateField component.
@@ -159,7 +188,7 @@
  *
  * @group datefield
  */
-@mixin valo-inline-datefield ($primary-stylename: v-inline-datefield) {
+@mixin valo-inline-datefield($primary-stylename: v-inline-datefield) {
   @include valo-datefield-calendarpanel-style(#{$primary-stylename}-calendarpanel);
 
   .#{$primary-stylename}-calendarpanel {
@@ -168,7 +197,6 @@
     padding: round(math.div($v-unit-size, 6));
   }
 }
-
 
 /**
  * Outputs the styles for a date field variant.
@@ -183,40 +211,53 @@
  *
  * @group datefield
  */
-@mixin valo-datefield-style (
-    $bevel             : $v-textfield-bevel,
-    $shadow            : $v-textfield-shadow,
-    $unit-size         : $v-unit-size,
-    $border            : $v-textfield-border,
-    $border-radius     : $v-textfield-border-radius,
-    $background-color  : $v-textfield-background-color,
-    $states            : normal focus disabled
-  ) {
-
+@mixin valo-datefield-style(
+  $bevel: $v-textfield-bevel,
+  $shadow: $v-textfield-shadow,
+  $unit-size: $v-unit-size,
+  $border: $v-textfield-border,
+  $border-radius: $v-textfield-border-radius,
+  $background-color: $v-textfield-background-color,
+  $states: normal focus disabled
+) {
   height: $unit-size;
   border-radius: $border-radius;
 
-  [class*="textfield"] {
+  [class*='textfield'] {
     box-sizing: border-box;
-    @include valo-textfield-style($bevel: $bevel, $shadow: $shadow, $unit-size: $unit-size, $border: $border, $border-radius: $border-radius, $background-color: $background-color, $states: $states) ;
+    @include valo-textfield-style(
+      $bevel: $bevel,
+      $shadow: $shadow,
+      $unit-size: $unit-size,
+      $border: $border,
+      $border-radius: $border-radius,
+      $background-color: $background-color,
+      $states: $states
+    );
     padding-left: $unit-size * 1.2;
     width: 100%;
     height: 100%;
     border-radius: inherit;
   }
 
-  &[class*="prompt"] > [class*="textfield"] {
+  &[class*='prompt'] > [class*='textfield'] {
     @include valo-textfield-prompt-style($background-color);
   }
 
-  [class*="button"] {
-    @include valo-datefield-button-style($unit-size: $unit-size, $bevel: $bevel, $background-color: $background-color, $border-radius: $border-radius, $border: $border);
+  [class*='button'] {
+    @include valo-datefield-button-style(
+      $unit-size: $unit-size,
+      $bevel: $bevel,
+      $background-color: $background-color,
+      $border-radius: $border-radius,
+      $border: $border
+    );
   }
 
   &.v-disabled {
     @include opacity($v-disabled-opacity);
 
-    [class*="button"] {
+    [class*='button'] {
       cursor: default;
       pointer-events: none;
       &:active:after {
@@ -226,11 +267,11 @@
   }
 
   &.v-readonly {
-    [class*="textfield"] {
+    [class*='textfield'] {
       @include valo-textfield-readonly-style;
     }
 
-    [class*="button"] {
+    [class*='button'] {
       cursor: default;
       pointer-events: none;
       &:active:after {
@@ -239,13 +280,12 @@
     }
 
     &.borderless {
-      [class*="textfield"] {
+      [class*='textfield'] {
         @include valo-textfield-borderless-style;
       }
     }
   }
 }
-
 
 /**
  * Outputs the styles for a date field variant button element.
@@ -258,7 +298,13 @@
  *
  * @group datefield
  */
-@mixin valo-datefield-button-style ($unit-size: $v-unit-size, $bevel: $v-bevel, $background-color: $v-textfield-background-color, $border-radius: $v-border-radius, $border: $v-textfield-border) {
+@mixin valo-datefield-button-style(
+  $unit-size: $v-unit-size,
+  $bevel: $v-bevel,
+  $background-color: $v-textfield-background-color,
+  $border-radius: $v-border-radius,
+  $border: $v-textfield-border
+) {
   $border-width: first-number($border) or 0;
   @include valo-tappable;
   -webkit-appearance: none;
@@ -267,7 +313,7 @@
   position: absolute;
   z-index: 10;
   width: $unit-size;
-  line-height: $unit-size - ($border-width*2);
+  line-height: $unit-size - ($border-width * 2);
   text-align: center;
   font: inherit;
   outline: none;
@@ -307,7 +353,7 @@
   }
 
   &:active:after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     right: 0;
@@ -320,7 +366,6 @@
   }
 }
 
-
 /**
  * Outputs the font icon styles for the date field drop down button.
  *
@@ -328,9 +373,8 @@
  */
 @mixin valo-datefield-button-icon-style {
   font-family: ThemeIcons;
-  content: "\f073";
+  content: '\f073';
 }
-
 
 /**
  * Outputs the styles for a date field popup.
@@ -346,7 +390,7 @@
   cursor: default;
   width: auto;
 
-   table {
+  table {
     border-collapse: collapse;
     border-spacing: 0;
     margin: 0 auto;
@@ -359,7 +403,6 @@
   @include valo-datefield-calendarpanel-style;
 }
 
-
 /**
  * Outputs the styles for calendar panel (i.e. month view).
  *
@@ -367,7 +410,7 @@
  *
  * @group datefield
  */
-@mixin valo-datefield-calendarpanel-style ($primary-stylename: v-datefield-calendarpanel) {
+@mixin valo-datefield-calendarpanel-style($primary-stylename: v-datefield-calendarpanel) {
   .#{$primary-stylename} {
     font-size: $v-font-size;
     text-align: center;
@@ -397,7 +440,7 @@
 
   .#{$primary-stylename}-day.#{$primary-stylename}-day-selected,
   .#{$primary-stylename}-day.#{$primary-stylename}-day-selected:hover {
-    @include valo-datefield-calendarpanel-day-selected-style
+    @include valo-datefield-calendarpanel-day-selected-style;
   }
 
   .#{$primary-stylename}-day.#{$primary-stylename}-day-focused {
@@ -411,7 +454,7 @@
 
   .#{$primary-stylename}-weekdays {
     height: round($v-unit-size * 0.7);
-    color: mix(valo-font-color($v-background-color), rgba($v-background-color, .7));
+    color: mix(valo-font-color($v-background-color), rgba($v-background-color, 0.7));
 
     strong {
       font: inherit;
@@ -423,10 +466,10 @@
     white-space: nowrap;
   }
 
-  td[class*="year"],
-  td[class*="month"] {
+  td[class*='year'],
+  td[class*='month'] {
     button {
-      @include appearance(none);
+      appearance: none;
       border: none;
       background: transparent;
       padding: 0;
@@ -456,7 +499,7 @@
 
       &.outside-range {
         cursor: default;
-        @include opacity(.3);
+        @include opacity(0.3);
 
         &:hover:before {
           color: mix($v-background-color, valo-font-color($v-background-color));
@@ -483,11 +526,11 @@
 
   td.#{$primary-stylename}-month {
     width: round($v-unit-size * 4);
-    cursor:default;
+    cursor: default;
     @include valo-datefield-calendarpanel-month-style;
   }
-  td.#{$primary-stylename}-month.header-month-year{
-    cursor:pointer;
+  td.#{$primary-stylename}-month.header-month-year {
+    cursor: pointer;
   }
 
   .#{$primary-stylename}-year td.#{$primary-stylename}-month {
@@ -497,7 +540,7 @@
   .#{$primary-stylename}-weeknumber,
   .#{$primary-stylename}-weekdays.#{$primary-stylename}-weeknumbers td:first-child {
     width: round($v-unit-size * 0.8);
-    color: mix(valo-font-color($v-background-color), rgba($v-background-color, .7));
+    color: mix(valo-font-color($v-background-color), rgba($v-background-color, 0.7));
     font-size: ceil($v-font-size * 0.86);
     display: inline-block;
     text-align: left;
@@ -508,12 +551,12 @@
   }
 
   .#{$primary-stylename}-weeknumbers .v-first:before {
-    content: "";
+    content: '';
     position: absolute;
-    top: round($v-unit-size * 0.7) + round(math.div($v-unit-size, 10))*2 + $v-overlay-padding-vertical;
+    top: round($v-unit-size * 0.7) + round(math.div($v-unit-size, 10)) * 2 + $v-overlay-padding-vertical;
     bottom: 0;
     left: 0;
-    width: round($v-unit-size * 0.7) + $v-overlay-padding-horizontal*2;
+    width: round($v-unit-size * 0.7) + $v-overlay-padding-horizontal * 2;
     border-top: valo-border($color: $v-app-background-color, $strength: 0.3);
     border-right: valo-border($color: $v-app-background-color, $strength: 0.3);
     border-top-right-radius: $v-border-radius;
@@ -531,9 +574,7 @@
       font-weight: 400;
     }
   }
-
 }
-
 
 /**
  * Outputs the styles for an individual day element in a calendar panel.
@@ -551,13 +592,12 @@
   background: $v-background-color;
 
   @if $v-border-radius > 0 {
-    border-radius: ceil($v-border-radius*0.5);
+    border-radius: ceil($v-border-radius * 0.5);
   }
   @if $v-animations-enabled {
     @include transition(color 200ms);
   }
 }
-
 
 /**
  * Outputs the hover state styles for an individual day element in a calendar panel.
@@ -567,7 +607,6 @@
 @mixin valo-datefield-calendarpanel-day-hover-style {
   color: $v-selection-color;
 }
-
 
 /**
  * Outputs the styles for an individual day element, which are not part of the current month, in a calendar panel.
@@ -600,7 +639,6 @@
   border-color: valo-font-color($v-background-color, 0.3);
 }
 
-
 /**
  * Outputs the styles for the selected day element in a calendar panel.
  *
@@ -613,7 +651,6 @@
   font-weight: max(600, $v-font-weight + 100);
 }
 
-
 /**
  * Outputs the focus state styles for an individual day element in a calendar panel.
  *
@@ -622,9 +659,7 @@
 @mixin valo-datefield-calendarpanel-day-focused-style {
   @include valo-focus-style;
   position: relative; // Show above other cells
-
 }
-
 
 /**
  * Outputs the font icon styles for the next month button in a calendar panel.
@@ -633,9 +668,8 @@
  */
 @mixin valo-datefield-calendarpanel-nextmonth-icon-style {
   font-family: ThemeIcons;
-  content: "\f105";
+  content: '\f105';
 }
-
 
 /**
  * Outputs the font icon styles for the previous month button in a calendar panel.
@@ -644,9 +678,8 @@
  */
 @mixin valo-datefield-calendarpanel-prevmonth-icon-style {
   font-family: ThemeIcons;
-  content: "\f104";
+  content: '\f104';
 }
-
 
 /**
  * Outputs the font icon styles for the next year button in a calendar panel.
@@ -655,9 +688,8 @@
  */
 @mixin valo-datefield-calendarpanel-nextyear-icon-style {
   font-family: ThemeIcons;
-  content: "\f101";
+  content: '\f101';
 }
-
 
 /**
  * Outputs the font icon styles for the previous year button in a calendar panel.
@@ -666,9 +698,8 @@
  */
 @mixin valo-datefield-calendarpanel-prevyear-icon-style {
   font-family: ThemeIcons;
-  content: "\f100";
+  content: '\f100';
 }
-
 
 /**
  * Outputs the styles for the current month and year title element in a calendar panel.

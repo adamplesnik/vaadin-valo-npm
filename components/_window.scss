@@ -1,7 +1,7 @@
 /**
  * @group window
  */
-@use "sass:math";
+@use 'sass:math';
 
 $v-window-background-color: $v-panel-background-color !default;
 
@@ -30,11 +30,14 @@ $v-window-animate-out: valo-animate-out-scale-down-fade 100ms !default;
  */
 $v-window-modality-curtain-background-color: #222 !default;
 
-
 @if $v-animations-enabled {
   @include keyframes(valo-modal-window-indication) {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   @include keyframes(valo-animate-out-scale-down-fade) {
@@ -45,7 +48,6 @@ $v-window-modality-curtain-background-color: #222 !default;
   }
 }
 
-
 /**
  *
  *
@@ -53,10 +55,13 @@ $v-window-modality-curtain-background-color: #222 !default;
  *
  * @group window
  */
-@mixin valo-window ($primary-stylename: v-window) {
-
+@mixin valo-window($primary-stylename: v-window) {
   .#{$primary-stylename} {
-    @include valo-overlay-style($background-color: $v-window-background-color, $animate-in: $v-window-animate-in, $animate-out: $v-window-animate-out);
+    @include valo-overlay-style(
+      $background-color: $v-window-background-color,
+      $animate-in: $v-window-animate-in,
+      $animate-out: $v-window-animate-out
+    );
 
     @if $v-window-shadow {
       @if $v-window-shadow == none {
@@ -69,7 +74,7 @@ $v-window-modality-curtain-background-color: #222 !default;
       border-radius: $v-window-border-radius;
     }
     padding: 0;
-    min-width: 4*$v-unit-size !important;
+    min-width: 4 * $v-unit-size !important;
     min-height: $v-unit-size !important;
     white-space: nowrap;
     overflow: hidden !important;
@@ -89,14 +94,14 @@ $v-window-modality-curtain-background-color: #222 !default;
     right: 0;
     bottom: 0;
     left: 0;
-    @include radial-gradient(circle at 50% 50%, $v-window-modality-curtain-background-color, darken($v-window-modality-curtain-background-color, valo-gradient-opacity()), $fallback: $v-window-modality-curtain-background-color);
+    background: $v-window-modality-curtain-background-color;
     @include opacity(max(0.2, 0.8 - math.div(valo-gradient-opacity(), 100%)));
     @if $v-animations-enabled {
-        @include valo-animate-in-fade($duration: 400ms, $delay: 100ms);
-        .v-op12 & {
-          // Opera 12 has a shitbreak with the fade-in (flickers)
-          @include animation(none);
-        }
+      @include valo-animate-in-fade($duration: 400ms, $delay: 100ms);
+      .v-op12 & {
+        // Opera 12 has a shitbreak with the fade-in (flickers)
+        @include animation(none);
+      }
     }
   }
 
@@ -122,7 +127,7 @@ $v-window-modality-curtain-background-color: #222 !default;
     @include transform(translatez(0));
 
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: -$scroll-divider-width;
       right: 0;
@@ -130,8 +135,12 @@ $v-window-modality-curtain-background-color: #222 !default;
       height: 0;
       $_bg: $v-window-background-color;
       border-top: $scroll-divider-width solid first-color(valo-border($strength: 0.5));
-      $border-color: first-color(valo-border($strength: 1));
-      border-color: rgba($border-color, .5);
+      $border-color: first-color(
+        valo-border(
+          $strength: 1,
+        )
+      );
+      border-color: rgba($border-color, 0.5);
     }
   }
 
@@ -142,7 +151,7 @@ $v-window-modality-curtain-background-color: #222 !default;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: blend-normal(rgba(valo-font-color($v-window-background-color), .7), $v-window-background-color);
+    color: blend-normal(rgba(valo-font-color($v-window-background-color), 0.7), $v-window-background-color);
   }
 
   //Adjust header margin according to visible buttons on header
@@ -171,7 +180,7 @@ $v-window-modality-curtain-background-color: #222 !default;
     text-align: center;
     cursor: pointer;
     font-size: round($v-font-size * 1.3);
-    color: valo-font-color($v-window-background-color, .4);
+    color: valo-font-color($v-window-background-color, 0.4);
 
     @if $v-animations-enabled {
       @include transition(color 140ms);
@@ -192,7 +201,7 @@ $v-window-modality-curtain-background-color: #222 !default;
   }
 
   .#{$primary-stylename}-closebox:focus::after {
-    content: "";
+    content: '';
     position: absolute;
     top: round(math.div($v-unit-size, 6));
     right: round(math.div($v-unit-size, 6));
@@ -205,7 +214,7 @@ $v-window-modality-curtain-background-color: #222 !default;
 
   .#{$primary-stylename}-maximizebox:focus::after,
   .#{$primary-stylename}-restorebox:focus::after {
-    content: "";
+    content: '';
     position: absolute;
     top: round(math.div($v-unit-size, 6));
     right: round(math.div($v-unit-size, 18));
@@ -290,7 +299,7 @@ $v-window-modality-curtain-background-color: #222 !default;
       }
 
       &:before {
-        content: "";
+        content: '';
         position: absolute;
         z-index: 2;
         top: 0;
@@ -324,14 +333,12 @@ $v-window-modality-curtain-background-color: #222 !default;
     cursor: nwse-resize;
   }
 
-
   // Flash modal window when clicking on the curtain
   .#{$primary-stylename}-modalitycurtain:active {
     ~ .v-window {
       @include animation(none);
     }
   }
-
 
   .#{$primary-stylename}-top-toolbar,
   .#{$primary-stylename}-bottom-toolbar {
@@ -344,7 +351,7 @@ $v-window-modality-curtain-background-color: #222 !default;
     }
 
     .v-spacing {
-      width: round($v-layout-spacing-horizontal*0.5);
+      width: round($v-layout-spacing-horizontal * 0.5);
     }
   }
 
@@ -371,7 +378,12 @@ $v-window-modality-curtain-background-color: #222 !default;
 
   .#{$primary-stylename}-bottom-toolbar.v-layout {
     padding: round(math.div($v-unit-size, 5)) round(math.div($v-unit-size, 3));
-    @include linear-gradient(to bottom, darken($v-background-color, valo-gradient-opacity($v-gradient)*0.5) 0, $v-background-color round(math.div($v-unit-size, 10)), $fallback: $v-background-color);
+    @include linear-gradient(
+      to bottom,
+      darken($v-background-color, valo-gradient-opacity($v-gradient) * 0.5) 0,
+      $v-background-color round(math.div($v-unit-size, 10)),
+      $fallback: $v-background-color
+    );
     border-top: valo-border($strength: 0.5);
     border-radius: 0 0 $v-border-radius $v-border-radius;
   }
@@ -388,7 +400,8 @@ $v-window-modality-curtain-background-color: #222 !default;
       }
 
       &.v-menubar-borderless {
-        margin: round(math.div($v-unit-size, 6)) - round(math.div($v-unit-size, 3)) round(math.div($v-unit-size, 6)) - round(math.div($v-unit-size, 3)) 0;
+        margin: round(math.div($v-unit-size, 6)) - round(math.div($v-unit-size, 3)) round(math.div($v-unit-size, 6)) -
+          round(math.div($v-unit-size, 3)) 0;
         padding: 0;
       }
     }
@@ -402,9 +415,7 @@ $v-window-modality-curtain-background-color: #222 !default;
       }
     }
   }
-
 }
-
 
 /**
  *
@@ -415,7 +426,7 @@ $v-window-modality-curtain-background-color: #222 !default;
 @mixin valo-window-close-icon-style {
   &:before {
     // times cross
-    content: "\00d7";
+    content: '\00d7';
   }
 }
 
@@ -427,7 +438,7 @@ $v-window-modality-curtain-background-color: #222 !default;
  */
 @mixin valo-window-maximize-icon-style {
   &:before {
-    content: "+";
+    content: '+';
   }
 }
 
@@ -440,6 +451,6 @@ $v-window-modality-curtain-background-color: #222 !default;
 @mixin valo-window-restore-icon-style {
   &:before {
     // en-dash
-    content: "\2013";
+    content: '\2013';
   }
 }

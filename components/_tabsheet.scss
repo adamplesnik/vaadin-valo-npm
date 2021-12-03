@@ -3,10 +3,9 @@
  *
  * @group tabsheet
  */
-@use "sass:math";
+@use 'sass:math';
 
 $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
-
 
 /**
  * Outputs the global selectors and properties for the TabSheet component - styles which are
@@ -16,7 +15,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
  *
  * @group tabsheet
  */
-@mixin valo-tabsheet-global ($primary-stylename: v-tabsheet) {
+@mixin valo-tabsheet-global($primary-stylename: v-tabsheet) {
   .#{$primary-stylename}-hidetabs > .#{$primary-stylename}-tabcontainer,
   .#{$primary-stylename}-spacertd,
   .v-disabled .#{$primary-stylename}-scroller,
@@ -57,9 +56,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
       @include valo-panel-adjust-content-margins;
     }
   }
-
 }
-
 
 /**
  * Outputs the selectors and properties for the TabSheet component.
@@ -69,7 +66,10 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
  *
  * @group tabsheet
  */
-@mixin valo-tabsheet ($primary-stylename: v-tabsheet, $include-additional-styles: contains($v-included-additional-styles, tabsheet)) {
+@mixin valo-tabsheet(
+  $primary-stylename: v-tabsheet,
+  $include-additional-styles: contains($v-included-additional-styles, tabsheet)
+) {
   .#{$primary-stylename} {
     &:not(.v-has-width) {
       width: auto !important;
@@ -92,7 +92,6 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
     @include valo-tabsheet-scroller-style($primary-stylename);
   }
 
-
   @if $v-tabsheet-content-animation-enabled {
     .#{$primary-stylename}-tabsheetpanel > .v-scrollable > .v-widget {
       @include valo-animate-in-fade(300ms);
@@ -107,7 +106,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
       position: absolute;
       z-index: 1;
       bottom: 50%;
-      margin-bottom: round(math.div($v-unit-size, -2)) - $spinner-size*0.5;
+      margin-bottom: round(math.div($v-unit-size, -2)) - $spinner-size * 0.5;
       left: 50%;
       margin-left: math.div($spinner-size, -2);
     }
@@ -116,7 +115,6 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
       display: block;
     }
   }
-
 
   @if $include-additional-styles {
     .#{$primary-stylename}-equal-width-tabs {
@@ -161,25 +159,24 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
       @include valo-tabsheet-only-selected-closable-style;
     }
   }
-
 }
-
 
 /**
  * Outputs the styles for the tabcontainer element of a tabsheet.
  *
  * @group tabsheet
  */
-@mixin valo-tabsheet-tabcontainer-style ($primary-stylename: v-tabsheet) {
+@mixin valo-tabsheet-tabcontainer-style($primary-stylename: v-tabsheet) {
   position: relative;
   box-sizing: border-box;
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     height: 0;
     // iOS panics with background color, creating black line artifacts
-    border-top: max(1px, first-number($v-border)) solid first-color(valo-border($color: $v-app-background-color, $strength: 0.5));
+    border-top: max(1px, first-number($v-border)) solid
+      first-color(valo-border($color: $v-app-background-color, $strength: 0.5));
     bottom: 0;
     left: 0;
     right: 0;
@@ -190,13 +187,12 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
   }
 }
 
-
 /**
  * Outputs the styles for the tabitemcell element of a tabsheet.
  *
  * @group tabsheet
  */
-@mixin valo-tabsheet-tabitemcell-style ($primary-stylename: v-tabsheet) {
+@mixin valo-tabsheet-tabitemcell-style($primary-stylename: v-tabsheet) {
   vertical-align: bottom;
 
   .#{$primary-stylename}-tabitem {
@@ -217,7 +213,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
     width: auto !important;
     overflow: hidden;
     text-overflow: ellipsis;
-    border-bottom: max(1px, first-number($v-border))*2 solid transparent;
+    border-bottom: max(1px, first-number($v-border)) * 2 solid transparent;
     position: relative;
 
     @if $v-animations-enabled {
@@ -244,11 +240,11 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
   }
 
   &:first-child .v-caption,
-  &[aria-hidden="true"] + td .v-caption {
+  &[aria-hidden='true'] + td .v-caption {
     margin-left: 0;
   }
 
-  &:not([aria-hidden="true"]) ~ td .v-caption {
+  &:not([aria-hidden='true']) ~ td .v-caption {
     margin-left: round(math.div($v-unit-size, 2));
   }
 
@@ -282,11 +278,11 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
     line-height: round($v-font-size * 1.1);
     width: round($v-font-size * 1.1);
     text-align: center;
-    border-radius: round($v-border-radius*0.5);
+    border-radius: round($v-border-radius * 0.5);
     color: valo-font-color($v-app-background-color, 0.4);
 
     &:hover {
-      background: rgba(#000, .03);
+      background: rgba(#000, 0.03);
       color: $v-selection-color;
     }
 
@@ -297,14 +293,17 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
   }
 }
 
-
 /**
  * Outputs the styles for the tab scroller element of a tabsheet.
  *
  * @group tabsheet
  */
-@mixin valo-tabsheet-scroller-style ($primary-stylename: v-tabsheet) {
-  $border-color: first-color(valo-border($strength: 0.5));
+@mixin valo-tabsheet-scroller-style($primary-stylename: v-tabsheet) {
+  $border-color: first-color(
+    valo-border(
+      $strength: 0.5,
+    )
+  );
 
   position: absolute;
   top: 0;
@@ -315,7 +314,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
   pointer-events: none;
 
   &:after {
-    content: "";
+    content: '';
     height: first-number($v-border);
     position: absolute;
     bottom: 0;
@@ -326,7 +325,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
   }
 
   button {
-    @include appearance(none);
+    appearance: none;
     border: none;
     background: transparent;
     font: inherit;
@@ -337,7 +336,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
     outline: none;
     cursor: pointer;
     pointer-events: auto;
-    @include opacity(.5);
+    @include opacity(0.5);
 
     &:hover {
       @include opacity(1);
@@ -345,32 +344,31 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
     }
 
     &:active {
-      @include opacity(.7);
+      @include opacity(0.7);
       color: $v-selection-color;
     }
   }
 
-  [class*="Next"] {
+  [class*='Next'] {
     padding-left: round(math.div($v-unit-size, 8));
     &:before {
       @include valo-tabsheet-scroller-next-icon-style;
     }
   }
 
-  [class*="Prev"] {
+  [class*='Prev'] {
     padding-right: round(math.div($v-unit-size, 8));
     &:before {
       @include valo-tabsheet-scroller-prev-icon-style;
     }
   }
 
-  [class*="disabled"] {
+  [class*='disabled'] {
     cursor: default;
     color: inherit !important;
-    @include opacity(.1, true);
+    @include opacity(0.1, true);
   }
 }
-
 
 /**
  * Outputs the font icon styles for the previous button element of a tabsheet scroller.
@@ -379,9 +377,8 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
  */
 @mixin valo-tabsheet-scroller-prev-icon-style {
   font-family: ThemeIcons;
-  content: "\f053";
+  content: '\f053';
 }
-
 
 /**
  * Outputs the font icon styles for the next button element of a tabsheet scroller.
@@ -390,9 +387,8 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
  */
 @mixin valo-tabsheet-scroller-next-icon-style {
   font-family: ThemeIcons;
-  content: "\f054";
+  content: '\f054';
 }
-
 
 /**
  * Outputs the styles for the framed tabsheet style.
@@ -404,7 +400,12 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
  *
  * @group tabsheet
  */
-@mixin valo-tabsheet-framed-style ($primary-stylename: v-tabsheet, $frame-inactive-tabs: true, $outer-frame: true, $tab-spacing: round(math.div($v-unit-size, 10))) {
+@mixin valo-tabsheet-framed-style(
+  $primary-stylename: v-tabsheet,
+  $frame-inactive-tabs: true,
+  $outer-frame: true,
+  $tab-spacing: round(math.div($v-unit-size, 10))
+) {
   > .#{$primary-stylename}-tabcontainer {
     .v-caption {
       margin-left: $tab-spacing or first-number($v-border) * -1;
@@ -434,17 +435,17 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
     }
 
     .#{$primary-stylename}-caption-close {
-      top: round($v-font-size*0.25);
-      right: round($v-font-size*0.25);
+      top: round($v-font-size * 0.25);
+      right: round($v-font-size * 0.25);
       margin-top: 0;
     }
 
     td:first-child .v-caption,
-    [aria-hidden="true"] + td .v-caption {
+    [aria-hidden='true'] + td .v-caption {
       margin-left: 0;
     }
 
-    :not([aria-hidden="true"]) ~ td .v-caption {
+    :not([aria-hidden='true']) ~ td .v-caption {
       margin-left: $tab-spacing or first-number($v-border) * -1;
     }
 
@@ -494,7 +495,6 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
   }
 }
 
-
 /**
  * Outputs the styles for a tabsheet where the tabs are aligned to the position specified by the parameter in the tabbar.
  *
@@ -503,12 +503,11 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
  *
  * @group tabsheet
  */
-@mixin valo-tabsheet-align-tabs-style ($primary-stylename: v-tabsheet, $align: center) {
+@mixin valo-tabsheet-align-tabs-style($primary-stylename: v-tabsheet, $align: center) {
   > .#{$primary-stylename}-tabcontainer {
     text-align: $align;
   }
 }
-
 
 /**
  * Outputs the styles for a tabsheet where all tabs in the tabbar have equal width and span the entire width of the tabbar.
@@ -518,7 +517,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
  *
  * @group tabsheet
  */
-@mixin valo-tabsheet-equal-width-tabs-style ($primary-stylename: v-tabsheet, $flex: false) {
+@mixin valo-tabsheet-equal-width-tabs-style($primary-stylename: v-tabsheet, $flex: false) {
   > .#{$primary-stylename}-tabcontainer {
     table,
     tbody,
@@ -544,7 +543,6 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
   }
 }
 
-
 /**
  * Outputs the styles for a tabsheet where the icons of individual tabs are on top of the tab captions.
  *
@@ -552,7 +550,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
  *
  * @group tabsheet
  */
-@mixin valo-tabsheet-icons-on-top-style ($primary-stylename: v-tabsheet) {
+@mixin valo-tabsheet-icons-on-top-style($primary-stylename: v-tabsheet) {
   > .#{$primary-stylename}-tabcontainer {
     .v-caption {
       padding-top: round(math.div($v-unit-size, 6));
@@ -573,12 +571,11 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
     }
 
     .#{$primary-stylename}-caption-close {
-      top: round($v-font-size*0.25);
+      top: round($v-font-size * 0.25);
       margin-top: 0;
     }
   }
 }
-
 
 /**
  * Outputs the styles for a tabsheet where only the selected tab has the close button visible.
@@ -588,7 +585,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
  *
  * @group tabsheet
  */
-@mixin valo-tabsheet-only-selected-closable-style ($primary-stylename: v-tabsheet) {
+@mixin valo-tabsheet-only-selected-closable-style($primary-stylename: v-tabsheet) {
   > .#{$primary-stylename}-tabcontainer .#{$primary-stylename}-caption-close {
     visibility: hidden;
   }
@@ -598,7 +595,6 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
   }
 }
 
-
 /**
  * Outputs the styles for a tabsheet where the tabbar has increased padding to separate the tabs
  * inside it from their surrounding container.
@@ -607,7 +603,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
  *
  * @group tabsheet
  */
-@mixin valo-tabsheet-padded-tabbar-style ($primary-stylename: v-tabsheet) {
+@mixin valo-tabsheet-padded-tabbar-style($primary-stylename: v-tabsheet) {
   > .#{$primary-stylename}-tabcontainer .#{$primary-stylename}-tabs {
     padding: 0 round(math.div($v-unit-size, 4));
   }

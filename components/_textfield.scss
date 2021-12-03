@@ -2,15 +2,22 @@
  * The background color for text fields.
  * @group textfield
  */
-@use "sass:math";
+@use 'sass:math';
 
-$v-textfield-background-color: if(is-dark-color($v-app-background-color), darken($v-app-background-color, 4%), lighten($v-app-background-color, 8%)) !default;
+$v-textfield-background-color: if(
+  is-dark-color($v-app-background-color),
+  darken($v-app-background-color, 4%),
+  lighten($v-app-background-color, 8%)
+) !default;
 
 /**
  * The background color for read-only text fields.
  * @group textfield
  */
-$v-textfield-background-color--readonly: darkest-color($v-app-background-color, darken($v-textfield-background-color, 2%)) !default;
+$v-textfield-background-color--readonly: darkest-color(
+  $v-app-background-color,
+  darken($v-textfield-background-color, 2%)
+) !default;
 
 /**
  * The bevel style for text fields. See the documentation for $v-bevel.
@@ -48,7 +55,6 @@ $v-textfield-border-radius: $v-border-radius !default;
  */
 $v-textfield-disabled-opacity: $v-disabled-opacity !default;
 
-
 /**
  * Outputs the selectors and properties for the TextField component.
  *
@@ -57,8 +63,10 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
  *
  * @group textfield
  */
-@mixin valo-textfield ($primary-stylename: v-textfield, $include-additional-styles: contains($v-included-additional-styles, textfield)) {
-
+@mixin valo-textfield(
+  $primary-stylename: v-textfield,
+  $include-additional-styles: contains($v-included-additional-styles, textfield)
+) {
   .#{$primary-stylename} {
     @include valo-textfield-style;
     width: $v-default-field-width;
@@ -98,13 +106,29 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
     }
 
     .#{$primary-stylename}-tiny {
-      @include valo-textfield-style($unit-size: $v-unit-size--tiny, $states: normal, $background-color: null, $border: null, $gradient: null, $bevel: null, $shadow: null);
+      @include valo-textfield-style(
+        $unit-size: $v-unit-size--tiny,
+        $states: normal,
+        $background-color: null,
+        $border: null,
+        $gradient: null,
+        $bevel: null,
+        $shadow: null
+      );
       font-size: $v-font-size--tiny;
     }
 
     .#{$primary-stylename}-compact,
     .#{$primary-stylename}-small {
-      @include valo-textfield-style($unit-size: $v-unit-size--small, $states: normal, $background-color: null, $border: null, $gradient: null, $bevel: null, $shadow: null);
+      @include valo-textfield-style(
+        $unit-size: $v-unit-size--small,
+        $states: normal,
+        $background-color: null,
+        $border: null,
+        $gradient: null,
+        $bevel: null,
+        $shadow: null
+      );
     }
 
     .#{$primary-stylename}-small {
@@ -112,21 +136,61 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
     }
 
     .#{$primary-stylename}-large {
-      @include valo-textfield-style($unit-size: $v-unit-size--large, $states: normal, $background-color: null, $border: null, $gradient: null, $bevel: null, $shadow: null);
+      @include valo-textfield-style(
+        $unit-size: $v-unit-size--large,
+        $states: normal,
+        $background-color: null,
+        $border: null,
+        $gradient: null,
+        $bevel: null,
+        $shadow: null
+      );
       font-size: $v-font-size--large;
     }
 
     .#{$primary-stylename}-huge {
-      @include valo-textfield-style($unit-size: $v-unit-size--huge, $states: normal, $background-color: null, $border: null, $gradient: null, $bevel: null, $shadow: null);
+      @include valo-textfield-style(
+        $unit-size: $v-unit-size--huge,
+        $states: normal,
+        $background-color: null,
+        $border: null,
+        $gradient: null,
+        $bevel: null,
+        $shadow: null
+      );
       font-size: $v-font-size--huge;
     }
 
     @include valo-textfield-inline-icon($primary-stylename: $primary-stylename, $stylenames: inline-icon);
-    @include valo-textfield-inline-icon($primary-stylename: $primary-stylename, $stylenames: inline-icon tiny, $unit-size: $v-unit-size--tiny, $font-size: $v-font-size--tiny);
-    @include valo-textfield-inline-icon($primary-stylename: $primary-stylename, $stylenames: inline-icon compact, $unit-size: $v-unit-size--small);
-    @include valo-textfield-inline-icon($primary-stylename: $primary-stylename, $stylenames: inline-icon small, $unit-size: $v-unit-size--small, $font-size: $v-font-size--small);
-    @include valo-textfield-inline-icon($primary-stylename: $primary-stylename, $stylenames: inline-icon large, $unit-size: $v-unit-size--large, $font-size: $v-font-size--large);
-    @include valo-textfield-inline-icon($primary-stylename: $primary-stylename, $stylenames: inline-icon huge, $unit-size: $v-unit-size--huge, $font-size: $v-font-size--huge);
+    @include valo-textfield-inline-icon(
+      $primary-stylename: $primary-stylename,
+      $stylenames: inline-icon tiny,
+      $unit-size: $v-unit-size--tiny,
+      $font-size: $v-font-size--tiny
+    );
+    @include valo-textfield-inline-icon(
+      $primary-stylename: $primary-stylename,
+      $stylenames: inline-icon compact,
+      $unit-size: $v-unit-size--small
+    );
+    @include valo-textfield-inline-icon(
+      $primary-stylename: $primary-stylename,
+      $stylenames: inline-icon small,
+      $unit-size: $v-unit-size--small,
+      $font-size: $v-font-size--small
+    );
+    @include valo-textfield-inline-icon(
+      $primary-stylename: $primary-stylename,
+      $stylenames: inline-icon large,
+      $unit-size: $v-unit-size--large,
+      $font-size: $v-font-size--large
+    );
+    @include valo-textfield-inline-icon(
+      $primary-stylename: $primary-stylename,
+      $stylenames: inline-icon huge,
+      $unit-size: $v-unit-size--huge,
+      $font-size: $v-font-size--huge
+    );
 
     .#{$primary-stylename}-align-right {
       text-align: right;
@@ -136,9 +200,7 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
       text-align: center;
     }
   }
-
 }
-
 
 /**
  * Outputs the styles for a text field variant.
@@ -157,27 +219,26 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
  *
  * @group textfield
  */
-@mixin valo-textfield-style (
-    $unit-size        : $v-unit-size,
-    $padding          : null,
-
-    $font-color       : null,
-    $font-weight      : max(400, $v-font-weight),
-    $font-size        : null,
-
-    $background-color : $v-textfield-background-color,
-    $border           : $v-textfield-border,
-    $border-radius    : $v-textfield-border-radius,
-
-    $gradient         : none,
-    $bevel            : $v-textfield-bevel,
-    $shadow           : $v-textfield-shadow,
-
-    $states           : (normal, focus, disabled)
-  ) {
-
+@mixin valo-textfield-style(
+  $unit-size: $v-unit-size,
+  $padding: null,
+  $font-color: null,
+  $font-weight: max(400, $v-font-weight),
+  $font-size: null,
+  $background-color: $v-textfield-background-color,
+  $border: $v-textfield-border,
+  $border-radius: $v-textfield-border-radius,
+  $gradient: none,
+  $bevel: $v-textfield-bevel,
+  $shadow: $v-textfield-shadow,
+  $states: (
+    normal,
+    focus,
+    disabled,
+  )
+) {
   @if contains($states, normal) {
-    @include appearance(none);
+    appearance: none;
     @include user-select(text);
     margin: 0;
     font: inherit;
@@ -205,14 +266,21 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
     @if $gradient == none {
       background: $background-color;
     } @else if $gradient {
-      @include valo-gradient($color: $background-color, $gradient: $gradient)
+      @include valo-gradient($color: $background-color, $gradient: $gradient);
     }
 
     @if $background-color {
       color: valo-font-color($background-color);
     }
 
-    @include box-shadow(valo-bevel-and-shadow($bevel: $bevel, $shadow: $shadow, $background-color: $background-color, $gradient: $gradient));
+    @include box-shadow(
+      valo-bevel-and-shadow(
+        $bevel: $bevel,
+        $shadow: $shadow,
+        $background-color: $background-color,
+        $gradient: $gradient
+      )
+    );
 
     @if $v-animations-enabled {
       @include transition(box-shadow 180ms, border 180ms);
@@ -227,17 +295,20 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
 
   @if contains($states, focus) {
     &:focus {
-      @include valo-textfield-focus-style($bevel: $bevel, $shadow: $shadow, $gradient: $gradient, $background-color: $background-color);
+      @include valo-textfield-focus-style(
+        $bevel: $bevel,
+        $shadow: $shadow,
+        $gradient: $gradient,
+        $background-color: $background-color
+      );
     }
   }
 
   // TODO allow parent selector to be used in interpolation
-  &[class*="prompt"] {
+  &[class*='prompt'] {
     @include valo-textfield-prompt-style($background-color);
   }
-
 }
-
 
 /**
  * Outputs the styles for a text field input prompt.
@@ -246,10 +317,10 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
  *
  * @group textfield
  */
-@mixin valo-textfield-prompt-style ($background-color: $v-textfield-background-color) {
-  @if $background-color ==  transparent {
+@mixin valo-textfield-prompt-style($background-color: $v-textfield-background-color) {
+  @if $background-color == transparent {
     color: inherit;
-    @include opacity(.5);
+    @include opacity(0.5);
   } @else if type-of($background-color) == color {
     $font-color: valo-font-color($background-color);
     $font-color: mix($background-color, $font-color);
@@ -261,7 +332,6 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
   }
 }
 
-
 /**
  * Outputs the styles for a text field focus state.
  *
@@ -272,7 +342,12 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
  *
  * @group textfield
  */
-@mixin valo-textfield-focus-style ($bevel: $v-textfield-bevel, $shadow: $v-textfield-shadow, $background-color: $v-textfield-background-color, $gradient: null) {
+@mixin valo-textfield-focus-style(
+  $bevel: $v-textfield-bevel,
+  $shadow: $v-textfield-shadow,
+  $background-color: $v-textfield-background-color,
+  $gradient: null
+) {
   outline: none;
   @if $v-animations-enabled {
     @include transition(none);
@@ -284,11 +359,18 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
     border-color: $focus-color;
   }
 
-  @include box-shadow(valo-bevel-and-shadow($bevel: $bevel, $shadow: $shadow, $background-color: $background-color, $gradient: $gradient, $include-focus: true));
+  @include box-shadow(
+    valo-bevel-and-shadow(
+      $bevel: $bevel,
+      $shadow: $shadow,
+      $background-color: $background-color,
+      $gradient: $gradient,
+      $include-focus: true
+    )
+  );
 
   @include valo-focus-style;
 }
-
 
 /**
  * Outputs the styles for a read-only text field.
@@ -305,7 +387,6 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
   }
 }
 
-
 /**
  * Outputs the styles for a borderless style text field.
  *
@@ -313,7 +394,7 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
  *
  * @group textfield
  */
-@mixin valo-textfield-borderless-style ($background-color: transparent) {
+@mixin valo-textfield-borderless-style($background-color: transparent) {
   border: none;
   border-radius: 0;
   background: $background-color;
@@ -329,11 +410,10 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
     @include box-shadow(none);
   }
 
-  &[class*="prompt"] {
+  &[class*='prompt'] {
     @include valo-textfield-prompt-style($background-color);
   }
 }
-
 
 /**
  * Outputs the styles for a text field error state.
@@ -392,7 +472,6 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
   @include valo-textfield-error-style($v-error-indicator-level-system-color);
 }
 
-
 /**
  * Outputs the selectors and styles for an inline-icon style for a text field. Included indipendently (i.e. not enclosed with a parent text field selector).
  *
@@ -405,15 +484,22 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
  *
  * @group text field
  */
-@mixin valo-textfield-inline-icon($primary-stylename: v-textfield, $stylenames: inline-icon, $input-selector: null, $unit-size: $v-unit-size, $font-size: $v-font-size, $image-icon-size: 16px) {
-  $slot-selector: "";
-  $caption-selector: "";
-  $text-input-selector: "";
+@mixin valo-textfield-inline-icon(
+  $primary-stylename: v-textfield,
+  $stylenames: inline-icon,
+  $input-selector: null,
+  $unit-size: $v-unit-size,
+  $font-size: $v-font-size,
+  $image-icon-size: 16px
+) {
+  $slot-selector: '';
+  $caption-selector: '';
+  $text-input-selector: '';
 
   @each $style in $stylenames {
-    $slot-selector: $slot-selector + ".v-slot-" + $style;
-    $caption-selector: $caption-selector + ".v-caption-" + $style;
-    $text-input-selector: $text-input-selector + "." + $primary-stylename + "-" + $style;
+    $slot-selector: $slot-selector + '.v-slot-' + $style;
+    $caption-selector: $caption-selector + '.v-caption-' + $style;
+    $text-input-selector: $text-input-selector + '.' + $primary-stylename + '-' + $style;
   }
 
   #{$slot-selector} {
@@ -440,15 +526,15 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
       left: $border-width;
       bottom: $border-width;
       width: $unit-size;
-      line-height: $unit-size - $border-width*2;
+      line-height: $unit-size - $border-width * 2;
       text-align: center;
       font-size: $font-size;
     }
 
     // Image icons
     img.v-icon {
-      left: round(($unit-size - $image-icon-size)*0.5);
-      bottom: round(($unit-size - $image-icon-size)*0.5);
+      left: round(($unit-size - $image-icon-size) * 0.5);
+      bottom: round(($unit-size - $image-icon-size) * 0.5);
     }
   }
 
