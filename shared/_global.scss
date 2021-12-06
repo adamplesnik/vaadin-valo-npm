@@ -242,7 +242,6 @@ $valo-shared-pathPrefix: null;
       padding: round(math.div($v-unit-size, 4));
       margin-top: round(math.div($_size, -2));
       margin-left: round(math.div($_size, -2));
-      background: #fff url(#{$valo-shared-pathPrefix}img/spinner.gif) no-repeat 50%;
       border-radius: $v-border-radius;
     }
 
