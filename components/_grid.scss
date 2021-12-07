@@ -1,4 +1,4 @@
-@use "sass:math";
+@use 'sass:math';
 
 @import 'table';
 
@@ -88,23 +88,6 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
     outline: none;
   }
 
-  .#{$primaryStyleName}-scroller-vertical,
-  .#{$primaryStyleName}-scroller-horizontal {
-    border: $v-grid-border;
-  }
-
-  .#{$primaryStyleName}-scroller-vertical {
-    border-left: none;
-  }
-
-  .#{$primaryStyleName}-scroller-horizontal {
-    border-top: none;
-  }
-
-  .#{$primaryStyleName}-tablewrapper {
-    border: $v-grid-border;
-  }
-
   // Column drag and drop elements
 
   .#{$primaryStyleName} .header-drag-table {
@@ -133,84 +116,14 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
   // Sidebar
 
   .#{$primaryStyleName}-sidebar.v-contextmenu {
-    @include box-shadow(none);
-    border-radius: 0;
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    background-color: $v-grid-header-background-color;
-    border: $v-grid-header-border;
-    padding: 0;
-    z-index: 5;
-
     &.#{$primaryStyleName}-sidebar-popup {
       right: auto;
-    }
-
-    .#{$primaryStyleName}-sidebar-button {
-      background: transparent;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-      outline: none;
-      padding: 0 4px;
-      text-align: right;
-      line-height: 1;
-
-      &[disabled] {
-        cursor: default;
-      }
-
-      &:after {
-        content: '\f0c9';
-        display: block;
-        font-family: ThemeIcons, sans-serif;
-        font-size: $v-grid-header-font-size;
-      }
-    }
-
-    &.closed {
-      border-radius: 0;
-    }
-
-    &.open {
-      .#{$primaryStyleName}-sidebar-button {
-        width: 100%;
-
-        &:after {
-          content: '\f0c9';
-          font-size: $v-grid-header-font-size;
-          line-height: 1;
-        }
-      }
-    }
-
-    .v-ie &.open .#{$primaryStyleName}-sidebar-button {
-      vertical-align: middle;
-    }
-
-    .#{$primaryStyleName}-sidebar-content {
-      padding: 4px 0;
-      overflow-y: auto;
-      overflow-x: hidden;
-
-      .gwt-MenuBar {
-        .gwt-MenuItem .column-hiding-toggle {
-          text-shadow: none;
-        }
-      }
     }
   }
 
   // Common cell styles
 
   .#{$primaryStyleName}-cell {
-    background-color: $v-grid-row-background-color;
-    padding: 0 $v-grid-cell-padding-horizontal;
-    line-height: $v-grid-row-height;
-    text-overflow: ellipsis;
-
     > * {
       line-height: $v-line-height;
       vertical-align: middle;
@@ -222,53 +135,14 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
     }
 
     &.frozen {
-      @include box-shadow(1px 0 2px rgba(0, 0, 0, 0.1));
-      border-right: $v-grid-cell-vertical-border;
       position: relative;
       z-index: 11;
-
-      @if $v-grid-cell-vertical-border and $v-grid-cell-vertical-border != none {
-        + th,
-        + td {
-          border-left: none;
-        }
-      }
     }
 
     // Style for ComponentRenderer wrap
     div.component-wrap {
       width: 100%;
     }
-  }
-
-  // Rows
-
-  .#{$primaryStyleName}-row > td,
-  .#{$primaryStyleName}-editor-cells > div {
-    border-left: $v-grid-cell-vertical-border;
-    border-bottom: $v-grid-cell-horizontal-border;
-
-    &:first-child {
-      border-left: none;
-    }
-  }
-
-  .#{$primaryStyleName}-editor-cells.frozen > div {
-    @include box-shadow(1px 0 2px rgba(0, 0, 0, 0.1));
-    border-right: $v-grid-cell-vertical-border;
-    border-left: none;
-  }
-
-  .#{$primaryStyleName}-row-stripe > td {
-    background-color: $v-grid-row-stripe-background-color;
-  }
-
-  .#{$primaryStyleName}-row-selected > td {
-    background: $v-grid-row-selected-background-color;
-  }
-
-  .#{$primaryStyleName}-row-focused > td {
-    background-color: $v-grid-row-focused-background-color;
   }
 
   // Header
@@ -294,16 +168,8 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
       padding-right: round($v-grid-header-font-size * 1.2) + $v-grid-cell-padding-horizontal;
 
       &:after {
-        font-family: ThemeIcons, sans-serif;
-        content: '\f0de'' ' attr(sort-order);
         position: absolute;
-        right: $v-grid-cell-padding-horizontal;
-        font-size: round($v-grid-header-font-size * 0.85);
       }
-    }
-
-    .sort-desc:after {
-      content: '\f0dd'' ' attr(sort-order);
     }
   }
 
@@ -311,8 +177,8 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
     position: absolute;
     width: 2 * $v-grid-cell-padding-horizontal;
     right: -$v-grid-cell-padding-horizontal;
-    top: 0px;
-    bottom: 0px;
+    top: 0;
+    bottom: 0;
     cursor: col-resize;
     z-index: 10;
 
@@ -625,14 +491,6 @@ $v-grid-drag-indicator-color: $v-focus-color;
     }
   }
 
-  .#{$primary-stylename}-header .#{$primary-stylename}-cell {
-    @include valo-gradient($v-grid-header-background-color);
-    text-shadow: valo-text-shadow(
-      $font-color: valo-font-color($v-grid-header-background-color),
-      $background-color: $v-grid-header-background-color
-    );
-  }
-
   .#{$primary-stylename}-header .#{$primary-stylename}-cell.dragged {
     @include opacity(0.5, false);
     @include transition(opacity 0.3s ease-in-out);
@@ -642,14 +500,6 @@ $v-grid-drag-indicator-color: $v-focus-color;
     margin-top: round(math.div($v-grid-row-height, -2));
   }
 
-  .#{$primary-stylename}-footer .#{$primary-stylename}-cell {
-    @include valo-gradient($v-grid-footer-background-color);
-    text-shadow: valo-text-shadow(
-      $font-color: valo-font-color($v-grid-footer-background-color),
-      $background-color: $v-grid-footer-background-color
-    );
-  }
-
   .#{$primary-stylename}-header-deco {
     @include valo-gradient($v-grid-header-background-color);
   }
@@ -657,22 +507,6 @@ $v-grid-drag-indicator-color: $v-focus-color;
   .#{$primary-stylename}-footer-deco,
   .#{$primary-stylename}-horizontal-scrollbar-deco {
     @include valo-gradient($v-grid-footer-background-color);
-  }
-
-  // Selected
-  .#{$primary-stylename}-row-selected {
-    $grid-sel-bg: $v-grid-row-selected-background-color;
-
-    > .#{$primary-stylename}-cell {
-      @include valo-gradient($grid-sel-bg);
-      color: valo-font-color($grid-sel-bg);
-      text-shadow: valo-text-shadow($font-color: valo-font-color($grid-sel-bg), $background-color: $grid-sel-bg);
-      border-color: adjust-color($grid-sel-bg, $lightness: -8%, $saturation: -8%);
-    }
-
-    > .#{$primary-stylename}-cell-focused:before {
-      border-color: adjust-color($grid-sel-bg, $lightness: 20%);
-    }
   }
 
   .#{$primary-stylename}-editor {
@@ -787,22 +621,6 @@ $v-grid-drag-indicator-color: $v-focus-color;
 
   .#{$primary-stylename}-spacer {
     margin-top: first-number($v-grid-border) * -1;
-  }
-
-  // Sidebar
-  .#{$primary-stylename}-sidebar.v-contextmenu {
-    &.open {
-      .#{$primary-stylename}-sidebar-content {
-        margin: 0 0 2px;
-        padding: 4px 4px 2px;
-        overflow-y: auto;
-        overflow-x: hidden;
-      }
-    }
-
-    &.closed {
-      @include valo-gradient($v-grid-header-background-color);
-    }
   }
 
   // Customize scrollbars

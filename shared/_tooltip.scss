@@ -133,7 +133,6 @@ $v-tooltip-border-radius: $v-border-radius - 1px !default;
     }
 
     .v-errormessage {
-      background-color: opacify($v-tooltip-error-message-background-color, 1);
       background-color: $v-tooltip-error-message-background-color;
       color: $v-tooltip-error-message-font-color;
       margin: -$v-tooltip-padding-vertical #{-$v-tooltip-padding-horizontal};

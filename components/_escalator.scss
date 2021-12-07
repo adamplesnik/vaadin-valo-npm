@@ -89,12 +89,6 @@
 
   .#{$primaryStyleName}-row {
     display: block;
-
-    > td,
-    > th {
-      // IE8 likes the bgcolor here instead of on the row
-      background-color: $background-color;
-    }
   }
 
   .#{$primaryStyleName}-row {
@@ -104,7 +98,6 @@
   .#{$primaryStyleName}-cell {
     display: block;
     float: left;
-    padding: 2px;
     white-space: nowrap;
     box-sizing: border-box;
     overflow: hidden;
