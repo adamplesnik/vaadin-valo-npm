@@ -123,16 +123,6 @@
     padding-right: 0.5em;
   }
 
-  .v-caption-on-right > .v-caption {
-    //vertical-align: top;
-  }
-
-  .v-caption-on-left > .v-widget,
-  .v-caption-on-right > .v-widget {
-    display: inline-block;
-    //vertical-align: middle;
-  }
-
   .v-has-caption.v-has-width > .v-widget {
     width: 100% !important;
   }
