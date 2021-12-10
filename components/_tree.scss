@@ -2,7 +2,7 @@
  *
  * @group tree
  */
-@use "sass:math";
+@use 'sass:math';
 
 $v-tree-row-height: round(math.div($v-unit-size, 1.3)) !default;
 
@@ -162,7 +162,6 @@ $v-tree-expand-animation-enabled: false !default;
   .#{$primary-stylename}-node-selected {
     $font-color: valo-font-color($v-selection-color, 0.9);
     color: $font-color;
-    text-shadow: valo-text-shadow($font-color: $font-color, $background-color: $v-selection-item-selection-color);
 
     &:after {
       opacity: 1;
@@ -202,7 +201,6 @@ $v-tree-expand-animation-enabled: false !default;
     line-height: 2px;
     color: $v-focus-color;
     text-indent: round(math.div($v-font-size, -4));
-    text-shadow: 0 0 1px $v-background-color, 0 0 1px $v-background-color;
     opacity: 1;
     visibility: visible;
   }

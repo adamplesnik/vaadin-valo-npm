@@ -8,7 +8,7 @@ $v-panel-background-color: scale-color(lighten($v-app-background-color, 5%), $sa
  *
  * @group panel
  */
- $v-panel-border: $v-border !default;
+$v-panel-border: $v-border !default;
 
 /**
  *
@@ -18,8 +18,10 @@ $v-panel-background-color: scale-color(lighten($v-app-background-color, 5%), $sa
  *
  * @group panel
  */
-@mixin valo-panel ($primary-stylename: v-panel, $include-additional-styles: contains($v-included-additional-styles, panel)) {
-
+@mixin valo-panel(
+  $primary-stylename: v-panel,
+  $include-additional-styles: contains($v-included-additional-styles, panel)
+) {
   .#{$primary-stylename} {
     @include valo-panel-style;
     overflow: visible !important;
@@ -36,7 +38,6 @@ $v-panel-background-color: scale-color(lighten($v-app-background-color, 5%), $sa
     height: 100%;
     @include valo-panel-adjust-content-margins;
   }
-
 
   @if $include-additional-styles {
     .#{$primary-stylename}-borderless {
@@ -64,10 +65,7 @@ $v-panel-background-color: scale-color(lighten($v-app-background-color, 5%), $sa
       }
     }
   }
-
 }
-
-
 
 /**
  *
@@ -80,15 +78,23 @@ $v-panel-background-color: scale-color(lighten($v-app-background-color, 5%), $sa
  *
  * @group panel
  */
-@mixin valo-panel-style ($primary-stylename: v-panel, $background-color : $v-panel-background-color, $shadow : $v-shadow,  $border : $v-panel-border, $border-radius    : $v-border-radius  ) {
+@mixin valo-panel-style(
+  $primary-stylename: v-panel,
+  $background-color: $v-panel-background-color,
+  $shadow: $v-shadow,
+  $border: $v-panel-border,
+  $border-radius: $v-border-radius
+) {
   background: $background-color;
   color: valo-font-color($background-color);
   border-radius: $border-radius;
-  border: valo-border($border: $border, $color: darkest-color($background-color, $v-app-background-color), $strength: 0.7);
+  border: valo-border(
+    $border: $border,
+    $color: darkest-color($background-color, $v-app-background-color),
+    $strength: 0.7
+  );
   @include box-shadow(valo-bevel-and-shadow($shadow: $shadow));
 }
-
-
 
 /**
  *
@@ -100,7 +106,12 @@ $v-panel-background-color: scale-color(lighten($v-app-background-color, 5%), $sa
  *
  * @group panel
  */
-@mixin valo-panel-caption-style ( $background-color : $v-background-color,  $bevel  : $v-bevel, $gradient : valo-gradient-style($v-gradient) valo-gradient-opacity($v-gradient)*0.25, $border   : $v-panel-border ) {
+@mixin valo-panel-caption-style(
+  $background-color: $v-background-color,
+  $bevel: $v-bevel,
+  $gradient: valo-gradient-style($v-gradient) valo-gradient-opacity($v-gradient) * 0.25,
+  $border: $v-panel-border
+) {
   box-sizing: border-box;
   padding: 0 round(math.div($v-unit-size, 3));
   line-height: $v-unit-size - first-number($v-border);
@@ -108,7 +119,11 @@ $v-panel-background-color: scale-color(lighten($v-app-background-color, 5%), $sa
 
   $shadow: null;
   @if color-luminance($background-color) < color-luminance($v-background-color) - 10 {
-    $border-style: valo-border($border: $border, $color: $bg, $strength: 0.7);
+    $border-style: valo-border(
+      $border: $border,
+      $color: $bg,
+      $strength: 0.7,
+    );
     $shadow: 0 0 0 first-number($border-style) first-color($border-style);
     border-bottom: none;
     margin-bottom: first-number($border-style);
@@ -119,11 +134,10 @@ $v-panel-background-color: scale-color(lighten($v-app-background-color, 5%), $sa
   color: valo-font-color($bg);
   font-weight: $v-caption-font-weight;
   font-size: $v-caption-font-size;
-  @include box-shadow(valo-bevel-and-shadow($background-color: $bg, $bevel: $bevel, $shadow: $shadow, $gradient: $gradient));
-  text-shadow: valo-text-shadow(valo-font-color($bg), $bg);
+  @include box-shadow(
+    valo-bevel-and-shadow($background-color: $bg, $bevel: $bevel, $shadow: $shadow, $gradient: $gradient)
+  );
 }
-
-
 
 /**
  *
@@ -132,7 +146,7 @@ $v-panel-background-color: scale-color(lighten($v-app-background-color, 5%), $sa
  *
  * @group panel
  */
-@mixin valo-panel-well-style ($shadow: false) {
+@mixin valo-panel-well-style($shadow: false) {
   @if $shadow == false {
     $new-shadow: ();
     @if list-of-lists($v-shadow) {
@@ -152,13 +166,11 @@ $v-panel-background-color: scale-color(lighten($v-app-background-color, 5%), $sa
   border-radius: $v-border-radius;
   border: valo-border();
 
-  > div > [class*="-caption"] {
+  > div > [class*='-caption'] {
     background: transparent;
     @include box-shadow(none);
   }
 }
-
-
 
 /**
  *
@@ -173,7 +185,7 @@ $v-panel-background-color: scale-color(lighten($v-app-background-color, 5%), $sa
   border-radius: 0;
   @include box-shadow(none);
 
-  > div > [class*="-caption"] {
+  > div > [class*='-caption'] {
     background: transparent;
     @include box-shadow(none);
     color: inherit;
@@ -183,8 +195,6 @@ $v-panel-background-color: scale-color(lighten($v-app-background-color, 5%), $sa
   }
 }
 
-
-
 /**
  *
  *
@@ -192,27 +202,32 @@ $v-panel-background-color: scale-color(lighten($v-app-background-color, 5%), $sa
  *
  * @group panel
  */
-@mixin valo-panel-scroll-divider-style ($border-width: max(1px, first-number($v-panel-border))) {
-  > [class*="-captionwrap"] {
+@mixin valo-panel-scroll-divider-style($border-width: max(1px, first-number($v-panel-border))) {
+  > [class*='-captionwrap'] {
     position: relative;
     z-index: 2;
 
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: -$border-width;
       right: 0;
       left: 0;
       height: 0;
       border-top: $border-width solid first-color(valo-border($color: $v-app-background-color, $strength: 0.5));
-      $border-color: first-color(valo-border($color: $v-app-background-color, $strength: 1));
-      border-color: rgba($border-color, .5);
+      $border-color: first-color(
+        valo-border(
+          $color: $v-app-background-color,
+          $strength: 1,
+        )
+      );
+      border-color: rgba($border-color, 0.5);
     }
   }
 
-  > [class*="-content"] {
+  > [class*='-content'] {
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       z-index: 2;
       top: 0;
@@ -223,8 +238,6 @@ $v-panel-background-color: scale-color(lighten($v-app-background-color, 5%), $sa
     }
   }
 }
-
-
 
 /**
  *

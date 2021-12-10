@@ -6,10 +6,12 @@
  *
  * @group menubar
  */
-@use "sass:math";
+@use 'sass:math';
 
-@mixin valo-menubar ($primary-stylename: v-menubar, $include-additional-styles: contains($v-included-additional-styles, menubar)) {
-
+@mixin valo-menubar(
+  $primary-stylename: v-menubar,
+  $include-additional-styles: contains($v-included-additional-styles, menubar)
+) {
   .#{$primary-stylename} {
     @include valo-button-static-style($states: normal focus disabled, $vertical-centering: false);
     @include valo-menubar-style;
@@ -41,7 +43,14 @@
   }
 
   .#{$primary-stylename} > .#{$primary-stylename}-menuitem-selected {
-    @include valo-button-style($states: normal, $background-color: $v-selection-color, $border-radius: 0, $shadow: null, $unit-size: null, $font-weight: null);
+    @include valo-button-style(
+      $states: normal,
+      $background-color: $v-selection-color,
+      $border-radius: 0,
+      $shadow: null,
+      $unit-size: null,
+      $font-weight: null
+    );
     border-top-width: 0;
     border-left-width: 0;
     border-bottom-width: 0;
@@ -57,23 +66,22 @@
 
     + .#{$primary-stylename}-menuitem-caption:after {
       font-family: ThemeIcons;
-      content: "\f078";
+      content: '\f078';
       font-size: 0.7em;
-      vertical-align: .15em;
-      margin: 0 -.2em 0 .5em;
+      vertical-align: 0.15em;
+      margin: 0 -0.2em 0 0.5em;
       // IE filters are not supported on pseudo elements
-      opacity: .5;
+      opacity: 0.5;
     }
 
     + .#{$primary-stylename}-menuitem-caption:empty:after {
-      margin-left: -.2em;
+      margin-left: -0.2em;
     }
   }
 
   .#{$primary-stylename}-popup {
     @include valo-menubar-popup-style($primary-stylename);
   }
-
 
   @if $include-additional-styles {
     .#{$primary-stylename}-small {
@@ -85,11 +93,7 @@
       @include valo-menubar-borderless-style;
     }
   }
-
 }
-
-
-
 
 /**
  *
@@ -100,8 +104,17 @@
  *
  * @group menubar
  */
-@mixin valo-menubar-style ($primary-stylename: v-menubar, $background-color: $v-background-color, $unit-size: $v-unit-size) {
-  @include valo-button-style($states: normal focus, $cursor: default, $background-color: $background-color, $unit-size: $unit-size);
+@mixin valo-menubar-style(
+  $primary-stylename: v-menubar,
+  $background-color: $v-background-color,
+  $unit-size: $v-unit-size
+) {
+  @include valo-button-style(
+    $states: normal focus,
+    $cursor: default,
+    $background-color: $background-color,
+    $unit-size: $unit-size
+  );
   padding: 0;
   text-align: left;
 
@@ -111,15 +124,12 @@
     > .#{$primary-stylename}-menuitem {
       padding: 0 round(math.div($unit-size, 2.6));
 
-      &[class*="-icon-only"] {
+      &[class*='-icon-only'] {
         width: $unit-size;
       }
     }
   }
 }
-
-
-
 
 /**
  *
@@ -169,7 +179,7 @@
   }
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     right: 0;
@@ -200,7 +210,7 @@
     cursor: inherit;
   }
 
-  &[class*="-icon-only"] {
+  &[class*='-icon-only'] {
     width: $v-unit-size;
     padding: 0;
 
@@ -210,10 +220,6 @@
   }
 }
 
-
-
-
-
 /**
  *
  *
@@ -221,7 +227,7 @@
  *
  * @group menubar
  */
-@mixin valo-menubar-popup-style ($primary-stylename: v-menubar) {
+@mixin valo-menubar-popup-style($primary-stylename: v-menubar) {
   @include valo-selection-overlay-style;
 
   margin: ceil(math.div($v-unit-size, 8)) 0 0 1px !important;
@@ -233,7 +239,7 @@
   .#{$primary-stylename}-menuitem {
     display: block;
     @include valo-selection-item-style;
-    padding-left: $v-selection-item-height + round($v-selection-item-padding-horizontal*0.5); // Make room for checkable icon
+    padding-left: $v-selection-item-height + round($v-selection-item-padding-horizontal * 0.5); // Make room for checkable icon
     padding-right: $v-unit-size;
     position: relative;
   }
@@ -263,22 +269,20 @@
     }
   }
 
-  [class*="checked"] .#{$primary-stylename}-menuitem-caption:before {
+  [class*='checked'] .#{$primary-stylename}-menuitem-caption:before {
     @include valo-menubar-checked-icon-style;
     position: absolute;
     left: $v-selection-item-padding-horizontal;
   }
 
-  [class*="unchecked"] .#{$primary-stylename}-menuitem-caption:before {
-    content: "";
+  [class*='unchecked'] .#{$primary-stylename}-menuitem-caption:before {
+    content: '';
   }
 
-  [class*="disabled"] {
+  [class*='disabled'] {
     cursor: default;
   }
 }
-
-
 
 /**
  *
@@ -288,7 +292,7 @@
  */
 @mixin valo-menubar-submenu-indicator-style {
   font-family: ThemeIcons;
-  content: "\f054";
+  content: '\f054';
   line-height: $v-selection-item-height + 2px;
 }
 
@@ -299,10 +303,9 @@
  * @group menubar
  */
 @mixin valo-menubar-checked-icon-style {
-  content: "\f00c";
+  content: '\f00c';
   font-family: ThemeIcons;
 }
-
 
 /**
  *
@@ -311,8 +314,15 @@
  *
  * @group menubar
  */
-@mixin valo-menubar-menuitem-checked-style ($background-color: if(color-luminance($v-background-color) < 10, scale-color($v-background-color, $lightness: 10%, $saturation: -5%), scale-color($v-background-color, $lightness: -5%, $saturation: -5%))) {
-  $grad: valo-gradient-style($v-gradient) valo-gradient-opacity($v-gradient)*0.25;
+@mixin valo-menubar-menuitem-checked-style(
+  $background-color:
+    if(
+      color-luminance($v-background-color) < 10,
+      scale-color($v-background-color, $lightness: 10%, $saturation: -5%),
+      scale-color($v-background-color, $lightness: -5%, $saturation: -5%)
+    )
+) {
+  $grad: valo-gradient-style($v-gradient) valo-gradient-opacity($v-gradient) * 0.25;
   @include box-shadow(none);
   @include valo-gradient($color: $background-color, $gradient: $grad, $direction: to top);
   color: valo-font-color($background-color, 0.9);
@@ -325,12 +335,11 @@
  *
  * @group menubar
  */
-@mixin valo-menubar-menuitem-checked ($background-color, $primary-stylename: v-menubar) {
+@mixin valo-menubar-menuitem-checked($background-color, $primary-stylename: v-menubar) {
   .#{$primary-stylename}-menuitem-checked {
     @include valo-menubar-menuitem-checked-style($background-color: $background-color);
   }
 }
-
 
 /**
  *
@@ -339,12 +348,11 @@
  *
  * @group menubar
  */
-@mixin valo-menubar-borderless-style ($primary-stylename: v-menubar) {
+@mixin valo-menubar-borderless-style($primary-stylename: v-menubar) {
   border: none;
   border-radius: 0;
   padding: first-number($v-border);
   @include box-shadow(none);
-  text-shadow: none;
   background: transparent;
   color: inherit;
 
@@ -390,14 +398,13 @@
 
     .#{$primary-stylename}-menuitem-caption {
       position: relative;
-      top: first-number($v-border)*-1;
+      top: first-number($v-border) * -1;
     }
   }
 
   .#{$primary-stylename}-menuitem-selected {
     $font-color: valo-font-color($v-selection-color, 0.9);
     color: $font-color;
-    text-shadow: valo-text-shadow($background-color: $v-selection-color, $font-color: $font-color);
 
     &:hover {
       color: $font-color;

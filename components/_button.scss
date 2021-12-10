@@ -6,14 +6,16 @@
  *
  * @group button
  */
-@use "sass:math";
+@use 'sass:math';
 
-@mixin valo-button ($primary-stylename: v-button, $include-additional-styles: contains($v-included-additional-styles, button)) {
+@mixin valo-button(
+  $primary-stylename: v-button,
+  $include-additional-styles: contains($v-included-additional-styles, button)
+) {
   .#{$primary-stylename} {
     @include valo-button-static-style;
     @include valo-button-style;
   }
-
 
   @if $include-additional-styles {
     .#{$primary-stylename}-primary {
@@ -51,19 +53,47 @@
     }
 
     .#{$primary-stylename}-tiny {
-      @include valo-button-style($unit-size: $v-unit-size--tiny, $bevel: null, $shadow: null, $background-color: null, $font-size: $v-font-size--tiny, $font-weight: null);
+      @include valo-button-style(
+        $unit-size: $v-unit-size--tiny,
+        $bevel: null,
+        $shadow: null,
+        $background-color: null,
+        $font-size: $v-font-size--tiny,
+        $font-weight: null
+      );
     }
 
     .#{$primary-stylename}-small {
-      @include valo-button-style($unit-size: $v-unit-size--small, $bevel: null, $shadow: null, $background-color: null, $font-size: $v-font-size--small, $font-weight: null);
+      @include valo-button-style(
+        $unit-size: $v-unit-size--small,
+        $bevel: null,
+        $shadow: null,
+        $background-color: null,
+        $font-size: $v-font-size--small,
+        $font-weight: null
+      );
     }
 
     .#{$primary-stylename}-large {
-      @include valo-button-style($unit-size: $v-unit-size--large, $bevel: null, $shadow: null, $background-color: null, $font-size: $v-font-size--large, $font-weight: null);
+      @include valo-button-style(
+        $unit-size: $v-unit-size--large,
+        $bevel: null,
+        $shadow: null,
+        $background-color: null,
+        $font-size: $v-font-size--large,
+        $font-weight: null
+      );
     }
 
     .#{$primary-stylename}-huge {
-      @include valo-button-style($unit-size: $v-unit-size--huge, $bevel: null, $shadow: null, $background-color: null, $font-size: $v-font-size--huge, $font-weight: null);
+      @include valo-button-style(
+        $unit-size: $v-unit-size--huge,
+        $bevel: null,
+        $shadow: null,
+        $background-color: null,
+        $font-size: $v-font-size--huge,
+        $font-weight: null
+      );
     }
 
     .#{$primary-stylename}-icon-align-right {
@@ -101,7 +131,6 @@
   }
 }
 
-
 /**
  * Outputs the static styles (i.e. styles which don't differ between button variants) for a button.
  *
@@ -110,7 +139,16 @@
  *
  * @group button
  */
-@mixin valo-button-static-style ($states: (normal, hover, focus, active, disabled), $vertical-centering: true) {
+@mixin valo-button-static-style(
+  $states: (
+    normal,
+    hover,
+    focus,
+    active,
+    disabled,
+  ),
+  $vertical-centering: true
+) {
   @if contains($states, normal) {
     position: relative;
     text-align: center;
@@ -125,7 +163,7 @@
   @if contains($states, hover) or contains($states, focus) or contains($states, active) {
     // Generated element for :hover, :focus and :active styles
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       right: 0;
@@ -157,7 +195,6 @@
   }
 }
 
-
 /**
  * Outputs the styles for a button variant.
  *
@@ -177,26 +214,28 @@
  *
  * @group button
  */
-@mixin valo-button-style (
-  $unit-size        : $v-unit-size,
-  $padding          : null,
-
-  $font-color       : null,
-  $font-weight      : $v-font-weight + 100,
-  $font-size        : null, // Inherited by default
-  $cursor           : null,
-
-  $background-color : $v-background-color,
-  $border           : $v-border,
-  $border-radius    : $v-border-radius,
-
-  $gradient         : $v-gradient,
-  $bevel            : $v-bevel,
-  $shadow           : $v-shadow,
-
-  $states           : (normal, hover, focus, active, disabled)
+@mixin valo-button-style(
+  $unit-size: $v-unit-size,
+  $padding: null,
+  $font-color: null,
+  $font-weight: $v-font-weight + 100,
+  $font-size: null,
+   // Inherited by defaul
+  $cursor: null,
+  $background-color: $v-background-color,
+  $border: $v-border,
+  $border-radius: $v-border-radius,
+  $gradient: $v-gradient,
+  $bevel: $v-bevel,
+  $shadow: $v-shadow,
+  $states: (
+    normal,
+    hover,
+    focus,
+    active,
+    disabled,
+  )
 ) {
-
   @if contains($states, focus) or contains($states, active) {
     $border-width: first-number($border);
     &:after {
@@ -227,13 +266,20 @@
     border-radius: $border-radius;
 
     @if type-of($background-color) == color {
-      @include valo-border-with-gradient($border: $border, $color: darkest-color($background-color, $v-background-color), $gradient: $gradient);
+      @include valo-border-with-gradient(
+        $border: $border,
+        $color: darkest-color($background-color, $v-background-color),
+        $gradient: $gradient
+      );
       @include valo-gradient($background-color, $gradient);
-      @include box-shadow(valo-bevel-and-shadow($bevel: $bevel, $shadow: $shadow, $background-color: $background-color, $gradient: $gradient));
-    }
-
-    @if $bevel and type-of($_font-color) == color and type-of($background-color) == color {
-      text-shadow: valo-text-shadow($_font-color, $background-color);
+      @include box-shadow(
+        valo-bevel-and-shadow(
+          $bevel: $bevel,
+          $shadow: $shadow,
+          $background-color: $background-color,
+          $gradient: $gradient
+        )
+      );
     }
 
     @if $bevel == none and $shadow == none {
@@ -262,7 +308,6 @@
   }
 }
 
-
 /**
  * Outputs the hover state styles for a button. The styles are by default targeted
  * for a pseudo element which is shown on top of the normal state button.
@@ -271,14 +316,13 @@
  *
  * @param {color} $background-color ($v-background-color) - The background color of the normal state button
  */
-@mixin valo-button-hover-style ($background-color: $v-background-color) {
+@mixin valo-button-hover-style($background-color: $v-background-color) {
   $bg: darken($background-color, 25%);
   @if is-dark-color($background-color) {
     $bg: lighten($background-color, 15%);
   }
-  background-color: rgba($bg, .1);
+  background-color: rgba($bg, 0.1);
 }
-
 
 /**
  * Outputs the focus state styles for a button. The styles are by default targeted
@@ -289,7 +333,7 @@
  * @param {color} $background-color ($v-background-color) - The background color of the normal state button
  * @param {list} $border-fallback (inherit) - If the luminance of $v-focus-color is less than the $background-color, the focus color is also used for the border color. If not, then $border-fallback is used for the focus element's border value.
  */
-@mixin valo-button-focus-style ($background-color: $v-background-color, $border-fallback: inherit) {
+@mixin valo-button-focus-style($background-color: $v-background-color, $border-fallback: inherit) {
   $focus-color: $v-focus-color;
 
   @if color-luminance($focus-color) + 50 < color-luminance($background-color) {
@@ -301,7 +345,6 @@
   @include valo-focus-style;
 }
 
-
 /**
  * Outputs the active state (pressed/down) styles for a button. The styles are by default targeted
  * for a pseudo element which is shown on top of the normal state button.
@@ -310,11 +353,10 @@
  *
  * @param {color} $background-color ($v-background-color) - The background color of the normal state button
  */
-@mixin valo-button-active-style ($background-color: $v-background-color) {
+@mixin valo-button-active-style($background-color: $v-background-color) {
   $bg: scale-color($background-color, $lightness: -50%, $saturation: saturation($background-color));
-  background-color: rgba($bg, .2);
+  background-color: rgba($bg, 0.2);
 }
-
 
 /**
  * Outputs styles to allow vertical centering of the icon and the caption, independent of the
@@ -341,7 +383,6 @@
   }
 }
 
-
 /**
  * Output styles for a borderless button. Expects that the targeted element
  * already has both valo-button-static-style and valo-button-style included.
@@ -350,7 +391,7 @@
  *
  * @group button
  */
-@mixin valo-button-borderless-style ($font-color: inherit) {
+@mixin valo-button-borderless-style($font-color: inherit) {
   border: none;
   @include box-shadow(none);
   background: transparent;
@@ -367,14 +408,13 @@
   }
 
   &:active:not(.v-disabled) {
-    @include opacity(.7);
+    @include opacity(0.7);
 
     &:after {
       background: transparent;
     }
   }
 }
-
 
 /**
  * Output styles for a "quiet" button (a button whose outline is only shown
@@ -392,16 +432,15 @@
     visibility: visible;
   }
 
-  [class*="wrap"] {
+  [class*='wrap'] {
     visibility: visible;
   }
 
-  [class*="caption"] {
+  [class*='caption'] {
     // For IE8
     display: inline-block;
   }
 }
-
 
 /**
  * Output styles to align a button's icon on the right side of its caption.
@@ -409,7 +448,7 @@
  * @group button
  */
 @mixin valo-button-icon-align-right-style {
-  [class*="wrap"] {
+  [class*='wrap'] {
     display: inline-block;
   }
 
@@ -424,7 +463,6 @@
   }
 }
 
-
 /**
  * Output styles to align a button's icon on top of its caption.
  *
@@ -435,7 +473,7 @@
   padding-top: ceil(math.div($v-unit-size, 9));
   padding-bottom: ceil(math.div($v-unit-size, 9));
 
-  [class*="wrap"] {
+  [class*='wrap'] {
     display: inline-block;
   }
 

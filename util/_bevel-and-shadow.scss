@@ -10,7 +10,7 @@
  *
  * @return {list} The input $border value with any color keyword replaced with the corresponding actual color
  */
-@use "sass:math";
+@use 'sass:math';
 
 @function valo-border($border: $v-border, $color: $v-background-color, $context: null, $strength: 1) {
   @if type-of($border) != list {
@@ -208,15 +208,19 @@
       }
 
       $tint: blend-lighten(
-        adjust-color($top-color, $lightness: $v-bevel-depth*0.25 * $adjust-amount, $saturation: -$v-bevel-depth*0.5),
-        scale-color($top-color, $lightness: $v-bevel-depth*0.25 * $adjust-amount)
+        adjust-color(
+          $top-color,
+          $lightness: $v-bevel-depth * 0.25 * $adjust-amount,
+          $saturation: -$v-bevel-depth * 0.5
+        ),
+        scale-color($top-color, $lightness: $v-bevel-depth * 0.25 * $adjust-amount)
       );
       $shade: blend-darken(
         rgba(
           scale-color(
             $bottom-color,
             $lightness: max(-30%, math.div(-$v-bevel-depth, 3) * $adjust-amount),
-            $saturation: -$v-bevel-depth*0.5
+            $saturation: -$v-bevel-depth * 0.5
           ),
           math.div($v-bevel-depth, 100%)
         ),
@@ -280,31 +284,4 @@
     }
   }
   @return $ret;
-}
-
-/**
- * Return a CSS text-shadow property value according to the specified style parameters.
- *
- * @group style
- *
- * @param {color} $font-color ($v-font-color) - the color of the text to which the text-shadow is added
- * @param {color} $background-color ($v-background-color) - the color of the background where the text is to which the text-shadow is added
- * @param {size} $offset (-1px) - the size of the text shadow vertical offset
- * @param {number (pct)} $opacity ($v-shadow-opacity) - the percentage amount of shadow which is applied
- */
-@function valo-text-shadow(
-  $font-color: $v-font-color,
-  $background-color: $v-background-color,
-  $offset: -1px,
-  $opacity: $v-shadow-opacity
-) {
-  $color: null;
-  @if color-luminance($font-color) < color-luminance($background-color) {
-    $color: rgba(#fff, math.div($opacity, 100%));
-    $offset: $offset * -1;
-  } @else {
-    $color: rgba(#000, math.div($opacity, 100%));
-  }
-
-  @return 0 $offset 0 $color;
 }
