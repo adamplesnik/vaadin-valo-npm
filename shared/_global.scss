@@ -317,17 +317,6 @@ $valo-shared-pathPrefix: null;
     padding: 0 0.2em;
   }
 
-  select {
-    font: inherit;
-    font-weight: 400;
-    line-height: inherit;
-    padding: round(math.div($v-unit-size, 8));
-    margin: 0;
-    border-radius: $v-border-radius;
-
-    @include valo-nativeselect-select-style;
-  }
-
   .v-disabled {
     cursor: default !important;
   }
