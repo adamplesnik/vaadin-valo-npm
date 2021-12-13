@@ -52,7 +52,7 @@ $v-loading-indicator-bar-height--wait: ceil(math.div($v-unit-size, 6)) !default;
 
 @include keyframes(v-progress-start) {
   0% {
-    width: 0%;
+    width: 0;
   }
   100% {
     width: 50%;
@@ -130,17 +130,13 @@ $v-loading-indicator-bar-height--wait: ceil(math.div($v-unit-size, 6)) !default;
 
   .v-loading-indicator-delay {
     width: 90%;
-    .v-ff {
-      width: 50%;
-    }
+
     @include animation(v-progress-delay 3.8s forwards);
   }
 
   .v-loading-indicator-wait {
     width: 96%;
-    .v-ff {
-      width: 90%;
-    }
+
     @include animation(v-progress-wait 5s forwards, v-progress-wait-pulse 1s 4s infinite backwards);
   }
 }

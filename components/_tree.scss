@@ -103,13 +103,7 @@ $v-tree-expand-animation-enabled: false !default;
       padding-right: $v-tree-row-height;
       cursor: pointer;
       display: inline-block;
-      // Allow to click on the whole row (almost, at least the right side part)
       width: 100%;
-
-      // IE does strange things when the width is wider than the parent
-      .v-ie & {
-        width: auto;
-      }
     }
 
     .v-icon {
@@ -213,11 +207,6 @@ $v-tree-expand-animation-enabled: false !default;
     @include box-shadow(0 0 0 2px $v-focus-color);
     position: relative;
     border-radius: $v-border-radius;
-  }
-
-  .v-ff .#{$primary-stylename}-node-drag-top:before,
-  .v-ff .#{$primary-stylename}-node-drag-bottom:after {
-    line-height: 1px;
   }
 }
 

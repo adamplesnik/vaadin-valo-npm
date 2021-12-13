@@ -220,7 +220,7 @@
   $font-color: null,
   $font-weight: $v-font-weight + 100,
   $font-size: null,
-   // Inherited by defaul
+  // Inherited by defaul
   $cursor: null,
   $background-color: $v-background-color,
   $border: $v-border,
@@ -366,21 +366,6 @@
  */
 @mixin valo-button-vertical-centering {
   @include valo-vertical-align-guide($to-align: div, $pseudo-element: before);
-
-  // WebKit handles line-heights and vertical-alignments somewhat differently, so we need to adjust
-  .v-sa &:before {
-    height: 110%;
-  }
-
-  // Firefox needs a bit of adjusting as well
-  .v-ff &:before {
-    height: 107%;
-  }
-
-  // ...and so does IE. Who knew?
-  .v-ie &:before {
-    margin-top: 4px;
-  }
 }
 
 /**
