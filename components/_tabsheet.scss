@@ -349,45 +349,11 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
     }
   }
 
-  [class*='Next'] {
-    padding-left: round(math.div($v-unit-size, 8));
-    &:before {
-      @include valo-tabsheet-scroller-next-icon-style;
-    }
-  }
-
-  [class*='Prev'] {
-    padding-right: round(math.div($v-unit-size, 8));
-    &:before {
-      @include valo-tabsheet-scroller-prev-icon-style;
-    }
-  }
-
   [class*='disabled'] {
     cursor: default;
     color: inherit !important;
     @include opacity(0.1, true);
   }
-}
-
-/**
- * Outputs the font icon styles for the previous button element of a tabsheet scroller.
- *
- * @group tabsheet
- */
-@mixin valo-tabsheet-scroller-prev-icon-style {
-  font-family: ThemeIcons;
-  content: '\f053';
-}
-
-/**
- * Outputs the font icon styles for the next button element of a tabsheet scroller.
- *
- * @group tabsheet
- */
-@mixin valo-tabsheet-scroller-next-icon-style {
-  font-family: ThemeIcons;
-  content: '\f054';
 }
 
 /**

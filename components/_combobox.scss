@@ -403,8 +403,6 @@
   }
 
   &:before {
-    @include valo-combobox-button-icon-style;
-
     @if $v-animations-enabled {
       @include transition(color 140ms);
     }
@@ -434,16 +432,6 @@
       @include valo-button-active-style($background-color);
     }
   }
-}
-
-/**
- * Outputs the font icon styles for the combobox drop down button.
- *
- * @group combobox
- */
-@mixin valo-combobox-button-icon-style {
-  font-family: ThemeIcons;
-  content: '\f078';
 }
 
 /**
@@ -533,7 +521,6 @@
     height: ceil(math.div($v-unit-size, 1.5));
     line-height: ceil(math.div($v-unit-size, 1.5));
     text-align: center;
-    font-family: ThemeIcons;
     @include transform(scale(0.8));
 
     color: valo-font-color($v-background-color);

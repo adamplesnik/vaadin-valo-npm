@@ -346,7 +346,6 @@
   }
 
   &:before {
-    @include valo-datefield-button-icon-style;
     @if $v-animations-enabled {
       @include transition(color 140ms);
     }
@@ -364,16 +363,6 @@
     }
     border-radius: inherit;
   }
-}
-
-/**
- * Outputs the font icon styles for the date field drop down button.
- *
- * @group datefield
- */
-@mixin valo-datefield-button-icon-style {
-  font-family: ThemeIcons;
-  content: '\f073';
 }
 
 /**
@@ -506,22 +495,6 @@
         }
       }
     }
-  }
-
-  .v-button-prevyear:before {
-    @include valo-datefield-calendarpanel-prevyear-icon-style;
-  }
-
-  .v-button-prevmonth:before {
-    @include valo-datefield-calendarpanel-prevmonth-icon-style;
-  }
-
-  .v-button-nextyear:before {
-    @include valo-datefield-calendarpanel-nextyear-icon-style;
-  }
-
-  .v-button-nextmonth:before {
-    @include valo-datefield-calendarpanel-nextmonth-icon-style;
   }
 
   td.#{$primary-stylename}-month {
@@ -659,46 +632,6 @@
 @mixin valo-datefield-calendarpanel-day-focused-style {
   @include valo-focus-style;
   position: relative; // Show above other cells
-}
-
-/**
- * Outputs the font icon styles for the next month button in a calendar panel.
- *
- * @group datefield
- */
-@mixin valo-datefield-calendarpanel-nextmonth-icon-style {
-  font-family: ThemeIcons;
-  content: '\f105';
-}
-
-/**
- * Outputs the font icon styles for the previous month button in a calendar panel.
- *
- * @group datefield
- */
-@mixin valo-datefield-calendarpanel-prevmonth-icon-style {
-  font-family: ThemeIcons;
-  content: '\f104';
-}
-
-/**
- * Outputs the font icon styles for the next year button in a calendar panel.
- *
- * @group datefield
- */
-@mixin valo-datefield-calendarpanel-nextyear-icon-style {
-  font-family: ThemeIcons;
-  content: '\f101';
-}
-
-/**
- * Outputs the font icon styles for the previous year button in a calendar panel.
- *
- * @group datefield
- */
-@mixin valo-datefield-calendarpanel-prevyear-icon-style {
-  font-family: ThemeIcons;
-  content: '\f100';
 }
 
 /**

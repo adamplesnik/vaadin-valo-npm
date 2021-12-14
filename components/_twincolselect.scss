@@ -5,8 +5,7 @@
  *
  * @group twin-column-select
  */
-@mixin valo-twincolselect ($primary-stylename: v-select-twincol) {
-
+@mixin valo-twincolselect($primary-stylename: v-select-twincol) {
   .#{$primary-stylename} {
     white-space: normal;
 
@@ -16,8 +15,8 @@
 
     .v-textfield,
     .v-nativebutton {
-     width: auto !important;
-     margin-top: round(math.div($v-unit-size, 4));
+      width: auto !important;
+      margin-top: round(math.div($v-unit-size, 4));
     }
 
     .v-nativebutton {
@@ -68,14 +67,6 @@
         border-radius: 0 0 $v-border-radius $v-border-radius;
       }
     }
-
-    .v-button-wrap:before {
-      @include valo-twincolselect-remove-icon-style;
-    }
-
-    .v-button:first-child .v-button-wrap:before {
-      @include valo-twincolselect-add-icon-style;
-    }
   }
 
   .#{$primary-stylename}-error {
@@ -119,28 +110,4 @@
       @include valo-textfield-error-level-system-style;
     }
   }
-}
-
-
-
-/**
- *
- *
- *
- * @group twin-column-select
- */
-@mixin valo-twincolselect-add-icon-style {
-  font-family: ThemeIcons;
-  content: "\f054";
-}
-
-/**
- *
- *
- *
- * @group twin-column-select
- */
-@mixin valo-twincolselect-remove-icon-style {
-  font-family: ThemeIcons;
-  content: "\f053";
 }

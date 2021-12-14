@@ -11,7 +11,7 @@ $valo-richtextarea-use-valo-icons: true !default;
  *
  * @group richtextarea
  */
-@mixin valo-richtextarea ($primary-stylename: v-richtextarea) {
+@mixin valo-richtextarea($primary-stylename: v-richtextarea) {
   .#{$primary-stylename} {
     @include valo-textfield-style($states: normal, $padding: 0);
     height: auto;
@@ -20,7 +20,9 @@ $valo-richtextarea-use-valo-icons: true !default;
 
   .#{$primary-stylename} .gwt-RichTextToolbar {
     @include valo-gradient($color: $v-background-color);
-    @include box-shadow(valo-bevel-and-shadow($bevel: $v-bevel, $background-color: $v-background-color, $gradient: $v-gradient));
+    @include box-shadow(
+      valo-bevel-and-shadow($bevel: $v-bevel, $background-color: $v-background-color, $gradient: $v-gradient)
+    );
     border-bottom: valo-border();
     color: valo-font-color($v-background-color);
   }
@@ -40,51 +42,33 @@ $valo-richtextarea-use-valo-icons: true !default;
 
   .#{$primary-stylename} .gwt-ToggleButton-down,
   .#{$primary-stylename} .gwt-ToggleButton-down-hovering {
-    $grad: valo-gradient-style($v-gradient) valo-gradient-opacity($v-gradient)*0.25;
+    $grad: valo-gradient-style($v-gradient) valo-gradient-opacity($v-gradient) * 0.25;
     //box-shadow: none;
     @include valo-gradient($color: darken($v-background-color, 10%), $gradient: $grad, $direction: to top);
   }
 
   @if $valo-richtextarea-use-valo-icons {
-
     // List of title attribute values and Valo Icons for the formatting buttons
-    $icons:  "Toggle Bold" "\f032",
-              "Toggle Italic" "\f033",
-              "Toggle Underline" "\f0cd",
-              "Toggle Subscript" "\f12c",
-              "Toggle Superscript" "\f12b",
-              "Left Justify" "\f036",
-              "Center" "\f037",
-              "Right Justify" "\f038",
-              "Toggle Strikethrough" "\f0cc",
-              "Indent Right" "\f03c",
-              "Indent Left" "\f03b",
-              "Insert Horizontal Rule" "\2014",
-              "Insert Ordered List" "\f0cb",
-              "Insert Unordered List" "\f0ca",
-              "Insert Image" "\f03e",
-              "Create Link" "\f0c1",
-              "Remove Link" "\f127",
-              "Remove Formatting" "\f12d";
+    $icons: 'Toggle Bold' '\f032', 'Toggle Italic' '\f033', 'Toggle Underline' '\f0cd', 'Toggle Subscript' '\f12c',
+      'Toggle Superscript' '\f12b', 'Left Justify' '\f036', 'Center' '\f037', 'Right Justify' '\f038',
+      'Toggle Strikethrough' '\f0cc', 'Indent Right' '\f03c', 'Indent Left' '\f03b', 'Insert Horizontal Rule' '\2014',
+      'Insert Ordered List' '\f0cb', 'Insert Unordered List' '\f0ca', 'Insert Image' '\f03e', 'Create Link' '\f0c1',
+      'Remove Link' '\f127', 'Remove Formatting' '\f12d';
 
     .#{$primary-stylename} .gwt-RichTextToolbar-top {
       img {
         display: none;
       }
 
-      div:before {
-        font-family: ThemeIcons;
-      }
-
       @each $pair in $icons {
         $first-of-pair: first($pair);
         $last-of-pair: last($pair);
-        div[title="#{$first-of-pair}"]:before {
-          content: "#{$last-of-pair}";
+        div[title='#{$first-of-pair}']:before {
+          content: '#{$last-of-pair}';
         }
       }
     }
-  } // Use ThemeIcons
+  }
 
   .#{$primary-stylename} .gwt-RichTextToolbar-bottom {
     font-size: round($v-font-size * 0.8);
@@ -96,8 +80,8 @@ $valo-richtextarea-use-valo-icons: true !default;
   }
 
   .#{$primary-stylename} .gwt-RichTextArea {
-  	background: #fff;
-  	border: none;
+    background: #fff;
+    border: none;
     display: block;
   }
 
@@ -105,5 +89,4 @@ $valo-richtextarea-use-valo-icons: true !default;
     padding: ceil(math.div($v-unit-size, 9)) ceil(math.div($v-unit-size, 6));
     background: transparent;
   }
-
 }

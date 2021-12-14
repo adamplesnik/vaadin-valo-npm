@@ -6,14 +6,15 @@
  *
  * @group checkbox
  */
-@use "sass:math";
+@use 'sass:math';
 
-@mixin valo-checkbox ($primary-stylename: v-checkbox, $include-additional-styles: contains($v-included-additional-styles, checkbox)) {
-
+@mixin valo-checkbox(
+  $primary-stylename: v-checkbox,
+  $include-additional-styles: contains($v-included-additional-styles, checkbox)
+) {
   .#{$primary-stylename} {
     @include valo-checkbox-style;
   }
-
 
   @if $include-additional-styles {
     .#{$primary-stylename}-small {
@@ -26,34 +27,24 @@
       font-size: $v-font-size--large;
     }
   }
-
 }
-
-
-/**
- * Outputs the font icon to indicate the checked state.
- * 
- * @group checkbox
- */
-@mixin valo-checkbox-icon-style {
-  content: "\f00c";
-  font-family: ThemeIcons;
-}
-
 
 /**
  * Outputs the styles for a checkbox variant.
- * 
+ *
  * @param {color} $background-color ($v-background-color) - The background color of the checkbox
  * @param {size} $unit-size ($v-unit-size) - The sizing of the checkbox. The width and height of the checkbox will be the unit-size divided by 2.
- * @param {color} $selection-color ($v-selection-color) - The color of the checked state icon 
- * 
+ * @param {color} $selection-color ($v-selection-color) - The color of the checked state icon
+ *
  * @group checkbox
  */
-@mixin valo-checkbox-style ($background-color: $v-background-color, $unit-size: $v-unit-size, $selection-color: $v-selection-color) {
-
+@mixin valo-checkbox-style(
+  $background-color: $v-background-color,
+  $unit-size: $v-unit-size,
+  $selection-color: $v-selection-color
+) {
   // So that we can use the same 'unit-size' for all component sizes
-  $size: $unit-size*0.5;
+  $size: $unit-size * 0.5;
 
   position: relative;
   line-height: round($size);
@@ -64,7 +55,7 @@
   }
 
   :root & {
-    padding-left: round($size*1.33);
+    padding-left: round($size * 1.33);
 
     label {
       @include valo-tappable;
@@ -74,20 +65,28 @@
 
   :root & > input {
     position: absolute;
-    clip: rect(0,0,0,0);
-    left: .2em;
-    top: .2em;
+    clip: rect(0, 0, 0, 0);
+    left: 0.2em;
+    top: 0.2em;
     z-index: 0;
     margin: 0;
 
     &:focus ~ label:before {
       @include valo-button-focus-style($background-color: $background-color, $border-fallback: null);
-      @include box-shadow(valo-bevel-and-shadow($background-color: $background-color, $bevel: $v-bevel, $shadow: $v-shadow, $gradient: $v-gradient, $include-focus: true));
+      @include box-shadow(
+        valo-bevel-and-shadow(
+          $background-color: $background-color,
+          $bevel: $v-bevel,
+          $shadow: $v-shadow,
+          $gradient: $v-gradient,
+          $include-focus: true
+        )
+      );
     }
 
     & ~ label:before,
     & ~ label:after {
-      content: "";
+      content: '';
       display: inline-block;
       box-sizing: border-box;
       width: round($size);
@@ -96,18 +95,22 @@
       top: 0;
       left: 0;
       border-radius: min(round(math.div($size, 3)), $v-border-radius);
-      font-size: round($v-font-size * 0.8 * math.div($size*2, $v-unit-size));
+      font-size: round($v-font-size * 0.8 * math.div($size * 2, $v-unit-size));
       text-align: center;
     }
 
     & ~ label:before {
-      @include valo-button-style($background-color: $background-color, $unit-size: $size, $border-radius: min(round(math.div($size, 3)), $v-border-radius), $states: normal);
+      @include valo-button-style(
+        $background-color: $background-color,
+        $unit-size: $size,
+        $border-radius: min(round(math.div($size, 3)), $v-border-radius),
+        $states: normal
+      );
       padding: 0;
       height: round($size);
     }
 
     & ~ label:after {
-      @include valo-checkbox-icon-style;
       color: transparent;
       @if $v-animations-enabled {
         @include transition(color 100ms);
@@ -124,7 +127,7 @@
   }
 
   & > .v-icon,
-  & > label .v-icon  {
+  & > label .v-icon {
     margin: 0 round(math.div($size, 3)) 0 round(math.div($size, 6));
     min-width: 1em;
     cursor: pointer;
@@ -164,6 +167,4 @@
       @include opacity($v-disabled-opacity);
     }
   }
-
-
 }

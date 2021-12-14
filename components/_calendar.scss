@@ -163,14 +163,6 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
     }
   }
 
-  .#{$primary-stylename}-header-week .#{$primary-stylename}-back {
-    @include valo-calendar-prev-style;
-  }
-
-  .#{$primary-stylename}-header-week .#{$primary-stylename}-next {
-    @include valo-calendar-next-style;
-  }
-
   // Month grid
 
   .#{$primary-stylename}-month {
@@ -515,27 +507,5 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
 
   .#{$primary-stylename}.v-disabled * {
     cursor: default;
-  }
-}
-
-/**
- * Outputs the styles for the previous button.
- *
- * @group calendar
- */
-@mixin valo-calendar-prev-style {
-  &:before {
-    @include valo-tabsheet-scroller-prev-icon-style;
-  }
-}
-
-/**
- * Outputs the styles for the next button.
- *
- * @group calendar
- */
-@mixin valo-calendar-next-style {
-  &:before {
-    @include valo-tabsheet-scroller-next-icon-style;
   }
 }

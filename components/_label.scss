@@ -96,7 +96,6 @@ $v-letter-spacing--h3: 0 !default;
  */
 $v-letter-spacing--h4: 0 !default;
 
-
 /**
  * Outputs the selectors and styles for the Label component.
  *
@@ -105,13 +104,15 @@ $v-letter-spacing--h4: 0 !default;
  *
  * @group label
  */
-@mixin valo-label ($primary-stylename: v-label, $include-additional-styles: contains($v-included-additional-styles, label)) {
-
+@mixin valo-label(
+  $primary-stylename: v-label,
+  $include-additional-styles: contains($v-included-additional-styles, label)
+) {
   .#{$primary-stylename} {
     @include user-select(text);
 
     &.v-disabled {
-        @include opacity($v-disabled-opacity);
+      @include opacity($v-disabled-opacity);
     }
   }
 
@@ -119,15 +120,19 @@ $v-letter-spacing--h4: 0 !default;
     white-space: nowrap;
   }
 
-  h1, .#{$primary-stylename}-h1,
-  h2, .#{$primary-stylename}-h2,
-  h3, .#{$primary-stylename}-h3 {
+  h1,
+  .#{$primary-stylename}-h1,
+  h2,
+  .#{$primary-stylename}-h2,
+  h3,
+  .#{$primary-stylename}-h3 {
     line-height: $v-line-height--header;
     font-weight: $v-font-weight--header;
     color: valo-font-color($v-app-background-color, 0.92);
   }
 
-  h1, .#{$primary-stylename}-h1 {
+  h1,
+  .#{$primary-stylename}-h1 {
     font-size: $v-font-size--h1;
     margin-top: 1.4em;
     margin-bottom: 1em;
@@ -135,7 +140,8 @@ $v-letter-spacing--h4: 0 !default;
     letter-spacing: $v-letter-spacing--h1;
   }
 
-  h2, .#{$primary-stylename}-h2 {
+  h2,
+  .#{$primary-stylename}-h2 {
     font-size: $v-font-size--h2;
     font-family: $v-font-family--h2;
     margin-top: 1.6em;
@@ -143,7 +149,8 @@ $v-letter-spacing--h4: 0 !default;
     letter-spacing: $v-letter-spacing--h2;
   }
 
-  h3, .#{$primary-stylename}-h3 {
+  h3,
+  .#{$primary-stylename}-h3 {
     font-size: $v-font-size--h3;
     font-family: $v-font-family--h3;
     margin-top: 1.8em;
@@ -151,7 +158,8 @@ $v-letter-spacing--h4: 0 !default;
     letter-spacing: $v-letter-spacing--h3;
   }
 
-  h4, .#{$primary-stylename}-h4 {
+  h4,
+  .#{$primary-stylename}-h4 {
     line-height: $v-line-height--header;
     font-weight: $v-font-weight + 200;
     font-size: $v-font-size--small;
@@ -163,14 +171,13 @@ $v-letter-spacing--h4: 0 !default;
   }
 
   .v-csslayout {
-   > h1,
-   > h2,
-   > h3,
-   > h4
-   > .#{$primary-stylename}-h1,
-   > .#{$primary-stylename}-h2,
-   > .#{$primary-stylename}-h3,
-   > .#{$primary-stylename}-h4 {
+    > h1,
+    > h2,
+    > h3,
+    > h4 > .#{$primary-stylename}-h1,
+    > .#{$primary-stylename}-h2,
+    > .#{$primary-stylename}-h3,
+    > .#{$primary-stylename}-h4 {
       &:first-child {
         margin-top: $v-font-size;
       }
@@ -179,36 +186,46 @@ $v-letter-spacing--h4: 0 !default;
 
   .v-verticallayout > .v-slot:first-child,
   .v-verticallayout > div > .v-slot:first-child {
-    h1, .#{$primary-stylename}-h1,
-    h2, .#{$primary-stylename}-h2,
-    h3, .#{$primary-stylename}-h3,
-    h4, .#{$primary-stylename}-h4 {
+    h1,
+    .#{$primary-stylename}-h1,
+    h2,
+    .#{$primary-stylename}-h2,
+    h3,
+    .#{$primary-stylename}-h3,
+    h4,
+    .#{$primary-stylename}-h4 {
       margin-top: $v-font-size;
     }
   }
 
   .v-verticallayout > .v-slot:first-child .v-formlayout-contentcell,
   .v-verticallayout > div > .v-slot:first-child .v-formlayout-contentcell {
-    h1, .#{$primary-stylename}-h1,
-    h2, .#{$primary-stylename}-h2,
-    h3, .#{$primary-stylename}-h3,
-    h4, .#{$primary-stylename}-h4 {
+    h1,
+    .#{$primary-stylename}-h1,
+    h2,
+    .#{$primary-stylename}-h2,
+    h3,
+    .#{$primary-stylename}-h3,
+    h4,
+    .#{$primary-stylename}-h4 {
       margin-top: -0.5em;
     }
   }
 
-  h1, .#{$primary-stylename}-h1,
-  h2, .#{$primary-stylename}-h2,
-  h3, .#{$primary-stylename}-h3,
-  h4, .#{$primary-stylename}-h4 {
+  h1,
+  .#{$primary-stylename}-h1,
+  h2,
+  .#{$primary-stylename}-h2,
+  h3,
+  .#{$primary-stylename}-h3,
+  h4,
+  .#{$primary-stylename}-h4 {
     &.no-margin {
       margin: 0 !important;
     }
   }
 
-
   @if $include-additional-styles {
-
     .#{$primary-stylename}-colored {
       color: $v-font-color--colored;
     }
@@ -236,7 +253,7 @@ $v-letter-spacing--h4: 0 !default;
     .#{$primary-stylename}-light {
       font-weight: $v-font-weight - 100;
       @if $v-font-weight < 400 {
-        color: valo-font-color($v-app-background-color, .5);
+        color: valo-font-color($v-app-background-color, 0.5);
       }
     }
 
@@ -258,27 +275,21 @@ $v-letter-spacing--h4: 0 !default;
       color: valo-font-color($v-textfield-background-color);
       border: 2px solid $v-friendly-color;
       border-radius: $v-border-radius;
-      padding: round(math.div($v-unit-size, 5)) round(math.div($v-unit-size, 2)) round(math.div($v-unit-size, 5)) round($v-unit-size);
+      padding: round(math.div($v-unit-size, 5))
+        round(math.div($v-unit-size, 2))
+        round(math.div($v-unit-size, 5))
+        round($v-unit-size);
       font-weight: $v-font-weight + 100;
       font-size: round($v-font-size * 0.95);
-
-      &:before {
-        font-family: ThemeIcons;
-        content: "\f00c";
-        margin-right: .5em;
-        margin-left: round(math.div($v-unit-size, -2));
-        color: $v-friendly-color;
-      }
     }
 
     .#{$primary-stylename}-failure {
       border-color: $v-error-indicator-color;
 
       &:before {
-        content: "\f05e";
+        content: '\f05e';
         color: $v-error-indicator-color;
       }
     }
   }
-
 }

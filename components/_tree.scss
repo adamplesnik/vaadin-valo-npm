@@ -87,7 +87,6 @@ $v-tree-expand-animation-enabled: false !default;
       z-index: 2;
 
       &:before {
-        @include valo-tree-collapsed-icon-style;
         display: inline-block;
         width: 0.5em;
         text-align: center;
@@ -132,11 +131,8 @@ $v-tree-expand-animation-enabled: false !default;
   }
 
   .#{$primary-stylename}-node-expanded > .#{$primary-stylename}-node-caption > div:before {
-    @include valo-tree-expanded-icon-style;
-
     @if $v-tree-animations-enabled {
       @include transform(rotate(90deg));
-      @include valo-tree-collapsed-icon-style;
     }
   }
 
@@ -207,30 +203,5 @@ $v-tree-expand-animation-enabled: false !default;
     @include box-shadow(0 0 0 2px $v-focus-color);
     position: relative;
     border-radius: $v-border-radius;
-  }
-}
-
-/**
- *
- *
- *
- * @group tree
- */
-@mixin valo-tree-collapsed-icon-style {
-  content: '\f0da';
-  font-family: ThemeIcons;
-}
-
-/**
- *
- *
- * @param {bool} $force (false) -
- *
- * @group tree
- */
-@mixin valo-tree-expanded-icon-style($force: false) {
-  @if $v-tree-animations-enabled == false or $force {
-    content: '\f0d7';
-    font-family: ThemeIcons;
   }
 }

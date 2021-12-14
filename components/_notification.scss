@@ -194,12 +194,6 @@ $v-notification-title-color: $v-focus-color !default;
       .#{$primary-stylename}-caption {
         color: $v-friendly-color;
         font-weight: $v-font-weight + 100;
-
-        &:before {
-          font-family: ThemeIcons;
-          content: '\f00c';
-          margin-right: 0.5em;
-        }
       }
 
       &.bar {

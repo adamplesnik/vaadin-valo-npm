@@ -345,14 +345,6 @@ $v-table-background-color: null !default;
     display: inline-block;
   }
 
-  .#{$primary-stylename}-header-cell-asc .#{$primary-stylename}-sort-indicator:before {
-    @include valo-table-sort-asc-icon-style;
-  }
-
-  .#{$primary-stylename}-header-cell-desc .#{$primary-stylename}-sort-indicator:before {
-    @include valo-table-sort-desc-icon-style;
-  }
-
   [class*='rowheader'] span.v-icon {
     min-width: 1em;
   }
@@ -424,9 +416,6 @@ $v-table-background-color: null !default;
     &:active:after {
       @include valo-button-active-style;
     }
-    &:before {
-      @include valo-table-column-selector-icon-style;
-    }
   }
 
   .#{$primary-stylename}-header-wrap:hover .#{$primary-stylename}-column-selector {
@@ -436,11 +425,6 @@ $v-table-background-color: null !default;
 
   .v-on,
   .v-off {
-    &:before {
-      @include valo-table-column-visible-icon-style;
-      font-size: 0.9em;
-      margin-right: round(math.div($v-unit-size, 6));
-    }
     div {
       display: inline;
     }
@@ -566,50 +550,6 @@ $v-table-background-color: null !default;
       }
     }
   }
-}
-
-/**
- *
- *
- *
- * @group table
- */
-@mixin valo-table-sort-asc-icon-style {
-  content: '\f0de';
-  font-family: ThemeIcons;
-}
-
-/**
- *
- *
- *
- * @group table
- */
-@mixin valo-table-sort-desc-icon-style {
-  content: '\f0dd';
-  font-family: ThemeIcons;
-}
-
-/**
- *
- *
- *
- * @group table
- */
-@mixin valo-table-column-selector-icon-style {
-  font-family: ThemeIcons;
-  content: '\f013';
-}
-
-/**
- *
- *
- *
- * @group table
- */
-@mixin valo-table-column-visible-icon-style {
-  content: '\f00c';
-  font-family: ThemeIcons;
 }
 
 /**
