@@ -93,7 +93,7 @@ $v-tree-expand-animation-enabled: false !default;
         margin: 0 0.6em 0 0.8em;
 
         @if $v-tree-animations-enabled {
-          @include transition(all 100ms);
+          transition: all 100ms;
         }
       }
     }
@@ -125,14 +125,14 @@ $v-tree-expand-animation-enabled: false !default;
       opacity: 0;
 
       @if $v-tree-animations-enabled {
-        @include transition(opacity 120ms);
+        transition: opacity 120ms;
       }
     }
   }
 
   .#{$primary-stylename}-node-expanded > .#{$primary-stylename}-node-caption > div:before {
     @if $v-tree-animations-enabled {
-      @include transform(rotate(90deg));
+      transform: rotate(90deg);
     }
   }
 
@@ -200,7 +200,7 @@ $v-tree-expand-animation-enabled: false !default;
   }
 
   .#{$primary-stylename}-node-caption-drag-center {
-    @include box-shadow(0 0 0 2px $v-focus-color);
+    box-shadow: 0 0 0 2px $v-focus-color;
     position: relative;
     border-radius: $v-border-radius;
   }

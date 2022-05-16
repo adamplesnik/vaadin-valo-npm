@@ -42,7 +42,7 @@ $v-window-modality-curtain-background-color: #222 !default;
 
   @include keyframes(valo-animate-out-scale-down-fade) {
     100% {
-      @include transform(scale(0.8));
+      transform: scale(0.8);
       opacity: 0;
     }
   }
@@ -65,9 +65,9 @@ $v-window-modality-curtain-background-color: #222 !default;
 
     @if $v-window-shadow {
       @if $v-window-shadow == none {
-        @include box-shadow(none);
+        box-shadow: none;
       } @else if $v-window-shadow != $v-overlay-shadow {
-        @include box-shadow(valo-bevel-and-shadow($shadow: $v-window-shadow));
+        box-shadow: valo-bevel-and-shadow($shadow: $v-window-shadow);
       }
     }
     @if $v-window-border-radius != $v-border-radius {
@@ -80,10 +80,10 @@ $v-window-modality-curtain-background-color: #222 !default;
     overflow: hidden !important;
 
     @if $v-animations-enabled {
-      @include transition(width 200ms, height 200ms, top 200ms, left 200ms);
+      transition: width 200ms, height 200ms, top 200ms, left 200ms;
 
       &.#{$primary-stylename}-animate-in {
-        @include transition(none);
+        transition: none;
       }
     }
   }
@@ -95,7 +95,7 @@ $v-window-modality-curtain-background-color: #222 !default;
     bottom: 0;
     left: 0;
     background: $v-window-modality-curtain-background-color;
-    @include opacity(max(0.2, 0.8 - math.div(valo-gradient-opacity(), 100%)));
+    opacity: max(0.2, 0.8 - math.div(valo-gradient-opacity(), 100%));
     @if $v-animations-enabled {
       @include valo-animate-in-fade($duration: 400ms, $delay: 100ms);
       .v-op12 & {
@@ -111,7 +111,7 @@ $v-window-modality-curtain-background-color: #222 !default;
 
   .#{$primary-stylename}-resizingCurtain + .v-window,
   .#{$primary-stylename}-draggingCurtain + .v-window {
-    @include transition(none);
+    transition: none;
   }
 
   $scroll-divider-width: max(1px, first-number($v-border));
@@ -124,7 +124,7 @@ $v-window-modality-curtain-background-color: #222 !default;
     left: 0;
     right: 0;
     // Raise above the window content, if that is ever promoted to a layer
-    @include transform(translatez(0));
+    transform: translatez(0);
 
     &:after {
       content: '';
@@ -183,7 +183,7 @@ $v-window-modality-curtain-background-color: #222 !default;
     color: valo-font-color($v-window-background-color, 0.4);
 
     @if $v-animations-enabled {
-      @include transition(color 140ms);
+      transition: color 140ms;
     }
 
     &:focus {
@@ -191,7 +191,7 @@ $v-window-modality-curtain-background-color: #222 !default;
     }
 
     &:hover {
-      @include opacity(1);
+      opacity: 1;
       color: $v-selection-color;
     }
 

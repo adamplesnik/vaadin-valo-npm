@@ -114,7 +114,7 @@ $v-loading-indicator-bar-height--wait: ceil(math.div($v-unit-size, 6)) !default;
     //@include linear-gradient(to right, rgba($v-loading-indicator-color,0) 0%, $v-loading-indicator-color 100%);
     pointer-events: none;
 
-    @include transition(none);
+    transition: none;
     @include animation(v-progress-start 1000ms 200ms both);
     //@include animation-fill-mode(forwards);
 
@@ -124,7 +124,7 @@ $v-loading-indicator-bar-height--wait: ceil(math.div($v-unit-size, 6)) !default;
       width: 100% !important;
       opacity: 0;
       @include animation(none);
-      @include transition(opacity 500ms 300ms, width 300ms);
+      transition: opacity 500ms 300ms, width 300ms;
     }
   }
 

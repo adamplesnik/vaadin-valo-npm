@@ -115,7 +115,7 @@
       .#{$primary-stylename}-button {
         border: none;
         color: inherit;
-        @include opacity(0.5);
+        opacity: 0.5;
       }
     }
 
@@ -255,7 +255,7 @@
   }
 
   &.v-disabled {
-    @include opacity($v-disabled-opacity);
+    opacity: $v-disabled-opacity;
 
     [class*='button'] {
       cursor: default;
@@ -347,7 +347,7 @@
 
   &:before {
     @if $v-animations-enabled {
-      @include transition(color 140ms);
+      transition: color 140ms;
     }
   }
 
@@ -478,7 +478,7 @@
         line-height: round($v-font-size * 1.5);
 
         @if $v-animations-enabled {
-          @include transition(color 200ms);
+          transition: color 200ms;
         }
       }
 
@@ -488,7 +488,7 @@
 
       &.outside-range {
         cursor: default;
-        @include opacity(0.3);
+        opacity: 0.3;
 
         &:hover:before {
           color: mix($v-background-color, valo-font-color($v-background-color));
@@ -568,7 +568,7 @@
     border-radius: ceil($v-border-radius * 0.5);
   }
   @if $v-animations-enabled {
-    @include transition(color 200ms);
+    transition: color 200ms;
   }
 }
 

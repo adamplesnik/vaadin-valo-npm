@@ -148,7 +148,7 @@ $v-table-background-color: null !default;
   .#{$primary-stylename}-header table,
   .#{$primary-stylename}-footer table,
   .#{$primary-stylename}-table {
-    @include box-shadow(0 0 0 $v-table-border-width $border-color);
+    box-shadow: 0 0 0 $v-table-border-width $border-color;
   }
 
   .#{$primary-stylename}-header-wrap,
@@ -268,7 +268,8 @@ $v-table-background-color: null !default;
 
   .#{$primary-stylename}-body {
     border: $v-table-border-width solid $border-color;
-    @include user-select(text);
+    -webkit-user-select: text;
+    user-select: text;
   }
 
   .#{$primary-stylename}-table {
@@ -362,7 +363,7 @@ $v-table-background-color: null !default;
 
   .#{$primary-stylename}-header-drag {
     position: absolute;
-    @include opacity(0.9);
+    opacity: 0.9;
     margin-top: round(math.div($v-table-row-height, -2));
     z-index: 30000;
     line-height: 1;
@@ -399,9 +400,9 @@ $v-table-background-color: null !default;
     cursor: pointer;
     text-align: center;
 
-    @include opacity(0);
+    opacity: 0;
     @if $v-animations-enabled {
-      @include transition(opacity 200ms 2s);
+      transition: opacity 200ms 2s;
     }
 
     &:after {
@@ -419,7 +420,7 @@ $v-table-background-color: null !default;
   }
 
   .#{$primary-stylename}-header-wrap:hover .#{$primary-stylename}-column-selector {
-    @include opacity(1);
+    opacity: 1;
     @include transition-delay(200ms);
   }
 
@@ -430,7 +431,7 @@ $v-table-background-color: null !default;
     }
 
     &.v-disabled {
-      @include opacity($v-disabled-opacity);
+      opacity: $v-disabled-opacity;
     }
   }
   .v-off:before {
@@ -440,9 +441,9 @@ $v-table-background-color: null !default;
   tbody.v-drag-element {
     display: block;
     overflow: visible;
-    @include box-shadow(none);
+    box-shadow: none;
     background: transparent;
-    @include opacity(1);
+    opacity: 1;
 
     tr {
       display: block;
@@ -478,7 +479,7 @@ $v-table-background-color: null !default;
   }
 
   .#{$primary-stylename}-drag .#{$primary-stylename}-body {
-    @include box-shadow(0 0 0 2px rgba($v-focus-color, 0.5));
+    box-shadow: 0 0 0 2px rgba($v-focus-color, 0.5);
 
     @if color-luminance($v-focus-color) + 50 < color-luminance($background-color) {
       border-color: $v-focus-color;

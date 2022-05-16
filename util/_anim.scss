@@ -1,7 +1,6 @@
 $valo-anim-keyframes-included: false !default;
 
-@if $v-animations-enabled and $valo-anim-keyframes-included == false{
-
+@if $v-animations-enabled and $valo-anim-keyframes-included == false {
   @include keyframes(valo-animate-in-fade) {
     0% {
       opacity: 0;
@@ -16,55 +15,55 @@ $valo-anim-keyframes-included: false !default;
 
   @include keyframes(valo-animate-in-slide-down) {
     0% {
-      @include transform( translateY(-100%) );
+      transform: translateY(-100%);
     }
   }
 
   @include keyframes(valo-animate-in-slide-up) {
     0% {
-      @include transform( translateY(100%) );
+      transform: translateY(100%);
     }
   }
 
   @include keyframes(valo-animate-in-slide-left) {
     0% {
-      @include transform( translateX(100%) );
+      transform: translateX(100%);
     }
   }
 
   @include keyframes(valo-animate-in-slide-right) {
     0% {
-      @include transform( translateX(-100%) );
+      transform: translateX(-100%);
     }
   }
 
   @include keyframes(valo-animate-out-slide-down) {
     100% {
-      @include transform( translateY(100%) );
+      transform: translateY(100%);
     }
   }
 
   @include keyframes(valo-animate-out-slide-up) {
     100% {
-      @include transform( translateY(-100%) );
+      transform: translateY(-100%);
     }
   }
 
   @include keyframes(valo-animate-out-slide-left) {
     100% {
-      @include transform( translateX(-100%) );
+      transform: translateX(-100%);
     }
   }
 
   @include keyframes(valo-animate-out-slide-right) {
     100% {
-      @include transform( translateX(100%) );
+      transform: translateX(100%);
     }
   }
 
   @include keyframes(valo-overlay-animate-in) {
     0% {
-      @include transform(translatey(-4px));
+      transform: translatey(-4px);
       opacity: 0;
     }
   }
@@ -72,7 +71,7 @@ $valo-anim-keyframes-included: false !default;
   @include keyframes(valo-animate-out-slide-down-fade) {
     100% {
       opacity: 0;
-      @include transform(translatey(30%));
+      transform: translatey(30%);
     }
   }
 
@@ -87,7 +86,7 @@ $valo-anim-keyframes-included: false !default;
  * @param {time} $duration (180ms) - the duration of the fade
  * @param {time} $delay (null) - the delay of the fade
  */
-@mixin valo-animate-in-fade ($duration: 180ms, $delay: null){
+@mixin valo-animate-in-fade($duration: 180ms, $delay: null) {
   @include animation(valo-animate-in-fade $duration $delay backwards);
 }
 
@@ -99,7 +98,7 @@ $valo-anim-keyframes-included: false !default;
  * @param {time} $duration (180ms) - the duration of the fade
  * @param {time} $delay (null) - the delay of the fade
  */
-@mixin valo-animate-out-fade ($duration: 180ms, $delay: null){
+@mixin valo-animate-out-fade($duration: 180ms, $delay: null) {
   @include animation(valo-animate-out-fade $duration $delay backwards);
 }
 
@@ -111,7 +110,7 @@ $valo-anim-keyframes-included: false !default;
  * @param {time} $duration (400ms) - the duration of the slide
  * @param {time} $delay (null) - the delay of the slide
  */
-@mixin valo-animate-in-slide-down ($duration: 400ms, $delay: null){
+@mixin valo-animate-in-slide-down($duration: 400ms, $delay: null) {
   @include animation(valo-animate-in-slide-down $duration $delay backwards);
 }
 
@@ -123,7 +122,7 @@ $valo-anim-keyframes-included: false !default;
  * @param {time} $duration (400ms) - the duration of the slide
  * @param {time} $delay (null) - the delay of the slide
  */
-@mixin valo-animate-in-slide-up ($duration: 400ms, $delay: null){
+@mixin valo-animate-in-slide-up($duration: 400ms, $delay: null) {
   @include animation(valo-animate-in-slide-up $duration $delay backwards);
 }
 
@@ -135,7 +134,7 @@ $valo-anim-keyframes-included: false !default;
  * @param {time} $duration (400ms) - the duration of the slide
  * @param {time} $delay (null) - the delay of the slide
  */
-@mixin valo-animate-in-slide-left ($duration: 400ms, $delay: null){
+@mixin valo-animate-in-slide-left($duration: 400ms, $delay: null) {
   @include animation(valo-animate-in-slide-left $duration $delay backwards);
 }
 
@@ -147,6 +146,6 @@ $valo-anim-keyframes-included: false !default;
  * @param {time} $duration (400ms) - the duration of the slide
  * @param {time} $delay (null) - the delay of the slide
  */
-@mixin valo-animate-in-slide-right ($duration: 400ms, $delay: null){
+@mixin valo-animate-in-slide-right($duration: 400ms, $delay: null) {
   @include animation(valo-animate-in-slide-right $duration $delay backwards);
 }

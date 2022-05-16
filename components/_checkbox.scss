@@ -73,14 +73,12 @@
 
     &:focus ~ label:before {
       @include valo-button-focus-style($background-color: $background-color, $border-fallback: null);
-      @include box-shadow(
-        valo-bevel-and-shadow(
-          $background-color: $background-color,
-          $bevel: $v-bevel,
-          $shadow: $v-shadow,
-          $gradient: $v-gradient,
-          $include-focus: true
-        )
+      box-shadow: valo-bevel-and-shadow(
+        $background-color: $background-color,
+        $bevel: $v-bevel,
+        $shadow: $v-shadow,
+        $gradient: $v-gradient,
+        $include-focus: true
       );
     }
 
@@ -94,7 +92,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      border-radius: min(round(math.div($size, 3)), $v-border-radius);
+      border-radius: min(round(math.div($size, 3)), #{$v-border-radius});
       font-size: round($v-font-size * 0.8 * math.div($size * 2, $v-unit-size));
       text-align: center;
     }
@@ -113,7 +111,7 @@
     & ~ label:after {
       color: transparent;
       @if $v-animations-enabled {
-        @include transition(color 100ms);
+        transition: color 100ms;
       }
     }
 
@@ -137,7 +135,7 @@
     > label,
     > .v-icon {
       cursor: default;
-      @include opacity($v-disabled-opacity);
+      opacity: $v-disabled-opacity;
     }
 
     > label > .v-icon {
@@ -164,7 +162,7 @@
     }
 
     :root & > input ~ label:after {
-      @include opacity($v-disabled-opacity);
+      opacity: $v-disabled-opacity;
     }
   }
 }

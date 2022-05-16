@@ -110,7 +110,7 @@
       .#{$primary-stylename}-button {
         border: none;
         color: inherit;
-        @include opacity(0.5);
+        opacity: 0.5;
       }
       &.#{$primary-stylename}-prompt .#{$primary-stylename}-input {
         @include valo-textfield-prompt-style(transparent);
@@ -277,7 +277,7 @@
   }
 
   &.v-disabled {
-    @include opacity($v-textfield-disabled-opacity);
+    opacity: $v-textfield-disabled-opacity;
     & [class$='button'] {
       cursor: default;
       pointer-events: none;
@@ -404,7 +404,7 @@
 
   &:before {
     @if $v-animations-enabled {
-      @include transition(color 140ms);
+      transition: color 140ms;
     }
     position: absolute;
     width: $unit-size;
@@ -514,14 +514,14 @@
     position: absolute;
     z-index: 3;
     right: 0;
-    @include opacity(0.2);
+    opacity: 0.2;
     cursor: pointer;
-    @include transition(all 200ms);
+    transition: all 200ms;
     width: ceil(math.div($v-unit-size, 1.5));
     height: ceil(math.div($v-unit-size, 1.5));
     line-height: ceil(math.div($v-unit-size, 1.5));
     text-align: center;
-    @include transform(scale(0.8));
+    transform: scale(0.8);
 
     color: valo-font-color($v-background-color);
 
@@ -534,7 +534,7 @@
     }
 
     &:hover {
-      @include opacity(1);
+      opacity: 1;
       background: rgba($v-background-color, 0.5);
 
       &:after {
@@ -552,12 +552,12 @@
   }
 
   &:hover div[class*='page'] {
-    @include transform(scale(1));
+    transform: scale(1);
   }
 
   div[class*='prev'] {
     top: 0;
-    @include transform-origin(100% 0%);
+    transform-origin: 100% 0;
     border-radius: 0 $v-border-radius 0 $v-border-radius;
     &:before {
       content: '\f0d8';
@@ -566,7 +566,7 @@
 
   div[class*='next'] {
     bottom: 0;
-    @include transform-origin(100% 100%);
+    transform-origin: 100% 100%;
     border-radius: $v-border-radius 0 $v-border-radius 0;
     &:before {
       content: '\f0d7';
@@ -592,10 +592,11 @@
   }
 
   [class*='input'] {
-    @include user-select(none);
+    -webkit-user-select: none;
+    user-select: none;
     @include valo-gradient;
     cursor: inherit;
-    @include box-shadow(valo-bevel-and-shadow($bevel: $v-bevel, $shadow: $v-shadow, $gradient: $v-gradient));
+    box-shadow: valo-bevel-and-shadow($bevel: $v-bevel, $shadow: $v-shadow, $gradient: $v-gradient);
     @include valo-border-with-gradient($border: $v-border, $color: $v-background-color, $gradient: $v-gradient);
     text-overflow: ellipsis;
     border-radius: inherit;

@@ -217,7 +217,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
     position: relative;
 
     @if $v-animations-enabled {
-      @include transition(border-bottom 200ms, color 200ms);
+      transition: border-bottom 200ms, color 200ms;
     }
 
     .v-captiontext {
@@ -233,7 +233,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
     }
 
     &.v-disabled {
-      @include opacity($v-disabled-opacity);
+      opacity: $v-disabled-opacity;
       cursor: default;
       color: inherit !important;
     }
@@ -336,15 +336,15 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
     outline: none;
     cursor: pointer;
     pointer-events: auto;
-    @include opacity(0.5);
+    opacity: 0.5;
 
     &:hover {
-      @include opacity(1);
+      opacity: 1;
       color: $v-selection-color;
     }
 
     &:active {
-      @include opacity(0.7);
+      opacity: 0.7;
       color: $v-selection-color;
     }
   }
@@ -352,7 +352,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
   [class*='disabled'] {
     cursor: default;
     color: inherit !important;
-    @include opacity(0.1, true);
+    opacity: 0.1 !important;
   }
 }
 
@@ -383,7 +383,7 @@ $v-tabsheet-content-animation-enabled: $v-animations-enabled !default;
       font-weight: $v-font-weight + 100;
 
       @if $v-animations-enabled {
-        @include transition(background-color 160ms);
+        transition: background-color 160ms;
       }
 
       &:hover {

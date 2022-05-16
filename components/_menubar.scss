@@ -39,7 +39,7 @@
   }
 
   .#{$primary-stylename}-menuitem-disabled {
-    @include opacity($v-disabled-opacity);
+    opacity: $v-disabled-opacity;
   }
 
   .#{$primary-stylename} > .#{$primary-stylename}-menuitem-selected {
@@ -143,7 +143,7 @@
   box-sizing: border-box;
   @include valo-button-style($states: normal, $border-radius: 0, $shadow: null, $font-color: inherit, $cursor: pointer);
   background: transparent;
-  @include box-shadow(none);
+  box-shadow: none;
   border-width: 0 $border-width 0 0;
   border-color: inherit;
   height: 100%;
@@ -296,7 +296,7 @@
     )
 ) {
   $grad: valo-gradient-style($v-gradient) valo-gradient-opacity($v-gradient) * 0.25;
-  @include box-shadow(none);
+  box-shadow: none;
   @include valo-gradient($color: $background-color, $gradient: $grad, $direction: to top);
   color: valo-font-color($background-color, 0.9);
 }
@@ -325,7 +325,7 @@
   border: none;
   border-radius: 0;
   padding: first-number($v-border);
-  @include box-shadow(none);
+  box-shadow: none;
   background: transparent;
   color: inherit;
 
@@ -334,7 +334,7 @@
   }
 
   .#{$primary-stylename}-menuitem {
-    @include box-shadow(none);
+    box-shadow: none;
     border: none;
     margin-right: max(1px, first-number($v-border));
     border-radius: $v-border-radius;
@@ -342,7 +342,7 @@
     padding: 0 round(math.div($v-unit-size, 3));
 
     @if $v-animations-enabled {
-      @include transition(color 140ms);
+      transition: color 140ms;
     }
 
     &:first-child,

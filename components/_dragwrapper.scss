@@ -5,9 +5,8 @@
  *
  * @group drag-n-drop
  */
-@mixin valo-dragwrapper ($primary-stylename: v-ddwrapper) {
-
-  [draggable=true] {
+@mixin valo-dragwrapper($primary-stylename: v-ddwrapper) {
+  [draggable='true'] {
     -webkit-user-drag: element;
   }
 
@@ -22,7 +21,7 @@
 
   .#{$primary-stylename}-over:before,
   .#{$primary-stylename}-over:after {
-    content: "";
+    content: '';
     position: absolute;
     z-index: 10;
     top: -1px;
@@ -104,10 +103,7 @@
       content: none;
     }
   }
-
-
 }
-
 
 /**
  * Outputs the styles for a drop target when the drag is on top of it.
@@ -117,7 +113,7 @@
 @mixin valo-ddwrapper-box-hint-style {
   border-width: 2px;
   border-radius: $v-border-radius;
-  @include opacity(.3);
+  opacity: 0.3;
 
   $focus-color: $v-focus-color;
   @if is-dark-color($focus-color) {

@@ -5,7 +5,7 @@
  *
  * @group upload
  */
-@mixin valo-upload ($primary-stylename: v-upload) {
+@mixin valo-upload($primary-stylename: v-upload) {
   .#{$primary-stylename} .v-button {
     @include valo-widget-style;
   }
@@ -14,8 +14,8 @@
     width: 100%;
   }
 
-  .#{$primary-stylename}-immediate input[type="file"] {
-    @include opacity(0);
+  .#{$primary-stylename}-immediate input[type='file'] {
+    opacity: 0;
     z-index: -1;
     position: absolute;
     right: 0;

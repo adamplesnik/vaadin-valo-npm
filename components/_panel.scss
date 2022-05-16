@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 /**
  *
  * @group panel
@@ -93,7 +95,7 @@ $v-panel-border: $v-border !default;
     $color: darkest-color($background-color, $v-app-background-color),
     $strength: 0.7
   );
-  @include box-shadow(valo-bevel-and-shadow($shadow: $shadow));
+  box-shadow: valo-bevel-and-shadow($shadow: $shadow);
 }
 
 /**
@@ -134,7 +136,7 @@ $v-panel-border: $v-border !default;
   color: valo-font-color($bg);
   font-weight: $v-caption-font-weight;
   font-size: $v-caption-font-size;
-  @include box-shadow(
+  box-shadow:
     valo-bevel-and-shadow($background-color: $bg, $bevel: $bevel, $shadow: $shadow, $gradient: $gradient)
   );
 }
@@ -162,13 +164,13 @@ $v-panel-border: $v-border !default;
   $bg: scale-color(adjust-color($v-background-color, $lightness: -2%), $saturation: -1.5%);
   background: $bg;
   color: valo-font-color($bg);
-  @include box-shadow(valo-bevel-and-shadow($shadow: $shadow));
+  box-shadow: valo-bevel-and-shadow($shadow: $shadow));
   border-radius: $v-border-radius;
   border: valo-border();
 
   > div > [class*='-caption'] {
     background: transparent;
-    @include box-shadow(none);
+    box-shadow: none;
   }
 }
 
@@ -183,11 +185,11 @@ $v-panel-border: $v-border !default;
   color: inherit;
   border: none;
   border-radius: 0;
-  @include box-shadow(none);
+  box-shadow: none;
 
   > div > [class*='-caption'] {
     background: transparent;
-    @include box-shadow(none);
+    box-shadow: none;
     color: inherit;
     padding: 0;
     margin: 0 round(math.div($v-unit-size, 3));

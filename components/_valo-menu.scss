@@ -64,13 +64,15 @@ $valo-menu-background-color: scale-color(
       background: transparent;
       border-color: first-color(valo-border($color: $v-selection-color));
       color: inherit;
-      @include box-shadow(none);
+      box-shadow: none;
     }
 
     .v-menubar-menuitem {
       background: transparent;
-      @include box-shadow(
-        valo-bevel-and-shadow($bevel: $v-bevel, $background-color: $v-selection-color, $gradient: $v-gradient)
+      box-shadow: valo-bevel-and-shadow(
+        $bevel: $v-bevel,
+        $background-color: $v-selection-color,
+        $gradient: $v-gradient
       );
       font-size: $v-font-size;
       border-color: inherit;
@@ -239,13 +241,13 @@ $valo-menu-background-color: scale-color(
         max-width: 100%;
         overflow: auto;
         padding: round($v-unit-size * 0.5) 0;
-        @include transform(translatex(-100%));
-        @include transition(all 300ms);
+        transform: translatex(-100%);
+        transition: all 300ms;
       }
 
       .valo-menu-visible .valo-menuitems,
       .valo-menu-hover:hover .valo-menuitems {
-        @include transform(translatex(0%));
+        transform: translatex(0%);
       }
     }
 
@@ -298,7 +300,7 @@ $valo-menu-background-color: scale-color(
   padding: round(math.div($v-unit-size, 3)) round(math.div($v-unit-size, 2));
   font-size: round($v-font-size * 0.9);
   border-bottom: valo-border($color: $v-selection-color);
-  @include box-shadow(valo-bevel-and-shadow($shadow: $v-shadow));
+  box-shadow: valo-bevel-and-shadow($shadow: $v-shadow);
 }
 
 /**
@@ -333,7 +335,7 @@ $valo-menu-background-color: scale-color(
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  @include transition(background-color 300ms, color 60ms);
+  transition: background-color 300ms, color 60ms;
 
   $diff: color-luminance($bg) - color-luminance($v-selection-color);
   $active-color: $v-selection-color;
@@ -410,7 +412,7 @@ $valo-menu-background-color: scale-color(
 @mixin valo-badge-style($states: inactive active, $background-color: null, $active-color: $v-selection-color) {
   @if contains($states, inactive) {
     background-color: $background-color;
-    @include transition(background-color 300ms);
+    transition: background-color 300ms;
     line-height: 1;
     padding: round(math.div($v-unit-size, 9)) round(math.div($v-unit-size, 6));
     min-width: round(math.div($v-font-size, 1.5));
@@ -546,7 +548,7 @@ $valo-menu-background-color: scale-color(
   font-size: round(math.div($v-unit-size, 1.5));
   line-height: round($v-unit-size * 1.2);
   margin: round(math.div($v-unit-size, 2)) auto;
-  @include box-shadow(valo-bevel-and-shadow($shadow: $v-shadow));
+  box-shadow: valo-bevel-and-shadow($shadow: $v-shadow);
 
   &:focus {
     outline: none;

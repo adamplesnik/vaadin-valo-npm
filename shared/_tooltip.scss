@@ -201,7 +201,7 @@ $v-tooltip-border-radius: $v-border-radius - 1px !default;
  */
 @mixin valo-tooltip-style {
   background-color: $v-tooltip-background-color;
-  @include box-shadow($v-tooltip-box-shadow);
+  box-shadow: $v-tooltip-box-shadow;
   color: $v-tooltip-font-color;
   padding: $v-tooltip-padding-vertical $v-tooltip-padding-horizontal;
   border-radius: $v-tooltip-border-radius;

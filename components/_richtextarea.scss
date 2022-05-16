@@ -20,9 +20,7 @@ $valo-richtextarea-use-valo-icons: true !default;
 
   .#{$primary-stylename} .gwt-RichTextToolbar {
     @include valo-gradient($color: $v-background-color);
-    @include box-shadow(
-      valo-bevel-and-shadow($bevel: $v-bevel, $background-color: $v-background-color, $gradient: $v-gradient)
-    );
+    box-shadow: valo-bevel-and-shadow($bevel: $v-bevel, $background-color: $v-background-color, $gradient: $v-gradient);
     border-bottom: valo-border();
     color: valo-font-color($v-background-color);
   }

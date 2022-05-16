@@ -50,7 +50,8 @@ $valo-global-included: false !default;
       -webkit-text-size-adjust: 100%;
 
       // Disable text selection by default
-      @include user-select(none);
+      -webkit-user-select: none;
+      user-select: none;
 
       // Enable text selection for certain elements
       input[type='text'],
@@ -59,7 +60,8 @@ $valo-global-included: false !default;
       .v-has-caption > .v-caption,
       .v-formlayout-captioncell > .v-caption,
       .v-csslayout > .v-caption {
-        @include user-select(text);
+        -webkit-user-select: text;
+        user-select: text;
       }
     }
 
@@ -128,7 +130,8 @@ $valo-global-included: false !default;
 
     .v-icon {
       cursor: inherit;
-      @include user-select(none);
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     .v-icon,

@@ -148,18 +148,18 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
     cursor: pointer;
     outline: none;
     color: inherit;
-    @include opacity(0.5);
+    opacity: 0.5;
 
     &:focus {
       outline: none;
     }
 
     &:hover {
-      @include opacity(1);
+      opacity: 1;
     }
 
     &:active {
-      @include opacity(0.5);
+      opacity: 0.5;
     }
   }
 
@@ -179,10 +179,10 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
     width: 20px; // Same as VCalendar.MONTHLY_WEEKTOOLBARWIDTH
     text-align: center;
     font-size: 0.8em;
-    @include opacity(0.5);
+    opacity: 0.5;
 
     &:hover {
-      @include opacity(1);
+      opacity: 1;
     }
   }
 
@@ -328,7 +328,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
     background: $v-focus-color;
     line-height: 1px;
     pointer-events: none;
-    @include opacity(0.5);
+    opacity: 0.5;
 
     &:before {
       content: '\2022';
@@ -349,7 +349,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
       bottom: -1px;
       left: 0;
       background: $v-selection-color;
-      @include opacity(0.5);
+      opacity: 0.5;
       @if $v-border-radius > 0 {
         border-radius: $v-border-radius $v-border-radius 0 0;
       }
@@ -393,7 +393,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
       float: right;
       font-size: 0.9em;
       line-height: round($v-font-size * 1.2);
-      @include opacity(0.5);
+      opacity: 0.5;
     }
 
     &:before {

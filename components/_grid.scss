@@ -252,7 +252,7 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
     border: $v-grid-border;
     box-sizing: border-box;
     margin-top: nth($v-grid-border, 1) * -1;
-    @include box-shadow(0 0 9px rgba(0, 0, 0, 0.2));
+    box-shadow: 0 0 9px rgba(0, 0, 0, 0.2);
 
     // Unbuffered footer needs to be 100% width to display correctly
     &.unbuffered {
@@ -443,17 +443,18 @@ $v-grid-drag-indicator-color: $v-focus-color;
   @include base-grid($primary-stylename);
 
   .#{$primary-stylename} {
-    @include user-select(text);
+    -webkit-user-select: text;
+    user-select: text;
     background-color: $v-background-color;
 
     &.v-disabled {
-      @include opacity($v-disabled-opacity);
+      opacity: $v-disabled-opacity;
     }
   }
 
   .#{$primary-stylename}-header .#{$primary-stylename}-cell.dragged {
-    @include opacity(0.5, false);
-    @include transition(opacity 0.3s ease-in-out);
+    opacity: 0.5;
+    transition: opacity 0.3s ease-in-out;
   }
 
   .#{$primary-stylename}-header .#{$primary-stylename}-cell.dragged-column-header {
@@ -478,15 +479,6 @@ $v-grid-drag-indicator-color: $v-focus-color;
     font-size: $v-font-size--small;
     padding: 0 round($v-layout-spacing-horizontal * 0.5);
     background: $v-app-background-color;
-    @if $v-grid-animations-enabled {
-      @include animation(valo-grid-editor-footer-animate-in 200ms 120ms backwards);
-    }
-  }
-
-  @if $v-grid-animations-enabled {
-    .#{$primary-stylename}-editor-footer:first-child {
-      @include animation(valo-grid-editor-footer-animate-in-alt 200ms 120ms backwards);
-    }
   }
 
   .#{$primary-stylename}-editor-cells {
@@ -528,9 +520,9 @@ $v-grid-drag-indicator-color: $v-focus-color;
       background: transparent;
 
       @if $v-textfield-bevel {
-        @include box-shadow(valo-bevel-and-shadow($bevel: $v-textfield-bevel));
+        box-shadow: valo-bevel-and-shadow($bevel: $v-textfield-bevel));
       } @else {
-        @include box-shadow(none);
+        box-shadow: none;
       }
     }
 
@@ -684,20 +676,5 @@ $v-grid-drag-indicator-color: $v-focus-color;
     pointer-events: none;
     border: 2px solid $v-grid-drag-indicator-color;
     z-index: 100; // based on what else z-indexes are in grid/escalator
-  }
-}
-
-@include keyframes(valo-grid-editor-footer-animate-in) {
-  0% {
-    margin-top: -$v-grid-row-height;
-  }
-}
-
-@include keyframes(valo-grid-editor-footer-animate-in-alt) {
-  0% {
-    margin-bottom: -$v-grid-row-height - first-number($v-grid-cell-horizontal-border);
-  }
-  100% {
-    margin-bottom: first-number($v-grid-cell-horizontal-border) * -1;
   }
 }

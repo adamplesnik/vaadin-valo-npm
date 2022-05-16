@@ -239,7 +239,8 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
 ) {
   @if contains($states, normal) {
     appearance: none;
-    @include user-select(text);
+    -webkit-user-select: text;
+    user-select: text;
     margin: 0;
     font: inherit;
     font-size: $font-size;
@@ -273,23 +274,21 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
       color: valo-font-color($background-color);
     }
 
-    @include box-shadow(
-      valo-bevel-and-shadow(
-        $bevel: $bevel,
-        $shadow: $shadow,
-        $background-color: $background-color,
-        $gradient: $gradient
-      )
+    box-shadow: valo-bevel-and-shadow(
+      $bevel: $bevel,
+      $shadow: $shadow,
+      $background-color: $background-color,
+      $gradient: $gradient
     );
 
     @if $v-animations-enabled {
-      @include transition(box-shadow 180ms, border 180ms);
+      transition: box-shadow 180ms, border 180ms;
     }
   }
 
   @if contains($states, disabled) {
     &.v-disabled {
-      @include opacity($v-textfield-disabled-opacity);
+      opacity: $v-textfield-disabled-opacity;
     }
   }
 
@@ -320,7 +319,7 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
 @mixin valo-textfield-prompt-style($background-color: $v-textfield-background-color) {
   @if $background-color == transparent {
     color: inherit;
-    @include opacity(0.5);
+    opacity: 0.5;
   } @else if type-of($background-color) == color {
     $font-color: valo-font-color($background-color);
     $font-color: mix($background-color, $font-color);
@@ -350,7 +349,7 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
 ) {
   outline: none;
   @if $v-animations-enabled {
-    @include transition(none);
+    transition: none;
   }
 
   $focus-color: $v-focus-color;
@@ -359,14 +358,12 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
     border-color: $focus-color;
   }
 
-  @include box-shadow(
-    valo-bevel-and-shadow(
-      $bevel: $bevel,
-      $shadow: $shadow,
-      $background-color: $background-color,
-      $gradient: $gradient,
-      $include-focus: true
-    )
+  box-shadow: valo-bevel-and-shadow(
+    $bevel: $bevel,
+    $shadow: $shadow,
+    $background-color: $background-color,
+    $gradient: $gradient,
+    $include-focus: true
   );
 
   @include valo-focus-style;
@@ -380,7 +377,7 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
 @mixin valo-textfield-readonly-style {
   background: $v-textfield-background-color--readonly;
   color: valo-font-color($v-textfield-background-color--readonly);
-  @include box-shadow(none);
+  box-shadow: none;
   &:focus {
     box-shadow: none;
     border-color: first-color(valo-border($v-textfield-border, $v-textfield-background-color--readonly));
@@ -398,7 +395,7 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
   border: none;
   border-radius: 0;
   background: $background-color;
-  @include box-shadow(none);
+  box-shadow: none;
 
   $font-color: inherit;
   @if $background-color != transparent and type-of($background-color) == color {
@@ -407,7 +404,7 @@ $v-textfield-disabled-opacity: $v-disabled-opacity !default;
   color: $font-color;
 
   &:focus {
-    @include box-shadow(none);
+    box-shadow: none;
   }
 
   &[class*='prompt'] {

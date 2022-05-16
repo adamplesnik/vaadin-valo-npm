@@ -171,7 +171,7 @@
       left: 0;
       border-radius: inherit;
       @if $v-animations-enabled {
-        @include transition(box-shadow 180ms, border 180ms);
+        transition: box-shadow 180ms, border 180ms;
       }
     }
   }
@@ -179,14 +179,14 @@
   @if contains($states, focus) {
     &:focus:after {
       @if $v-animations-enabled {
-        @include transition(none);
+        transition: none;
       }
     }
   }
 
   @if contains($states, disabled) {
     &.v-disabled {
-      @include opacity($v-disabled-opacity);
+      opacity: $v-disabled-opacity;
 
       &:after {
         display: none;
@@ -272,18 +272,16 @@
         $gradient: $gradient
       );
       @include valo-gradient($background-color, $gradient);
-      @include box-shadow(
-        valo-bevel-and-shadow(
-          $bevel: $bevel,
-          $shadow: $shadow,
-          $background-color: $background-color,
-          $gradient: $gradient
-        )
+      box-shadow: valo-bevel-and-shadow(
+        $bevel: $bevel,
+        $shadow: $shadow,
+        $background-color: $background-color,
+        $gradient: $gradient
       );
     }
 
     @if $bevel == none and $shadow == none {
-      @include box-shadow(none);
+      box-shadow: none;
     }
   }
 
@@ -378,7 +376,7 @@
  */
 @mixin valo-button-borderless-style($font-color: inherit) {
   border: none;
-  @include box-shadow(none);
+  box-shadow: none;
   background: transparent;
   color: $font-color;
 
@@ -393,7 +391,7 @@
   }
 
   &:active:not(.v-disabled) {
-    @include opacity(0.7);
+    opacity: 0.7;
 
     &:after {
       background: transparent;

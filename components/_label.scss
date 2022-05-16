@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 /**
  * The font weight for headers.
  *
@@ -109,10 +111,11 @@ $v-letter-spacing--h4: 0 !default;
   $include-additional-styles: contains($v-included-additional-styles, label)
 ) {
   .#{$primary-stylename} {
-    @include user-select(text);
+    -webkit-user-select: text;
+    user-select: text;
 
     &.v-disabled {
-      @include opacity($v-disabled-opacity);
+      opacity: $v-disabled-opacity;
     }
   }
 
