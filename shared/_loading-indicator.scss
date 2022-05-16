@@ -50,7 +50,7 @@ $v-loading-indicator-bar-height: ceil(math.div($v-unit-size, 10)) !default;
  */
 $v-loading-indicator-bar-height--wait: ceil(math.div($v-unit-size, 6)) !default;
 
-@include keyframes(v-progress-start) {
+@keyframes v-progress-start {
   0% {
     width: 0;
   }
@@ -59,7 +59,7 @@ $v-loading-indicator-bar-height--wait: ceil(math.div($v-unit-size, 6)) !default;
   }
 }
 
-@include keyframes(v-progress-delay) {
+@keyframes v-progress-delay {
   0% {
     width: 50%;
   }
@@ -68,7 +68,7 @@ $v-loading-indicator-bar-height--wait: ceil(math.div($v-unit-size, 6)) !default;
   }
 }
 
-@include keyframes(v-progress-wait) {
+@keyframes v-progress-wait {
   0% {
     width: 90%;
     height: $v-loading-indicator-bar-height;
@@ -83,7 +83,7 @@ $v-loading-indicator-bar-height--wait: ceil(math.div($v-unit-size, 6)) !default;
   }
 }
 
-@include keyframes(v-progress-wait-pulse) {
+@keyframes v-progress-wait-pulse {
   0% {
     opacity: 1;
   }

@@ -295,7 +295,7 @@ $v-notification-title-color: $v-focus-color !default;
   max-width: 100%;
   margin: 0 !important;
   border-radius: 0;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25));
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
   padding: round(math.div($v-unit-size, 3)) round(math.div($v-unit-size, 2.5));
 
   .#{$primary-style}-description,
@@ -406,7 +406,7 @@ $v-notification-title-color: $v-focus-color !default;
 @mixin valo-notification-error-style($primary-style) {
   background: $v-error-indicator-color;
   font-weight: $v-font-weight + 100;
-  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25));
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25);
 
   .#{$primary-style}-caption {
     color: valo-font-color($v-error-indicator-color, 1);

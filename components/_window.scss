@@ -31,7 +31,7 @@ $v-window-animate-out: valo-animate-out-scale-down-fade 100ms !default;
 $v-window-modality-curtain-background-color: #222 !default;
 
 @if $v-animations-enabled {
-  @include keyframes(valo-modal-window-indication) {
+  @keyframes valo-modal-window-indication {
     0% {
       opacity: 0;
     }
@@ -40,7 +40,7 @@ $v-window-modality-curtain-background-color: #222 !default;
     }
   }
 
-  @include keyframes(valo-animate-out-scale-down-fade) {
+  @keyframes valo-animate-out-scale-down-fade {
     100% {
       transform: scale(0.8);
       opacity: 0;

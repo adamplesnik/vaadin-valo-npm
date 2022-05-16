@@ -19,7 +19,7 @@ $v-tree-animations-enabled: true !default;
 $v-tree-expand-animation-enabled: false !default;
 
 @if $v-tree-expand-animation-enabled {
-  @include keyframes(valo-tree-node-open) {
+  @keyframes valo-tree-node-open {
     0% {
       max-height: 0;
     }
@@ -28,7 +28,7 @@ $v-tree-expand-animation-enabled: false !default;
     }
   }
 
-  @include keyframes(valo-tree-node-close) {
+  @keyframes valo-tree-node-close {
     0% {
       max-height: $v-tree-row-height * 10;
     }

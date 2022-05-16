@@ -1,4 +1,4 @@
-@include keyframes(v-popupview-animate-in) {
+@keyframes v-popupview-animate-in {
   0% {
     transform: scale(0);
   }

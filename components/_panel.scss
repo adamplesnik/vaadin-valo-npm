@@ -136,9 +136,7 @@ $v-panel-border: $v-border !default;
   color: valo-font-color($bg);
   font-weight: $v-caption-font-weight;
   font-size: $v-caption-font-size;
-  box-shadow:
-    valo-bevel-and-shadow($background-color: $bg, $bevel: $bevel, $shadow: $shadow, $gradient: $gradient)
-  );
+  box-shadow: valo-bevel-and-shadow($background-color: $bg, $bevel: $bevel, $shadow: $shadow, $gradient: $gradient);
 }
 
 /**
@@ -164,7 +162,7 @@ $v-panel-border: $v-border !default;
   $bg: scale-color(adjust-color($v-background-color, $lightness: -2%), $saturation: -1.5%);
   background: $bg;
   color: valo-font-color($bg);
-  box-shadow: valo-bevel-and-shadow($shadow: $shadow));
+  box-shadow: valo-bevel-and-shadow($shadow: $shadow);
   border-radius: $v-border-radius;
   border: valo-border();
 

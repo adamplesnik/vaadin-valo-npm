@@ -1,74 +1,74 @@
 $valo-anim-keyframes-included: false !default;
 
 @if $v-animations-enabled and $valo-anim-keyframes-included == false {
-  @include keyframes(valo-animate-in-fade) {
+  @keyframes valo-animate-in-fade {
     0% {
       opacity: 0;
     }
   }
 
-  @include keyframes(valo-animate-out-fade) {
+  @keyframes valo-animate-out-fade {
     100% {
       opacity: 0;
     }
   }
 
-  @include keyframes(valo-animate-in-slide-down) {
+  @keyframes valo-animate-in-slide-down {
     0% {
       transform: translateY(-100%);
     }
   }
 
-  @include keyframes(valo-animate-in-slide-up) {
+  @keyframes valo-animate-in-slide-up {
     0% {
       transform: translateY(100%);
     }
   }
 
-  @include keyframes(valo-animate-in-slide-left) {
+  @keyframes valo-animate-in-slide-left {
     0% {
       transform: translateX(100%);
     }
   }
 
-  @include keyframes(valo-animate-in-slide-right) {
+  @keyframes valo-animate-in-slide-right {
     0% {
       transform: translateX(-100%);
     }
   }
 
-  @include keyframes(valo-animate-out-slide-down) {
+  @keyframes valo-animate-out-slide-down {
     100% {
       transform: translateY(100%);
     }
   }
 
-  @include keyframes(valo-animate-out-slide-up) {
+  @keyframes valo-animate-out-slide-up {
     100% {
       transform: translateY(-100%);
     }
   }
 
-  @include keyframes(valo-animate-out-slide-left) {
+  @keyframes valo-animate-out-slide-left {
     100% {
       transform: translateX(-100%);
     }
   }
 
-  @include keyframes(valo-animate-out-slide-right) {
+  @keyframes valo-animate-out-slide-right {
     100% {
       transform: translateX(100%);
     }
   }
 
-  @include keyframes(valo-overlay-animate-in) {
+  @keyframes valo-overlay-animate-in {
     0% {
       transform: translatey(-4px);
       opacity: 0;
     }
   }
 
-  @include keyframes(valo-animate-out-slide-down-fade) {
+  @keyframes valo-animate-out-slide-down-fade {
     100% {
       opacity: 0;
       transform: translatey(30%);

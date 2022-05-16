@@ -520,7 +520,7 @@ $v-grid-drag-indicator-color: $v-focus-color;
       background: transparent;
 
       @if $v-textfield-bevel {
-        box-shadow: valo-bevel-and-shadow($bevel: $v-textfield-bevel));
+        box-shadow: valo-bevel-and-shadow($bevel: $v-textfield-bevel);
       } @else {
         box-shadow: none;
       }

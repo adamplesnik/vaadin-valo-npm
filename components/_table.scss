@@ -421,7 +421,7 @@ $v-table-background-color: null !default;
 
   .#{$primary-stylename}-header-wrap:hover .#{$primary-stylename}-column-selector {
     opacity: 1;
-    @include transition-delay(200ms);
+    transition-delay: 200ms;
   }
 
   .v-on,

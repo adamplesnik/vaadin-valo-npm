@@ -64,8 +64,8 @@ $v-progressbar-border-radius: $v-border-radius !default;
   height: round(math.div($v-unit-size, 4));
   $bg-lightness: if(
     color-luminance($background-color) < 10,
-    min($v-bevel-depth * 0.5, 10%),
-    min(math.div(#{$v-bevel-depth}, -2), -10%)
+    min(#{$v-bevel-depth} * 0.5, 10%),
+    min(math.div($v-bevel-depth, -2), -10%)
   );
   @include valo-gradient(
     $color: scale-color($background-color, $lightness: $bg-lightness, $saturation: math.div($v-bevel-depth, -2)),
