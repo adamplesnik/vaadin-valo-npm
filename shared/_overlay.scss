@@ -142,7 +142,7 @@ $v-selection-item-padding-horizontal: ceil(math.div($v-unit-size, 4)) !default;
  * @type number | identifier
  * @group overlay
  */
-$v-selection-item-font-weight: max(400, $v-font-weight);
+$v-selection-item-font-weight: 400;
 
 /**
  * The font color for individual selection overlay list items.

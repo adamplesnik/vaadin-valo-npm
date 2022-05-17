@@ -1,5 +1,7 @@
+@use 'sass:math';
+
 // Color functions are used to calculate default font color
-@import "../util/color";
+@import '../util/color';
 
 /**
  * A static text that is shown under the loading spinned while the client-side
@@ -8,7 +10,7 @@
  *
  * @type string, quoted
  */
-$v-app-loading-text: "" !default;
+$v-app-loading-text: '' !default;
 
 /**
  * Base line height for all widgets. It must be given a unitless number.
@@ -43,7 +45,7 @@ $v-font-weight: 300 !default;
  * @group typography
  * @type list
  */
-$v-font-family: "Open Sans", sans-serif !default;
+$v-font-family: 'Open Sans', sans-serif !default;
 
 /**
  * Font size for generic component captions. Can be any valid CSS font-size. A
@@ -60,7 +62,7 @@ $v-caption-font-size: round($v-font-size * 0.9) !default;
  * @group typography
  * @type number | identifier
  */
-$v-caption-font-weight: max(400, $v-font-weight) !default;
+$v-caption-font-weight: 400 !default;
 
 /**
  * Border specification for the components that have a border. The border width
@@ -188,7 +190,7 @@ $v-focus-color: valo-focus-color() !default;
  * @group style
  * @type list | color
  */
-$v-focus-style: 0 0 0 2px rgba($v-focus-color, .5) !default;
+$v-focus-style: 0 0 0 2px rgba($v-focus-color, 0.5) !default;
 
 /**
  * Opacity of disabled components, from 0 to 1. Not all components have reduced opacity when disabled, such as Labels.
@@ -494,49 +496,11 @@ $v-hover-styles-enabled: true !default;
  * // Only include the Label, Button and Vertical and Horizontal layouts in the compilation
  * $v-included-components: label, button, orderedlayout;
  */
-$v-included-components:
-    absolutelayout,
-    accordion,
-    button,
-    calendar,
-    checkbox,
-    colorpicker,
-    combobox,
-    csslayout,
-    customcomponent,
-    customlayout,
-    datefield,
-    dragwrapper,
-    form,
-    formlayout,
-    grid,
-    gridlayout,
-    label,
-    link,
-    menubar,
-    nativebutton,
-    nativeselect,
-    notification,
-    optiongroup,
-    orderedlayout,
-    panel,
-    popupview,
-    progressbar,
-    slider,
-    splitpanel,
-    table,
-    tabsheet,
-    textfield,
-    textarea,
-    richtextarea,
-    tree,
-    tree8,
-    treegrid,
-    treetable,
-    twincolselect,
-    upload,
-    window,
-    valo-menu !default;
+$v-included-components: absolutelayout, accordion, button, calendar, checkbox, colorpicker, combobox, csslayout,
+  customcomponent, customlayout, datefield, dragwrapper, form, formlayout, grid, gridlayout, label, link, menubar,
+  nativebutton, nativeselect, notification, optiongroup, orderedlayout, panel, popupview, progressbar, slider,
+  splitpanel, table, tabsheet, textfield, textarea, richtextarea, tree, tree8, treegrid, treetable, twincolselect,
+  upload, window, valo-menu !default;
 
 /**
  * List of components whose additional styles should be included in the compilation.
@@ -564,10 +528,9 @@ $v-included-additional-styles: $v-included-components !default;
  *
  * @group optimization
  */
-@function v-is-included ($component-name, $is-included: $v-included-components) {
+@function v-is-included($component-name, $is-included: $v-included-components) {
   @return contains($is-included, $component-name);
 }
-
 
 /**
  * A flag to note whether relative URL paths are relative to the currently parsed SCSS file or to the compilation root file.

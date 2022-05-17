@@ -154,11 +154,7 @@ $_valo-slider-base-margin-horizontal: round(math.div($v-slider-handle-width, 2))
     height: $v-unit-size * 2 + $v-slider-handle-width; // Effectively min-height
 
     .#{$primary-stylename}-base {
-      $bg-lightness: if(
-        color-luminance($v-background-color) < 10,
-        min($v-bevel-depth * 0.5, 10%),
-        min(math.div($v-bevel-depth, -2), -10%)
-      );
+      $bg-lightness: if(color-luminance($v-background-color) < 10, 10%, -10%);
       @include valo-gradient(
         $color: scale-color($v-background-color, $lightness: $bg-lightness, $saturation: math.div($v-bevel-depth, -2)),
         $direction: to left
@@ -187,7 +183,6 @@ $_valo-slider-base-margin-horizontal: round(math.div($v-slider-handle-width, 2))
     }
 
     .#{$primary-stylename}-handle {
-      width: 0;
       height: 0.1px;
       width: $v-unit-size;
       display: block;
@@ -225,11 +220,7 @@ $_valo-slider-base-margin-horizontal: round(math.div($v-slider-handle-width, 2))
 
   &.#{$primary-stylename}-vertical {
     .#{$primary-stylename}-base {
-      $bg-lightness: if(
-        color-luminance($background-color) < 10,
-        min($v-bevel-depth * 0.5, 10%),
-        min(math.div($v-bevel-depth, -2), -10%)
-      );
+      $bg-lightness: if(color-luminance($background-color) < 10, 10%, -10%);
       @include valo-gradient(
         $color: scale-color($background-color, $lightness: $bg-lightness, $saturation: math.div($v-bevel-depth, -2)),
         $direction: to left
