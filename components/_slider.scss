@@ -92,7 +92,6 @@ $_valo-slider-base-margin-horizontal: round(math.div($v-slider-handle-width, 2))
       left: $_valo-slider-base-margin-horizontal;
       width: $v-border-radius * 2;
       border-radius: $v-border-radius;
-      border-left: valo-border($color: $v-selection-color, $context: $v-app-background-color);
     }
 
     &:after {
@@ -148,11 +147,6 @@ $_valo-slider-base-margin-horizontal: round(math.div($v-slider-handle-width, 2))
     height: $v-unit-size * 2 + $v-slider-handle-width; // Effectively min-height
 
     .#{$primary-stylename}-base {
-      $bg-lightness: if(color-luminance($v-background-color) < 10, 10%, -10%);
-      @include valo-gradient(
-        $color: scale-color($v-background-color, $lightness: $bg-lightness, $saturation: math.div($v-bevel-depth, -2)),
-        $direction: to left
-      );
       width: $v-slider-track-size;
       height: 100% !important;
       min-width: 0;
@@ -166,13 +160,11 @@ $_valo-slider-base-margin-horizontal: round(math.div($v-slider-handle-width, 2))
         width: auto;
         height: $v-border-radius * 2;
         border-left: none;
-        border-bottom: valo-border($color: $v-selection-color, $context: $v-app-background-color);
       }
 
       &:after {
         height: 101%;
         margin-left: 0;
-        @include valo-gradient($color: $v-selection-color, $direction: to right);
       }
     }
 
@@ -211,16 +203,6 @@ $_valo-slider-base-margin-horizontal: round(math.div($v-slider-handle-width, 2))
     @include valo-progressbar-track-style($background-color: $background-color);
     height: $v-slider-track-size;
   }
-
-  &.#{$primary-stylename}-vertical {
-    .#{$primary-stylename}-base {
-      $bg-lightness: if(color-luminance($background-color) < 10, 10%, -10%);
-      @include valo-gradient(
-        $color: scale-color($background-color, $lightness: $bg-lightness, $saturation: math.div($v-bevel-depth, -2)),
-        $direction: to left
-      );
-    }
-  }
 }
 
 /**
@@ -238,22 +220,8 @@ $_valo-slider-base-margin-horizontal: round(math.div($v-slider-handle-width, 2))
   $border: $v-border
 ) {
   .#{$primary-stylename}-base {
-    &:before {
-      border-color: first-color(
-        valo-border($border: $border, $color: $background-color, $context: $v-app-background-color)
-      );
-    }
-
     &:after {
       @include valo-progressbar-indicator-style($background-color: $background-color, $border: $border);
-    }
-  }
-
-  &.#{$primary-stylename}-vertical {
-    .#{$primary-stylename}-base {
-      &:after {
-        @include valo-gradient($color: $background-color, $direction: to right);
-      }
     }
   }
 }
@@ -269,61 +237,5 @@ $_valo-slider-base-margin-horizontal: round(math.div($v-slider-handle-width, 2))
   .#{$primary-stylename}-base:before,
   .#{$primary-stylename}-base:after {
     display: none;
-  }
-}
-
-/**
- *
- *
- * @param {string} $primary-stylename (v-slider) -
- * @param {color} $background-color ($v-background-color) -
- *
- * @group slider
- */
-@mixin valo-slider-handle-style($primary-stylename: v-slider, $background-color: $v-background-color) {
-  .#{$primary-stylename}-handle {
-    &:after {
-      border: valo-border($color: $background-color);
-    }
-  }
-}
-
-/**
- *
- *
- * @param {string} $primary-stylename (v-slider) -
- * @param {number} $tick-count (5) -
- *
- * @group slider
- */
-@mixin valo-slider-ticks($primary-stylename: v-slider, $tick-count: 5) {
-  $tick-size: max(1px, first-number($v-border));
-  $tick-color: first-color(
-    valo-border(
-      $strength: 0.7,
-    )
-  );
-
-  &:before {
-    content: '';
-    height: 15%;
-    position: absolute;
-    @include linear-gradient(to right, $tick-color $tick-size, transparent $tick-size, $fallback: transparent);
-    background-repeat: repeat-x;
-    background-size: math.div(100%, $tick-count - 1) - 0.1% 100%;
-    left: $_valo-slider-base-margin-horizontal;
-    right: $_valo-slider-base-margin-horizontal;
-  }
-
-  &.#{$primary-stylename}-vertical:before {
-    height: auto;
-    width: 15%;
-    @include linear-gradient(to bottom, $tick-color $tick-size, transparent $tick-size, $fallback: transparent);
-    background-repeat: repeat-y;
-    background-size: 100% math.div(100%, $tick-count - 1) - 0.01%;
-    right: auto;
-    left: 0;
-    top: $_valo-slider-base-margin-horizontal;
-    bottom: $_valo-slider-base-margin-horizontal;
   }
 }

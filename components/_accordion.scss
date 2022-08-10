@@ -45,14 +45,6 @@
  * @group accordion
  */
 @mixin valo-accordion-style {
-  $grad-style: valo-gradient-style($v-gradient);
-  $grad-opacity: valo-gradient-opacity($v-gradient);
-  @include valo-gradient(
-    $color: $v-background-color,
-    $gradient: (
-      $grad-style $grad-opacity * 0.5,
-    )
-  );
   overflow: hidden;
 }
 
@@ -126,6 +118,5 @@
  * @group accordion
  */
 @mixin valo-accordion-item-content-style {
-  box-shadow: valo-bevel-and-shadow($shadow: join(inset, $v-shadow), $shadow-opacity: $v-shadow-opacity * 0.5);
   box-sizing: border-box;
 }

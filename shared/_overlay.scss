@@ -174,8 +174,6 @@ $v-selection-item-selection-color: $v-selection-color !default;
   background-color: $background-color;
   color: valo-font-color($background-color);
 
-  box-shadow: valo-bevel-and-shadow($bevel: null, $shadow: $shadow);
-
   @if $v-animations-enabled {
     @if $animate-in {
       &[class*='animate-in'] {
@@ -258,7 +256,6 @@ $v-selection-item-selection-color: $v-selection-color !default;
  * @group overlay
  */
 @mixin valo-selection-item-selected-style {
-  @include valo-gradient($v-selection-item-selection-color);
   $font-color: valo-font-color($v-selection-item-selection-color, 0.9);
   color: $font-color;
 }

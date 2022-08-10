@@ -1,6 +1,3 @@
-// "Photoshop" blend modes
-@import 'blend-modes';
-
 /**
  * Returns the luminance of a color (0-255), i.e. the perceived brightness, rather than
  * the absolute mathematical lightness value.
@@ -53,25 +50,6 @@ $v-font-color-contrast: 0.72 !default;
   } @else {
     @return false;
   }
-}
-
-/**
- * Get the darkest color (by luminance) from a list of colors.
- *
- * @group color
- *
- * @param {list} $colors - a list of CSS colors
- *
- * @return {color} darkest color (by luminance) from a list of colors
- */
-@function darkest-color($colors...) {
-  $darkest: first($colors);
-  @each $color in $colors {
-    @if color-luminance($color) < color-luminance($darkest) {
-      $darkest: $color;
-    }
-  }
-  @return $darkest;
 }
 
 /**

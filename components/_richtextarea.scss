@@ -20,9 +20,6 @@ $valo-richtextarea-use-valo-icons: true !default;
   }
 
   .#{$primary-stylename} .gwt-RichTextToolbar {
-    @include valo-gradient($color: $v-background-color);
-    box-shadow: valo-bevel-and-shadow($bevel: $v-bevel, $background-color: $v-background-color, $gradient: $v-gradient);
-    border-bottom: valo-border();
     color: valo-font-color($v-background-color);
   }
 
@@ -37,13 +34,6 @@ $valo-richtextarea-use-valo-icons: true !default;
     &:hover {
       color: valo-font-color($v-background-color, 1);
     }
-  }
-
-  .#{$primary-stylename} .gwt-ToggleButton-down,
-  .#{$primary-stylename} .gwt-ToggleButton-down-hovering {
-    $grad: valo-gradient-style($v-gradient) valo-gradient-opacity($v-gradient) * 0.25;
-    //box-shadow: none;
-    @include valo-gradient($color: darken($v-background-color, 10%), $gradient: $grad, $direction: to top);
   }
 
   @if $valo-richtextarea-use-valo-icons {

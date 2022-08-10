@@ -63,10 +63,7 @@ $v-progressbar-border-radius: $v-border-radius !default;
   border-radius: $v-progressbar-border-radius;
   height: round(math.div($v-unit-size, 4));
   $bg-lightness: if(color-luminance($background-color) < 10, 10%, -10%);
-  @include valo-gradient(
-    $color: scale-color($background-color, $lightness: $bg-lightness, $saturation: math.div($v-bevel-depth, -2)),
-    $direction: to top
-  );
+  background-color: $background-color;
   box-sizing: border-box;
 }
 
@@ -81,13 +78,7 @@ $v-progressbar-border-radius: $v-border-radius !default;
 @mixin valo-progressbar-indicator-style($background-color: $v-selection-color, $border: $v-border) {
   border-radius: $v-progressbar-border-radius;
   height: inherit;
-  @include valo-gradient($color: $background-color);
-  box-shadow: valo-bevel-and-shadow($background-color: $background-color);
-  @if $border {
-    border: valo-border($border: $border, $color: $background-color, $context: $v-app-background-color);
-  } @else {
-    border: none;
-  }
+  background-color: $background-color;
   box-sizing: border-box;
   max-width: 100%;
 }

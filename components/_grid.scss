@@ -9,12 +9,7 @@ $v-grid-row-stripe-background-color: scale-color(
 ) !default;
 
 $v-grid-border-color-source: $v-grid-row-background-color !default;
-$v-grid-border: flatten-list(
-  valo-border(
-    $color: $v-grid-border-color-source,
-    $strength: 0.8,
-  )
-) !default;
+$v-grid-border: 1px solid #ddd !default;
 $v-grid-cell-focused-border: max(2px, first-number($v-border)) solid $v-selection-color !default;
 
 $v-grid-row-height: $v-table-row-height !default;
@@ -29,14 +24,8 @@ $v-grid-animations-enabled: $v-animations-enabled !default;
 
 $v-grid-details-marker-width: first-number($v-grid-border) * 2 !default;
 $v-grid-details-marker-color: $v-selection-color !default;
-$v-grid-details-border-top: valo-border(
-  $color: $v-grid-border-color-source,
-  $strength: 0.3,
-) !default;
-$v-grid-details-border-top-stripe: valo-border(
-  $color: $v-grid-row-stripe-background-color,
-  $strength: 0.3,
-) !default;
+$v-grid-details-border-top: #eee !default;
+$v-grid-details-border-top-stripe: #ddd !default;
 
 $v-grid-border-size: 1px !default;
 $v-grid-border: $v-grid-border-size solid #ddd !default;
@@ -459,15 +448,6 @@ $v-grid-drag-indicator-color: $v-focus-color;
 
   .#{$primary-stylename}-header .#{$primary-stylename}-cell.dragged-column-header {
     margin-top: round(math.div($v-grid-row-height, -2));
-  }
-
-  .#{$primary-stylename}-header-deco {
-    @include valo-gradient($v-grid-header-background-color);
-  }
-
-  .#{$primary-stylename}-footer-deco,
-  .#{$primary-stylename}-horizontal-scrollbar-deco {
-    @include valo-gradient($v-grid-footer-background-color);
   }
 
   .#{$primary-stylename}-editor {

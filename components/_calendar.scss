@@ -228,8 +228,6 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
   }
 
   .#{$primary-stylename}-month-day-today {
-    background: blend-normal(rgba($v-focus-color, 0.05), $v-background-color);
-
     .#{$primary-stylename}-day-number {
       font-weight: $v-font-weight + 100;
       color: $v-focus-color;
@@ -238,10 +236,6 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
       margin: 0;
       padding: 0 round(math.div($v-unit-size, 8));
     }
-  }
-
-  .#{$primary-stylename}-month-day-selected {
-    background-color: blend-normal(rgba($v-selection-color, 0.1), $v-background-color);
   }
 
   .#{$primary-stylename}-month-day-dragemphasis {
@@ -299,17 +293,8 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
     }
   }
 
-  $valo-calendar-time-divider-color: first-color(
-    valo-border(
-      $color: $v-app-background-color,
-      $strength: 0.5,
-    )
-  );
-
   .#{$primary-stylename} .v-datecellslot,
   .#{$primary-stylename} .v-datecellslot-even {
-    border-top: 1px solid $valo-calendar-time-divider-color;
-
     &:first-child {
       border-top-color: transparent;
     }
@@ -480,7 +465,6 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
 
   @for $i from 1 through length($v-calendar-event-colors) {
     $color: nth($v-calendar-event-colors, $i);
-    $bg: blend-normal(rgba($color, 0.2), $v-background-color);
 
     // First color is considered the default color (and stylename 'color1' will equal to that)
     $stylename: if($i == 1, '', '[class*="color#{$i}"]');
@@ -490,8 +474,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
     }
 
     .#{$primary-stylename}-event-all-day#{$stylename} {
-      background-color: $bg;
-      background-color: rgba($bg, 0.8);
+      background-color: $v-background-color;
       color: $color;
     }
 
@@ -499,8 +482,7 @@ $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;
       color: $color;
 
       .#{$primary-stylename}-event-content {
-        background-color: $bg;
-        background-color: rgba($bg, 0.8);
+        background-color: $v-background-color;
       }
     }
   }

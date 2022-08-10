@@ -1,7 +1,6 @@
-@import "treegrid";
+@import 'treegrid';
 
 @mixin valo-tree8($primary-stylename: v-tree8) {
-
   @include valo-treegrid($primary-stylename);
 
   $tree-sel-bg: $v-grid-row-selected-background-color;
@@ -26,7 +25,7 @@
 
   .#{$primary-stylename}-row {
     &::before {
-      content: "";
+      content: '';
       display: none;
       position: absolute;
       top: 0;
@@ -46,14 +45,12 @@
 
   // Selected
   .#{$primary-stylename}-row-selected {
-
     > .#{$primary-stylename}-cell {
       background: transparent;
     }
 
     &::before {
       display: block;
-      @include valo-gradient($tree-sel-bg);
     }
   }
 

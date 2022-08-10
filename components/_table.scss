@@ -127,13 +127,7 @@ $v-table-background-color: null !default;
   $include-additional-styles: contains($v-included-additional-styles, table)
 ) {
   $background-color: $v-table-background-color or valo-table-background-color();
-  $border-color: $v-table-border-color or
-    first-color(
-      valo-border(
-        $color: $background-color,
-        $strength: 0.8,
-      )
-    );
+  $border-color: $v-table-border-color;
 
   .#{$primary-stylename} {
     // For scroll position indicator
@@ -155,7 +149,6 @@ $v-table-background-color: null !default;
   .#{$primary-stylename}-footer-wrap,
   .#{$primary-stylename}-header-drag {
     border: $v-table-border-width solid $border-color;
-    @include valo-gradient($v-background-color);
     white-space: nowrap;
     font-size: $v-table-header-font-size;
   }
@@ -305,20 +298,9 @@ $v-table-background-color: null !default;
 
   .#{$primary-stylename} [class*='-row'].v-selected {
     $selected-border-color: adjust-color($v-selection-color, $lightness: -8%, $saturation: -8%);
-
-    @include valo-gradient($v-selection-color);
     background-origin: border-box;
     $font-color: valo-font-color($v-selection-color, 0.9);
     color: $font-color;
-
-    + .v-selected {
-      $gradient-end: first(last(valo-gradient-color-stops($v-selection-color)));
-      background: $gradient-end;
-
-      td {
-        border-top-color: $gradient-end;
-      }
-    }
 
     .#{$primary-stylename}-cell-content {
       border-color: transparent;
@@ -385,7 +367,6 @@ $v-table-background-color: null !default;
   }
 
   .#{$primary-stylename}-column-selector {
-    @include valo-button-style($shadow: null);
     position: absolute;
     z-index: 2;
     top: 0;
@@ -413,9 +394,6 @@ $v-table-background-color: null !default;
       right: 0;
       bottom: 0;
       left: 0;
-    }
-    &:active:after {
-      @include valo-button-active-style;
     }
   }
 
@@ -636,13 +614,7 @@ $v-table-background-color: null !default;
 
   // TODO copy pasted from the main mixin
   $background-color: $v-table-background-color or valo-table-background-color();
-  $border-color: $v-table-border-color or
-    first-color(
-      valo-border(
-        $color: $background-color,
-        $strength: 0.7,
-      )
-    );
+  $border-color: $v-table-border-color;
 
   .#{$primary-stylename}-header-wrap {
     border-bottom: $v-table-border-width solid $border-color;
