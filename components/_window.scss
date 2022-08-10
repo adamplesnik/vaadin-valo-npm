@@ -3,7 +3,7 @@
  */
 @use 'sass:math';
 
-$v-window-background-color: $v-panel-background-color !default;
+$v-window-background-color: #fff !default;
 
 /**
  * @group window
@@ -286,12 +286,6 @@ $v-window-modality-curtain-background-color: #222 !default;
     margin-top: 0 !important;
 
     > .v-scrollable {
-      @include valo-panel-adjust-content-margins;
-
-      > .v-formlayout {
-        @include valo-formlayout-margin(round(math.div($v-unit-size, 3)));
-      }
-
       position: relative;
 
       &:focus {

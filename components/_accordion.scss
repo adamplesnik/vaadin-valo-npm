@@ -45,7 +45,6 @@
  * @group accordion
  */
 @mixin valo-accordion-style {
-  @include valo-panel-style;
   $grad-style: valo-gradient-style($v-gradient);
   $grad-opacity: valo-gradient-opacity($v-gradient);
   @include valo-gradient(
@@ -89,10 +88,6 @@
     border-bottom: none;
     margin-bottom: 0;
   }
-
-  &[class*='item-open'] + [class*='item'] {
-    border-top: valo-border($border: $v-panel-border, $color: $v-panel-background-color, $strength: 0.7);
-  }
 }
 
 /**
@@ -105,12 +100,10 @@
   border-radius: inherit;
 
   > .v-caption {
-    @include valo-panel-caption-style($background-color: $background-color or $v-background-color);
     display: block;
     @if $background-color == null {
       background: transparent;
     }
-    border-bottom-color: first-color(valo-border($color: $v-panel-background-color));
     border-radius: inherit;
     cursor: pointer;
     position: relative;
@@ -125,17 +118,6 @@
       left: 0;
       border-radius: inherit;
     }
-
-    @if $v-hover-styles-enabled {
-      &:hover:before {
-        @include valo-button-hover-style;
-        border: none;
-      }
-    }
-
-    &:active:before {
-      @include valo-button-active-style;
-    }
   }
 }
 
@@ -145,7 +127,5 @@
  */
 @mixin valo-accordion-item-content-style {
   box-shadow: valo-bevel-and-shadow($shadow: join(inset, $v-shadow), $shadow-opacity: $v-shadow-opacity * 0.5);
-  background-color: $v-panel-background-color;
   box-sizing: border-box;
-  @include valo-panel-adjust-content-margins;
 }

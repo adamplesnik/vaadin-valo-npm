@@ -15,7 +15,6 @@ $valo-richtextarea-use-valo-icons: true !default;
  */
 @mixin valo-richtextarea($primary-stylename: v-richtextarea) {
   .#{$primary-stylename} {
-    @include valo-textfield-style($states: normal, $padding: 0);
     height: auto;
     overflow: hidden;
   }

@@ -173,14 +173,6 @@ $valo-global-included: false !default;
       @include valo-table-global;
     }
 
-    @if v-is-included(tabsheet) {
-      @include valo-tabsheet-global;
-    }
-
-    @if v-is-included(splitpanel) {
-      @include valo-splitpanel-global;
-    }
-
     $valo-global-included: true;
   }
 }

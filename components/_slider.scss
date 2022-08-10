@@ -115,13 +115,7 @@ $_valo-slider-base-margin-horizontal: round(math.div($v-slider-handle-width, 2))
     display: inline-block;
     vertical-align: top;
 
-    &:before {
-      @include valo-button-style;
-    }
-
     &:after {
-      border: valo-border();
-      @include valo-button-focus-style($border-fallback: null);
       opacity: 0;
       @if $v-animations-enabled {
         transition: opacity 200ms;
@@ -288,13 +282,8 @@ $_valo-slider-base-margin-horizontal: round(math.div($v-slider-handle-width, 2))
  */
 @mixin valo-slider-handle-style($primary-stylename: v-slider, $background-color: $v-background-color) {
   .#{$primary-stylename}-handle {
-    &:before {
-      @include valo-button-style($background-color: $background-color, $unit-size: null, $border-radius: null);
-    }
-
     &:after {
       border: valo-border($color: $background-color);
-      @include valo-button-focus-style($background-color: $background-color, $border-fallback: null);
     }
   }
 }

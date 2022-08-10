@@ -163,24 +163,6 @@
     width: $v-layout-spacing-horizontal;
     height: $v-layout-spacing-vertical;
   }
-
-  @if $include-additional-styles {
-    .v-verticallayout-well,
-    .v-horizontallayout-well {
-      @include valo-panel-well-style;
-      @include valo-panel-adjust-content-margins;
-    }
-
-    .v-verticallayout-card,
-    .v-horizontallayout-card {
-      @include valo-panel-style;
-      @include valo-panel-adjust-content-margins;
-    }
-
-    .v-horizontallayout-wrapping {
-      @include valo-horizontallayout-wrapping-style;
-    }
-  }
 }
 
 /**

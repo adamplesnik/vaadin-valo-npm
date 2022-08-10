@@ -518,12 +518,6 @@ $v-grid-drag-indicator-color: $v-focus-color;
       border: none;
       border-radius: 0;
       background: transparent;
-
-      @if $v-textfield-bevel {
-        box-shadow: valo-bevel-and-shadow($bevel: $v-textfield-bevel);
-      } @else {
-        box-shadow: none;
-      }
     }
 
     input[type='text'].v-datefield-textfield {
@@ -561,7 +555,6 @@ $v-grid-drag-indicator-color: $v-focus-color;
 
   .#{$primary-stylename}-editor-save,
   .#{$primary-stylename}-editor-cancel {
-    @include valo-link-style;
     font-weight: $v-font-weight + 100;
     text-decoration: none;
     border: none;
