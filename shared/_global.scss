@@ -153,34 +153,14 @@ $valo-global-included: false !default;
     }
 
     // Component global styles should also be included here
-    @if v-is-included(orderedlayout) {
-      @include valo-orderedlayout-global;
-    }
-
-    @if v-is-included(gridlayout) {
-      @include valo-gridlayout-global;
-    }
-
-    @if v-is-included(calendar) {
-      @include valo-calendar-global;
-    }
-
-    @if v-is-included(colorpicker) {
-      @include valo-colorpicker-global;
-    }
-
-    @if v-is-included(table) or v-is-included(treetable) {
-      @include valo-table-global;
-    }
+    @include valo-orderedlayout-global;
+    @include valo-gridlayout-global;
+    @include valo-calendar-global;
+    @include valo-colorpicker-global;
+    @include valo-table-global;
 
     $valo-global-included: true;
   }
-}
-
-$valo-shared-pathPrefix: null;
-
-@if $v-relative-paths == false {
-  $valo-shared-pathPrefix: '../valo/shared/';
 }
 
 /**

@@ -2,11 +2,8 @@
 
 @import 'table';
 
-$v-grid-row-background-color: valo-table-background-color() !default;
-$v-grid-row-stripe-background-color: scale-color(
-  $v-grid-row-background-color,
-  $lightness: if(color-luminance($v-grid-row-background-color) < 10, 4%, -4%)
-) !default;
+$v-grid-row-background-color: #fff !default;
+$v-grid-row-stripe-background-color: #eee !default;
 
 $v-grid-border-color-source: $v-grid-row-background-color !default;
 $v-grid-border: 1px solid #ddd !default;
@@ -556,7 +553,7 @@ $v-grid-drag-indicator-color: $v-focus-color;
     &::-webkit-scrollbar-thumb {
       border-radius: 10px;
       border: 4px solid transparent;
-      background: if(is-dark-color($v-grid-header-background-color), rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.3));
+      background: rgba(0, 0, 0, 0.3);
       -webkit-background-clip: content-box;
       background-clip: content-box;
     }

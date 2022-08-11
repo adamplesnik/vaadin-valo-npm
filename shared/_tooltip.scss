@@ -6,14 +6,7 @@
  * @type color
  * @group tooltip
  */
-$v-tooltip-background-color: rgba(
-  if(
-    is-dark-color($v-background-color),
-    scale-color($v-background-color, $lightness: 80%),
-    scale-color($v-background-color, $lightness: -80%)
-  ),
-  0.9
-) !default;
+$v-tooltip-background-color: rgba(0, 0, 0, 0.78) !default;
 
 /**
  * The font color for tooltips.
@@ -21,7 +14,7 @@ $v-tooltip-background-color: rgba(
  * @type color
  * @group tooltip
  */
-$v-tooltip-font-color: valo-font-color(opacify($v-tooltip-background-color, 1), 1) !default;
+$v-tooltip-font-color: #fff !default;
 
 /**
  * The font size for tooltips.
@@ -172,7 +165,7 @@ $v-tooltip-border-radius: $v-border-radius - 1px !default;
       overflow: auto;
       margin-top: $v-tooltip-padding-vertical * 2;
       pre {
-        margin: 0px;
+        margin: 0;
       }
     }
 

@@ -1,9 +1,3 @@
-/**
- *
- *
- *
- * @group orderedlayout
- */
 @mixin valo-orderedlayout-global {
   div.v-layout.v-horizontal.v-widget {
     white-space: nowrap;
@@ -41,11 +35,6 @@
   .v-horizontal > .v-slot,
   .v-horizontal > .v-expand > .v-slot {
     height: 100%;
-  }
-
-  /* Workaround for IE8+IE9 bug where clicking inside an input area which is inside a div with negative margin causes cursor position to jump to wrong position. See #11152 */
-  .v-horizontal > .v-expand > .v-slot {
-    position: relative;
   }
 
   .v-vertical > .v-spacing,
@@ -132,17 +121,7 @@
   }
 }
 
-/**
- *
- *
- * @param {bool} $include-additional-styles -
- *
- * @group orderedlayout
- */
-@mixin valo-orderedlayout(
-  $include-additional-styles: contains($v-included-additional-styles, orderedlayout) or
-    contains($v-included-additional-styles, verticallayout) or contains($v-included-additional-styles, horizontallayout)
-) {
+@mixin valo-orderedlayout() {
   .v-margin-top {
     padding-top: $v-layout-margin-top;
   }

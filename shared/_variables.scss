@@ -1,8 +1,5 @@
 @use 'sass:math';
 
-// Color functions are used to calculate default font color
-@import '../util/color';
-
 /**
  * A static text that is shown under the loading spinned while the client-side
  * engine is being loaded and started. The text must be given in quotes. The
@@ -168,7 +165,7 @@ $v-app-background-color: $v-background-color !default;
  * @group color
  * @type color
  */
-$v-font-color: valo-font-color($v-app-background-color) !default;
+$v-font-color: #23222c !default;
 
 /**
  * Color for the field focus indicator. The valo-focus-color() function computes a
@@ -178,7 +175,7 @@ $v-font-color: valo-font-color($v-app-background-color) !default;
  * @group color
  * @type color
  */
-$v-focus-color: valo-focus-color() !default;
+$v-focus-color: #088ed8 !default;
 
 /**
  * Box-shadow specification for the field focus indicator. The space-separated values
@@ -530,6 +527,36 @@ $v-included-additional-styles: $v-included-components !default;
  */
 @function v-is-included($component-name, $is-included: $v-included-components) {
   @return contains($is-included, $component-name);
+}
+
+/**
+ * Checks if a list contains a certain value.
+ *
+ * @param {list} $list - the list to check
+ * @param {value} $var - the value to search for
+ * @param {bool} $recursive (false) - should any contained lists be checked for the value
+ *
+ * @return {bool} true if the value is found from the list, false otherwise
+ *
+ * @group lists
+ */
+@function contains($list, $value, $recursive: false) {
+  @if $recursive == false {
+    @return (false != index($list, $value));
+  }
+
+  $ret: false;
+  @each $item in $list {
+    @if type-of($item) == list and $recursive {
+      @if contains($item, $value, true) {
+        @return true;
+      }
+    } @else if $item == $value {
+      @return true;
+    }
+  }
+
+  @return false;
 }
 
 /**

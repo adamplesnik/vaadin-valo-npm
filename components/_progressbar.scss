@@ -62,7 +62,6 @@ $v-progressbar-border-radius: $v-border-radius !default;
 @mixin valo-progressbar-track-style($background-color: $v-background-color) {
   border-radius: $v-progressbar-border-radius;
   height: round(math.div($v-unit-size, 4));
-  $bg-lightness: if(color-luminance($background-color) < 10, 10%, -10%);
   background-color: $background-color;
   box-sizing: border-box;
 }

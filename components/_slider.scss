@@ -50,10 +50,7 @@ $_valo-slider-base-margin-horizontal: round(math.div($v-slider-handle-width, 2))
  *
  * @group slider
  */
-@mixin valo-slider(
-  $primary-stylename: v-slider,
-  $include-additional-styles: contains($v-included-additional-styles, slider)
-) {
+@mixin valo-slider($primary-stylename: v-slider) {
   // Round to an even number
   $v-slider-track-size: $v-slider-track-size + $v-slider-track-size%2;
   $v-slider-handle-width: $v-slider-handle-width + $v-slider-handle-width%2;
@@ -180,12 +177,6 @@ $_valo-slider-base-margin-horizontal: round(math.div($v-slider-handle-width, 2))
         margin-top: round(math.div($v-slider-handle-width, -2));
         margin-left: round(math.div($v-slider-handle-height - $v-slider-track-size, -2));
       }
-    }
-  }
-
-  @if $include-additional-styles {
-    .#{$primary-stylename}-no-indicator {
-      @include valo-slider-no-indicator;
     }
   }
 }

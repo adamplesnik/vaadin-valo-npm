@@ -101,39 +101,19 @@ $v-table-background-color: null !default;
 /**
  *
  *
- * @param {color} $context ($v-background-color) -
- *
- * @return {color} -
- *
- * @group table
- */
-@function valo-table-background-color($context: $v-background-color) {
-  @if is-dark-color($context) {
-    @return darken($context, 2%);
-  }
-  @return lighten($context, 2%);
-}
-
-/**
- *
- *
  * @param {string} $primary-stylename (v-table) -
- * @param {bool} $include-additional-styles -
  *
  * @group table
  */
-@mixin valo-table(
-  $primary-stylename: v-table,
-  $include-additional-styles: contains($v-included-additional-styles, table)
-) {
-  $background-color: $v-table-background-color or valo-table-background-color();
+@mixin valo-table($primary-stylename: v-table) {
+  $background-color: $v-table-background-color;
   $border-color: $v-table-border-color;
 
   .#{$primary-stylename} {
     // For scroll position indicator
     position: relative;
     background: $v-background-color;
-    color: valo-font-color($v-background-color);
+    color: $v-font-color;
 
     // Hide row focus outline
     overflow: hidden;
@@ -286,8 +266,7 @@ $v-table-background-color: null !default;
   }
 
   .#{$primary-stylename}-row-odd {
-    $bg-lightness: if(color-luminance($background-color) < 10, 4%, -4%);
-    background-color: scale-color($background-color, $lightness: $bg-lightness);
+    background-color: #eee;
     cursor: pointer;
   }
 
@@ -299,8 +278,7 @@ $v-table-background-color: null !default;
   .#{$primary-stylename} [class*='-row'].v-selected {
     $selected-border-color: adjust-color($v-selection-color, $lightness: -8%, $saturation: -8%);
     background-origin: border-box;
-    $font-color: valo-font-color($v-selection-color, 0.9);
-    color: $font-color;
+    color: #fff;
 
     .#{$primary-stylename}-cell-content {
       border-color: transparent;
@@ -459,10 +437,6 @@ $v-table-background-color: null !default;
   .#{$primary-stylename}-drag .#{$primary-stylename}-body {
     box-shadow: 0 0 0 2px rgba($v-focus-color, 0.5);
 
-    @if color-luminance($v-focus-color) + 50 < color-luminance($background-color) {
-      border-color: $v-focus-color;
-    }
-
     .#{$primary-stylename}-focus {
       outline: none;
     }
@@ -471,7 +445,7 @@ $v-table-background-color: null !default;
   .#{$primary-stylename}-row-drag-middle .#{$primary-stylename}-cell-content {
     $bg: mix($v-focus-color, $background-color, 20%);
     background-color: $bg;
-    color: valo-font-color($bg);
+    color: #fff;
   }
 
   .#{$primary-stylename}-row-drag-bottom td.#{$primary-stylename}-cell-content {
@@ -490,44 +464,6 @@ $v-table-background-color: null !default;
 
   .#{$primary-stylename}-row-drag-top .#{$primary-stylename}-cell-wrapper {
     margin-top: -1px;
-  }
-
-  @if $include-additional-styles {
-    .#{$primary-stylename}-no-stripes {
-      @include valo-table-no-stripes-style;
-    }
-
-    .#{$primary-stylename}-no-vertical-lines {
-      @include valo-table-no-vertical-lines-style;
-    }
-
-    .#{$primary-stylename}-no-horizontal-lines {
-      @include valo-table-no-horizontal-lines-style;
-    }
-
-    .#{$primary-stylename}-no-header {
-      @include valo-table-no-header-style;
-    }
-
-    .#{$primary-stylename}-borderless {
-      @include valo-table-borderless-style;
-    }
-
-    .#{$primary-stylename}-compact,
-    .#{$primary-stylename}-small {
-      @include valo-table-spacing-style(
-        $row-height: $v-unit-size--small,
-        $cell-padding-horizontal: round($v-table-cell-padding-horizontal * 0.5)
-      );
-    }
-
-    .#{$primary-stylename}-small {
-      font-size: $v-font-size--small;
-
-      &.v-treetable .#{$primary-stylename}-cell-wrapper {
-        min-height: $v-font-size--small;
-      }
-    }
   }
 }
 
@@ -613,7 +549,7 @@ $v-table-background-color: null !default;
   }
 
   // TODO copy pasted from the main mixin
-  $background-color: $v-table-background-color or valo-table-background-color();
+  $background-color: $v-table-background-color;
   $border-color: $v-table-border-color;
 
   .#{$primary-stylename}-header-wrap {

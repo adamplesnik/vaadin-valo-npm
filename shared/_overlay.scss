@@ -6,11 +6,7 @@
  * @type color
  * @group overlay
  */
-$v-overlay-background-color: if(
-  is-dark-color($v-background-color),
-  darken($v-background-color, 3%),
-  lighten($v-background-color, 2%)
-) !default;
+$v-overlay-background-color: darken($v-background-color, 3%) !default;
 
 /**
  * The corner radius for overlay elements.
@@ -74,9 +70,7 @@ $v-overlay-padding-horizontal: $v-overlay-padding !default;
  * @type list
  * @group overlay
  */
-$v-overlay-shadow: 0 4px 10px 0 (v-shade 2), 0 3px 5px 0 v-shade,
-  0 0 0 $v-overlay-border-width
-    (v-shade (2.5 - math.div(color-luminance($v-background-color), 255) + math.div($v-bevel-depth, 100%))) !default;
+$v-overlay-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.16) !default;
 
 /**
  * The background color for selection overlays, i.e. overlays which present a
@@ -172,7 +166,7 @@ $v-selection-item-selection-color: $v-selection-color !default;
   border-radius: $v-overlay-border-radius;
 
   background-color: $background-color;
-  color: valo-font-color($background-color);
+  color: $v-font-color;
 
   @if $v-animations-enabled {
     @if $animate-in {
@@ -256,8 +250,7 @@ $v-selection-item-selection-color: $v-selection-color !default;
  * @group overlay
  */
 @mixin valo-selection-item-selected-style {
-  $font-color: valo-font-color($v-selection-item-selection-color, 0.9);
-  color: $font-color;
+  color: #fff;
 }
 
 /**
@@ -287,7 +280,7 @@ $v-selection-item-selection-color: $v-selection-color !default;
  */
 @mixin valo-drag-element-style($background-color: $v-app-background-color) {
   background: $background-color;
-  color: valo-font-color($background-color);
+  color: $v-font-color;
   box-shadow: 0 2px 10px rgba(#000, 0.2);
   border-radius: $v-border-radius;
   overflow: hidden;

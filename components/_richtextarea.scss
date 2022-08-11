@@ -20,7 +20,7 @@ $valo-richtextarea-use-valo-icons: true !default;
   }
 
   .#{$primary-stylename} .gwt-RichTextToolbar {
-    color: valo-font-color($v-background-color);
+    color: $v-font-color;
   }
 
   .#{$primary-stylename} .gwt-ToggleButton,
@@ -32,7 +32,7 @@ $valo-richtextarea-use-valo-icons: true !default;
     outline: none;
 
     &:hover {
-      color: valo-font-color($v-background-color, 1);
+      color: $v-font-color;
     }
   }
 

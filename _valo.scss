@@ -1,14 +1,5 @@
-@use 'sass:math';
-
-// Import global variables
 @import 'shared/variables';
-
-// Import all utility mixins and functions
-@import 'util/lists';
-@import 'util/color';
-@import 'util/animation';
-
-// Import global mixins
+@import 'shared/animation';
 @import 'shared/global';
 
 // Import component specific mixins
