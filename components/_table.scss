@@ -4,7 +4,7 @@
  */
 @use 'sass:math';
 
-$v-table-border-width: first-number($v-border) !default;
+$v-table-border-width: 1px !default;
 
 /**
  *

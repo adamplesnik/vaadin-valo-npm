@@ -50,8 +50,8 @@ $valo-richtextarea-use-valo-icons: true !default;
       }
 
       @each $pair in $icons {
-        $first-of-pair: first($pair);
-        $last-of-pair: last($pair);
+        $first-of-pair: nth($pair, 1);
+        $last-of-pair: nth($pair, length($pair));
         div[title='#{$first-of-pair}']:before {
           content: '#{$last-of-pair}';
         }

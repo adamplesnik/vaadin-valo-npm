@@ -99,16 +99,3 @@ $v-font-color-contrast: 0.72 !default;
   }
   @return $color;
 }
-
-/**
- * Output the default focus styles (border-color and box-shadow).
- *
- * @group style
- */
-@mixin valo-focus-style {
-  @if type-of($v-focus-style) == list {
-    box-shadow: $v-focus-style;
-  } @else if type-of($v-focus-style) == color {
-    border-color: $v-focus-style;
-  }
-}

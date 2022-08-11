@@ -156,7 +156,7 @@
       height: auto !important;
       padding: round(math.div($v-unit-size, 4)) 0;
       background-color: $v-background-color;
-      border-top: first-number($v-border) solid scale-color($v-background-color, $lightness: -5%);
+      border-top: 1px solid scale-color($v-background-color, $lightness: -5%);
 
       .v-expand {
         overflow: visible;

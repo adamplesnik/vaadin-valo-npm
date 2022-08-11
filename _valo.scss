@@ -3,18 +3,10 @@
 // Import global variables
 @import 'shared/variables';
 
-// Bourbon 3.2.4 stripped
-// http://bourbon.io
-// Copyright 2011-2015 thoughtbot, inc.
-// MIT License
-@import 'util/animation';
-@import 'util/linear-gradient';
-
 // Import all utility mixins and functions
 @import 'util/lists';
 @import 'util/color';
-@import 'util/anim';
-@import 'util/util';
+@import 'util/animation';
 
 // Import global mixins
 @import 'shared/global';

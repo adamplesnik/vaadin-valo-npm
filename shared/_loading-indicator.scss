@@ -111,12 +111,10 @@ $v-loading-indicator-bar-height--wait: ceil(math.div($v-unit-size, 6)) !default;
     opacity: 1;
     height: $v-loading-indicator-bar-height;
     background-color: $v-loading-indicator-color;
-    //@include linear-gradient(to right, rgba($v-loading-indicator-color,0) 0%, $v-loading-indicator-color 100%);
     pointer-events: none;
 
     transition: none;
     @include animation(v-progress-start 1000ms 200ms both);
-    //@include animation-fill-mode(forwards);
 
     &[style*='none'] {
       // Chrome skips the transitions because it thinks the element is display: none;

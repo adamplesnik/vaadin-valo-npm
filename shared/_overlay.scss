@@ -26,7 +26,7 @@ $v-overlay-border-radius: $v-border-radius !default;
  * @type size (px)
  * @group overlay
  */
-$v-overlay-border-width: first-number($v-border) !default;
+$v-overlay-border-width: 1px !default;
 
 /**
  * The animation which is used when overlay elements are made visible.

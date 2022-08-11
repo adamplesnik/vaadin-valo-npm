@@ -53,7 +53,7 @@
  * @group accordion
  */
 @mixin valo-accordion-item-style {
-  $_br: $v-border-radius - first-number($v-border);
+  $_br: $v-border-radius - 1px;
   position: relative;
 
   @if $v-border-radius > 0 {
