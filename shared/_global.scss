@@ -141,11 +141,9 @@
   }
 
   // Component global styles should also be included here
-  @import 'components/orderedlayout';
   @include valo-gridlayout-global;
   @include valo-calendar-global;
   @include valo-colorpicker-global;
-  @import 'components/table';
 }
 
 /**

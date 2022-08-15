@@ -6,6 +6,8 @@
 
 // Include global styles directly, without a theme name prefix (this is done only once)
 @include valo-global;
+@import 'components/orderedlayout';
+@import 'components/table';
 
 /**
  * The main Valo theme mixin, which outputs all the selectors and properties to produce
