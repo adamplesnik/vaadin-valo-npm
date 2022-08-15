@@ -1,16 +1,3 @@
-/**
- * A list of colors for custom event colors. Can be an empty list of you don't
- * need any custom event colors.
- *
- * @example javascript
- * // Java code
- * // 'event' is an instance of EditableCalendarEvent
- * event.setStyleName("color1"); // 1st color in the list
- * event.setStyleName("color2"); // 2nd color in the list
- * // etc.
- *
- * @group calendar
- */
 @use 'sass:math';
 
 $v-calendar-event-colors: #00ace0, #2d9f19, #d18100, #ce3812, #2d55cd !default;

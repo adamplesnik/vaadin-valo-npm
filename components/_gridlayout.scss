@@ -1,11 +1,11 @@
 /**
  *
  *
- * @param {string} $primary-stylename (v-gridlayout) - 
+ * @param {string} $primary-stylename (v-gridlayout) -
  *
  * @group gridlayout
  */
-@mixin valo-gridlayout-global ($primary-stylename: v-gridlayout) {
+@mixin valo-gridlayout-global($primary-stylename: v-gridlayout) {
   .#{$primary-stylename} {
     position: relative;
   }
@@ -26,16 +26,14 @@
   }
 }
 
-
 /**
  *
  *
- * @param {string} $primary-stylename (v-gridlayout) - 
+ * @param {string} $primary-stylename (v-gridlayout) -
  *
  * @group gridlayout
  */
-@mixin valo-gridlayout($primary-stylename : v-gridlayout) {
-
+@mixin valo-gridlayout($primary-stylename: v-gridlayout) {
   .#{$primary-stylename}-margin-top {
     padding-top: $v-layout-margin-top;
   }
@@ -56,6 +54,4 @@
     padding-left: $v-layout-spacing-horizontal;
     padding-top: $v-layout-spacing-vertical;
   }
-
-
 }

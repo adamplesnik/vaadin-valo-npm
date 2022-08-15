@@ -1,21 +1,7 @@
-@use 'sass:list';
 @use 'sass:math';
 
 @import 'loading-indicator';
-@import 'contextmenu';
-@import 'overlay';
-@import 'tooltip';
 @import 'reconnect-dialog';
-
-/*
- * A flag which is set to true when the global styles have been included in the compilation.
- * Used to only include them once, if Valo is imported multiple times during the compilation
- * (multiple theme support).
- *
- * @access private
- * @type bool
- */
-$valo-global-included: false !default;
 
 /*
  * Global Valo related styles, containing styles which are necessary for the application
@@ -24,161 +10,142 @@ $valo-global-included: false !default;
  * @access private
  */
 @mixin valo-global {
-  @if $valo-global-included == false {
-    // Version info for the debug window
-    .v-vaadin-version:after {
-      content: '${project.version}';
-    }
+  .v-widget {
+    // Baseline expectations for all Vaadin widgets
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
 
-    // Core widget styles come before any other component (and are always included),
-    // so that it has the least specificity
-    @include valo-widget;
-
-    .v-generated-body {
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
-      border: 0;
-    }
-
-    .v-app {
-      height: 100%;
-      // Cancel tap highlight from all elements inside the app
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-
-      // Prevent iOS text size adjust after orientation change, without disabling user zoom
-      -webkit-text-size-adjust: 100%;
-
-      // Disable text selection by default
-      -webkit-user-select: none;
-      user-select: none;
-
-      // Enable text selection for certain elements
-      input[type='text'],
-      .v-slot > .v-caption,
-      .v-gridlayout-slot > .v-caption,
-      .v-has-caption > .v-caption,
-      .v-formlayout-captioncell > .v-caption,
-      .v-csslayout > .v-caption {
-        -webkit-user-select: text;
-        user-select: text;
-      }
-    }
-
-    .v-ui {
-      position: relative;
-    }
-
-    // Prevent margin collapse
-    .v-ui.v-ui-embedded {
-      margin-top: -1px;
-      border-top: 1px solid transparent;
-    }
-
-    .v-ui:focus {
-      outline: none;
-    }
-
-    .v-overlay-container {
-      width: 0;
-      height: 0;
-    }
-
-    .v-drag-element {
-      z-index: 60000;
-      // Override any other position properties
-      position: absolute !important;
-      cursor: default;
-    }
-
-    .v-clip {
-      overflow: hidden;
-    }
-
-    .v-scrollable {
-      overflow: auto;
-
-      // "Unnecessary scrollbar" related fixes
-      > .v-widget {
-        // This is needed for IE
-        vertical-align: middle;
-
-        // Needed for all browsers. Can't really show anything outside the
-        // scrolling area anyway, so we can safely hide any overflow
-        overflow: hidden;
-      }
-    }
-
-    .v-ios.v-webkit .v-scrollable {
-      -webkit-overflow-scrolling: touch;
-    }
-
-    //fix for #14813 - unable to scroll on iOS devices
-    .v-webkit.v-ios .v-browserframe {
-      -webkit-overflow-scrolling: touch;
-      overflow: auto;
-    }
-
-    .v-assistive-device-only,
-    .v-assistive-device-only-label label {
-      position: absolute;
-      top: -2000px;
-      left: -2000px;
-      width: 10px;
-      overflow: hidden;
-    }
-
-    .v-icon {
-      cursor: inherit;
-      -webkit-user-select: none;
-      user-select: none;
-    }
-
-    .v-icon,
-    .v-errorindicator,
-    .v-required-field-indicator {
-      display: inline-block;
-      line-height: inherit;
-    }
-
-    .v-caption {
-      display: inline-block;
-      white-space: nowrap;
-      line-height: $v-line-height;
-    }
-
-    .v-captiontext {
-      display: inline-block;
-      line-height: inherit;
-    }
-
-    // Component global styles should also be included here
-    @include valo-orderedlayout-global;
-    @include valo-gridlayout-global;
-    @include valo-calendar-global;
-    @include valo-colorpicker-global;
-    @include valo-table-global;
-
-    $valo-global-included: true;
+    // Reset, since ordered layout uses text-align for horizotal alignment inside slots and
+    // white-space: nowrap; for horizontal layout orientation
+    text-align: left;
+    white-space: normal;
   }
-}
 
-/**
- * Styles for the application root element. Outputs font, font color, background color and default
- * cursor styles.
- */
-@mixin valo-app-style {
-  font: $v-font-weight list.slash($v-font-size, $v-line-height) $v-font-family;
-  color: $v-font-color;
-  background-color: $v-app-background-color;
-  cursor: default;
+  .v-generated-body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
 
-  // Default to Helvetica Neue on Macs instead of Helvetica, which has a slightly different baseline
-  @if $v-font-family == sans-serif {
-    .v-mac & {
-      font-family: 'Helvetica Neue', sans-serif;
+  .v-app {
+    height: 100%;
+    // Cancel tap highlight from all elements inside the app
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    // Prevent iOS text size adjust after orientation change, without disabling user zoom
+    -webkit-text-size-adjust: 100%;
+
+    // Disable text selection by default
+    -webkit-user-select: none;
+    user-select: none;
+
+    // Enable text selection for certain elements
+    input[type='text'],
+    .v-slot > .v-caption,
+    .v-gridlayout-slot > .v-caption,
+    .v-has-caption > .v-caption,
+    .v-formlayout-captioncell > .v-caption,
+    .v-csslayout > .v-caption {
+      -webkit-user-select: text;
+      user-select: text;
     }
   }
+
+  .v-ui {
+    position: relative;
+  }
+
+  // Prevent margin collapse
+  .v-ui.v-ui-embedded {
+    margin-top: -1px;
+    border-top: 1px solid transparent;
+  }
+
+  .v-ui:focus {
+    outline: none;
+  }
+
+  .v-overlay-container {
+    width: 0;
+    height: 0;
+  }
+
+  .v-drag-element {
+    z-index: 60000;
+    // Override any other position properties
+    position: absolute !important;
+    cursor: default;
+  }
+
+  .v-clip {
+    overflow: hidden;
+  }
+
+  .v-scrollable {
+    overflow: auto;
+
+    // "Unnecessary scrollbar" related fixes
+    > .v-widget {
+      // This is needed for IE
+      vertical-align: middle;
+
+      // Needed for all browsers. Can't really show anything outside the
+      // scrolling area anyway, so we can safely hide any overflow
+      overflow: hidden;
+    }
+  }
+
+  .v-ios.v-webkit .v-scrollable {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  //fix for #14813 - unable to scroll on iOS devices
+  .v-webkit.v-ios .v-browserframe {
+    -webkit-overflow-scrolling: touch;
+    overflow: auto;
+  }
+
+  .v-assistive-device-only,
+  .v-assistive-device-only-label label {
+    position: absolute;
+    top: -2000px;
+    left: -2000px;
+    width: 10px;
+    overflow: hidden;
+  }
+
+  .v-icon {
+    cursor: inherit;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .v-icon,
+  .v-errorindicator,
+  .v-required-field-indicator {
+    display: inline-block;
+    line-height: inherit;
+  }
+
+  .v-caption {
+    display: inline-block;
+    white-space: nowrap;
+    line-height: $v-line-height;
+  }
+
+  .v-captiontext {
+    display: inline-block;
+    line-height: inherit;
+  }
+
+  // Component global styles should also be included here
+  @import 'components/orderedlayout';
+  @include valo-gridlayout-global;
+  @include valo-calendar-global;
+  @include valo-colorpicker-global;
+  @import 'components/table';
 }
 
 /**
@@ -191,7 +158,13 @@ $valo-global-included: false !default;
 @mixin valo-common {
   .v-app,
   .v-app-loading {
-    @include valo-app-style;
+    background-color: $v-app-background-color;
+    color: $v-font-color;
+    cursor: default;
+    font-family: $v-font-family;
+    font-size: $v-font-size;
+    font-weight: $v-font-weight;
+    line-height: $v-line-height;
   }
 
   .v-app-loading {
@@ -240,7 +213,8 @@ $valo-global-included: false !default;
   }
 
   .v-caption {
-    @include valo-caption-style;
+    font-size: $v-caption-font-size;
+    font-weight: $v-caption-font-weight;
   }
 
   .v-caption-on-left .v-caption,
@@ -283,7 +257,7 @@ $valo-global-included: false !default;
   }
 
   .v-required-field-indicator {
-    color: $v-required-field-indicator-color;
+    color: $v-error-indicator-color;
     padding: 0 0.2em;
   }
 
@@ -291,22 +265,21 @@ $valo-global-included: false !default;
     cursor: default !important;
   }
 
-  @include valo-drag-element;
-  @include valo-draggable;
-  @include valo-tooltip;
-  @include valo-reconnect-dialog;
-}
-
-/**
- * Generic component caption styles (captions which are generated by layouts).
- */
-@mixin valo-caption-style {
-  font-size: $v-caption-font-size;
-  font-weight: $v-caption-font-weight;
-  padding-bottom: 0.3em;
-  @if $v-border-radius > 0 {
-    padding-left: round(math.div($v-border-radius, 4));
+  .v-draggable {
+    -webkit-user-select: none !important;
+    user-select: none !important;
   }
+
+  .v-drag-element {
+    background: $v-app-background-color;
+    color: $v-font-color;
+    box-shadow: 0 2px 10px rgba(#000, 0.2);
+    border-radius: $v-border-radius;
+    overflow: hidden;
+    opacity: 0.5;
+  }
+
+  @include valo-reconnect-dialog;
 }
 
 /**
@@ -323,45 +296,10 @@ $valo-global-included: false !default;
   text-align: center;
 
   @if $is-pseudo-element {
-    @include valo-error-indicator-icon-style;
+    content: '!';
   } @else {
     &:before {
-      @include valo-error-indicator-icon-style;
+      content: '!';
     }
-  }
-}
-
-/**
- * The error indicator icon style. Should be a font character or a font icon.
- */
-@mixin valo-error-indicator-icon-style {
-  content: '!';
-}
-
-/**
- * Make the BODY element scrollable instead of the .v-ui element. Scrolling the BODY usually
- * works better on touch devices. You loose the ability to control the scroll position from
- * the server side when using this.
- *
- * @example scss
- *  // Include without any parent selector
- *  @include valo-natural-page-scrolling;
- */
-@mixin valo-natural-page-scrolling {
-  html {
-    height: auto;
-  }
-
-  .v-generated-body {
-    height: auto;
-    overflow: auto;
-    background-color: $v-app-background-color;
-  }
-
-  .v-app,
-  .v-ui.v-scrollable {
-    width: auto !important;
-    height: auto !important;
-    overflow: visible !important;
   }
 }

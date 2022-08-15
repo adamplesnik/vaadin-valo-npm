@@ -2,72 +2,21 @@
 @import 'colorpicker';
 @import 'grid';
 @import 'gridlayout';
-@import 'orderedlayout';
 @import 'progressbar';
 @import 'richtextarea';
 @import 'slider';
 @import 'treegrid';
 @import 'tree8';
-@import 'widget';
 
-/**
- * Outputs all the selectors and properties for all individual components to produce
- * the variation specified by global variables.
- *
- * This mixin can be called multiple times for a theme, if you for instance wish to
- * generate alternative color versions of the components.
- *
- * @example scss
- * .my-theme {
- *   // The default color variation
- *   @include valo;
- *
- *   .sidebar {
- *     // For the sidebar context, we generate a darker variant of all components
- *      $v-background-color: #696969;
- *      background-color: $v-background-color;
- *      @include valo-components;
- *   }
- * }
- */
 @mixin valo-components {
-  @if v-is-included(grid) {
-    @include valo-grid;
-  }
-
-  @if v-is-included(gridlayout) {
-    @include valo-gridlayout;
-  }
-
-  @if v-is-included(tree8) {
-    @include valo-tree8;
-  }
-
-  @if v-is-included(treegrid) {
-    @include valo-treegrid;
-  }
-
-  @if v-is-included(progressbar) {
-    @include valo-progressbar;
-  }
-
-  @if v-is-included(progressindicator) {
-    @include valo-progressbar($primary-stylename: v-progressindicator);
-  }
-
-  @if v-is-included(slider) {
-    @include valo-slider;
-  }
-
-  @if v-is-included(colorpicker) {
-    @include valo-colorpicker;
-  }
-
-  @if v-is-included(calendar) {
-    @include valo-calendar;
-  }
-
-  @if v-is-included(richtextarea) {
-    @include valo-richtextarea;
-  }
+  @include valo-grid;
+  @include valo-gridlayout;
+  @include valo-tree8;
+  @include valo-treegrid;
+  @include valo-progressbar;
+  @include valo-progressbar($primary-stylename: v-progressindicator);
+  @include valo-slider;
+  @include valo-colorpicker;
+  @include valo-calendar;
+  @include valo-richtextarea;
 }
