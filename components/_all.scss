@@ -1,22 +1,16 @@
 @import 'calendar';
 @import 'colorpicker';
 @import 'grid';
-@import 'gridlayout';
 @import 'progressbar';
-@import 'richtextarea';
-@import 'slider';
 @import 'treegrid';
 @import 'tree8';
 
 @mixin valo-components {
   @include valo-grid;
-  @include valo-gridlayout;
   @include valo-tree8;
   @include valo-treegrid;
   @include valo-progressbar;
   @include valo-progressbar($primary-stylename: v-progressindicator);
-  @include valo-slider;
   @include valo-colorpicker;
   @include valo-calendar;
-  @include valo-richtextarea;
 }

@@ -6,76 +6,67 @@
  */
 $valo-richtextarea-use-valo-icons: true !default;
 
-/**
- *
- *
- * @param {string} $primary-stylename (v-richtextarea) -
- *
- * @group richtextarea
- */
-@mixin valo-richtextarea($primary-stylename: v-richtextarea) {
-  .#{$primary-stylename} {
-    height: auto;
-    overflow: hidden;
-  }
+.v-richtextarea {
+  height: auto;
+  overflow: hidden;
+}
 
-  .#{$primary-stylename} .gwt-RichTextToolbar {
+.v-richtextarea .gwt-RichTextToolbar {
+  color: $v-font-color;
+}
+
+.v-richtextarea .gwt-ToggleButton,
+.v-richtextarea .gwt-PushButton {
+  display: inline-block;
+  line-height: $v-unit-size;
+  width: $v-unit-size;
+  text-align: center;
+  outline: none;
+
+  &:hover {
     color: $v-font-color;
   }
+}
 
-  .#{$primary-stylename} .gwt-ToggleButton,
-  .#{$primary-stylename} .gwt-PushButton {
-    display: inline-block;
-    line-height: $v-unit-size;
-    width: $v-unit-size;
-    text-align: center;
-    outline: none;
+@if $valo-richtextarea-use-valo-icons {
+  // List of title attribute values and Valo Icons for the formatting buttons
+  $icons: 'Toggle Bold' '\f032', 'Toggle Italic' '\f033', 'Toggle Underline' '\f0cd', 'Toggle Subscript' '\f12c',
+    'Toggle Superscript' '\f12b', 'Left Justify' '\f036', 'Center' '\f037', 'Right Justify' '\f038',
+    'Toggle Strikethrough' '\f0cc', 'Indent Right' '\f03c', 'Indent Left' '\f03b', 'Insert Horizontal Rule' '\2014',
+    'Insert Ordered List' '\f0cb', 'Insert Unordered List' '\f0ca', 'Insert Image' '\f03e', 'Create Link' '\f0c1',
+    'Remove Link' '\f127', 'Remove Formatting' '\f12d';
 
-    &:hover {
-      color: $v-font-color;
+  .v-richtextarea .gwt-RichTextToolbar-top {
+    img {
+      display: none;
     }
-  }
 
-  @if $valo-richtextarea-use-valo-icons {
-    // List of title attribute values and Valo Icons for the formatting buttons
-    $icons: 'Toggle Bold' '\f032', 'Toggle Italic' '\f033', 'Toggle Underline' '\f0cd', 'Toggle Subscript' '\f12c',
-      'Toggle Superscript' '\f12b', 'Left Justify' '\f036', 'Center' '\f037', 'Right Justify' '\f038',
-      'Toggle Strikethrough' '\f0cc', 'Indent Right' '\f03c', 'Indent Left' '\f03b', 'Insert Horizontal Rule' '\2014',
-      'Insert Ordered List' '\f0cb', 'Insert Unordered List' '\f0ca', 'Insert Image' '\f03e', 'Create Link' '\f0c1',
-      'Remove Link' '\f127', 'Remove Formatting' '\f12d';
-
-    .#{$primary-stylename} .gwt-RichTextToolbar-top {
-      img {
-        display: none;
-      }
-
-      @each $pair in $icons {
-        $first-of-pair: nth($pair, 1);
-        $last-of-pair: nth($pair, length($pair));
-        div[title='#{$first-of-pair}']:before {
-          content: '#{$last-of-pair}';
-        }
+    @each $pair in $icons {
+      $first-of-pair: nth($pair, 1);
+      $last-of-pair: nth($pair, length($pair));
+      div[title='#{$first-of-pair}']:before {
+        content: '#{$last-of-pair}';
       }
     }
   }
+}
 
-  .#{$primary-stylename} .gwt-RichTextToolbar-bottom {
-    font-size: round($v-font-size * 0.8);
-    padding: 0 round(math.div($v-unit-size, 4)) round(math.div($v-unit-size, 4)) 0;
+.v-richtextarea .gwt-RichTextToolbar-bottom {
+  font-size: round($v-font-size * 0.8);
+  padding: 0 round(math.div($v-unit-size, 4)) round(math.div($v-unit-size, 4)) 0;
 
-    select {
-      margin: round(math.div($v-unit-size, 4)) 0 0 round(math.div($v-unit-size, 4));
-    }
+  select {
+    margin: round(math.div($v-unit-size, 4)) 0 0 round(math.div($v-unit-size, 4));
   }
+}
 
-  .#{$primary-stylename} .gwt-RichTextArea {
-    background: #fff;
-    border: none;
-    display: block;
-  }
+.v-richtextarea .gwt-RichTextArea {
+  background: #fff;
+  border: none;
+  display: block;
+}
 
-  .#{$primary-stylename}-readonly {
-    padding: ceil(math.div($v-unit-size, 9)) ceil(math.div($v-unit-size, 6));
-    background: transparent;
-  }
+.v-richtextarea-readonly {
+  padding: ceil(math.div($v-unit-size, 9)) ceil(math.div($v-unit-size, 6));
+  background: transparent;
 }

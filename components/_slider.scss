@@ -1,7 +1,3 @@
-/**
- *
- * @group slider
- */
 @use 'sass:math';
 
 $v-slider-track-size: round(math.div($v-unit-size, 8)) !default;
@@ -13,174 +9,117 @@ $v-slider-handle-border-radius: ceil(math.div($v-slider-handle-width, 2)) !defau
 $_valo-slider-base-margin-vertical: round(math.div($v-unit-size - $v-slider-track-size, 2));
 $_valo-slider-base-margin-horizontal: round(math.div($v-slider-handle-width, 2));
 
-@mixin valo-slider($primary-stylename: v-slider) {
-  // Round to an even number
-  $v-slider-track-size: $v-slider-track-size + $v-slider-track-size%2;
-  $v-slider-handle-width: $v-slider-handle-width + $v-slider-handle-width%2;
-  $v-slider-handle-height: $v-slider-handle-height + $v-slider-handle-height%2;
+.v-slider {
+  position: relative;
 
-  .#{$primary-stylename} {
-    position: relative;
+  &:focus {
+    outline: none;
 
-    &:focus {
-      outline: none;
-
-      .#{$primary-stylename}-handle:after {
-        opacity: 1;
-      }
-    }
-
-    &.v-disabled {
-      opacity: $v-disabled-opacity;
+    .v-slider-handle:after {
+      opacity: 1;
     }
   }
 
-  .#{$primary-stylename}-base {
-    @include valo-progressbar-track-style;
-    min-width: $v-unit-size * 2;
-    height: $v-slider-track-size;
-    margin: $_valo-slider-base-margin-vertical $_valo-slider-base-margin-horizontal;
-    white-space: nowrap;
-    overflow: hidden;
-    border-radius: $v-slider-track-border-radius;
+  &.v-disabled {
+    opacity: $v-disabled-opacity;
+  }
+}
+
+.v-slider-base {
+  @include valo-progressbar-track-style;
+  min-width: $v-unit-size * 2;
+  height: $v-slider-track-size;
+  margin: $_valo-slider-base-margin-vertical $_valo-slider-base-margin-horizontal;
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: $v-slider-track-border-radius;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: $_valo-slider-base-margin-vertical;
+    bottom: $_valo-slider-base-margin-vertical;
+    left: $_valo-slider-base-margin-horizontal;
+    width: $v-border-radius * 2;
+    border-radius: $v-border-radius;
+  }
+
+  &:after {
+    @include valo-progressbar-indicator-style;
+    content: '';
+    display: inline-block;
+    margin-left: -100%;
+    width: 100%;
+    vertical-align: top;
+  }
+}
+
+.v-has-width > .v-slider-base {
+  min-width: 0;
+}
+
+.v-slider-handle {
+  margin-top: round(math.div($v-unit-size - $v-slider-track-size, -2));
+  width: 0.1px; // Firefox needs a non-zero value
+  display: inline-block;
+  vertical-align: top;
+
+  &:after {
+    opacity: 0;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    box-sizing: border-box;
+    padding: 0;
+    width: $v-slider-handle-width;
+    height: $v-slider-handle-height;
+    border-radius: $v-slider-handle-border-radius;
+    position: absolute;
+    z-index: 1;
+    margin-top: round(($v-unit-size - $v-slider-handle-height) * 0.5);
+    margin-left: round(math.div($v-slider-handle-width, -2));
+  }
+}
+
+.v-slider-vertical {
+  padding: round($v-slider-handle-width * 0.5) 0;
+  height: $v-unit-size * 2 + $v-slider-handle-width; // Effectively min-height
+
+  .v-slider-base {
+    width: $v-slider-track-size;
+    height: 100% !important;
+    min-width: 0;
+    margin: 0 round(($v-unit-size - $v-slider-track-size) * 0.5);
 
     &:before {
-      content: '';
-      position: absolute;
-      top: $_valo-slider-base-margin-vertical;
-      bottom: $_valo-slider-base-margin-vertical;
-      left: $_valo-slider-base-margin-horizontal;
-      width: $v-border-radius * 2;
-      border-radius: $v-border-radius;
+      top: auto;
+      bottom: $_valo-slider-base-margin-horizontal;
+      left: $_valo-slider-base-margin-vertical;
+      right: $_valo-slider-base-margin-vertical;
+      width: auto;
+      height: $v-border-radius * 2;
+      border-left: none;
     }
 
     &:after {
-      @include valo-progressbar-indicator-style;
-      content: '';
-      display: inline-block;
-      margin-left: -100%;
-      width: 100%;
-      vertical-align: top;
+      height: 101%;
+      margin-left: 0;
     }
   }
 
-  .v-has-width > .#{$primary-stylename}-base {
-    min-width: 0;
-  }
-
-  .#{$primary-stylename}-handle {
-    margin-top: round(math.div($v-unit-size - $v-slider-track-size, -2));
-    width: 0.1px; // Firefox needs a non-zero value
-    display: inline-block;
-    vertical-align: top;
-
-    &:after {
-      opacity: 0;
-    }
+  .v-slider-handle {
+    height: 0.1px;
+    width: $v-unit-size;
+    display: block;
 
     &:before,
     &:after {
-      content: '';
-      box-sizing: border-box;
-      padding: 0;
-      width: $v-slider-handle-width;
-      height: $v-slider-handle-height;
-      border-radius: $v-slider-handle-border-radius;
-      position: absolute;
-      z-index: 1;
-      margin-top: round(($v-unit-size - $v-slider-handle-height) * 0.5);
-      margin-left: round(math.div($v-slider-handle-width, -2));
+      width: $v-slider-handle-height;
+      height: $v-slider-handle-width;
+      margin-top: round(math.div($v-slider-handle-width, -2));
+      margin-left: round(math.div($v-slider-handle-height - $v-slider-track-size, -2));
     }
-  }
-
-  .#{$primary-stylename}-vertical {
-    padding: round($v-slider-handle-width * 0.5) 0;
-    height: $v-unit-size * 2 + $v-slider-handle-width; // Effectively min-height
-
-    .#{$primary-stylename}-base {
-      width: $v-slider-track-size;
-      height: 100% !important;
-      min-width: 0;
-      margin: 0 round(($v-unit-size - $v-slider-track-size) * 0.5);
-
-      &:before {
-        top: auto;
-        bottom: $_valo-slider-base-margin-horizontal;
-        left: $_valo-slider-base-margin-vertical;
-        right: $_valo-slider-base-margin-vertical;
-        width: auto;
-        height: $v-border-radius * 2;
-        border-left: none;
-      }
-
-      &:after {
-        height: 101%;
-        margin-left: 0;
-      }
-    }
-
-    .#{$primary-stylename}-handle {
-      height: 0.1px;
-      width: $v-unit-size;
-      display: block;
-
-      &:before,
-      &:after {
-        width: $v-slider-handle-height;
-        height: $v-slider-handle-width;
-        margin-top: round(math.div($v-slider-handle-width, -2));
-        margin-left: round(math.div($v-slider-handle-height - $v-slider-track-size, -2));
-      }
-    }
-  }
-}
-
-/**
- *
- *
- * @param {string} $primary-stylename (v-slider) -
- * @param {color} $background-color ($v-background-color) -
- *
- * @group slider
- */
-@mixin valo-slider-track-style($primary-stylename: v-slider, $background-color: $v-background-color) {
-  .#{$primary-stylename}-base {
-    @include valo-progressbar-track-style($background-color: $background-color);
-    height: $v-slider-track-size;
-  }
-}
-
-/**
- *
- *
- * @param {string} $primary-stylename (v-slider) -
- * @param {color} $background-color ($v-selection-color) -
- * @param {list} $border ($v-border) -
- *
- * @group slider
- */
-@mixin valo-slider-indicator-style(
-  $primary-stylename: v-slider,
-  $background-color: $v-selection-color,
-  $border: $v-border
-) {
-  .#{$primary-stylename}-base {
-    &:after {
-      @include valo-progressbar-indicator-style($background-color: $background-color, $border: $border);
-    }
-  }
-}
-
-/**
- *
- *
- * @param {string} $primary-stylename (v-slider) -
- *
- * @group slider
- */
-@mixin valo-slider-no-indicator($primary-stylename: v-slider) {
-  .#{$primary-stylename}-base:before,
-  .#{$primary-stylename}-base:after {
-    display: none;
   }
 }

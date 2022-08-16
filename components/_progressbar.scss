@@ -1,18 +1,5 @@
 @use 'sass:math';
 
-/**
- *
- * @group progressbar
- */
-$v-progressbar-border-radius: $v-border-radius !default;
-
-/**
- *
- *
- * @param {string} $primary-stylename (v-progressbar) -
- *
- * @group progressbar
- */
 @mixin valo-progressbar($primary-stylename: v-progressbar) {
   .#{$primary-stylename}-wrapper {
     @include valo-progressbar-track-style;
@@ -60,7 +47,7 @@ $v-progressbar-border-radius: $v-border-radius !default;
  * @group progressbar
  */
 @mixin valo-progressbar-track-style($background-color: $v-background-color) {
-  border-radius: $v-progressbar-border-radius;
+  border-radius: $v-border-radius;
   height: round(math.div($v-unit-size, 4));
   background-color: $background-color;
   box-sizing: border-box;
@@ -75,7 +62,7 @@ $v-progressbar-border-radius: $v-border-radius !default;
  * @group progressbar
  */
 @mixin valo-progressbar-indicator-style($background-color: $v-selection-color, $border: $v-border) {
-  border-radius: $v-progressbar-border-radius;
+  border-radius: $v-border-radius;
   height: inherit;
   background-color: $background-color;
   box-sizing: border-box;

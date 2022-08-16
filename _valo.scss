@@ -17,4 +17,7 @@
 @mixin valo {
   @include valo-common;
   @include valo-components;
+  @import 'components/gridlayout';
+  @import 'components/richtextarea';
+  @import 'components/slider';
 }
