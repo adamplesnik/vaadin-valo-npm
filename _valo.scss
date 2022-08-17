@@ -6,18 +6,13 @@
 
 // Include global styles directly, without a theme name prefix (this is done only once)
 @include valo-global;
+@import 'components/calendar';
 @import 'components/orderedlayout';
 @import 'components/table';
 
-/**
- * The main Valo theme mixin, which outputs all the selectors and properties to produce
- * the variation specified by global variables. Should not be included multiple times
- * per compilation.
- */
-@mixin valo {
-  @include valo-common;
-  @include valo-components;
-  @import 'components/gridlayout';
-  @import 'components/richtextarea';
-  @import 'components/slider';
-}
+@include valo-common;
+@include valo-components;
+@import 'components/colorpicker';
+@import 'components/gridlayout';
+@import 'components/richtextarea';
+@import 'components/slider';

@@ -1,193 +1,177 @@
 @use 'sass:math';
 
-@mixin valo-colorpicker-global($primary-stylename: v-colorpicker) {
-  .#{$primary-stylename}-popup.v-window {
-    min-width: 220px !important;
-  }
+.v-colorpicker-popup.v-window {
+  min-width: 220px !important;
+}
 
-  .#{$primary-stylename}-gradient-container {
-    overflow: visible !important;
-  }
+.v-colorpicker-gradient-container {
+  overflow: visible !important;
+}
 
-  .#{$primary-stylename}-gradient-clicklayer {
-    opacity: 0;
-  }
+.v-colorpicker-gradient-clicklayer {
+  opacity: 0;
+}
 
-  .#{$primary-stylename}-gradient-higherbox {
-    &:before {
-      content: '';
-      width: 11px;
-      height: 11px;
-      border-radius: 7px;
-      border: 1px solid #fff;
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(0, 0, 0, 0.3);
-      position: absolute;
-      bottom: -6px;
-      left: -6px;
-    }
-  }
-
-  .#{$primary-stylename}-popup .v-slider.v-slider-red:before {
-    background-color: red;
-  }
-
-  .#{$primary-stylename}-popup .v-slider.v-slider-green:before {
-    background-color: green;
-  }
-
-  .#{$primary-stylename}-popup .v-slider.v-slider-blue:before {
-    background-color: blue;
-  }
-
-  .#{$primary-stylename}-popup .v-slider.hue-slider:before {
-    background: linear-gradient(90deg, #f00 0%, #ff0 16%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 84%, #f00 100%);
-  }
-
-  .#{$primary-stylename}-popup input.v-textfield-dark {
-    color: #fff;
-  }
-
-  .#{$primary-stylename}-popup input.v-textfield-light {
-    color: #000;
-  }
-
-  // TODO magic numbers
-  .#{$primary-stylename}-grid {
-    height: 319px;
-  }
-
-  .#{$primary-stylename}-popup .colorselect td {
-    line-height: 15px;
+.v-colorpicker-gradient-higherbox {
+  &:before {
+    content: '';
+    width: 11px;
+    height: 11px;
+    border-radius: 7px;
+    border: 1px solid #fff;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    bottom: -6px;
+    left: -6px;
   }
 }
 
-/**
- * Outputs the selectors and properties for the ColorPicker component.
- *
- * @param {string} $primary-stylename (v-colorpicker) - the primary style name for the selectors
- *
- * @group colorpicker
- */
-@mixin valo-colorpicker($primary-stylename: v-colorpicker) {
-  .#{$primary-stylename}-popup.v-window {
-    min-width: 220px !important;
+.v-colorpicker-popup .v-slider.v-slider-red:before {
+  background-color: red;
+}
+
+.v-colorpicker-popup .v-slider.v-slider-green:before {
+  background-color: green;
+}
+
+.v-colorpicker-popup .v-slider.v-slider-blue:before {
+  background-color: blue;
+}
+
+.v-colorpicker-popup .v-slider.hue-slider:before {
+  background: linear-gradient(90deg, #f00 0%, #ff0 16%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 84%, #f00 100%);
+}
+
+.v-colorpicker-popup input.v-textfield-dark {
+  color: #fff;
+}
+
+.v-colorpicker-popup input.v-textfield-light {
+  color: #000;
+}
+
+.v-colorpicker-grid {
+  height: 319px;
+}
+
+.v-colorpicker-popup .colorselect td {
+  line-height: 15px;
+}
+
+.v-colorpicker-popup {
+  .v-tabsheet-tabs {
+    padding: 0 round(math.div($v-unit-size, 4));
   }
 
-  .#{$primary-stylename}-popup {
-    .v-tabsheet-tabs {
-      padding: 0 round(math.div($v-unit-size, 4));
+  [class$='sliders'] {
+    padding: round(math.div($v-unit-size, 3));
+
+    .v-widget {
+      width: 100% !important;
+      vertical-align: middle;
     }
 
-    [class$='sliders'] {
-      padding: round(math.div($v-unit-size, 3));
+    .v-has-caption {
+      white-space: nowrap;
+      padding-left: $v-font-size * 3;
+    }
 
-      .v-widget {
-        width: 100% !important;
-        vertical-align: middle;
-      }
+    .v-caption {
+      display: inline-block;
+      margin-left: $v-font-size * -3;
+      width: $v-font-size * 3;
+    }
 
+    // Saturation caption needs more space
+    .v-slot-hue-slider + .v-slot {
       .v-has-caption {
-        white-space: nowrap;
-        padding-left: $v-font-size * 3;
+        padding-left: $v-font-size * 5;
       }
 
       .v-caption {
-        display: inline-block;
-        margin-left: $v-font-size * -3;
-        width: $v-font-size * 3;
-      }
-
-      // Saturation caption needs more space
-      .v-slot-hue-slider + .v-slot {
-        .v-has-caption {
-          padding-left: $v-font-size * 5;
-        }
-
-        .v-caption {
-          margin-left: $v-font-size * -5;
-          width: $v-font-size * 5;
-        }
-      }
-    }
-
-    .v-slider-red .v-slider-base:after {
-      background: red;
-      border: none;
-      box-shadow: none;
-    }
-
-    .v-slider-green .v-slider-base:after {
-      background: green;
-      border: none;
-      box-shadow: none;
-    }
-
-    .v-slider-blue .v-slider-base:after {
-      background: blue;
-      border: none;
-      box-shadow: none;
-    }
-
-    .v-margin-bottom {
-      padding-bottom: 0;
-    }
-
-    .resize-button {
-      width: 100% !important;
-      height: auto !important;
-      text-align: center;
-      outline: none;
-    }
-
-    .resize-button-caption {
-      display: none;
-    }
-
-    .v-horizontallayout {
-      height: auto !important;
-      padding: round(math.div($v-unit-size, 4)) 0;
-      background-color: $v-background-color;
-      border-top: 1px solid scale-color($v-background-color, $lightness: -5%);
-
-      .v-expand {
-        overflow: visible;
-      }
-
-      .v-button {
-        width: 80% !important;
+        margin-left: $v-font-size * -5;
+        width: $v-font-size * 5;
       }
     }
   }
 
-  .#{$primary-stylename}-preview {
+  .v-slider-red .v-slider-base:after {
+    background: red;
+    border: none;
+    box-shadow: none;
+  }
+
+  .v-slider-green .v-slider-base:after {
+    background: green;
+    border: none;
+    box-shadow: none;
+  }
+
+  .v-slider-blue .v-slider-base:after {
+    background: blue;
+    border: none;
+    box-shadow: none;
+  }
+
+  .v-margin-bottom {
+    padding-bottom: 0;
+  }
+
+  .resize-button {
     width: 100% !important;
     height: auto !important;
-    padding: round(math.div($v-unit-size, 4));
-    display: inline-flex;
-  }
-
-  .#{$primary-stylename}-preview-textfield {
-    height: auto !important;
     text-align: center;
-    border: none;
+    outline: none;
   }
 
-  .#{$primary-stylename} {
-    width: auto;
+  .resize-button-caption {
+    display: none;
   }
 
-  .#{$primary-stylename}-button-color {
-    position: absolute;
-    top: round(math.div($v-unit-size, 6));
-    right: round(math.div($v-unit-size, 6));
-    bottom: round(math.div($v-unit-size, 6));
-    left: round(math.div($v-unit-size, 6));
-    border-radius: $v-border-radius - 1px;
-    border: 1px solid hsla(0, 0%, 0%, 0.5);
-    max-width: $v-unit-size - round(math.div($v-unit-size, 3)) - 2px;
+  .v-horizontallayout {
+    height: auto !important;
+    padding: round(math.div($v-unit-size, 4)) 0;
+    background-color: $v-background-color;
+    border-top: 1px solid scale-color($v-background-color, $lightness: -5%);
 
-    + .v-button-caption:not(:empty) {
-      margin-left: round(math.div($v-unit-size, 2));
+    .v-expand {
+      overflow: visible;
     }
+
+    .v-button {
+      width: 80% !important;
+    }
+  }
+}
+
+.v-colorpicker-preview {
+  width: 100% !important;
+  height: auto !important;
+  padding: round(math.div($v-unit-size, 4));
+  display: inline-flex;
+}
+
+.v-colorpicker-preview-textfield {
+  height: auto !important;
+  text-align: center;
+  border: none;
+}
+
+.v-colorpicker {
+  width: auto;
+}
+
+.v-colorpicker-button-color {
+  position: absolute;
+  top: round(math.div($v-unit-size, 6));
+  right: round(math.div($v-unit-size, 6));
+  bottom: round(math.div($v-unit-size, 6));
+  left: round(math.div($v-unit-size, 6));
+  border-radius: $v-border-radius - 1px;
+  border: 1px solid hsla(0, 0%, 0%, 0.5);
+  max-width: $v-unit-size - round(math.div($v-unit-size, 3)) - 2px;
+
+  + .v-button-caption:not(:empty) {
+    margin-left: round(math.div($v-unit-size, 2));
   }
 }

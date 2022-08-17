@@ -1,5 +1,3 @@
-@import 'calendar';
-@import 'colorpicker';
 @import 'grid';
 @import 'progressbar';
 @import 'treegrid';
@@ -11,6 +9,4 @@
   @include valo-treegrid;
   @include valo-progressbar;
   @include valo-progressbar($primary-stylename: v-progressindicator);
-  @include valo-colorpicker;
-  @include valo-calendar;
 }

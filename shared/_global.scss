@@ -135,10 +135,6 @@
     display: inline-block;
     line-height: inherit;
   }
-
-  // Component global styles should also be included here
-  @include valo-calendar-global;
-  @include valo-colorpicker-global;
 }
 
 /**
