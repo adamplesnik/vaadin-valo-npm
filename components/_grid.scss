@@ -1,183 +1,132 @@
 @use 'sass:math';
 
-@import 'table';
-
-$v-grid-row-background-color: #fff !default;
-$v-grid-row-stripe-background-color: #eee !default;
-
-$v-grid-border-color-source: $v-grid-row-background-color !default;
 $v-grid-border: 1px solid #ddd !default;
 $v-grid-cell-focused-border: 2px solid $v-selection-color !default;
-
-$v-grid-row-height: $v-unit-size !default;
-$v-grid-row-selected-background-color: $v-selection-color !default;
-
-$v-grid-header-font-size: round($v-font-size * 0.86) !default;
-$v-grid-header-background-color: $v-background-color !default;
-
 $v-grid-cell-padding-horizontal: 0.25 * $v-unit-size !default;
-
-$v-grid-details-marker-width: 2px !default;
-$v-grid-details-marker-color: $v-selection-color !default;
-$v-grid-details-border-top: #eee !default;
-$v-grid-details-border-top-stripe: #ddd !default;
-
-$v-grid-border-size: 1px !default;
-$v-grid-border: $v-grid-border-size solid #ddd !default;
-$v-grid-cell-vertical-border: $v-grid-border !default;
-$v-grid-cell-horizontal-border: $v-grid-cell-vertical-border !default;
-$v-grid-details-border-bottom: $v-grid-cell-horizontal-border !default;
-$v-grid-details-border-bottom-stripe: $v-grid-cell-horizontal-border !default;
-
-$v-grid-border-size: 1px !default;
-$v-grid-border: $v-grid-border-size solid #ddd !default;
-$v-grid-cell-vertical-border: $v-grid-border !default;
-$v-grid-cell-horizontal-border: $v-grid-cell-vertical-border !default;
-$v-grid-cell-focused-border: 1px solid !default;
-$v-grid-header-border: $v-grid-border !default;
-$v-grid-footer-border: $v-grid-header-border !default;
-
-$v-grid-row-height: round($v-font-size * 1.5) !default;
+$v-grid-header-font-size: round($v-font-size * 0.86) !default;
 $v-grid-row-background-color: #fff !default;
-$v-grid-row-stripe-background-color: darken($v-grid-row-background-color, 5%) !default;
-$v-grid-row-selected-background-color: darken($v-grid-row-background-color, 25%) !default;
-$v-grid-row-focused-background-color: null !default;
+$v-grid-row-height: round($v-font-size * 1.5) !default;
+$v-grid-row-selected-background-color: $v-selection-color !default;
+$v-grid-row-stripe-background-color: #eee !default;
 
-$v-grid-header-row-height: null !default;
-$v-grid-header-font-size: $v-font-size !default;
-$v-grid-header-background-color: $v-grid-row-background-color !default;
-$v-grid-header-drag-marked-color: $v-grid-row-selected-background-color !default;
-
-$v-grid-footer-row-height: $v-grid-header-row-height !default;
-$v-grid-footer-font-size: $v-grid-header-font-size !default;
-$v-grid-footer-background-color: $v-grid-header-background-color !default;
-
-$v-grid-cell-padding-horizontal: 10px !default;
-
-$v-grid-editor-background-color: $v-grid-row-background-color !default;
-
-$v-grid-details-marker-width: 2px !default;
-$v-grid-details-marker-color: $v-grid-row-selected-background-color !default;
-$v-grid-details-border-top: $v-grid-cell-horizontal-border !default;
-$v-grid-details-border-top-stripe: $v-grid-cell-horizontal-border !default;
-$v-grid-details-border-bottom: 1px solid darken($v-grid-row-stripe-background-color, 10%) !default;
-$v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-color, 10%) !default;
-
-@mixin base-grid($primaryStyleName: v-grid) {
-  .#{$primaryStyleName} {
+@mixin valo-grid($primary-stylename: v-grid) {
+  .#{$primary-stylename} {
+    -webkit-user-select: text;
+    background-color: $v-background-color;
     position: relative;
-  }
-
-  .#{$primaryStyleName}-scroller {
-    position: absolute;
-    z-index: 1;
     outline: none;
-    box-sizing: border-box;
+    user-select: text;
+
+    &.v-disabled {
+      opacity: $v-disabled-opacity;
+    }
+
+    &:focus .#{$primary-stylename}-cell-focused:before {
+      display: block;
+    }
+
+    &.v-disabled:focus .#{$primary-stylename}-cell-focused:before {
+      display: none;
+    }
   }
 
-  .#{$primaryStyleName}-scroller-horizontal {
-    left: 0; // Left position adjusted to align with frozen columns
-    right: 0;
+  .#{$primary-stylename}-scroller-horizontal {
     bottom: 0;
+    left: 0;
     overflow-y: hidden;
-  }
-
-  .#{$primaryStyleName}-scroller-vertical {
     right: 0;
-    top: 0; // this will be overridden by code, but it's a good default behavior
-    bottom: 0; // this will be overridden by code, but it's a good default behavior
-    overflow-x: hidden;
   }
 
-  .#{$primaryStyleName}-tablewrapper {
-    position: absolute;
-    overflow: hidden;
-    box-sizing: border-box;
-    z-index: 5;
-  }
-
-  .#{$primaryStyleName}-tablewrapper > table {
-    border-spacing: 0;
-    table-layout: fixed;
-    width: inherit; // a decent default fallback
-  }
-
-  .#{$primaryStyleName}-header-deco,
-  .#{$primaryStyleName}-footer-deco {
-    position: absolute;
-    right: 0;
-    box-sizing: border-box;
-  }
-
-  .#{$primaryStyleName}-horizontal-scrollbar-deco {
-    position: absolute;
+  .#{$primary-stylename}-scroller-vertical {
     bottom: 0;
-    left: 0;
+    overflow-x: hidden;
     right: 0;
-    box-sizing: border-box;
-  }
-
-  .#{$primaryStyleName}-header,
-  .#{$primaryStyleName}-body,
-  .#{$primaryStyleName}-footer {
-    position: absolute;
-    left: 0;
-    width: inherit;
-    z-index: 10;
-  }
-
-  .#{$primaryStyleName}-header,
-  .#{$primaryStyleName}-header-deco {
     top: 0;
   }
 
-  .#{$primaryStyleName}-footer,
-  .#{$primaryStyleName}-footer-deco {
-    bottom: 0;
+  .#{$primary-stylename}-tablewrapper {
+    box-sizing: border-box;
+    overflow: hidden;
+    position: absolute;
+    z-index: 5;
+
+    & > table {
+      border-spacing: 0;
+      table-layout: fixed;
+      width: inherit;
+
+      thead,
+      tbody,
+      tfoot {
+        position: absolute;
+        left: 0;
+        width: inherit;
+        z-index: 10;
+        top: 0;
+      }
+    }
   }
 
-  .#{$primaryStyleName}-body {
+  .#{$primary-stylename}-header-deco {
+    position: absolute;
+    right: 0;
+    box-sizing: border-box;
+  }
+
+  .#{$primary-stylename}-body {
     touch-action: none;
     z-index: 0;
     top: 0;
 
-    .#{$primaryStyleName}-row {
+    tr {
       position: absolute;
       top: 0;
       left: 0;
     }
 
-    .#{$primaryStyleName}-header > .#{$primaryStyleName}-row {
+    .#{$primary-stylename}-header > tr {
       position: relative;
     }
   }
 
-  .#{$primaryStyleName}-row {
+  .#{$primary-stylename}-row {
     display: block;
-  }
-
-  .#{$primaryStyleName}-row {
     width: inherit;
   }
 
-  .#{$primaryStyleName}-cell {
+  .#{$primary-stylename}-cell {
     display: block;
     float: left;
     white-space: nowrap;
     box-sizing: border-box;
     overflow: hidden;
     font-size: $v-font-size;
+
+    &.frozen {
+      position: relative;
+      z-index: 11;
+    }
+
+    > * {
+      line-height: $v-line-height;
+      vertical-align: middle;
+    }
+
+    > div {
+      display: inline-block;
+    }
+
+    div.component-wrap {
+      width: 100%;
+    }
   }
 
-  .#{$primaryStyleName}-cell.frozen {
-    position: relative;
-    z-index: 1;
-  }
-
-  .#{$primaryStyleName}-spacer {
+  .#{$primary-stylename}-spacer {
+    margin-top: -1px;
     position: absolute;
     display: block;
     background-color: $v-grid-row-background-color;
+    padding-left: 1px;
 
     > td {
       width: 100%;
@@ -186,68 +135,31 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
     }
   }
 
-  .#{$primaryStyleName} {
-    outline: none;
-  }
-
-  // Column drag and drop elements
-
-  .#{$primaryStyleName} .header-drag-table {
+  .header-drag-table {
     border-spacing: 0;
     position: relative;
     table-layout: fixed;
     width: inherit; // a decent default fallback
 
-    .#{$primaryStyleName}-header {
+    .#{$primary-stylename}-header {
       position: absolute;
-      > .#{$primaryStyleName}-cell {
+
+      > td {
         border: $v-grid-border;
         margin-top: -10px;
         opacity: 0.9;
         z-index: 30000;
       }
 
-      > .#{$primaryStyleName}-drop-marker {
-        background-color: $v-grid-header-drag-marked-color;
+      > .#{$primary-stylename}-drop-marker {
+        background-color: $v-grid-row-selected-background-color;
         position: absolute;
         width: 3px;
       }
     }
   }
 
-  // Sidebar
-
-  .#{$primaryStyleName}-sidebar.v-contextmenu {
-    &.#{$primaryStyleName}-sidebar-popup {
-      right: auto;
-    }
-  }
-
-  // Common cell styles
-
-  .#{$primaryStyleName}-cell {
-    > * {
-      line-height: $v-line-height;
-      vertical-align: middle;
-    }
-
-    // Force div elements to inline-blocks by default to enable vertical centering
-    > div {
-      display: inline-block;
-    }
-
-    &.frozen {
-      position: relative;
-      z-index: 11;
-    }
-
-    // Style for ComponentRenderer wrap
-    div.component-wrap {
-      width: 100%;
-    }
-  }
-
-  .#{$primaryStyleName}-column-resize-simple-indicator {
+  .#{$primary-stylename}-column-resize-simple-indicator {
     position: absolute;
     width: 3px;
     top: 0;
@@ -259,17 +171,14 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
     user-select: none;
   }
 
-  // Footer
-
-  .#{$primaryStyleName}-footer {
+  .#{$primary-stylename}-footer {
     td {
-      background-color: $v-grid-footer-background-color;
-      font-size: $v-grid-footer-font-size;
+      background-color: $v-grid-row-background-color;
+      font-size: $v-grid-header-font-size;
       font-weight: inherit;
-      border-left: $v-grid-footer-border;
-      border-top: $v-grid-footer-border;
+      border-left: $v-grid-border;
+      border-top: $v-grid-border;
       border-bottom: none;
-      line-height: $v-grid-footer-row-height;
 
       &:first-child {
         border-left: none;
@@ -277,48 +186,13 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
     }
   }
 
-  // Header and footer
-
-  .#{$primaryStyleName}-header,
-  .#{$primaryStyleName}-footer {
-    .#{$primaryStyleName}-cell {
-      overflow: visible;
-    }
-  }
-
-  .#{$primaryStyleName}-column-header-content,
-  .#{$primaryStyleName}-column-footer-content {
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    // Hackish, needed to override the "v-grid-cell > *" rule above
-    line-height: $v-grid-row-height;
-    vertical-align: baseline;
-  }
-
-  // Decorative elements
-
-  .#{$primaryStyleName}-header-deco {
-    border-top: $v-grid-header-border;
-    border-right: $v-grid-header-border;
-    background-color: $v-grid-header-background-color;
-  }
-
-  .#{$primaryStyleName}-footer-deco {
-    border-bottom: $v-grid-footer-border;
-    border-right: $v-grid-footer-border;
-    background-color: $v-grid-footer-background-color;
-  }
-
-  .#{$primaryStyleName}-horizontal-scrollbar-deco {
-    background-color: $v-grid-footer-background-color;
-    border: $v-grid-footer-border;
+  .#{$primary-stylename}-horizontal-scrollbar-deco {
+    background-color: $v-grid-row-background-color;
+    border: $v-grid-border;
     border-top: none;
   }
 
-  // Focused cell style (common for all cells)
-
-  .#{$primaryStyleName}-cell-focused {
+  .#{$primary-stylename}-cell-focused {
     position: relative;
 
     &:before {
@@ -334,18 +208,7 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
     }
   }
 
-  .#{$primaryStyleName}:focus .#{$primaryStyleName}-cell-focused:before {
-    display: block;
-  }
-
-  .#{$primaryStyleName}.v-disabled:focus .#{$primaryStyleName}-cell-focused:before {
-    // Disabled Grid should not show cell focus outline
-    display: none;
-  }
-
-  // Editor
-
-  .#{$primaryStyleName}-editor {
+  .#{$primary-stylename}-editor {
     position: absolute;
     z-index: 20;
     overflow: hidden;
@@ -355,18 +218,12 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
     box-sizing: border-box;
     margin-top: nth($v-grid-border, 1) * -1;
     box-shadow: 0 0 9px rgba(0, 0, 0, 0.2);
-
-    // Unbuffered footer needs to be 100% width to display correctly
-    &.unbuffered {
-      .#{$primaryStyleName}-editor-footer {
-        width: 100%;
-      }
-    }
   }
 
-  .#{$primaryStyleName}-editor-cells {
+  .#{$primary-stylename}-editor-cells {
     position: relative;
     white-space: nowrap;
+    z-index: 1;
 
     &.frozen {
       z-index: 2;
@@ -376,7 +233,14 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
       display: inline-block;
       box-sizing: border-box;
       vertical-align: middle;
-      background: $v-grid-editor-background-color;
+      background: $v-grid-row-background-color;
+
+      &:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+      }
 
       &:first-child {
         border-left: none;
@@ -421,56 +285,76 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
         max-width: 100%;
       }
 
-      &.not-editable.#{$primaryStyleName}-cell {
-        float: none;
+      .error,
+      .error > input {
+        background-color: scale-color($v-error-indicator-color, $lightness: 98%);
       }
-    }
 
-    .error::before {
-      position: absolute;
-      display: block;
-      height: 0;
-      width: 0;
-      content: '';
-      border-top: 5px solid red;
-      border-right: 5px solid transparent;
-    }
+      .error::before {
+        position: absolute;
+        display: block;
+        height: 0;
+        width: 0;
+        content: '';
+        border-top: round($v-unit-size * 0.25) solid $v-error-indicator-color;
+        border-right: round($v-unit-size * 0.25) solid transparent;
+      }
 
-    .error,
-    .error > input {
-      background-color: #fee;
+      input[type='text'].v-datefield-textfield {
+        padding-left: $v-unit-size * 1.2;
+      }
+
+      .v-textfield-focus,
+      .v-datefield .v-textfield-focus,
+      .v-filterselect-input:focus {
+        position: relative;
+      }
+
+      .v-checkbox.v-widget {
+        margin: 0 round($v-grid-cell-padding-horizontal * 0.5) 0 $v-grid-cell-padding-horizontal;
+
+        > input[type='checkbox'] {
+          margin-left: 0;
+        }
+
+        > label {
+          white-space: nowrap;
+        }
+      }
     }
   }
 
-  .#{$primaryStyleName}-editor-footer {
+  .#{$primary-stylename}-editor-footer {
     display: table;
     height: $v-grid-row-height;
-    border-top: $v-grid-cell-horizontal-border;
-    margin-top: nth($v-grid-cell-horizontal-border, 1) * -1;
+    border-top: $v-grid-border;
+    margin-top: nth($v-grid-border, 1) * -1;
     background: $v-grid-row-background-color;
     padding: 0 5px;
+    font-size: $v-font-size;
+    background: $v-app-background-color;
 
-    + .#{$primaryStyleName}-editor-cells > div {
+    + .#{$primary-stylename}-editor-cells > div {
       border-bottom: none;
-      border-top: $v-grid-cell-horizontal-border;
+      border-top: $v-grid-border;
     }
 
     &:first-child {
       border-top: none;
       margin-top: 0;
-      border-bottom: $v-grid-cell-horizontal-border;
-      margin-bottom: nth($v-grid-cell-horizontal-border, 1) * -1;
+      border-bottom: $v-grid-border;
+      margin-bottom: nth($v-grid-border, 1) * -1;
     }
   }
 
-  .#{$primaryStyleName}-editor-message,
-  .#{$primaryStyleName}-editor-buttons {
+  .#{$primary-stylename}-editor-message,
+  .#{$primary-stylename}-editor-buttons {
     display: table-cell;
     white-space: nowrap;
     vertical-align: middle;
   }
 
-  .#{$primaryStyleName}-editor-message {
+  .#{$primary-stylename}-editor-message {
     width: 100%;
     position: relative;
 
@@ -481,168 +365,21 @@ $v-grid-details-border-bottom-stripe: 1px solid darken($v-grid-row-background-co
       text-overflow: ellipsis;
       line-height: $v-grid-row-height;
       top: 0;
+
+      &:before {
+        display: inline-block;
+        @include valo-error-indicator-style($is-pseudo-element: true);
+      }
     }
   }
 
-  .#{$primaryStyleName}-editor-save {
+  .#{$primary-stylename}-editor-save {
     margin-right: 4px;
   }
 
-  .#{$primaryStyleName}-spacer {
-    // using padding since left is used with some position functions in escalator
-    padding-left: $v-grid-details-marker-width - $v-grid-border-size;
-  }
-
-  .#{$primaryStyleName}-spacer > td {
-    display: block;
-    padding: 0;
-
-    background-color: $v-grid-row-background-color;
-    border-top: $v-grid-details-border-top;
-    border-bottom: $v-grid-details-border-bottom;
-  }
-
-  .#{$primaryStyleName}-spacer.stripe > td {
-    background-color: $v-grid-row-stripe-background-color;
-    border-top: $v-grid-details-border-top-stripe;
-    border-bottom: $v-grid-details-border-bottom-stripe;
-  }
-
-  .#{$primaryStyleName}-spacer-deco-container {
-    border-top: $v-grid-border-size solid transparent; // same size as table wrapper border
-    position: relative;
-    top: 0; // escalator will override top for scrolling and margin-top for header offset.
-    z-index: 5;
-  }
-
-  .#{$primaryStyleName}-spacer-deco {
-    top: 0; // this will be overridden by code, but it's a good default.
-    left: 0;
-    width: $v-grid-details-marker-width;
-    background-color: $v-grid-details-marker-color;
-    position: absolute;
-    height: 100%; // this will be overridden by code, but it's a good default.
-    pointer-events: none;
-  }
-
-  // Renderers
-
-  .#{$primaryStyleName}-cell > .v-progressbar {
-    width: 100%;
-  }
-}
-
-$v-grid-drag-indicator-color: $v-focus-color;
-
-/**
- *
- *
- * @param {string} $primary-stylename (v-grid) -
- *
- * @group grid
- */
-@mixin valo-grid($primary-stylename: v-grid) {
-  @include base-grid($primary-stylename);
-
-  .#{$primary-stylename} {
-    -webkit-user-select: text;
-    user-select: text;
-    background-color: $v-background-color;
-
-    &.v-disabled {
-      opacity: $v-disabled-opacity;
-    }
-  }
-
-  .#{$primary-stylename}-header .#{$primary-stylename}-cell.dragged {
+  .#{$primary-stylename}-header .dragged {
     opacity: 0.5;
     transition: opacity 0.3s ease-in-out;
-  }
-
-  .#{$primary-stylename}-header .#{$primary-stylename}-cell.dragged-column-header {
-    margin-top: round(math.div($v-grid-row-height, -2));
-  }
-
-  .#{$primary-stylename}-editor {
-    border-color: $v-focus-color;
-  }
-
-  .#{$primary-stylename}-editor-footer {
-    font-size: $v-font-size;
-    padding: 0 round($v-layout-spacing-horizontal * 0.5);
-    background: $v-app-background-color;
-  }
-
-  .#{$primary-stylename}-editor-cells {
-    z-index: 1;
-  }
-
-  .#{$primary-stylename}-editor-cells > div {
-    // Vertical centering for widgets
-    &:before {
-      content: '';
-      display: inline-block;
-      height: 100%;
-      vertical-align: middle;
-    }
-
-    &.not-editable.#{$primary-stylename}-cell {
-      float: none;
-    }
-
-    .error::before {
-      border-top: round($v-unit-size * 0.25) solid $v-error-indicator-color;
-      border-right: round($v-unit-size * 0.25) solid transparent;
-    }
-
-    .error,
-    .error > input {
-      // taken from @mixin valo-textfield-error-style()
-      background-color: scale-color($v-error-indicator-color, $lightness: 98%);
-    }
-
-    .v-textfield,
-    .v-textfield-focus,
-    .v-datefield,
-    .v-datefield .v-textfield-focus,
-    .v-filterselect-input,
-    .v-filterselect-input:focus {
-      border: none;
-      border-radius: 0;
-      background: transparent;
-    }
-
-    input[type='text'].v-datefield-textfield {
-      padding-left: $v-unit-size * 1.2;
-    }
-
-    .v-textfield-focus,
-    .v-datefield .v-textfield-focus,
-    .v-filterselect-input:focus {
-      position: relative;
-    }
-
-    .v-select {
-      padding-left: round($v-grid-cell-padding-horizontal * 0.5);
-      padding-right: round($v-grid-cell-padding-horizontal * 0.5);
-    }
-
-    .v-checkbox.v-widget {
-      margin: 0 round($v-grid-cell-padding-horizontal * 0.5) 0 $v-grid-cell-padding-horizontal;
-
-      > input[type='checkbox'] {
-        margin-left: 0;
-      }
-
-      > label {
-        white-space: nowrap;
-      }
-    }
-  }
-
-  .#{$primary-stylename}-editor-message > div:before {
-    display: inline-block;
-    @include valo-error-indicator-style($is-pseudo-element: true);
   }
 
   .#{$primary-stylename}-editor-save,
@@ -656,110 +393,10 @@ $v-grid-drag-indicator-color: $v-focus-color;
     outline: none;
   }
 
-  .#{$primary-stylename}-spacer {
-    margin-top: -1px;
-  }
-
-  // Customize scrollbars
   .#{$primary-stylename}-scroller {
-    &::-webkit-scrollbar {
-      border: none;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      border: 4px solid transparent;
-      background: rgba(0, 0, 0, 0.3);
-      -webkit-background-clip: content-box;
-      background-clip: content-box;
-    }
-  }
-
-  .#{$primary-stylename}-scroller-vertical::-webkit-scrollbar-thumb {
-    min-height: 30px;
-  }
-
-  .#{$primary-stylename}-scroller-horizontal::-webkit-scrollbar-thumb {
-    min-width: 30px;
-  }
-
-  // Drag and drop badge
-  .#{$primary-stylename}-row-drag-badge {
-    background-color: red;
-    color: white;
-    display: block;
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
-    line-height: 30px;
-    text-align: center;
-    float: left;
-  }
-
-  // Drag and drop
-  .#{$primary-stylename}-row-drag-top,
-  .#{$primary-stylename}-row-drag-bottom,
-  .#{$primary-stylename}-row-drag-bottom {
-    z-index: 100; // based on what else z-indexes are in grid/escalator
-  }
-
-  .#{$primary-stylename}-row-drag-top:before,
-  .#{$primary-stylename}-row-drag-bottom:after {
-    content: '';
-    display: block;
+    box-sizing: border-box;
+    outline: none;
     position: absolute;
-    height: 2px;
-    width: 100%;
-    background: $v-grid-drag-indicator-color;
-    pointer-events: none;
-    border: none;
-  }
-
-  .#{$primary-stylename}-row-drag-bottom:after {
-    bottom: -1px;
-  }
-
-  .#{$primary-stylename}-row-drag-top:before {
-    top: -1px;
-  }
-
-  .#{$primary-stylename}-row-drag-top:first-child:before {
-    top: 0;
-  }
-
-  .#{$primary-stylename}-row-drag-center:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 2px;
-    border: 2px solid $v-grid-drag-indicator-color;
-    pointer-events: none;
-  }
-
-  .#{$primary-stylename}-row-selected {
-    &.#{$primary-stylename}-row-drag-center:after {
-      border-color: darken($v-grid-drag-indicator-color, 10%);
-    }
-
-    &.#{$primary-stylename}-row-drag-top:before,
-    &.#{$primary-stylename}-row-drag-bottom:after {
-      background: darken($v-grid-drag-indicator-color, 10%);
-    }
-  }
-
-  // Show drop hint when the grid is empty or,
-  // if the DropMode.ON_TOP is used and dragging below last row
-  .#{$primary-stylename}-body-drag-top:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    pointer-events: none;
-    border: 2px solid $v-grid-drag-indicator-color;
-    z-index: 100; // based on what else z-indexes are in grid/escalator
+    z-index: 1;
   }
 }
