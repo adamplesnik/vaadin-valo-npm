@@ -54,17 +54,21 @@ $v-grid-row-stripe-background-color: #eee !default;
       border-spacing: 0;
       table-layout: fixed;
       width: inherit;
-
-      thead,
-      tbody,
-      tfoot {
-        position: absolute;
-        left: 0;
-        width: inherit;
-        z-index: 10;
-        top: 0;
-      }
     }
+  }
+
+  .#{$primary-stylename}-header,
+  .#{$primary-stylename}-body,
+  .#{$primary-stylename}-footer {
+    position: absolute;
+    left: 0;
+    width: inherit;
+    z-index: 10;
+  }
+
+  .#{$primary-stylename}-header,
+  .#{$primary-stylename}-header-deco {
+    top: 0;
   }
 
   .#{$primary-stylename}-header-deco {
@@ -82,10 +86,6 @@ $v-grid-row-stripe-background-color: #eee !default;
       position: absolute;
       top: 0;
       left: 0;
-    }
-
-    .#{$primary-stylename}-header > tr {
-      position: relative;
     }
   }
 
