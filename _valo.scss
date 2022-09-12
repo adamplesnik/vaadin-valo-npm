@@ -1,17 +1,22 @@
-@import 'shared/variables';
-@import 'shared/global';
+@import 'components/variables';
 
-// Import component specific mixins
-@import 'components/all';
-
-// Include global styles directly, without a theme name prefix (this is done only once)
-@include valo-global;
-@import 'components/calendar';
+@import 'components/global';
+@import 'components/common';
 @import 'components/orderedlayout';
 
-@include valo-common;
-@include valo-components;
+@import 'components/grid';
+@import 'components/progressbar';
+@import 'components/treegrid';
+@import 'components/tree8';
+@include valo-grid;
+@include valo-tree8;
+@include valo-treegrid;
+@include valo-progressbar;
+@include valo-progressbar($primary-stylename: v-progressindicator);
+
+@import 'components/calendar';
 @import 'components/colorpicker';
+@import 'components/errorindicator';
 @import 'components/gridlayout';
 @import 'components/richtextarea';
 @import 'components/slider';

@@ -367,8 +367,10 @@ $v-grid-row-stripe-background-color: #eee !default;
       top: 0;
 
       &:before {
+        color: $v-error-indicator-level-error-color;
+        content: '!';
         display: inline-block;
-        @include valo-error-indicator-style($is-pseudo-element: true);
+        padding: 0 4px;
       }
     }
   }

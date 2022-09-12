@@ -1,0 +1,100 @@
+@use 'sass:math';
+
+@import 'loading-indicator';
+@import 'reconnect-dialog';
+
+.v-app,
+.v-app-loading {
+  background-color: $v-app-background-color;
+  color: $v-font-color;
+  cursor: default;
+  font-family: $v-font-family;
+  font-size: $v-font-size;
+  font-weight: $v-font-weight;
+  line-height: $v-line-height;
+}
+
+.v-app-loading {
+  width: 100%;
+  height: 100%;
+  background: $v-app-background-color;
+
+  $_size: 28px + round(math.div($v-unit-size, 2));
+
+  &:before {
+    content: '';
+    position: fixed;
+    z-index: 100;
+    top: 45%;
+    left: 50%;
+    width: 28px;
+    height: 28px;
+    padding: round(math.div($v-unit-size, 4));
+    margin-top: round(math.div($_size, -2));
+    margin-left: round(math.div($_size, -2));
+    border-radius: $v-border-radius;
+  }
+
+  @if $v-app-loading-text != '' {
+    &:after {
+      position: fixed;
+      z-index: 100;
+      top: 45%;
+      padding-top: $_size;
+      text-align: center;
+      left: 0;
+      right: 0;
+      content: $v-app-loading-text;
+    }
+  }
+}
+
+@include valo-loading-bar;
+
+.v-scrollable:focus {
+  outline: none;
+}
+
+img.v-icon {
+  vertical-align: middle;
+}
+
+.v-caption {
+  font-size: $v-caption-font-size;
+  font-weight: $v-caption-font-weight;
+}
+
+.v-caption-on-left .v-caption,
+.v-caption-on-right .v-caption {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.v-icon + .v-captiontext,
+.v-icon + span {
+  margin-left: round(math.div($v-unit-size, 5));
+
+  &:empty {
+    margin-left: 0;
+  }
+}
+
+.v-disabled {
+  cursor: default !important;
+}
+
+.v-draggable {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+}
+
+.v-drag-element {
+  background: $v-app-background-color;
+  color: $v-font-color;
+  box-shadow: 0 2px 10px rgba(#000, 0.2);
+  border-radius: $v-border-radius;
+  overflow: hidden;
+  opacity: 0.5;
+}
+
+@include valo-reconnect-dialog;

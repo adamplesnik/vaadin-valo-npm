@@ -1,0 +1,37 @@
+.v-errorindicator {
+  @include valo-error-indicator-style;
+}
+
+.v-errorindicator-info {
+  @include valo-error-indicator-style($indicator-color: $v-error-indicator-level-info-color);
+}
+
+.v-errorindicator-warning {
+  @include valo-error-indicator-style($indicator-color: $v-error-indicator-level-warning-color);
+}
+
+.v-errorindicator-error {
+  @include valo-error-indicator-style($indicator-color: $v-error-indicator-level-error-color);
+}
+
+.v-errorindicator-critical {
+  @include valo-error-indicator-style($indicator-color: $v-error-indicator-level-critical-color);
+}
+
+.v-errorindicator-system {
+  @include valo-error-indicator-style($indicator-color: $v-error-indicator-level-system-color);
+}
+
+.v-required-field-indicator {
+  color: $v-error-indicator-color;
+  padding: 0 0.2em;
+}
+
+@mixin valo-error-indicator-style($indicator-color: $v-error-indicator-color) {
+  color: $indicator-color;
+  padding: 0 4px;
+
+  &:before {
+    content: '!';
+  }
+}

@@ -39,13 +39,6 @@
   }
 }
 
-/**
- *
- *
- * @param {color} $background-color ($v-background-color) -
- *
- * @group progressbar
- */
 @mixin valo-progressbar-track-style($background-color: $v-background-color) {
   border-radius: $v-border-radius;
   height: round(math.div($v-unit-size, 4));
@@ -53,14 +46,6 @@
   box-sizing: border-box;
 }
 
-/**
- *
- *
- * @param {color} $background-color ($v-selection-color) -
- * @param {string} $border ($v-border) -
- *
- * @group progressbar
- */
 @mixin valo-progressbar-indicator-style($background-color: $v-selection-color, $border: $v-border) {
   border-radius: $v-border-radius;
   height: inherit;
