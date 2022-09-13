@@ -26,7 +26,8 @@ $_valo-slider-base-margin-horizontal: round(math.div($v-slider-handle-width, 2))
 }
 
 .v-slider-base {
-  @include valo-progressbar-track-style;
+  background-color: $v-background-color;
+  box-sizing: border-box;
   min-width: $v-unit-size * 2;
   height: $v-slider-track-size;
   margin: $_valo-slider-base-margin-vertical $_valo-slider-base-margin-horizontal;
@@ -45,7 +46,11 @@ $_valo-slider-base-margin-horizontal: round(math.div($v-slider-handle-width, 2))
   }
 
   &:after {
-    @include valo-progressbar-indicator-style;
+    border-radius: $v-border-radius;
+    height: inherit;
+    background-color: $v-selection-color;
+    box-sizing: border-box;
+    max-width: 100%;
     content: '';
     display: inline-block;
     margin-left: -100%;
