@@ -1,23 +1,5 @@
 @use 'sass:math';
 
-@mixin valo-spinner() {
-  animation: v-rotate-360 500ms infinite linear;
-  border-radius: 100%;
-  border-right-color: $v-focus-color;
-  border-top-color: $v-focus-color;
-  border: 2px solid transparentize($v-focus-color, 0.8);
-  box-sizing: border-box;
-  height: 24px !important;
-  pointer-events: none;
-  width: 24px !important;
-}
-
-@keyframes v-rotate-360 {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .v-app,
 .v-app-loading {
   background-color: $v-app-background-color;
