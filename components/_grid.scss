@@ -82,7 +82,7 @@ $v-grid-row-stripe-background-color: #eee !default;
     z-index: 0;
     top: 0;
 
-    tr {
+    .#{$primary-stylename}-row {
       position: absolute;
       top: 0;
       left: 0;
