@@ -3,23 +3,14 @@
 $v-grid-border: 1px solid #ddd !default;
 $v-grid-cell-focused-border: 2px solid $v-selection-color !default;
 $v-grid-cell-padding-horizontal: 0.25 * $v-unit-size !default;
-$v-grid-header-font-size: round($v-font-size * 0.86) !default;
 $v-grid-row-background-color: #fff !default;
-$v-grid-row-height: round($v-font-size * 1.5) !default;
-$v-grid-row-selected-background-color: $v-selection-color !default;
-$v-grid-row-stripe-background-color: #eee !default;
 
 @mixin valo-grid($primary-stylename: v-grid) {
   .#{$primary-stylename} {
     -webkit-user-select: text;
-    background-color: $v-background-color;
     position: relative;
     outline: none;
     user-select: text;
-
-    &.v-disabled {
-      opacity: $v-disabled-opacity;
-    }
 
     &:focus .#{$primary-stylename}-cell-focused:before {
       display: block;
@@ -150,12 +141,6 @@ $v-grid-row-stripe-background-color: #eee !default;
         opacity: 0.9;
         z-index: 30000;
       }
-
-      > .#{$primary-stylename}-drop-marker {
-        background-color: $v-grid-row-selected-background-color;
-        position: absolute;
-        width: 3px;
-      }
     }
   }
 
@@ -174,7 +159,7 @@ $v-grid-row-stripe-background-color: #eee !default;
   .#{$primary-stylename}-footer {
     td {
       background-color: $v-grid-row-background-color;
-      font-size: $v-grid-header-font-size;
+      font-size: calc(#{$v-font-size} * 0.86);
       font-weight: inherit;
       border-left: $v-grid-border;
       border-top: $v-grid-border;
@@ -287,7 +272,7 @@ $v-grid-row-stripe-background-color: #eee !default;
 
       .error,
       .error > input {
-        background-color: scale-color($v-error-indicator-color, $lightness: 98%);
+        background-color: scale-color($v-error-indicator-level-error-color, $lightness: 98%);
       }
 
       .error::before {
@@ -296,7 +281,7 @@ $v-grid-row-stripe-background-color: #eee !default;
         height: 0;
         width: 0;
         content: '';
-        border-top: round($v-unit-size * 0.25) solid $v-error-indicator-color;
+        border-top: round($v-unit-size * 0.25) solid $v-error-indicator-level-error-color;
         border-right: round($v-unit-size * 0.25) solid transparent;
       }
 
@@ -326,7 +311,6 @@ $v-grid-row-stripe-background-color: #eee !default;
 
   .#{$primary-stylename}-editor-footer {
     display: table;
-    height: $v-grid-row-height;
     border-top: $v-grid-border;
     margin-top: nth($v-grid-border, 1) * -1;
     background: $v-grid-row-background-color;
@@ -363,7 +347,6 @@ $v-grid-row-stripe-background-color: #eee !default;
       width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
-      line-height: $v-grid-row-height;
       top: 0;
 
       &:before {
@@ -390,7 +373,6 @@ $v-grid-row-stripe-background-color: #eee !default;
     text-decoration: none;
     border: none;
     background: transparent;
-    padding: round($v-layout-spacing-vertical * 0.5) round($v-layout-spacing-horizontal * 0.5);
     margin: 0;
     outline: none;
   }

@@ -19,14 +19,9 @@ $_valo-slider-base-margin-horizontal: round(math.div($v-slider-handle-width, 2))
       opacity: 1;
     }
   }
-
-  &.v-disabled {
-    opacity: $v-disabled-opacity;
-  }
 }
 
 .v-slider-base {
-  background-color: $v-background-color;
   box-sizing: border-box;
   min-width: $v-unit-size * 2;
   height: $v-slider-track-size;

@@ -1,4 +1,4 @@
-@mixin valo-error-indicator-style($indicator-color: $v-error-indicator-color) {
+@mixin valo-error-indicator-style($indicator-color: $v-error-indicator-level-error-color) {
   color: $indicator-color;
   padding: 0 4px;
 
@@ -32,6 +32,6 @@
 }
 
 .v-required-field-indicator {
-  color: $v-error-indicator-color;
+  color: $v-error-indicator-level-error-color;
   padding: 0 0.2em;
 }

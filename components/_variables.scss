@@ -1,38 +1,18 @@
-@use 'sass:math';
-
-$v-app-loading-text: '' !default;
-
 $v-line-height: 1.55 !default;
+$v-font-color: #23222c !default;
+$v-font-family: 'Open Sans', sans-serif !default;
 $v-font-size: 16px !default;
 $v-font-weight: 300 !default;
-$v-font-family: 'Open Sans', sans-serif !default;
 
-$v-caption-font-size: round($v-font-size * 0.9) !default;
-$v-caption-font-weight: 400 !default;
-
-$v-border: 1px solid (v-shade 0.7) !default;
 $v-border-radius: 4px !default;
-$v-background-color: hsl(210, 0%, 98%) !default;
-$v-app-background-color: $v-background-color !default;
+$v-app-background-color: #fafafa !default;
 
-$v-font-color: #23222c !default;
-$v-focus-color: #088ed8 !default;
-
-$v-disabled-opacity: 0.5 !default;
-
-$v-selection-color: $v-focus-color !default;
+$v-selection-color: #088ed8 !default;
 
 $v-error-indicator-level-info-color: #00a7f5 !default;
 $v-error-indicator-level-warning-color: #fc9c00 !default;
 $v-error-indicator-level-error-color: #ed473b !default;
 $v-error-indicator-level-critical-color: #fa007d !default;
 $v-error-indicator-level-system-color: #bb00ff !default;
-$v-error-indicator-color: $v-error-indicator-level-error-color !default;
 
-$v-unit-size: round(2.3 * $v-font-size) !default;
-$v-layout-margin-top: round($v-unit-size) !default;
-$v-layout-margin-right: round($v-unit-size) !default;
-$v-layout-margin-bottom: round($v-unit-size) !default;
-$v-layout-margin-left: round($v-unit-size) !default;
-$v-layout-spacing-vertical: round(math.div($v-unit-size, 3)) !default;
-$v-layout-spacing-horizontal: round(math.div($v-unit-size, 3)) !default;
+$v-unit-size: 32px !default;

@@ -52,7 +52,7 @@ $valo-richtextarea-use-valo-icons: true !default;
 }
 
 .v-richtextarea .gwt-RichTextToolbar-bottom {
-  font-size: round($v-font-size * 0.8);
+  font-size: calc(#{$v-font-size} * 0.8);
   padding: 0 round(math.div($v-unit-size, 4)) round(math.div($v-unit-size, 4)) 0;
 
   select {

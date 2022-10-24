@@ -31,19 +31,6 @@
     margin-left: round(math.div($_size, -2));
     border-radius: $v-border-radius;
   }
-
-  @if $v-app-loading-text != '' {
-    &:after {
-      position: fixed;
-      z-index: 100;
-      top: 45%;
-      padding-top: $_size;
-      text-align: center;
-      left: 0;
-      right: 0;
-      content: $v-app-loading-text;
-    }
-  }
 }
 
 .v-scrollable:focus {
@@ -52,11 +39,6 @@
 
 img.v-icon {
   vertical-align: middle;
-}
-
-.v-caption {
-  font-size: $v-caption-font-size;
-  font-weight: $v-caption-font-weight;
 }
 
 .v-caption-on-left .v-caption,
