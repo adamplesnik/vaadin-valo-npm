@@ -1,32 +1,4 @@
-@use 'sass:math';
-
-/**
- *
- * @group richtextarea
- */
 $valo-richtextarea-use-valo-icons: true !default;
-
-.v-richtextarea {
-  height: auto;
-  overflow: hidden;
-}
-
-.v-richtextarea .gwt-RichTextToolbar {
-  color: $v-font-color;
-}
-
-.v-richtextarea .gwt-ToggleButton,
-.v-richtextarea .gwt-PushButton {
-  display: inline-block;
-  line-height: $v-unit-size;
-  width: $v-unit-size;
-  text-align: center;
-  outline: none;
-
-  &:hover {
-    color: $v-font-color;
-  }
-}
 
 @if $valo-richtextarea-use-valo-icons {
   // List of title attribute values and Valo Icons for the formatting buttons
@@ -49,24 +21,4 @@ $valo-richtextarea-use-valo-icons: true !default;
       }
     }
   }
-}
-
-.v-richtextarea .gwt-RichTextToolbar-bottom {
-  font-size: calc(#{$v-font-size} * 0.8);
-  padding: 0 round(math.div($v-unit-size, 4)) round(math.div($v-unit-size, 4)) 0;
-
-  select {
-    margin: round(math.div($v-unit-size, 4)) 0 0 round(math.div($v-unit-size, 4));
-  }
-}
-
-.v-richtextarea .gwt-RichTextArea {
-  background: #fff;
-  border: none;
-  display: block;
-}
-
-.v-richtextarea-readonly {
-  padding: ceil(math.div($v-unit-size, 9)) ceil(math.div($v-unit-size, 6));
-  background: transparent;
 }

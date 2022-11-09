@@ -1,10 +1,5 @@
 @use 'sass:math';
 
-$v-grid-border: 1px solid #ddd !default;
-$v-grid-cell-focused-border: 2px solid $v-selection-color !default;
-$v-grid-cell-padding-horizontal: 0.25 * $v-unit-size !default;
-$v-grid-row-background-color: #fff !default;
-
 @mixin valo-grid($primary-stylename: v-grid) {
   .#{$primary-stylename} {
     -webkit-user-select: text;
@@ -91,7 +86,6 @@ $v-grid-row-background-color: #fff !default;
     white-space: nowrap;
     box-sizing: border-box;
     overflow: hidden;
-    font-size: $v-font-size;
 
     &.frozen {
       position: relative;
@@ -116,7 +110,6 @@ $v-grid-row-background-color: #fff !default;
     margin-top: -1px;
     position: absolute;
     display: block;
-    background-color: $v-grid-row-background-color;
     padding-left: 1px;
 
     > td {
@@ -136,7 +129,6 @@ $v-grid-row-background-color: #fff !default;
       position: absolute;
 
       > td {
-        border: $v-grid-border;
         margin-top: -10px;
         opacity: 0.9;
         z-index: 30000;
@@ -148,7 +140,6 @@ $v-grid-row-background-color: #fff !default;
     position: absolute;
     width: 3px;
     top: 0;
-    left: $v-grid-cell-padding-horizontal;
     z-index: 9001;
     background: #fff;
     box-shadow: 0 0 5px #000;
@@ -158,11 +149,7 @@ $v-grid-row-background-color: #fff !default;
 
   .#{$primary-stylename}-footer {
     td {
-      background-color: $v-grid-row-background-color;
-      font-size: calc(#{$v-font-size} * 0.86);
       font-weight: inherit;
-      border-left: $v-grid-border;
-      border-top: $v-grid-border;
       border-bottom: none;
 
       &:first-child {
@@ -172,8 +159,6 @@ $v-grid-row-background-color: #fff !default;
   }
 
   .#{$primary-stylename}-horizontal-scrollbar-deco {
-    background-color: $v-grid-row-background-color;
-    border: $v-grid-border;
     border-top: none;
   }
 
@@ -187,7 +172,6 @@ $v-grid-row-background-color: #fff !default;
       right: 0;
       bottom: 0;
       left: 0;
-      border: $v-grid-cell-focused-border;
       display: none;
       pointer-events: none;
     }
@@ -199,9 +183,7 @@ $v-grid-row-background-color: #fff !default;
     overflow: hidden;
     left: 0;
     right: 0;
-    border: $v-grid-border;
     box-sizing: border-box;
-    margin-top: nth($v-grid-border, 1) * -1;
     box-shadow: 0 0 9px rgba(0, 0, 0, 0.2);
   }
 
@@ -218,7 +200,6 @@ $v-grid-row-background-color: #fff !default;
       display: inline-block;
       box-sizing: border-box;
       vertical-align: middle;
-      background: $v-grid-row-background-color;
 
       &:before {
         content: '';
@@ -240,21 +221,6 @@ $v-grid-row-background-color: #fff !default;
         padding-left: 0;
       }
 
-      input[type='text'],
-      input[type='text'].v-filterselect-input,
-      input[type='password'] {
-        padding-left: $v-grid-cell-padding-horizontal;
-      }
-
-      input[type='text']:not(.v-filterselect-input),
-      input[type='password'] {
-        padding-right: $v-grid-cell-padding-horizontal * 0.5;
-      }
-
-      :not(.v-assistive-device-only-label).v-widget > input[type='checkbox'] {
-        margin-left: $v-grid-cell-padding-horizontal;
-      }
-
       .v-textfield,
       .v-datefield,
       .v-filterselect {
@@ -270,19 +236,12 @@ $v-grid-row-background-color: #fff !default;
         max-width: 100%;
       }
 
-      .error,
-      .error > input {
-        background-color: scale-color($v-error-indicator-level-error-color, $lightness: 98%);
-      }
-
       .error::before {
         position: absolute;
         display: block;
         height: 0;
         width: 0;
         content: '';
-        border-top: round($v-unit-size * 0.25) solid $v-error-indicator-level-error-color;
-        border-right: round($v-unit-size * 0.25) solid transparent;
       }
 
       input[type='text'].v-datefield-textfield {
@@ -294,39 +253,20 @@ $v-grid-row-background-color: #fff !default;
       .v-filterselect-input:focus {
         position: relative;
       }
-
-      .v-checkbox.v-widget {
-        margin: 0 round($v-grid-cell-padding-horizontal * 0.5) 0 $v-grid-cell-padding-horizontal;
-
-        > input[type='checkbox'] {
-          margin-left: 0;
-        }
-
-        > label {
-          white-space: nowrap;
-        }
-      }
     }
   }
 
   .#{$primary-stylename}-editor-footer {
     display: table;
-    border-top: $v-grid-border;
-    margin-top: nth($v-grid-border, 1) * -1;
-    background: $v-grid-row-background-color;
     padding: 0 5px;
-    font-size: $v-font-size;
 
     + .#{$primary-stylename}-editor-cells > div {
       border-bottom: none;
-      border-top: $v-grid-border;
     }
 
     &:first-child {
       border-top: none;
       margin-top: 0;
-      border-bottom: $v-grid-border;
-      margin-bottom: nth($v-grid-border, 1) * -1;
     }
   }
 
@@ -347,13 +287,6 @@ $v-grid-row-background-color: #fff !default;
       overflow: hidden;
       text-overflow: ellipsis;
       top: 0;
-
-      &:before {
-        color: $v-error-indicator-level-error-color;
-        content: '!';
-        display: inline-block;
-        padding: 0 4px;
-      }
     }
   }
 
