@@ -1,5 +1,3 @@
-@use 'sass:math';
-
 @mixin valo-grid($primary-stylename: v-grid) {
   .#{$primary-stylename} {
     -webkit-user-select: text;
@@ -242,10 +240,6 @@
         height: 0;
         width: 0;
         content: '';
-      }
-
-      input[type='text'].v-datefield-textfield {
-        padding-left: $v-unit-size * 1.2;
       }
 
       .v-textfield-focus,

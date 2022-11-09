@@ -1,7 +1,3 @@
-@import 'components/variables';
-
-@import 'components/global';
-
 @import 'components/grid';
 @include valo-grid;
 @import 'components/treegrid';
@@ -9,5 +5,4 @@
 @import 'components/tree8';
 @include valo-tree8;
 
-@import 'components/richtextarea';
 @import 'components/slider';

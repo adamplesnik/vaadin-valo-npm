@@ -1,5 +1,9 @@
 @use 'sass:math';
 
+$v-border-radius: 4px !default;
+$v-selection-color: #088ed8 !default;
+$v-unit-size: 32px !default;
+
 $v-slider-track-size: round(math.div($v-unit-size, 8)) !default;
 $v-slider-track-border-radius: null !default;
 $v-slider-handle-width: round(math.div($v-unit-size, 1.8)) !default;
