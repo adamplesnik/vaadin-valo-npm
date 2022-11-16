@@ -1,58 +1,53 @@
-@import 'treegrid';
+@include valo-grid(v-tree8);
 
-@mixin valo-tree8($primary-stylename: v-tree8) {
-  @include valo-treegrid($primary-stylename);
+.v-tree8 {
+  background-color: transparent;
+}
 
-  .#{$primary-stylename} {
-    background-color: transparent;
+.v-tree8-row > td {
+  background-color: transparent;
+  border: 0;
+  line-height: 28px;
+  > * {
+    vertical-align: baseline;
   }
+}
 
-  .#{$primary-stylename}-row > td {
-    background-color: transparent;
-    border: 0;
-    line-height: 28px;
-    > * {
-      vertical-align: baseline;
-    }
-  }
+.v-tree8-tablewrapper {
+  background-color: transparent;
+  border: none;
+}
 
-  .#{$primary-stylename}-tablewrapper {
-    background-color: transparent;
-    border: none;
+.v-tree8-row {
+  &::before {
+    content: '';
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-width: 1px;
   }
+}
 
-  .#{$primary-stylename}-row {
-    &::before {
-      content: '';
-      display: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-      box-sizing: border-box;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      border-width: 1px;
-    }
-  }
+.v-tree8-cell {
+  position: relative;
+}
 
-  .#{$primary-stylename}-cell {
-    position: relative;
-  }
+.v-tree8-scroller-vertical {
+  border: none;
+}
 
-  // Scroll bar
-  .#{$primary-stylename}-scroller-vertical {
-    border: none;
-  }
+.v-tree8-scroller-horizontal {
+  border: none;
+}
 
-  .#{$primary-stylename}-scroller-horizontal {
-    border: none;
-  }
-
-  .#{$primary-stylename}-header-deco,
-  .#{$primary-stylename}-footer-deco,
-  .#{$primary-stylename}-horizontal-scrollbar-deco {
-    border: none;
-    background: transparent;
-  }
+.v-tree8-header-deco,
+.v-tree8-footer-deco,
+.v-tree8-horizontal-scrollbar-deco {
+  border: none;
+  background: transparent;
 }

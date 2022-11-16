@@ -104,19 +104,6 @@
     }
   }
 
-  .#{$primary-stylename}-spacer {
-    margin-top: -1px;
-    position: absolute;
-    display: block;
-    padding-left: 1px;
-
-    > td {
-      width: 100%;
-      height: 100%;
-      box-sizing: border-box;
-    }
-  }
-
   .header-drag-table {
     border-spacing: 0;
     position: relative;
@@ -309,3 +296,6 @@
     z-index: 1;
   }
 }
+
+@include valo-grid;
+@include valo-grid(v-treegrid);

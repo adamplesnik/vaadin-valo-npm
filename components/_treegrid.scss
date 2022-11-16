@@ -1,5 +1,0 @@
-@import 'grid';
-
-@mixin valo-treegrid($primary-stylename: v-treegrid) {
-  @include valo-grid($primary-stylename);
-}
